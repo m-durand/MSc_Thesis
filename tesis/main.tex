@@ -1,0 +1,115 @@
+\documentclass[twoside,openright,numbers,spanish]{ezthesis}
+%% # Opciones disponibles para el documento #
+%%
+%% Las opciones con un (*) son las opciones predeterminadas.
+
+%%
+%% Formato de las referencias bibliogr'aficas:
+%%   numbers          - numeradas, p.e. [1]
+%%   authoryear (*)   - por autor y a'no, p.e. (Newton, 1997)
+%%
+%% Opciones adicionales:
+%%   spanish         - tesis escrita en espa'nol
+%%
+%% Desactivar opciones especiales:
+%%   nobibtoc   - no incluir la bibiolgraf'ia en el 'Indice general
+%%   nofancyhdr - no incluir "fancyhdr" para producir los encabezados
+%%   nocolors   - no incluir "xcolor" para producir ligas con colores
+%%   nographicx - no incluir "graphicx" para insertar gr'aficos
+%%   nonatbib   - no incluir "natbib" para administrar la bibliograf'ia
+
+%% Paquetes adicionales requeridos se pueden agregar tambi'en aqu'i.
+%% Por ejemplo:
+%\usepackage{subfig}
+%\usepackage{multirow}
+\usepackage[spanish,activeacute]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{wrapfig}
+\usepackage{minted}
+\usemintedstyle{colorful}
+
+%% # Datos del documento #
+%% Nota que los acentos se deben escribir: \'a, \'e, \'i, etc.
+%% La letra n con tilde es: \~n.
+
+\author{Mar\'ia Fernanda Alcal\'a Durand}
+\title{Aprendizaje Reforzado para el Juego de Distribuci\'on de Cerveza}
+\degree{Maestra en Ciencia de Datos}
+\supervisor{Dr. Adolfo Javier de Un\'anue Tiscare\~no}
+\institution{Instituto Tecnol\'ogico Aut\'onomo de M\'exico}
+\faculty{Divisi'on de Actuar\'ia, Estad\'istica y Matem\'aticas}
+\department{Departamento Acad'emico de Matem\'aticas}
+
+%% # M'argenes del documento #
+%% 
+%% Quitar el comentario en la siguiente linea para austar los m'argenes del
+%% documento. Leer la documentaci'on de "geometry" para m'as informaci'on.
+
+%\geometry{top=40mm,bottom=33mm,inner=40mm,outer=25mm}
+
+%% El siguiente comando agrega ligas activas en el documento para las
+%% referencias cruzadas y citas bibliogr'aficas. Tiene que ser *la 'ultima*
+%% instrucci'on antes de \begin{document}.
+\hyperlinking
+\begin{document}
+
+\graphicspath{{figs/}}
+
+%% # Portada de la tesis #
+\include{PaginaTitulo}
+
+%% # Prefacios #
+\preface
+\include{Gracias}
+
+%% # 'Indices y listas de contenido #
+%% Quitar los comentarios en las lineas siguientes para obtener listas de
+%% figuras y cuadros/tablas.
+\tableofcontents
+%\listoffigures
+%\listoftables
+
+%% # Cap'itulos #
+\cuerpo
+\include{Introduccion}
+\include{AprendizajeReforzado}
+\include{Problema}
+\include{Conclusiones}
+
+\appendix
+%% Cap'itulos incluidos despues del comando \appendix aparecen como ap'endices
+%% de la tesis.
+\include{ApendiceA}
+\include{ApendiceB}
+
+%% Incluir la bibliograf'ia. 
+\bibliography{Bibliografia}
+
+\end{document}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%% borrar en version final
+ % The \cite command functions as follows:
+ %   \citet{key} ==>>                Jones et al. (1990)
+ %   \citet*{key} ==>>               Jones, Baker, and Smith (1990)
+ %   \citep{key} ==>>                (Jones et al., 1990)
+ %   \citep*{key} ==>>               (Jones, Baker, and Smith, 1990)
+ %   \citep[chap. 2]{key} ==>>       (Jones et al., 1990, chap. 2)
+ %   \citep[e.g.][]{key} ==>>        (e.g. Jones et al., 1990)
+ %   \citep[e.g.][p. 32]{key} ==>>   (e.g. Jones et al., p. 32)
+ %   \citeauthor{key} ==>>           Jones et al.
+ %   \citeauthor*{key} ==>>          Jones, Baker, and Smith
+ %   \citeyear{key} ==>>             1990
+ %---------------------------------------------------------------------
+% 
+% \begin{center}
+%\includegraphics[scale=0.5]{REER1970_Niveles.jpeg}
+%\end{center}
+% 
+% 
+% 

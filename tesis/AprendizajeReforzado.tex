@@ -1,0 +1,211 @@
+\section{Reinforcement Learning: conceptos}
+
+Su principio se basa en la psicolog\'ia conductista: un \textit{agente} busca ser recompensado por un premio, el cual obtiene cuando realiza una secuencia de \textit{acciones} que lo llevan a concluir una tarea exitosamente. Adem\'as, para maximizar la cantidad de \textit{recompensa} que recibe - o, alternativamente, minimizar el tiempo que espera entre un premio y el siguiente - comienza a optimizar su pol\'itica (\textit{$\pi$}) para llegar a la meta satisfactoriamente.\\
+
+La principal caracter\'istica del agente es que tiene la capacidad de tomar decisiones sobre sus acciones, las cuales son su forma de interactuar con el \textit{mundo}, llev\'andolo de un \textit{estado} a otro. El agente no tiene acceso a todas las consecuencias de sus acciones; de hecho, ni siquiera conoce todo el mundo.\\
+
+El agente toma una acci\'on en el tiempo $t$, la cual depende del estado $s_t$ del mundo. En $t+1$, el mundo reaccion\'o ya a la interacci\'on del agente con \'el, as\'i que el agente recibe una recompensa $r_{t+1}$ y toma una nueva acci\'on dependiendo del estado $s_{t+1}$ del mundo. Sin embargo, no es \'optimo seleccionar acciones solamente con base en la recompensa $r_{t+1}$, pues la naturaleza temporal del problema lo convierte en un problema a largo plazo, y el agente estar\'ia considerando solamente consecuencias en el corto plazo.\\
+
+As\'i, el agente debe aprender que existe un \textit{retraso} entre cada acci\'on que toma y el premio. Supongamos que, en una cuadr\'icula, el premio se encuentra en la casilla (x,y). El agente solamente puede llegar a esa casilla meta desde las adyacentes, pero si no se encuentra en una de estas, primero debe acerc\'arseles. As\'i, cuando el agente comienza su exploraci\'on, ir\'a aprendiendo que, lejos de que la recompensa sea inmediata, debe tomar una secuencia de acciones para llegar a ella.\\
+
+Podemos entonces definir la \textit{funci\'on de valor} asociada a la pol\'itica como el valor esperado de la recompensa al tiempo $t$ dado que el agente se encuentra en el estado $s$.\\
+
+
+
+%Esta recursi\'on es conocida como \textit{Ecuaci\'on de Bellman}.
+
+Tambi\'en es necesario que el agente ajuste su comportamiento mientras transcurre el tiempo: al principio debe explorar para conocer la mayor cantidad de consecuencias a sus acciones posibles, pero debe mantener el conicimiento de cu\'ales acciones le han reportado buenas acciones y tomar esas decisiones m\'as seguido. A esta estrategia de exploraci\'on se le llama $\epsilon-greedy$.\\
+
+Definamos $p_r{t}$ y $p_t{t}$ como las probabilidades al tiempo $t$ de exploraci\'on y explotaci\'on, respectivamente. Entonces:
+
+\vspace{-30pt}
+\begin{align*}
+p_r{t} &= 1 - \epsilon(t) \\
+p_t{t} &= 1 - p_r{t} \quad \quad \forall t
+\end{align*}
+
+La funci\'on $\epsilon$ suele ser implementada como decreciente de forma lineal para el aprendizaje, de tal forma que mientras pasa el tiempo, el agente escoge las acciones conocidas que le reportan mayor utilidad m\'as seguido; junto con un par\'ametro $\ro$ aleatorio para asegurar que siempre existe una probabilidad positiva de explorar.\\
+
+Generalmente se supone este tipo de problemas como Procesos de Decisi\'on de Markov (MDP), cuya principal caracter\'istica es que cumplen con la famosa propiedad de Markov: a grandes rasgos, el futuro solamente depende del presente, no del pasado.\\
+
+%queremos aprender la funci\'on de valor
+
+Cuando la pol\'itica a tomar es dif\'icil de aprender porque no tenemos ejemplos, o el mundo / conjunto de acciones / conjunto de consecuencias es demasiado grande, es apropiado utilizar Aprendizaje Reforzado en lugar de Aprendizaje de M\'aquina regular.
+
+\section{Aprendizaje Reforzado}
+
+\subsection{Q-Learning: conceptos}
+
+%empezar con Q propuestas: generalmente 0 o -inf, e ir arreglando conforme vamos encontrando caminos a la meta
+
+%hay que revisitar
+
+%aqui se pone la definicion de Q
+$$
+V(s) = \max_{a}{Q(s,a)}
+$$
+$$
+Q(s, a) = R(s, a) + \gamma * \max_{a}{Q(s^{'}, a^{*})}
+$$
+
+Donde $s{'}$ es el siguiente estado, y $a^{*}$ representa todas las acciones posibles. Al estimar la funci\'on $Q$ para cada par de estado con acci\'on, es posible encontrar la mejor acci\'on para cada estado y, as\'i, obtener una pol\'itica \'optima.
+
+\subsubsection{Algoritmo}
+
+\begin{enumerate}
+    \item Asignar $Q(s,a) = 0$ para todos los estados y acciones.
+    \item Posicionarse en un estado $s$
+    \item Seleccionar acci\'on $a^{*}$ y ejecutar
+    \item Recibir recompensa $r$
+    \item Observar estado nuevo $s^{'}$
+    \item Actualizar $\hat{Q}(s,a) = r(s,a) + \lambda \max _{ a^{'} }{  \hat{Q}(s^{'},a^{'}) }$
+    \item Asignar nuevo estado $s \leftarrow s^{'}$
+    \item Volver a 2 hasta convergencia
+\end{enumerate}
+
+
+
+\section{Modelo Multiagente}
+
+%Los agentes no se comunican
+%Alguna cosa de system dynamics
+%Considera consecuencias globales de interacciones locales
+% Rules regulate the behaviour of the system by specifying local relationships and transitions between states
+
+%Causal loop diagrams emphasize he feedback structure of the system
+% stock and flow diagrams emphasize the underlying physical structure. must be causal, no correlations!
+%indicate important delays
+
+En este trabajo, consideraremos a cada eslab\'on de la cadena de suministro como un agente. 
+
+\begin{minted}
+[
+frame=leftline,
+framesep=2mm,
+baselinestretch=1.2,
+fontsize=\footnotesize,
+linenos
+]
+{python}
+class State(agent)
+	def __init__(self,inventory):
+		self.inventory = inventory
+		self.upstream
+		self.downstream
+		self.backlog
+
+	def receive_upstream(self,orders):
+		self.upstream = orders
+
+	def give_downstream(self,orders):
+		self.downstream = orders
+
+	def update_inventory(self,orders_in,orders_out):
+		self.inventory = self.inventory + orders_in - orders_out
+		
+	def backlog_penalty(self,orders):
+		self.backlog = orders*penalty_fee
+
+\end{minted}
+Con las siguientes definiciones:
+
+\begin{minted}
+[
+frame=leftline,
+framesep=2mm,
+baselinestretch=1.2,
+fontsize=\footnotesize,
+linenos
+]
+{python}
+
+# Agent variables
+
+agent.inventory[t]  #what the agent has on the warehouse
+agent.upstream[t]   #upstream orders.
+                    #fulfilled immediately but constrained to have enough
+agent.downstream[t] #downstream orders
+agent.backlog[t]    #backlogged orders
+
+# Global variables
+
+beer_price          #cost per product unit
+warehouse_cost      #holding in warehouse per time unit per product unit
+penalty_fee         #backlog orders cost. 
+                    #not fulfilling orders leave clients unhappy
+\end{minted}
+
+Cada agente solamente puede comunicarse con los niveles inmediatamente vecinos; es decir, las \'unicas interacciones que puede tener con el mundo son el n\'umero de \'ordenes que recibe del nivel inferior y el inventario que pide al nivel superior. Sin embargo, como hemos definido una penalizaci\'on por mantener cerveza en el inventario (el costo del almac\'en), la decisi\'on concerniente a la petici\'on del nivel inferior queda determinada: vender\'a todo lo que pueda, pues cada venta le reporta una ganancia, y no llenar la orden completa cuando tiene suficiente inventario lo har\'ia incurrir en un costo innecesario.\\
+
+Esto quiere decir que, para cada agente, el conjunto de \textbf{acciones} que puede tomar es solamente el n\'umero de cervezas que pedir\'a al nivel inmediatamente superior en cada tiempo $t$. Esta acci\'on est\'a declarada por:
+
+\begin{minted}
+[
+frame=leftline,
+framesep=2mm,
+baselinestretch=1.2,
+fontsize=\footnotesize,
+linenos
+]
+{python}
+agent.upstream[t]
+\end{minted}
+
+Por lo tanto, lo que tendr\'a guardado en la bodega en el tiempo $t$ estar\'a constituido por el n\'umero de cervezas que ten\'ia en el tiempo anterior $t-1$, menos el n\'umero de cervezas vendidas, m\'as el n\'umero de cervezas que recibe del nivel inmediatamente superior por el pedido de reaprovisionamiento.\footnote{Se agregan algunas indentaciones y saltos de l\'inea al c\'odigo para facilitar claridad de lectura.}\\
+
+\begin{minted}
+[
+frame=leftline,
+framesep=2mm,
+baselinestretch=1.2,
+fontsize=\footnotesize,
+linenos
+]
+{python}
+agent.inventory[t] =    agent.inventory[t-1] + \
+                        agent.upstream[t] - agent.downstream[t]
+\end{minted}
+
+Restringido a que cada agente solamente cubrir\'a la orden del nivel inferior si tiene suficiente inventario para hacerlo (es por esto que en la definici\'on de clase no se utilizan las variables expl\'icitas, sino $orders\_in$ y $orders\_out$.\\
+
+Su recompensa est\'a dada por:
+
+\begin{minted}
+[
+frame=leftline,
+framesep=2mm,
+baselinestretch=1.2,
+fontsize=\footnotesize,
+linenos
+]
+{python}
+
+agent.reward[t] =   beer_cost * agent.downstream[t] - \
+                    warehouse_cost * agent.inventory[t] - 
+                    penalty_fee * agent.backlog[t]
+\end{minted}
+
+El objetivo de cada agente es maximizar su recompensa. Sin embargo, este es un problema ligeramente diferente a los comunes de \textit{Q-learning}, en los cuales el valor de la recompensa es conocido y, una vez encontrado, se buscan las acciones \'optimas ``de atr\'as hacia adelante'' (como el ejemplo t\'ipico de una cuadr\'icula).\\
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Su pol\'itica est\'a definida con base en la funci\'on Q, una vez que el proceso de aprendizaje fue finalizado, de esta manera, puede realizar una b\'usqueda sobre todas las posibles acciones en los estados y sencillamente escoger la mejor, lo cual converge a la pol\'itica (cuasi)\'optima. Tal pol\'itica se puede definir como:
+
+\begin{minted}
+[
+frame=leftline,
+framesep=2mm,
+baselinestretch=1.2,
+fontsize=\footnotesize,
+linenos
+]
+{python}
+Pi(s) = [retailer.upstream[s],wholesaler.upstream[s],\
+        distributor.upstream[s],manufacturer.upstream[t]]
+\end{minted}
+
+Es importante destacar que este sistema toma solamente una de las ramas que existen en la industria de cualquier producto (existe m\'as de un minorista, etc.), e incluso, toma solamente un producto. A\'un as\'i, es un sistema complejo bastante robusto y sensible a cambios peque\~nos.
