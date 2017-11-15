@@ -7,13 +7,23 @@
 
 %The game is used to illustrate one of the links between System Dynamics theory and the Feedback Control Theory which inspired it - that systems with positive feedback loops and high gain can lead to oscillation and overload,
 
-\section{Origen y Descripci\'on}
 
-\textit{The Beer Distribution Game}, planteado por primera vez en la Escuela de Administraci\'on y Direcci\'on de Empresas Sloan del MIT en los años 60
+\textit{The Beer Distribution Game}, planteado por primera vez en la Escuela de Administraci\'on y Direcci\'on de Empresas Sloan del MIT en los años 60 para ejemplificar el \textit{efecto l\'atigo}, llamado as\'i por la similaridad que tiene el comportamiento la informaci\'on en cada nivel de la cadena con el patr\'on ondulado que toma un l\'atigo, en el cual existe una mayor amplitud de onda (comparable con el ruido o la varianza) al alejarse del punto de origen (comparable al consumidor). \\
 
-\subsection{Principales caracter\'isticas}
+En su forma de juego de mesa, se presenta com\'unmente a alumnos reci\'en ingresados a distintas escuelas de negocios. El MIT public\'o un art\'iculo noticiero corto de \citet{Dizikes} que, independientemente del rol que se juege y de cu\'anta experiencia y preparaci\'on en negocios tengan, los humanos consistentemente fallan en encontrar la soluci\'on \'optima a la estrategia. Asimismo, nota que es inevitable la frustraci\'on, y que incluso los equipos que obtienen los mejores resultados del juego terminan lejos del \'optimo. \\
 
-La estructura se puede observar en la figura \ref{diagram_wikipedia}.\footnote{Imagen tomada de la página de Wikipedia \textit{The Beer Distribution Game}, bajo la licencia Creative Commons Attribution-Share Alike 3.0 Unported}\\
+Este ejercicio ejemplifica la relaci\'on causal entre la toma de decisiones de cada agente del sistema con el comportamiento de la cadena de suministro. Asimismo, presenta el efecto l\'atigo claramente: el retraso. Por \'ultimo, evidencia las ineficiencias inherentes a tratar de resolver el problema enfoc\'andose en los agentes, ignorando que es un sistema. 
+
+
+\section{Principales caracter\'isticas}
+
+El juego consiste, a grandes rasgos, en jugar un rol en una cadena de suministro de cerveza, buscando maximizar las ganancias al final del juego.\\
+
+Existen cuatro jugadores: minorista (\textit{retail}), mayorista (\textit{wholesale}), distribuidor (\textit{regional warehouse}) y f\'abrica (\textit{factory}). Dentro del juego transcurren 50 semanas, en las cuales existe una demanda del consumidor, que se revela al inicio de la semana. De esta manera, el minorista debe cubrir (restringido a su inventario) la demanda del consumidor, y decidir la orden que pedir\'a al mayorista para recibir la siguiente semana. Cada jugador sigue instrucciones similares, con el objetivo de maximizar sus ganancias al final del juego.\\
+
+Cada jugador cuenta con un inventario inicial de cajas de cerveza,  y debe manejar correctamente su inventario para poder cumplir con la demanda del agente previo, al tiempo de minimizar los costos de almacenamiento por cada caja. Los jugadores reciben ingresos por vender cajas de cerveza, e incurren en costos por comprar inventario, almacenar inventario, y por \'ultimo, una penalizaci\'on por no cubrir las \'ordenes.\\
+
+La estructura del juego se puede observar en la figura \ref{diagram_wikipedia}.\footnote{Imagen tomada de la página de Wikipedia \textit{The Beer Distribution Game}, bajo la licencia Creative Commons Attribution-Share Alike 3.0 Unported}\\
 
 
 \begin{figure}[h]
@@ -23,7 +33,7 @@ La estructura se puede observar en la figura \ref{diagram_wikipedia}.\footnote{I
 \centering
 \end{figure}
 
-Las variables globales que tienen efecto en este problema son:
+De esta manera, las variables globales que tienen efecto en este problema son:
 \begin{itemize}
     \item Demanda del Consumidor
 \end{itemize}
@@ -63,7 +73,7 @@ El \textit{Efecto Látigo} se ejemplifica con el siguiente escenario:
 
 En este escenario, el mayorista obtuvo informaci\'on distorsionada acerca del repentino crecimiento en la demanda del comprador, mientras que la tienda de distribución podr\'ia incluso interpretar que el comprador disminuy\'o su consumo. Si este comportamiento se mantiene durante algunos periodos más, recibiría la noticia (por medio de un incremento en las órdenes regulares) con un retraso considerable.\\
 
-El \textit{Efecto L\'atigo} se refiere precisamente a este fenómeno: mientras m\'as ``arriba'' en la cadena de suministro se encuentre un agente (es decir, m\'as lejos del contacto directo con el comprador), m\'as distorsionada es la informaci\'on que tiene acerca de la verdadera demanda del comprador.
+El \textit{Efecto L\'atigo} s\citet{Strozzi}e refiere precisamente a este fenómeno: mientras m\'as ``arriba'' en la cadena de suministro se encuentre un agente (es decir, m\'as lejos del contacto directo con el comprador), m\'as distorsionada es la informaci\'on que tiene acerca de la verdadera demanda del comprador.
 
 \section{Acercamiento en el Presente Trabajo}
 
