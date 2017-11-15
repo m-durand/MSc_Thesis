@@ -124,7 +124,7 @@ all_months_with_noise <- ggplot(demands_no_noise, aes(x = Day, y = Demand_with_n
                         theme_minimal(base_size = 8)
 
 
-ggsave("~/Personal/Beer/tex/figures/monthly_demand_with_noise_ggplot.png", all_months_with_noise, device = "png")
+#ggsave("~/Personal/Beer/tex/figures/monthly_demand_with_noise_ggplot.png", all_months_with_noise, device = "png")
 
 
 # Anything below this line is not part of the code, erase if present

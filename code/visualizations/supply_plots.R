@@ -102,7 +102,7 @@ all_months_supply <- ggplot(supply_no_noise, aes(x = Day, y = Supply, color = Su
   ggtitle("Oferta Anual de los Campos de Cebada", 
           subtitle = "Solamente hay producción durante el verano, con un pico pequeño al final de junio y uno grande en agosto") +
   theme_minimal(base_size = 8)
-ggsave("~/Personal/Beer/tex/figures/fields_monthly_supply_ggplot.png", all_months_supply, device = "png")
+#ggsave("~/Personal/Beer/tex/figures/fields_monthly_supply_ggplot.png", all_months_supply, device = "png")
 
 # Anything below this line is not part of the code, erase if present
 
