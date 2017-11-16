@@ -21,15 +21,13 @@ El juego consiste, a grandes rasgos, en asignar a cada agente un rol en una cade
 
 Existen cuatro jugadores: minorista (\textit{retail}), mayorista (\textit{wholesale}), distribuidor (\textit{regional warehouse}) y f\'abrica (\textit{factory}). Dentro del juego transcurren 52 semanas (un a\~no), durante las cuales existe una demanda del consumidor, que se revela al inicio de la semana. De esta manera, el minorista debe cubrir (restringido a su inventario) la demanda del consumidor, y decidir la orden que pedir\'a al mayorista para recibir la siguiente semana. Cada jugador sigue instrucciones similares, con el objetivo de maximizar sus ganancias al final del juego.\\
 
-Todos los agentes cuentan con un inventario inicial de cajas de cerveza,  y deben manejar correctamente su inventario para poder cumplir con la demanda del agente previo, al tiempo de minimizar los costos de almacenamiento por cada caja. Todos reciben ingresos por vender cajas de cerveza, e incurren en costos por comprar inventario, almacenar inventario, y por \'ultimo, una penalizaci\'on por no cubrir las \'ordenes.\\
-
-La estructura del juego se puede observar en la figura \ref{diagram_wikipedia}.\footnote{Iconos creados por Freepik, Iconnice, Roundicons en \textit{www.flaticon.com}}\\
+Todos los agentes cuentan con un inventario inicial de cajas de cerveza,  y deben manejar correctamente su inventario para poder cumplir con la demanda del agente previo, al tiempo de minimizar los costos de almacenamiento por cada caja. Todos reciben ingresos por vender cajas de cerveza, e incurren en costos por comprar inventario, almacenar inventario, y por \'ultimo, una penalizaci\'on por no cubrir las \'ordenes. La estructura del juego se puede observar en la figura \ref{structure}.\footnote{Iconos creados por Freepik, Iconnice, Roundicons en \textit{www.flaticon.com}}\\
 
 
 \begin{figure}[h]
-\caption{Distribución de Cerveza}
-\label{diagram_wikipedia}
-\includegraphics[width=8cm]{Diagrama_Wikipedia.JPG}
+\caption{Distribuci\'on de Cerveza}
+\label{structure}
+\includegraphics[width=15cm]{beer_distribution_game_structure.PNG}
 \centering
 \end{figure}
 
@@ -37,6 +35,7 @@ De esta manera, las variables que tienen efecto en este problema son:
 
 \begin{itemize}
     \item Demanda del consumidor
+    \item Producci\'on (oferta) de los campos
     \item Precio de la cerveza
     \item Costo de almacenaje
     \item Costo de oportunidad por \'ordenes no cumplidas
@@ -45,21 +44,18 @@ De esta manera, las variables que tienen efecto en este problema son:
 
 Todas las variables, menos la demanda del consumidor y la producci\'on en los campos, pueden ser declaradas para el sistema (igual para todos los agentes) o individualmente (diferente para cada agente). Como se ver\'a m\'as adelante, el sistema es sumamente sensible a peque\~nos cambios en cualquiera de las variables; por ejemplo, si un agente comienza el juego con suficiente inventario para todo el a\~no, el agente superior nunca podr\'a venderle cerveza e incurrir\'a solamente en costos por almacenaje.
 
-\subsection{Efecto Látigo}
+\subsection{EL Efecto Látigo}
 
-El \textit{Efecto Látigo} se ejemplifica con el siguiente escenario:
-
+El \textit{Efecto Látigo} es un fen\'omeno que se produce en cadenas de suministro. Se llama de esa manera porque, mientras m\'as ``arriba'' en la cadena de suministro se encuentre un agente (es decir, m\'as lejos del contacto directo con el comprador), m\'as distorsionada es la informaci\'on que tiene acerca de la verdadera demanda del comprador; tal varianza se puede visualizar como una curva que asemeja un l\'atigo. Se puede ejemplificar con el siguiente escenario:
 
 \begin{enumerate}
-    \item El comprador, que generalmente compra $6$ cervezas, ahora quiere $10$, pero la tienda minorista solamente cuenta con $7$. El minorista le venderá todo su inventario, pues es la acci\'on que maximiza su ganancia. Debe decidir si volverá a tener un inventario de $6$ o si debe pedir un número mayor de cervezas, atendiendo la aparentemente creciente demanda. Decide pedir $9$ cervezas al siguiente nivel, la tienda de mayoreo.
+    \item El consumidor, que generalmente compra $6$ cervezas, ahora quiere $10$, pero la tienda minorista solamente cuenta con $7$. El minorista le venderá todo su inventario, pues es la acci\'on que maximiza su ganancia. Despu\'es, debe decidir si volverá a tener un inventario de $6$ o si debe pedir un número mayor de cervezas, atendiendo la posible creciente demanda. Decide pedir $9$ cervezas al siguiente nivel, la tienda de mayoreo.
     \item El mayorista cuenta con $17$ cervezas. Llena el pedido del minorista, pero decide que ten\'ia guardado demasiado inventario, as\'i que se queda con $8$ cervezas en su almac\'en, sin hacer una orden al siguiente nivel, la tienda de distribución.
     \item La tienda de distribuci\'on decide no comprar unidades a la f\'abrica, dado que no disminuy\'o su inventario.
     \item La f\'abrica conoce la restricci\'on de estacionalidad de la cebada, as\'i que compra una m\'inima cantidad a los campos.
 \end{enumerate}
 
-En este escenario, el mayorista obtuvo informaci\'on distorsionada acerca del repentino crecimiento en la demanda del comprador, mientras que la tienda de distribución podr\'ia incluso interpretar que el comprador disminuy\'o su consumo. Si este comportamiento se mantiene durante algunos periodos más, recibiría la noticia (por medio de un incremento en las órdenes regulares) con un retraso considerable.\\
-
-El \textit{Efecto L\'atigo} s\citet{Strozzi}e refiere precisamente a este fenómeno: mientras m\'as ``arriba'' en la cadena de suministro se encuentre un agente (es decir, m\'as lejos del contacto directo con el comprador), m\'as distorsionada es la informaci\'on que tiene acerca de la verdadera demanda del comprador.
+En este escenario, el mayorista obtuvo informaci\'on distorsionada acerca del repentino crecimiento en la demanda del comprador, mientras que la tienda de distribución podr\'ia incluso interpretar que el comprador disminuy\'o su consumo. Si este comportamiento se mantiene durante algunos periodos m\'as, recibir\'ia la noticia (por medio de un incremento en las \'ordenes regulares) con un retraso considerable.\\
 
 \section{Acercamiento en el Presente Trabajo}
 
