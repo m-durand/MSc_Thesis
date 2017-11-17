@@ -1,5 +1,3 @@
-exec(open("players.py").read())
-
 # Creating Supply Chain Agents
 customer_agent = Customer(customer_demand)
 retail_agent = Agent("Retail", retail_ininv, retail_price, wholesale_price, warehouse_price)
