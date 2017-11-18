@@ -63,7 +63,7 @@ exec(open("world.py").read())
 exec(open("policy_iteration.py").read())
 
 # Prepare results and insert into Postgresql database #
-connection_params = """dbname='template1' user='dbuser'
-                    host='localhost' password='dbpass'"""
+connection_params = """dbname='policy_iteration' user='experiments'
+                    host='localhost' password='reinforcement'"""
 
 exec(open("prepare_experiment_information.py").read())
