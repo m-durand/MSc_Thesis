@@ -44,7 +44,7 @@ De esta manera, las variables que tienen efecto en este problema son:
 
 Todas las variables, menos la demanda del consumidor y la producci\'on en los campos, pueden ser declaradas para el sistema (igual para todos los agentes) o individualmente (diferente para cada agente). Como se ver\'a m\'as adelante, el sistema es sumamente sensible a peque\~nos cambios en cualquiera de las variables; por ejemplo, si un agente comienza el juego con suficiente inventario para todo el a\~no, el agente superior nunca podr\'a venderle cerveza e incurrir\'a solamente en costos por almacenaje.
 
-\subsection{EL Efecto Látigo}
+\subsection{El Efecto Látigo}
 
 El \textit{Efecto Látigo} es un fen\'omeno que se produce en cadenas de suministro. Se llama de esa manera porque, mientras m\'as ``arriba'' en la cadena de suministro se encuentre un agente (es decir, m\'as lejos del contacto directo con el comprador), m\'as distorsionada es la informaci\'on que tiene acerca de la verdadera demanda del comprador; tal varianza se puede visualizar como una curva que asemeja un l\'atigo. Se puede ejemplificar con el siguiente escenario:
 
@@ -56,6 +56,22 @@ El \textit{Efecto Látigo} es un fen\'omeno que se produce en cadenas de suminis
 \end{enumerate}
 
 En este escenario, el mayorista obtuvo informaci\'on distorsionada acerca del repentino crecimiento en la demanda del comprador, mientras que la tienda de distribución podr\'ia incluso interpretar que el comprador disminuy\'o su consumo. Si este comportamiento se mantiene durante algunos periodos m\'as, recibir\'ia la noticia (por medio de un incremento en las \'ordenes regulares) con un retraso considerable.\\
+
+\subsection{La din\'amica de las existencias y flujos}
+
+Las existencias y flujos (\textit{stocks and flows}) son componentes b\'asicos en cualquier sistema din\'amico \footnote{Para mayor profundidad acerca de sistemas din\'amicos y el comportamiento de las existencias y flujos, \citet{Sterman} profundiza y provee de las bases adecuadas para sistemas m\'as complejos.}. Las existencias son acumulaciones basadas en la diferencia entre los flujos entrantes y los salientes. El flujo neto a una existencia en un tiempo determinado $t$ es la tasa de cambio de la existencia en el tiempo $t$:
+
+$$
+Existencia(t) = \int_{t_{0}}^t [Entrada(s) - Salida(s)]ds + Existencia(t_{0}) 
+$$
+
+Es com\'un que en un sistema con varias existencias con sus respectivos flujos ocurran retrasos. Esto sucede porque, en general, los flujos de entrada y salida son gobernados por decisiones diferentes. En el Juego de Distribuci\'on de Cerveza, para cada agente, su flujo de salida depende de la demanda del agente inmediatamente inferior limitada por su propia existencia, y su flujo de entrada depende de su propia demanda limitada por la existencia del agente inmediatamente superior. Esto, aunado a un comportamiento ligeramente aleatorio de la demanda del consumidor, puede desembocar en insuficiencia de existencias para cualquier agente en cualquier tiempo $t$. \\
+
+Un capital est\'a en equilibrio cuando no cambia (un sistema est\'a en equilibrio cuando ninguna de sus existencias cambia). Esta condici\'on se obtiene cuando el cambio neto de sus flujos es cero, es decir, cuando el flujo entrante es igual al flujo saliente. \\
+
+La soluci\'on trivial para este equilibrio es que todos los flujos sean nulos (\textit{equilibrio est\'atico}, sin embargo, en el caso de la cadena de suministro, este escenario llevar\'ia a que ning\'un agente tuviera ventas, y por consiguiente, tampoco tuviera ganancias. Una situaci\'on m\'as adecuada ser\'ia un \textit{equilibrio din\'amico}, en el cual las existencias totales se mantienen constantes, pero los flujos son positivos. Para la cerveza, esto significar\'ia que la cantidad de cerveza en los almacenes se mantiene constante, pero cada caja de cerveza se mueve de un agente a otro en alg\'un punto en el tiempo. Sin restricciones de oferta, la situaci\'on ideal tender\'ia a no guardar cerveza en los almacenes. Sin embargo, el efecto l\'atigo complica la estimaci\'on de los flujos entrantes y salientes en cada tiempo, pues para cada agente son desconocidas tanto la demanda del agente inferior como la capacidad del agente superior de cubrir la demanda propia.\\
+
+M\'as adelante impondremos restricciones por parte de los campos de cebada, lo cual tambi\'en obligar\'a a los agentes a mantener una existencia positiva para poder enfrentar la demanda en periodos de baja producci\'on.
 
 \section{Acercamiento en el Presente Trabajo}
 
