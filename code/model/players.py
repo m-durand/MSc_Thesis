@@ -1,16 +1,20 @@
 class Customer:
     """
-    This type of agent doesn't learn, just interacts with Retail by demanding beer
+    This type of agent doesn't learn,
+    just interacts with Retail by demanding beer
     """
-    def __init__(self,demand_trend):
-        self.current_policy = demand_trend['Demand']*10
+    def __init__(self, demand_trend):
+        self.current_policy = demand_trend['Demand']*5
+
 
 class Fields:
     """
-    This type of agent doesn't learn, just interacts with Factory by supplying beer
+    This type of agent doesn't learn,
+    just interacts with Factory by supplying beer
     """
-    def __init__(self,supply_trend):
-        self.current_policy = supply_trend['Supply']  
+    def __init__(self, supply_trend):
+        self.current_policy = supply_trend['Supply']
+
 
 class Agent:
     """
@@ -18,17 +22,18 @@ class Agent:
     with other agents and learn.
     input:
     * name (string) indicating the type of agent, can be one of four:
-    {Retail,Wholesale,Regional_Warehouse,Factory} 
-    * inventory (numeric) starting inventory at day 1 
+    {Retail,Wholesale,Regional_Warehouse,Factory}
+    * inventory (numeric) starting inventory at day 1
     output: an object orders_that_could_be_fulfilled type Agent
     """
-    def __init__(self, name, inventory, selling_price, buying_price, warehouse_price):
+    def __init__(self, name, inventory, selling_price,
+                 buying_price, warehouse_price):
 
-        # I am letting different levels have different selling and buying prices
+        # I am letting different levels have different selling & buying prices
         # This could also include different warehousing/backlogs costs
         self.selling_price = selling_price
         self.buying_price = buying_price
-        
+
         self.name = name
         self.initial_inventory = inventory
         self.inventory = inventory
@@ -41,26 +46,26 @@ class Agent:
         self.best_policy = [0] * 365
         self.best_payout = [-100000000] * 365
         self.historic_payout = []
-        
+
         # These relationships are assigned after the agents are created
-        self.downstream_agent =  ""
-        self.upstream_agent =  ""
+        self.downstream_agent = ""
+        self.upstream_agent = ""
         # This is needed for having a warm start and not going crazy
         self.average_downstream_demand = 0
-    
+
     def pay_for_warehousing(self):
         # Pays for warehousing of inventory: must be done either
         # "first thing in the morning" or "last time in the night"
         self.total_money = self.total_money - \
                 (self.inventory * warehouse_price)
-    
-    def receive_upstream(self,orders):
+
+    def receive_upstream(self, orders):
         # Receives orders from upstream agent first thing in the morning
         self.inventory = self.inventory + orders
         self.total_money = self.total_money - \
                 (orders * self.buying_price)
-        
-    def give_downstream(self,orders):
+
+    def give_downstream(self, orders):
         # Checks if he has availability to fulfill order,
         # fulfills as much as he can
         if self.inventory >= orders:

@@ -21,8 +21,8 @@ def insert(name, columns, data):
         # create a new cursor
         cur = conn.cursor()
         # Depending on the table, single ur multiple insertions are needed
-        if name == "experiments" or table == "world_parameters":
-            sql_query_empty = """INSERT INTO %s (%s) VALUES (%s);"""
+        if name == "experiments" or name == "world_parameters":
+            sql_query_empty = """INSERT INTO policy_iteration.%s (%s) VALUES (%s);"""
             # Create the final query to be executed
             sql_query = sql_query_empty % (name, columns, data)
             # Execute query
