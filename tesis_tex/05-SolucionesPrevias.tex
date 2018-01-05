@@ -1,28 +1,55 @@
 \chapter{Acercamientos Previos a la Soluci\'on}
 
-\section{Est\'atico: m\'axima ganancia posible}
+\section{Est\'atica: m\'axima ganancia posible}
 
-Si la demanda del consumidor no var\'ia, la soluci\'on es cerrada y puede encontrarse de la siguiente manera:
+El sistema tiene una soluci\'on anal\'itica si no existe una restricci\'on en la oferta (es decir, el campo siempre puede cubrir la demanda de la f\'abrica) y cada agente tiene en el d\'ia $n$ informaci\'on acerca de la demanda del d\'ia $n+1$ de su agente inmediatamente inferior. En este caso, los agentes ni siquiera necesitan usar sus almacenes: sencillamente compran cada d\'ia lo necesario para el d\'ia siguiente. Podemos observar el comportamiento de esta soluci\'on en la figura \ref{analytic_1}.
 
-\section{Estacional y aleatorio: m\'as parecido al mundo real}
+\begin{figure}[h!]
+\caption{Distribuci\'on de Cerveza}
+\label{analytic_1}
+\includegraphics[width=12cm]{tesis_tex/figs/analytic_solution_0_all_0_inv.png}
+\centering
+\end{figure}
+
+Sin embargo, incluso cuando todos los agentes tienen informaci\'on perfecta, podemos observar una versi\'on muy ligera del efecto l\'atigo. Si el minorista tiene suficiente cerveza para cubrir algunos d\'ias de demanda del consumidor, entonces no tiene incentivo para comprarle al mayorista hasta que su inventario se agote. Esta situaci\'on puede replicarse en los dos niveles superiores, de tal manera que la f\'abrica no recibe nada de informaci\'on acerca de la demanda del consumidor durante una cantidad considerable de tiempo. Este efecto se puede observar en la figura \ref{analytic_2}.
+
+\begin{figure}[h!]
+\caption{Distribuci\'on de Cerveza}
+\label{analytic_2}
+\includegraphics[width=12cm]{tesis_tex/figs/analytic_solution_0_all_45_inv.png}
+\centering
+\end{figure}
+
+Si la f\'abrica quisiera estimar su demanda para el siguiente a\~no solamente con esta informaci\'on, tendr\'ia que crear un modelo (aunque fuera muy sencillo) para interpolar aquellos d\'ias en los cuales no tuvo informaci\'on. En el caso optimista, usar\'a el mismo patr\'on observado retroactivamente, y tendr\'a una aproximaci\'on relativamente buena. En el caso pesimista, supondr\'a que la demanda del consumidor durante esos d\'ias fue efectivamente cero, y sin duda causar\'a una burbuja de falta de inventario que se propagar\'a hacia abajo en la cadena de suministro. El efecto l\'atigo habr\'a hecho de las suyas.\\
+
+
+
+\section{Estacional y aleatoria: m\'as parecido al mundo real}
 
 En el mundo real, ning\'un producto tiene una demanda perfectamente constante. M\'as a\'un, existen una infinidad de productos cuya demanda var\'ia con un patr\'on estacional: por ejemplo, las medicinas antigripales se venden m\'as en invierno. La cerveza (y, en general, las bebidas alcoh\'olicas) tambi\'en siguen este tipo de patrones.\\
 
 En primer lugar, existe un patr\'on semanal bastante esperado: seg\'un \citet{}, se consume m\'as cerveza los fines de semana (ver la figura \ref{weekly_base}). Adem\'as, existe un patr\'on relacionado a las festividades comunes. Seg\'un \citet{}, el consumo de bebidas alcoh\'olicas se duplica en las festividades navide\~nas. \\
 
-\begin{figure}[h]
+\begin{figure}[h!]
 \caption{ }
 \label{weekly_base}
-\includegraphics[width=15cm]{monthly_customer_demand_ggplot.png}
+\includegraphics[width=12cm]{monthly_customer_demand_ggplot.png}
 \centering
 \end{figure}
 
-Para el presente trabajo, combinaremos los dos patrones descritos anteriormente, y a\~nadiremos un peque\~no componente aleatorio que cambiar\'a la demanda cada a\~no. El comportamiento ''base'' de la demanda de puede consultar en la figura \ref{yearly_base}. Sin embargo, cabe mencionar que este es un modelo simple, pues en algunas regiones, podr\'ia tambi\'en existir un patr\'on relacionado al clima, o incluso un alza en la demanda siguiendo temporadas deportivas. \\
+Para el presente trabajo, combinaremos los dos patrones descritos anteriormente, y a\~nadiremos un peque\~no componente aleatorio que cambiar\'a la demanda cada a\~no. El comportamiento ''base'' de la demanda de puede consultar en la figura \ref{yearly_base}. Un ejemplo del comportamiento perturbado por un poco de aleatoriedad se puede consultar en la figura \ref{yearly_base_noisy}. Sin embargo, cabe mencionar que este es un modelo simple, pues en algunas regiones, podr\'ia tambi\'en existir un patr\'on relacionado al clima, o incluso un alza en la demanda siguiendo temporadas deportivas. \\
 
-\begin{figure}[h]
+\begin{figure}[h!]
 \caption{ }
 \label{yearly_base}
-\includegraphics[width=15cm]{monthly_demand_ggplot.png}
+\includegraphics[width=13cm]{monthly_demand_ggplot.png}
+\centering
+\end{figure}
+
+\begin{figure}[h!]
+\caption{ }
+\label{yearly_base_noisy}
+\includegraphics[width=13cm]{monthly_demand_with_noise_ggplot.png}
 \centering
 \end{figure}
 
