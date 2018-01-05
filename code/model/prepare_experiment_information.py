@@ -12,7 +12,7 @@ Created on Thu Nov 16 14:55:20 2017
 # 3. Experiment results
 
 
-def insert(name, columns, data):
+def insert_on_table(name, columns, data):
     '''Function to insert the form data 'data' into table 'table'
     according to the columns in 'columns' '''
     try:
@@ -40,16 +40,23 @@ def insert(name, columns, data):
         conn.commit()
         # close communication with the database
         cur.close()
+        print("Uploaded data to table %s" % name)
         if conn is not None:
             conn.close()
     except:
-        print*"I am unable to connect to the database"()
+        print("I am unable to insert into the %s database" % name)
 
 # Creating the tables
-# Before everything, identify the number of experiment
-# TODO - change the id to hash1 of all the concatenated text,
-# including timestamp, of the experiment
-experiment_id = random.randint(0, 1000000000)
+# Identify the number of experiment
+# the id is the hash1 of all the concatenated text,
+# including timestamp, of the experiment - this would make it robust
+# and easy to track for corrupt records
+# experiment_id = random.randint(0, 1000000000) # not in use anymore!
+experiment_id = hashlib.sha224((str(time.ctime(start_time)) +\
+                                str(retail_agent.best_policy) +\
+                                str(wholesale_agent.best_policy) +\
+                                str(regional_warehouse_agent.best_policy) +\
+                                str(factory_agent.best_policy)).encode('utf-8')).hexdigest()
 
 # 0. Experiments
 # Values to be inserted
@@ -64,7 +71,7 @@ experiments = ({"name": "experiments",
 # 1. World parameters
 world_parameters = ({"name": "world_parameters",
                     "columns": """experiment_id, max_demand, customer_demand, fields_supply, warehouse_price""",
-                    "data": (experiment_id, max_demand, customer_agent.current_policy, fields_agent.current_policy, warehouse_price)})
+                    "data": (experiment_id, max_demand, customer_agent.current_policy.to_string(), fields_agent.current_policy.to_string(), warehouse_price)})
 
 # 2. Agent parameters
 agent_parameters = ({"name": "agent_parameters",
@@ -101,39 +108,39 @@ experiment_results = ({"name": "experiment_results",
                     "data": ({# Retail
                             "experiment_id": experiment_id,
                             "agent": retail_agent.name,
-                            "best_payout": retail_agent.best_payout,
-                            "best_policy": retail_agent.best_policy,
-                            "historic_payout": retail_agent.historic_payout,
-                            "policy_inventory": retail_agent.policy_inventory,
+                            "best_payout": str(retail_agent.best_payout),
+                            "best_policy": str(retail_agent.best_policy),
+                            "historic_payout": str(retail_agent.historic_payout),
+                            "policy_inventory": str(retail_agent.policy_inventory),
                             "total_money": retail_agent.total_money},
                             {# Wholesale
                             "experiment_id": experiment_id,
                             "agent": wholesale_agent.name,
-                            "best_payout": wholesale_agent.best_payout,
-                            "best_policy": wholesale_agent.best_policy,
-                            "historic_payout": wholesale_agent.historic_payout,
-                            "policy_inventory": wholesale_agent.policy_inventory,
+                            "best_payout": str(wholesale_agent.best_payout),
+                            "best_policy": str(wholesale_agent.best_policy),
+                            "historic_payout": str(wholesale_agent.historic_payout),
+                            "policy_inventory": str(wholesale_agent.policy_inventory),
                             "total_money": wholesale_agent.total_money},
                             {# Regional Warehouse
                             "experiment_id": experiment_id,
                             "agent": regional_warehouse_agent.name,
-                            "best_payout": regional_warehouse_agent.best_payout,
-                            "best_policy": regional_warehouse_agent.best_policy,
-                            "historic_payout": regional_warehouse_agent.historic_payout,
-                            "policy_inventory": regional_warehouse_agent.policy_inventory,
+                            "best_payout": str(regional_warehouse_agent.best_payout),
+                            "best_policy": str(regional_warehouse_agent.best_policy),
+                            "historic_payout": str(regional_warehouse_agent.historic_payout),
+                            "policy_inventory": str(regional_warehouse_agent.policy_inventory),
                             "total_money": regional_warehouse_agent.total_money},
                             {# Factory
                             "experiment_id": experiment_id,
                             "agent": factory_agent.name,
-                            "best_payout": factory_agent.best_payout,
-                            "best_policy": factory_agent.best_policy,
-                            "historic_payout": factory_agent.historic_payout,
-                            "policy_inventory": factory_agent.policy_inventory,
+                            "best_payout": str(factory_agent.best_payout),
+                            "best_policy": str(factory_agent.best_policy),
+                            "historic_payout": str(factory_agent.historic_payout),
+                            "policy_inventory": str(factory_agent.policy_inventory),
                             "total_money": factory_agent.total_money})})
 
 # Insert into the database
 tables = (experiments, world_parameters, agent_parameters, experiment_results)
 
 for table in tables:
-    insert(table["name"], table["columns"], table["data"])
+    insert_on_table(table["name"], table["columns"], table["data"])
 

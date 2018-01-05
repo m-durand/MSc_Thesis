@@ -4,6 +4,7 @@ import time
 import os
 import psycopg2
 import random
+import hashlib
 
 os.chdir('C:\\Users\\Fernanda Alcala\\Documents\\Personal\\Tesis_Maestria\\code\\model\\')
 

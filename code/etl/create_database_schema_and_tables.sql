@@ -104,3 +104,12 @@ TABLESPACE pg_default;
 
 ALTER TABLE policy_iteration.world_parameters
     OWNER to experiments;
+
+-- This is needed manually to insert from python with psycopg2
+GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA policy_iteration TO experiments;
+
+-- Which is equivalent to
+-- GRANT ALL PRIVILEGES ON TABLE policy_iteration.agent_parameters TO experiments;
+-- GRANT ALL PRIVILEGES ON TABLE policy_iteration.experiment_results TO experiments;
+-- GRANT ALL PRIVILEGES ON TABLE policy_iteration.experiments TO experiments;
+-- GRANT ALL PRIVILEGES ON TABLE policy_iteration.world_parameters TO experiments;
