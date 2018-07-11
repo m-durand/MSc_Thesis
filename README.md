@@ -1,9 +1,8 @@
-# Beer
+# Beer!
 
-[NOTE: while the README and the code are in English, the document is written in Spanish and the commits are a strange mix of both - depending on my caffeine level, mostly. Trying to make the code accesible while complying to external language requirements has proven a massive challenge. Thank you for being patient!]
+_[NOTE: while the README and the code are in English, the document is written in Spanish and the commits are a strange mix of both - depending on my caffeine level, mostly. Trying to make the code accesible while complying to external language requirements has proven a massive challenge. Thank you for being patient!]_
 
-1. English -------------------------------------------------------------------------------
-Reinforcement learning applied to a model based on agents playing _The Beer Distribution Game_.
+**Reinforcement learning applied to a model based on agents playing _The Beer Distribution Game_.**
 
 The basic structure of this repository is:
 1. `aux_documents` contains documents for creating the consumer's demand, fields' supply, and a simple file showing that the explicit solution needs reiteration on itself.
