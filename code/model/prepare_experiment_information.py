@@ -28,14 +28,18 @@ def insert_on_table(name, columns, data):
             # Execute query
             cur.execute(sql_query)
         elif name == "agent_parameters":
-            sql_query_semi = "INSERT INTO " + name + "(" + columns + ") " + """VALUES %(experiment_id)s, %(agent)s, %(initial_inventory)s, %(buying_price)s, %(selling_price)s;"""
+            #sql_query_semi = "INSERT INTO " + name + " (" + columns + ") " + """VALUES %(experiment_id)s, %(agent)s, %(initial_inventory)s, %(buying_price)s, %(selling_price)s;"""
+            sql_query_semi = "INSERT INTO policy_iteration." + name + " (" + columns + ") " + """VALUES (%s, %s, %s, %s, %s);"""
             # Execute query: for many need a mapping
             # https://stackoverflow.com/questions/8134602/psycopg2-insert-multiple-rows-with-one-query
-            cur.executemany(sql_query_semi, data)
+            data_insert = [tuple(list(row.values())) for row in data]
+            cur.executemany(sql_query_semi, data_insert)
         elif name == "experiment_results":
-            sql_query_semi = "INSERT INTO " + name + "(" + columns + ") " + """VALUES %(experiment_id)s, %(agent)s, %(best_payout)s, %(best_policy)s, %(historic_payout)s, %(policy_inventory)s, %(total_money)s;"""
+            #sql_query_semi = "INSERT INTO " + name + "(" + columns + ") " + """VALUES %(experiment_id)s, %(agent)s, %(best_payout)s, %(best_policy)s, %(historic_payout)s, %(policy_inventory)s, %(total_money)s;"""
+            sql_query_semi = "INSERT INTO policy_iteration." + name + " (" + columns + ") " + """VALUES (%s, %s, %s, %s, %s, %s, %s);"""
             # Execute query: for many need a mapping
-            cur.executemany(sql_query_semi, data)
+            data_insert = [tuple(list(row.values())) for row in data]
+            cur.executemany(sql_query_semi, data_insert)
         # commit the changes to the database
         conn.commit()
         # close communication with the database

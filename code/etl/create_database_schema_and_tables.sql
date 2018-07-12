@@ -25,16 +25,16 @@ CREATE SCHEMA policy_iteration
 
 -- Table: policy_iteration.agent_parameters
 
--- DROP TABLE policy_iteration.agent_parameters;
+DROP TABLE policy_iteration.agent_parameters;
 
 CREATE TABLE policy_iteration.agent_parameters
 (
     experiment_id character(56) COLLATE pg_catalog."default" NOT NULL,
-    agent character varying(1) COLLATE pg_catalog."default" NOT NULL,
+    agent character(20) COLLATE pg_catalog."default" NOT NULL,
     initial_inventory integer NOT NULL,
     buying_price integer NOT NULL,
     selling_price integer NOT NULL,
-    CONSTRAINT agent_parameters_pkey PRIMARY KEY (experiment_id)
+    CONSTRAINT agent_parameters_pkey PRIMARY KEY (experiment_id, agent)
 )
 WITH (
     OIDS = FALSE
@@ -46,7 +46,7 @@ ALTER TABLE policy_iteration.agent_parameters
 
 -- Table: policy_iteration.experiment_results
 
--- DROP TABLE policy_iteration.experiment_results;
+DROP TABLE policy_iteration.experiment_results;
 
 CREATE TABLE policy_iteration.experiment_results
 (
@@ -57,7 +57,7 @@ CREATE TABLE policy_iteration.experiment_results
     historic_payout character varying COLLATE pg_catalog."default" NOT NULL,
     policy_inventory character varying COLLATE pg_catalog."default" NOT NULL,
     total_money double precision NOT NULL,
-    CONSTRAINT experiment_results_pkey PRIMARY KEY (experiment_id)
+    CONSTRAINT experiment_results_pkey PRIMARY KEY (experiment_id, agent)
 )
 WITH (
     OIDS = FALSE
@@ -69,7 +69,7 @@ ALTER TABLE policy_iteration.experiment_results
 
 -- Table: policy_iteration.experiments
 
--- DROP TABLE policy_iteration.experiments;
+DROP TABLE policy_iteration.experiments;
 
 CREATE TABLE policy_iteration.experiments
 (
@@ -91,7 +91,7 @@ ALTER TABLE policy_iteration.experiments
 
 -- Table: policy_iteration.world_parameters
 
--- DROP TABLE policy_iteration.world_parameters;
+DROP TABLE policy_iteration.world_parameters;
 
 CREATE TABLE policy_iteration.world_parameters
     (
