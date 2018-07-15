@@ -6,14 +6,17 @@ import psycopg2
 import random
 import hashlib
 
-os.chdir('C:\\Users\\Fernanda Alcala\\Documents\\Personal\\Tesis_Maestria\\code\\model\\')
+#os.chdir('C:\\Users\\Fernanda Alcala\\Documents\\Tesis_Maestria\\code\\model\\')
+os.chdir('/Users/fernandaalcala/Documents/Tesis_Maestria/code/model/')
 
 ## Setup hyperparameters for policy iteration ##########################
 np.random.seed(20170130)
 
-total_epochs = 10000  # 10000 epochs is a good number to play, need to find a better way to constraint
-warmstart_proportion = 0.01  # How much time will the agents spend observing what the downstream agent does, not exploring
-max_demand = 50  # The maximum quantity an agent can ask for during one day
+total_epochs = 1000 # 10000 epochs is a good number to play, need to find a better way to constraint
+# 10,000 epochs takes about 6 minutes to train
+# 100,000 eopchs takes about 40 minutes to train
+warmstart_proportion = 0.05  # How much time will the agents spend observing what the downstream agent does, not exploring
+max_demand = 100  # The maximum quantity an agent can ask for during one day
 epsilon_greedy_converges_to = 0.005
 
 
@@ -25,22 +28,23 @@ fields_supply = pd.read_csv("../../aux_documents/fields_trend.csv")
 
 # Prices and Costs
 # Prices of one beer at each level of the supply chain.
-retail_price = 10
-wholesale_price = 9
-regional_warehouse_price = 8
-factory_price = 7
-field_price = 6
+retail_price = 100
+wholesale_price = 90
+regional_warehouse_price = 80
+factory_price = 70
+field_price = 60
 # Cost of holding one beer during one day on warehouse.
 # Assumed to be the same for all levels
-warehouse_price = 0.2
+warehouse_price = 1000 #1/365 = 0.002739 it is still profitable to keep beer
+# on the warehouse for almost a year just so they don't get backlog
 # Cost of backlog: non fulfilled orders
-backlog_cost = 0.1
+backlog_cost = 50
 
 # Initial Inventories
-retail_ininv = 40
-wholesale_ininv = 40
-regional_warehouse_ininv = 40
-factory_ininv = 40
+retail_ininv = 1
+wholesale_ininv = 1
+regional_warehouse_ininv = 1
+factory_ininv = 1
 
 # Create world #
 # Create the agents that will comprise our supply chain,
@@ -65,6 +69,6 @@ exec(open("policy_iteration.py").read())
 
 # Prepare results and insert into Postgresql database #
 connection_params = """dbname='reinforcement_learning' user='experiments'
-                    host='localhost' password='reinforcement'"""
+                    host='localhost' password='learning'"""
 
-exec(open("prepare_experiment_information.py").read())
+exec(open("insert_experiment_into_database.py").read())
