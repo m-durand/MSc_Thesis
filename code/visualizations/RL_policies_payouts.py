@@ -51,7 +51,7 @@ figname = path_to_write_figures + "policies_" + experiment_id + ".png"
 # save as the latest (mainly so the TeX file can pull it by name)
 figname_latest = path_to_write_figures + "policies.png"
 #fig.savefig(figname)
-fig.savefig(figname_latest)
+#fig.savefig(figname_latest)
 
 ##############################################################################
 # Historic payout
@@ -85,5 +85,5 @@ figname = path_to_write_figures + "payouts_" + experiment_id + ".png"
 # save as the latest (mainly so the TeX file can pull it by name)
 figname_latest = path_to_write_figures + "payouts.png"
 #fig.savefig(figname)
-fig.savefig(figname_latest)
+#fig.savefig(figname_latest)
 
