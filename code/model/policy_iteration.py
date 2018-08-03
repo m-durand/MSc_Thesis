@@ -1,6 +1,6 @@
 agents = [retail_agent, wholesale_agent, regional_warehouse_agent, factory_agent]
 
-# TODO create a function that doesn't learn, only
+# function that doesn't learn, only
 # asks on t for what the downstream agent asked for on t-1
 # this would be the equivalent of ordering upstream what the client ordered the previous day
 def order_by_the_day(agent,day):
@@ -74,8 +74,8 @@ for j in range(total_epochs):
             agent.current_payout[day-1] = agent.total_money
             # Agent decides demand for today, which will (might) be fulfilled tomorrow
             # Random iteration once during training: see what happens if agent doesn't make any decisions, demanding zero
-            #if j == np.floor(total_epochs*agent.time_for_zero_policy):
-            #    agent_demand = 0
+            if j == np.floor(total_epochs*agent.time_for_zero_policy):
+                agent_demand = 0
             # 1% of total iterations: try to figure out downstream agent's average demand, to have a warm start
             if j < warmstart_proportion * total_epochs:
                 agent.average_downstream_demand = np.mean([agent.average_downstream_demand,

@@ -12,10 +12,10 @@ os.chdir('/Users/fernandaalcala/Documents/Tesis_Maestria/code/model/')
 ## Setup hyperparameters for policy iteration ##########################
 np.random.seed(20170130)
 
-total_epochs = 1000 # 10000 epochs is a good number to play, need to find a better way to constraint
+total_epochs = 5000 # 10000 epochs is a good number to play, need to find a better way to constraint
 # 10,000 epochs takes about 6 minutes to train
 # 100,000 eopchs takes about 40 minutes to train
-warmstart_proportion = 0.05  # How much time will the agents spend observing what the downstream agent does, not exploring
+warmstart_proportion = 0.005  # How much time will the agents spend observing what the downstream agent does, not exploring
 max_demand = 100  # The maximum quantity an agent can ask for during one day
 epsilon_greedy_converges_to = 0.005
 
@@ -35,16 +35,16 @@ factory_price = 70
 field_price = 60
 # Cost of holding one beer during one day on warehouse.
 # Assumed to be the same for all levels
-warehouse_price = 1000 #1/365 = 0.002739 it is still profitable to keep beer
+warehouse_price = 1/365 #1/365 = 0.002739 it is still profitable to keep beer
 # on the warehouse for almost a year just so they don't get backlog
 # Cost of backlog: non fulfilled orders
-backlog_cost = 50
+backlog_cost = 2
 
 # Initial Inventories
-retail_ininv = 1
-wholesale_ininv = 1
-regional_warehouse_ininv = 1
-factory_ininv = 1
+retail_ininv = 10
+wholesale_ininv = 10
+regional_warehouse_ininv = 10
+factory_ininv = 10
 
 # Create world #
 # Create the agents that will comprise our supply chain,
@@ -52,7 +52,7 @@ factory_ininv = 1
 exec(open("players.py").read())
 exec(open("world.py").read())
 
-# Policy Iteration #
+# Policy Iteration ############################################################
 # Basic idea of policy iteration:
 #    1. Start all agents with the [0]*365 policy, this would be just selling what they have and never restocking or making any decisions. This is the starting benchmark (best policy).
 #    2. For each agent, for every day of the year, repeat `total_epochs` times:
@@ -66,6 +66,23 @@ exec(open("world.py").read())
 # so if this policy combined with the best policy of another agent leads them to start losing and losing...
 # I'm just saying it could happen.
 exec(open("policy_iteration.py").read())
+
+# Q learning ##################################################################
+# The idea is to get a full year of actions (random, based on exploration/explotation prob)
+# Then each day, based on the inventory (k) on that day (n),
+# The value of the function Q is:
+# Q_day_n(inv k) = discount_factor * (sales_day_n+1(inv_k) +
+#                                     warehouse_cost_n+1(inv_k) +
+#                                     backlog_penalty_n+1(inv_k))     +
+#                  discount_factor^2 * (sales_day_n+2(inv_k) +
+#                                       warehouse_cost_n+2(inv_k) +
+#                                       backlog_penalty_n+2(inv_k))    +
+#                  ...                                                 +
+#                  discount_factor^365 * (sales_day_n+365(inv_k) +
+#                                       warehouse_cost_n+365(inv_k) +
+#                                       backlog_penalty_n+365(inv_k)) 
+
+exec(open("q_learning.py").read())
 
 # Prepare results and insert into Postgresql database #
 connection_params = """dbname='reinforcement_learning' user='experiments'
