@@ -43,8 +43,11 @@ class Agent:
         self.backlog = 0
         self.current_policy = np.random.randint(1, max_demand, 365)
         self.current_payout = [-100000000] * 365
+        self.q_function_value = [-10000000] * 365
         self.best_policy = self.current_policy
         self.best_payout = [-100000000] * 365
+        self.best_inventory = [self.initial_inventory] + [0] * 364
+        self.best_q_function_value = [-10000000] * 365
         self.historic_payout = []
         self.time_for_zero_policy = np.random.uniform(0,1)
 
