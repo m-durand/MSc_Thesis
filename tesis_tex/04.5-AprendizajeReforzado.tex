@@ -1,8 +1,6 @@
-
-
 \chapter{Aprendizaje Reforzado}
 
-\subsection{Or\'igenes}
+\section{Or\'igenes y Descripci\'on}
 
 Su principio se basa en la psicolog\'ia conductista: un \textit{agente} busca ser recompensado por un premio, el cual obtiene cuando realiza una secuencia de \textit{acciones} que lo llevan a concluir una tarea exitosamente. Adem\'as, para maximizar la cantidad de \textit{recompensa} que recibe - o, alternativamente, minimizar el tiempo que espera entre un premio y el siguiente - comienza a optimizar su pol\'itica (\textit{$\pi$}) para llegar a la meta satisfactoriamente.\\
 
@@ -38,9 +36,9 @@ Cuando la pol\'itica a tomar es dif\'icil de aprender porque no tenemos ejemplos
 
 \subsection{Terminolog\'ia com\'un}
 
-\subsection{Q-Learning}
+\section{Q-Learning}
 
-\subsubsection{Conceptos}
+\subsection{Conceptos}
 
 $Q_k(s,a)$
 policy $\pi$
@@ -63,7 +61,7 @@ $$
 
 Donde $s{'}$ es el siguiente estado, y $a^{*}$ representa todas las acciones posibles. Al estimar la funci\'on $Q$ para cada par de estado con acci\'on, es posible encontrar la mejor acci\'on para cada estado y, as\'i, obtener una pol\'itica \'optima.
 
-\subsubsection{Algoritmo}
+\subsection{Algoritmo}
 
 \begin{enumerate}
     \item Asignar $Q(s,a) = 0$ para todos los estados y acciones.
