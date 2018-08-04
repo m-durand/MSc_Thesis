@@ -67,6 +67,11 @@ exec(open("world.py").read())
 # I'm just saying it could happen.
 exec(open("policy_iteration.py").read())
 
+connection_params = """dbname='reinforcement_learning' user='experiments'
+                    host='localhost' password='learning'"""
+
+exec(open("insert_experiment_into_pi_database.py").read())
+
 # Q learning ##################################################################
 # The idea is to get a full year of actions (random, based on exploration/explotation prob)
 # Then each day, based on the inventory (k) on that day (n),
@@ -81,11 +86,9 @@ exec(open("policy_iteration.py").read())
 #                  discount_factor^365 * (sales_day_n+365(inv_k) +
 #                                       warehouse_cost_n+365(inv_k) +
 #                                       backlog_penalty_n+365(inv_k)) 
+# Prepare results and insert into Postgresql database #
+
+# 
 
 exec(open("q_learning.py").read())
 
-# Prepare results and insert into Postgresql database #
-connection_params = """dbname='reinforcement_learning' user='experiments'
-                    host='localhost' password='learning'"""
-
-exec(open("insert_experiment_into_database.py").read())
