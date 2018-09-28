@@ -12,6 +12,63 @@ def create_demand(day):
 # Q LEARNING  ----------------------------------------------------------------
 
 start_time = time.time()
+# the vector of lambdas
+lambdas = [lambda_q_learning*(lambda_q_learning**n) for n in range(365)]
+
+
+
+
+p_exploration = max(epsilon_greedy_converges_to ,(total_epochs - j) / total_epochs)
+
+
+# first part of q function: reward ------------------------------------
+day = day
+state = agent.policy_inventory[day]
+action = create_demand(day)
+
+# being on the day "day" then the reward action is
+day = 30
+# we "cut" the vector starting on the position "day" and append the rest to the end
+rewards = agent.q_function_reward_for_action[day:] + agent.q_function_reward_for_action[0:day]
+# afterwards we multiply by the vector of lambdas
+discounted_rewards = np.multiply(rewards, lambdas)
+# finally we sum and get the value of R
+r_s_a = np.sum(discounted_rewards)
+
+# second part of q function: max of q on the next state ---------------
+# first we identify what is the next state (day+1, inventory at the end of the day)
+
+# two possible outcomes: the state (day+1,inv) exists already or not
+# if yes, then we filter the df to find the max q function of that pair (s',a*)
+
+# if no, then we grab the closest possible match inventory-wise
+
+
+
+
+# third part - update Q function for (s,a) ------------------------------
+# Check if the specific (state, action) already exists on the df
+
+# if yes, update the value of both R and Q
+
+# if not, append as a new row to the df
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 for j in range(total_epochs):
     if j % (total_epochs/20) == 0:
@@ -40,26 +97,25 @@ for j in range(total_epochs):
         fulfilled_to_factory = min(factory_agent.current_policy[day-1],
                                    max(fields_agent.current_policy[day-1] - factory_agent.current_policy[day-1],0))
         factory_agent.receive_upstream(fulfilled_to_factory)
-        factory_agent.current_policy[day-1] = fulfilled_to_factory
         
         #print('Factory now has %s inventory and %s money' % (factory_agent.inventory, factory_agent.total_money))
         # Regional Warehouse
         fulfilled_to_regional_warehouse = factory_agent.give_downstream(regional_warehouse_agent.current_policy[day-1])
         regional_warehouse_agent.receive_upstream(fulfilled_to_regional_warehouse)
         factory_agent.policy_inventory[day-1] = factory_agent.inventory
-        regional_warehouse_agent.current_policy[day-1] = fulfilled_to_regional_warehouse
+
         #print('Regional WH now has %s inventory and %s money' % (regional_warehouse_agent.inventory, regional_warehouse_agent.total_money))
         # Wholesale
         fulfilled_to_wholesale = regional_warehouse_agent.give_downstream(wholesale_agent.current_policy[day-1])
         wholesale_agent.receive_upstream(fulfilled_to_wholesale)
         regional_warehouse_agent.policy_inventory[day-1] = regional_warehouse_agent.inventory
-        wholesale_agent.current_policy[day-1] = fulfilled_to_wholesale
+
         #print('Wholesale now has %s inventory and %s money' % (wholesale_agent.inventory, wholesale_agent.total_money))
         # Retail
         fulfilled_to_retail = wholesale_agent.give_downstream(retail_agent.current_policy[day-1])
         retail_agent.receive_upstream(fulfilled_to_retail)
         wholesale_agent.policy_inventory[day-1] = wholesale_agent.inventory
-        retail_agent.current_policy[day-1] = fulfilled_to_retail
+
         #print('Retail now has %s inventory and %s money' % (retail_agent.inventory, retail_agent.total_money))
         # Customer
         fulfilled_to_customer = retail_agent.give_downstream(customer_agent.current_policy[day-1])
@@ -69,6 +125,7 @@ for j in range(total_epochs):
             # PART 2
             # How much money did the agent end up with yesterday's decisions?
             agent.current_payout[day-1] = agent.total_money
+            agent.q_function_value[day-1] = 
             # Agent decides demand for today, which will (might) be fulfilled tomorrow
             # 1% of total iterations: try to figure out downstream agent's average demand, to have a warm start
             if j < warmstart_proportion * total_epochs:

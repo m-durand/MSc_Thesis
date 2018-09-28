@@ -16,7 +16,7 @@ CREATE DATABASE reinforcement_learning
     TABLESPACE = pg_default
     CONNECTION LIMIT = -1;
 
--- SCHEMA: policy_iteration
+-- SCHEMA: policy_iteration --------------------------------------------------
 
 -- DROP SCHEMA policy_iteration ;
 
@@ -112,6 +112,35 @@ ALTER TABLE policy_iteration.world_parameters
 
 -- This is needed manually to insert from python with psycopg2
 GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA policy_iteration TO experiments;
+
+-- Which is equivalent to
+-- GRANT ALL PRIVILEGES ON TABLE policy_iteration.agent_parameters TO experiments;
+-- GRANT ALL PRIVILEGES ON TABLE policy_iteration.experiment_results TO experiments;
+-- GRANT ALL PRIVILEGES ON TABLE policy_iteration.experiments TO experiments;
+-- GRANT ALL PRIVILEGES ON TABLE policy_iteration.world_parameters TO experiments;
+
+-- SCHEMA: q_learning --------------------------------------------------
+
+-- DROP SCHEMA policy_iteration ;
+
+CREATE SCHEMA q_learning
+    AUTHORIZATION experiments;
+
+-- Table:
+
+-- TODO: TABLES GO HERE
+
+
+
+
+
+
+
+
+
+
+-- This is needed manually to insert from python with psycopg2
+GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA q_learning TO experiments;
 
 -- Which is equivalent to
 -- GRANT ALL PRIVILEGES ON TABLE policy_iteration.agent_parameters TO experiments;

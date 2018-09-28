@@ -18,7 +18,7 @@ total_epochs = 5000 # 10000 epochs is a good number to play, need to find a bett
 warmstart_proportion = 0.005  # How much time will the agents spend observing what the downstream agent does, not exploring
 max_demand = 100  # The maximum quantity an agent can ask for during one day
 epsilon_greedy_converges_to = 0.005
-
+lambda_q_learning = 0.9
 
 ## Necessary world information #########################################
 
@@ -90,5 +90,9 @@ exec(open("insert_experiment_into_pi_database.py").read())
 
 # 
 
-exec(open("q_learning.py").read())
+#exec(open("q_learning.py").read())
 
+#connection_params = """dbname='reinforcement_learning' user='experiments'
+#                    host='localhost' password='learning'"""
+
+#exec(open("insert_experiment_into_q_database.py").read())
