@@ -1,4 +1,4 @@
-agents = [retail_agent, wholesale_agent, regional_warehouse_agent, factory_agent]
+hagents = [retail_agent, wholesale_agent, regional_warehouse_agent, factory_agent]
 
 # function that doesn't learn, only
 # asks on t for what the downstream agent asked for on t-1

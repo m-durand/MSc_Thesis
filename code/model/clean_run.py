@@ -6,13 +6,13 @@ import psycopg2
 import random
 import hashlib
 
-#os.chdir('C:\\Users\\Fernanda Alcala\\Documents\\Tesis_Maestria\\code\\model\\')
-os.chdir('/Users/fernandaalcala/Documents/Tesis_Maestria/code/model/')
+os.chdir('C:\\Users\\Fernanda Alcala\\Documents\\Personal\\Tesis_Maestria-master\\Tesis_Maestria-master\\code\\model\\')
+#os.chdir('/Users/fernandaalcala/Documents/Tesis_Maestria/code/model/')
 
 ## Setup hyperparameters for policy iteration ##########################
 np.random.seed(20170130)
 
-total_epochs = 5000 # 10000 epochs is a good number to play, need to find a better way to constraint
+total_epochs = 100 # 10000 epochs is a good number to play, need to find a better way to constraint
 # 10,000 epochs takes about 6 minutes to train
 # 100,000 eopchs takes about 40 minutes to train
 warmstart_proportion = 0.005  # How much time will the agents spend observing what the downstream agent does, not exploring
@@ -35,7 +35,7 @@ factory_price = 70
 field_price = 60
 # Cost of holding one beer during one day on warehouse.
 # Assumed to be the same for all levels
-warehouse_price = 1/365 #1/365 = 0.002739 it is still profitable to keep beer
+warehouse_price = 10/365 #1/365 = 0.002739 it is still profitable to keep beer
 # on the warehouse for almost a year just so they don't get backlog
 # Cost of backlog: non fulfilled orders
 backlog_cost = 2
@@ -85,10 +85,10 @@ exec(open("insert_experiment_into_pi_database.py").read())
 #                  ...                                                 +
 #                  discount_factor^365 * (sales_day_n+365(inv_k) +
 #                                       warehouse_cost_n+365(inv_k) +
-#                                       backlog_penalty_n+365(inv_k)) 
+#                                       backlog_penalty_n+365(inv_k))
 # Prepare results and insert into Postgresql database #
 
-# 
+#
 
 #exec(open("q_learning.py").read())
 
