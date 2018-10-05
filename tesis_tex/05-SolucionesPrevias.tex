@@ -56,6 +56,7 @@ Para el presente trabajo, combinaremos los dos patrones descritos anteriormente,
 Como el comportamiento var\'ia a lo largo del a\~no y existe un costo por almacenar inventario, cada agente debe prepararse con adecuada anticipaci\'on para los picos de demanda. Adem\'as, el componente aleatorio resulta en la necesidad de conservar inventario de seguridad (en ingl\'es, \textit{safety stock}) para asegurar que la demanda ser\'a cubierta la mayor parte del tiempo.
 
 \section{Q-Learning}
-Aqu\'i hablar del paper que encontr\'e que hace QL \citet{Chaharsooghi}
 
-Sin embargo, ninguna de estas soluciones considera la restricción de temporalidad de producci\'on de materias primas. En el siguiente cap\'itulo, se presentar\'a este escenario como un nivel extra de complejidad al modelo, limitando la oferta de cebada por parte de los campos.
+\citet{Chaharsooghi} public\'o ya un acercamiento a este problema usando \textit{Q-learning}, sin embargo la soluci\'on que encuentra implica que los inventarios (al final del d\'ia, despu\'es de las transacciones del d\'ia) se aproximan a cero, consecuencia directa de que los agentes minimizan su costo de inventario. Adem\'as, la demanda del consumidor obedece un patr\'on aleatorio.\\
+
+Sin embargo, ninguna de estas soluciones considera dos factores importantes de la vida real: la temporalidad de la demanda (por ejemplo, para la cerveza la cantidad demandada es mayor durante el fin de semana) y la restricción de temporalidad de producci\'on de materias primas. En el mundo agr\'icola, los campos solamente producen ciertas cosechas en ciertos periodos, y es necesario tener suficiente inventario para cubrir la demanda durante todo el a\~no. En el siguiente cap\'itulo, se presentar\'a este escenario como un nivel extra de complejidad al modelo, limitando la oferta de cebada por parte de los campos.

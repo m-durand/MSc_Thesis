@@ -1,5 +1,7 @@
 \chapter{Resultados}
 
+El problema de llevar inventario de un a\~no a otro se resolvi\'o f\'acilmente con el m\'etodo \textit{Q-learning}, pues su misma estructura requiere valores descontados de los estados futuros en cada estado presente. Para lograr el mismo efecto con el m\'etodo \textit{Policy Iteration}, ser\'ia necesario crear artificialmente d\'ias de entrenamiento antes y despu\'es del periodo de 365 d\'ias en el que los agentes est\'an aprendiendo, sin embargo, esto a\~nadir\'ia complejidad computacional.
+
 \section{El Mundo y los Agentes}
 
 A pesar de que nuestro sistema tiene seis roles, en realidad solamente cuatro de ellos toman decisiones:
@@ -28,7 +30,7 @@ Durante el aprendizaje, todos los agentes siguen el mismo conjunto de reglas (ap
 Esto quiere decir que, independientemente del algoritmo de aprendizaje que usemos, cada agente \textit{a} calcula su ganancia en el d\'ia \textit{d} de la siguiente manera:
 
 $$
-ganancia_{a,d} = (p_{a} * ventas{a, d}) 
+ganancia_{a,d} = (p_{a} * ventas_{a, d}) 
 $$
 $$
 \quad  \quad  \quad  \quad  \quad  \quad  \quad  \quad  \quad \quad  \quad   \quad  \quad - (b_{a}* (demanda_{a-1,d} - ventas_{a,d})) 
@@ -40,25 +42,31 @@ $$
 \quad  \quad  \quad  \quad  \quad  \quad  \quad  \quad - (c_{a}*inventario_{a,d-1})
 $$
 
-Es decir, cada agente recibe el dinero correspondiente a las ventas que hace al agente inferior, paga el costo castigo relacionado a las \'ordenes no cumplidas, paga las \'ordenes hechas al agente superior y paga el costo de almacenamiento.
+Es decir, cada agente recibe el dinero correspondiente a las ventas que hace al agente inferior, paga el costo castigo relacionado a las \'ordenes no cumplidas, paga las \'ordenes hechas al agente superior y paga el costo de almacenamiento.\\
 
 Una vez establecidas todas las relaciones entre todos los jugadores y establecidos los par\'ametros del mundo, hemos obtenido dos formas diferentes de solucionar el juego: la primera con \textit{policy iteration} y la segunda con \textit{Q-learning}.
 
-\section{\textit{Policy Iteration}}
+\section{Policy Iteration}
 
 Las ecuaciones que describen el aprendizaje de un agente son:
 
-1. La ecuaci\'on de utilidad (reward) para cada agente $a$ en el d\'ia $d$:
+\begin{enumerate}
+    \item La ecuaci\'on de utilidad (reward) para cada agente $a$ en el d\'ia $d$:
 
 $$
 R(a, d) = R(a,d) + \gamma*r_{a, d+1} + ... + \gamma^{364}*r_{a,d+364}
 $$
 
-Bajo este algoritmo, los agentes aprenden \textit{policies} que siguen el comportamiento de la oferta, lo cual es el comportamiento esperado dado que en las especificaciones iniciales se defini\'o que el la demanda anual no sobrepasara la oferta anual. 
+    \item BLA
+\end{enumerate}
 
+
+
+
+Bajo este algoritmo, los agentes aprenden \textit{policies} que siguen el comportamiento de la oferta, lo cual es el comportamiento esperado dado que en las especificaciones iniciales, se defini\'o manualmente que el la demanda anual no sobrepasara la oferta anual. Este resultado puede observarse en la figura \ref{politer_policies}. \\
 
 \begin{figure}[ht]
-\caption{Policies \'optimas de cada agente}
+\caption{Policies \'optimas de cada agente bajo \textit{policy iteration}}
 \label{politer_policies}
 \includegraphics[width=15cm]{tesis_tex/figs/policyiteration_policies.png}
 \centering
@@ -73,25 +81,29 @@ Podemos observar que todos los agentes presentan una tendencia positiva al encon
 \centering
 \end{figure}
 
-\section{\textit{Q-Learning}}
+\section{Q-Learning}
 
 A diferencia de \textit{policy iteration}, este m\'etodo encuentra, para cada estado, la acci\'on que acercar\'a al agente lo m\'as posible a la meta. Por supuesto, la \textit{policy} \'optima es equivalente con cualquiera de ambos m\'etodos, pero \textit{Q-learning} nos permite m\'as libertad respecto a empezar a jugar el juego a mitad de a\~no, arreglar malas decisiones tomadas por los agentes en periodos anteriores gracias a su adaptabilidad ante cambios estoc'asticos, etc.\\
 
 Las ecuaciones que describen el aprendizaje de un agente son:
 
-1. La ecuaci\'on de utilidad (reward) para cada agente $a$ en el d\'ia $d$:
+\begin{enumerate}
+    \item La ecuaci\'on de utilidad (o recompensa) para cada agente $a$ en el d\'ia $d$:
 
 $$
-R(a, d) = R(a,d) + \gamma*r_{a, d+1} + ... + \gamma^{364}*r_{a,d+364}
+R(a, d) = r(a,d) + \gamma*r_{a, d+1} + ... + \gamma^{364}*r_{a,d+364}
 $$
 
-Donde la recompensa del agente \textit{a} en el d\'ia \textit{d} es la ganancia relacionada a sus respectivas transacciones, como se defini\'o al principio de este cap\'itulo. Es importante notar la importancia de tomar un periodo de un a\~no despu\'es del d\'ia $d$ sin importar en qu\'e d\'ia espec\'ifico se encuentre el agente: de esta manera, el agente aprender\'a si tiene que llegar al d\'ia $365$ con inventario en almacenes.\\
+Donde la recompensa del agente \textit{a} en el d\'ia \textit{d} es la ganancia relacionada a sus respectivas transacciones, como se defini\'o al principio de este cap\'itulo. Es importante notar la importancia de tomar un periodo de un a\~no despu\'es del d\'ia $d$ sin importar en qu\'e d\'ia espec\'ifico se encuentre el agente: de esta manera, el agente aprender\'a si tiene que llegar al d\'ia $365$ con inventario en almacenes.
 
-2. La ecuaci\'on de Bellman para cada agente $a$ dado su estado en el d\'ia $d$:
+    \item La funci\'on Q para cada agente $a$ dado su estado, el d\'ia $d$ con cierto inventario $inv$:
 
 $$
-Q_{a}(inventario_{d},compra_{d}) = r_{a, d}
+Q_{a}(inv_{d},compra_{d}) = r_{a, (d, inv, compra)} + \gamma * \max_{compras}{Q_{a}(inv_{d} + compra_{d}, compras_{d+1}}
 $$
 
-Para cada agente, su estado en el d\'ia $d$ es el inventario que tiene en el almac\'en, y las acciones que puede tomar son las diferentes cantidades que puede comprarle al agente superior. 
+Para cada agente, su estado es un vector de longitud $2$: en el d\'ia $d$ es el inventario que tiene en el almac\'en, y las acciones que puede tomar en cada estado se representan como un vector de longitud $1$: son las diferentes cantidades que puede comprarle al agente superior.
+\end{enumerate}
+
+Adem\'as, se implement\'o este algoritmo en la modalidad \textit{greedy}, con $\epsilon$ empezando en $1.00$ y terminando en $0.05$.
 

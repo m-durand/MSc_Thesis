@@ -1,16 +1,8 @@
 \chapter{El Problema: Juego de Distribuci\'on de la Cerveza}
 
-%The purpose of the game is to understand the distribution side dynamics of a multi-echelon supply chain used to distribute a single item, in this case, cases of beer.
+\textit{The Beer Distribution Game} \cite{StermanArt}, planteado por primera vez en la Escuela de Administraci\'on y Direcci\'on de Empresas Sloan del MIT en los años 60 para ejemplificar el \textit{efecto l\'atigo}, llamado as\'i por la similaridad que tiene el comportamiento la informaci\'on en cada nivel de la cadena con el patr\'on ondulado que toma un l\'atigo, en el cual existe una mayor amplitud de onda (comparable con el ruido o la varianza en la informaci\'on) al alejarse del punto de origen (comparable al consumidor). \\
 
-
-%There is a one-point cost for holding excess inventory and a one-point cost for any backlog (old backlog + orders - current inventory).
-
-%The game is used to illustrate one of the links between System Dynamics theory and the Feedback Control Theory which inspired it - that systems with positive feedback loops and high gain can lead to oscillation and overload,
-
-
-\textit{The Beer Distribution Game}, planteado por primera vez en la Escuela de Administraci\'on y Direcci\'on de Empresas Sloan del MIT en los años 60 para ejemplificar el \textit{efecto l\'atigo}, llamado as\'i por la similaridad que tiene el comportamiento la informaci\'on en cada nivel de la cadena con el patr\'on ondulado que toma un l\'atigo, en el cual existe una mayor amplitud de onda (comparable con el ruido o la varianza en la informaci\'on) al alejarse del punto de origen (comparable al consumidor). \\
-
-En su forma de juego de mesa, se presenta com\'unmente a alumnos reci\'en ingresados a distintas escuelas de negocios. El MIT public\'o un art\'iculo noticiero corto de \citet{Dizikes} en el cual se nota que, independientemente del rol que jueguen y de cu\'anta experiencia y preparaci\'on en negocios tengan, los humanos consistentemente fallan en encontrar la estrategia para maximizar la utilidad. Asimismo, nota que es inevitable la frustraci\'on, y que incluso los equipos que obtienen los mejores resultados del juego terminan lejos del \'optimo. \\
+En su forma de juego de mesa, se presenta com\'unmente a alumnos reci\'en ingresados a distintas escuelas de negocios. El MIT public\'o un art\'iculo noticiero corto de \citet{Dizikes} en el cual se nota que, independientemente del rol que jueguen y de cu\'anta experiencia y preparaci\'on en negocios tengan, los humanos consistentemente fallan en encontrar la estrategia para maximizar la utilidad. Asimismo, nota que es inevitable la frustraci\'on, y que incluso los equipos que obtienen los mejores resultados del juego terminan lejos del \'optimo.\\
 
 El \textit{Beer Distribution Game} ejemplifica la relaci\'on causal entre la toma de decisiones de cada agente con el comportamiento de todo el sistema, en este caso una cadena de suministro. Asimismo, presenta el efecto l\'atigo claramente: el retraso en la informaci\'on  causa que, a trav\'es del tiempo, el comportamiento de cada agente se vuelva menos constante cuanto m\'as lejos se encuentre del consumidor final. Por \'ultimo, evidencia las ineficiencias inherentes a tratar de resolver el problema enfoc\'andose en los agentes, ignorando que es un sistema completo. 
 
@@ -46,7 +38,9 @@ Todas las variables, menos la demanda del consumidor y la producci\'on en los ca
 
 \subsection{El Efecto Látigo}
 
-El \textit{Efecto Látigo} es un fen\'omeno que se produce en cadenas de suministro. Se llama de esa manera porque, mientras m\'as ``arriba'' en la cadena de suministro se encuentre un agente (es decir, m\'as lejos del contacto directo con el comprador), m\'as distorsionada es la informaci\'on que tiene acerca de la verdadera demanda del comprador; tal varianza se puede visualizar como una curva que asemeja un l\'atigo. Se puede ejemplificar con el siguiente escenario:
+El \textit{Efecto Látigo} es un fen\'omeno que se produce en cadenas de suministro. Se llama de esa manera porque, mientras m\'as ``arriba'' en la cadena de suministro se encuentre un agente (es decir, m\'as lejos del contacto directo con el comprador), m\'as distorsionada es la informaci\'on que tiene acerca de la verdadera demanda del comprador; tal varianza se puede visualizar como una curva que asemeja un l\'atigo. \citet{Chaharsooghi} nota que la distorsi\'on se debe mayormente a tres factores: prejuicios en la informaci\'on de la demanda por parte de los miembros cercanos al consumidor, retraso en el intercambio de informaci\'on entre los miembros de la cadena y soporte log\'istico inapropiado a trav\'es de la cadena. \\
+
+Se puede ejemplificar con el siguiente escenario:
 
 \begin{enumerate}
     \item El consumidor, que generalmente compra $6$ cervezas, ahora quiere $10$, pero la tienda minorista solamente cuenta con $7$. El minorista le venderá todo su inventario, pues es la acci\'on que maximiza su ganancia. Despu\'es, debe decidir si volverá a tener un inventario de $6$ o si debe pedir un número mayor de cervezas, atendiendo la posible creciente demanda. Decide pedir $9$ cervezas al siguiente nivel, la tienda de mayoreo.
@@ -56,6 +50,8 @@ El \textit{Efecto Látigo} es un fen\'omeno que se produce en cadenas de suminis
 \end{enumerate}
 
 En este escenario, el mayorista obtuvo informaci\'on distorsionada acerca del repentino crecimiento en la demanda del comprador, mientras que la tienda de distribución podr\'ia incluso interpretar que el comprador disminuy\'o su consumo. Si este comportamiento se mantiene durante algunos periodos m\'as, recibir\'ia la noticia (por medio de un incremento en las \'ordenes regulares) con un retraso considerable.\\
+
+En el caso de que la demanda sea determinista (con un castigo por \'ordenes no cumplidas), la orden \'optima en cada tiempo para cada miembro de la cadena es ``una por una'', es decir, demandar al agente superior exactamente lo mismo que fue demandado por el agente inferior.
 
 \subsection{La din\'amica de las existencias y flujos}
 
@@ -69,12 +65,4 @@ Es com\'un que en un sistema con varias existencias con sus respectivos flujos o
 
 Un capital est\'a en equilibrio cuando no cambia (un sistema est\'a en equilibrio cuando ninguna de sus existencias cambia). Esta condici\'on se obtiene cuando el cambio neto de sus flujos es cero, es decir, cuando el flujo entrante es igual al flujo saliente. \\
 
-La soluci\'on trivial para este equilibrio es que todos los flujos sean nulos (\textit{equilibrio est\'atico}, sin embargo, en el caso de la cadena de suministro, este escenario llevar\'ia a que ning\'un agente tuviera ventas, y por consiguiente, tampoco tuviera ganancias. Una situaci\'on m\'as adecuada ser\'ia un \textit{equilibrio din\'amico}, en el cual las existencias totales se mantienen constantes, pero los flujos son positivos. Para la cerveza, esto significar\'ia que la cantidad de cerveza en los almacenes se mantiene constante, pero cada caja de cerveza se mueve de un agente a otro en alg\'un punto en el tiempo. Sin restricciones de oferta, la situaci\'on ideal tender\'ia a no guardar cerveza en los almacenes. Sin embargo, el efecto l\'atigo complica la estimaci\'on de los flujos entrantes y salientes en cada tiempo, pues para cada agente son desconocidas tanto la demanda del agente inferior como la capacidad del agente superior de cubrir la demanda propia.\\
-
-M\'as adelante impondremos restricciones por parte de los campos de cebada, lo cual tambi\'en obligar\'a a los agentes a mantener una existencia positiva para poder enfrentar la demanda en periodos de baja producci\'on.
-
-\section{Acercamiento en el Presente Trabajo}
-
-Este problema se ha estudiado antes por \citet{Strozzi}, por medio de Algoritmos Genéticos y por \citet{Chaharsooghi} por medio de $Q-learning$. Ambas metodolog\'ias ser\'an abordadas en los siguientes cap\'itulo.\\
-
-El aporte de este trabajo será agregar un componente de estacionalidad en el proveedor de la f\'abrica: el campo.
+La soluci\'on trivial para este equilibrio es que todos los flujos sean nulos (\textit{equilibrio est\'atico}, sin embargo, en el caso de la cadena de suministro, este escenario llevar\'ia a que ning\'un agente tuviera ventas, y por consiguiente, tampoco tuviera ganancias. Una situaci\'on m\'as adecuada ser\'ia un \textit{equilibrio din\'amico}, en el cual las existencias totales se mantienen constantes, pero los flujos son positivos. Para la cerveza, esto significar\'ia que la cantidad de cerveza en los almacenes se mantiene constante, pero cada caja de cerveza se mueve de un agente a otro en alg\'un punto en el tiempo. Sin restricciones de oferta, la situaci\'on ideal tender\'ia a no guardar cerveza en los almacenes. Sin embargo, el efecto l\'atigo complica la estimaci\'on de los flujos entrantes y salientes en cada tiempo, pues para cada agente son desconocidas tanto la demanda del agente inferior como la capacidad del agente superior de cubrir la demanda propia. Existe una complicaci\'on extra al a\~nadir estacionalidad en la producci\'on de los campos de cebada. \\
