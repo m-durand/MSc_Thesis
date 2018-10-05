@@ -42,13 +42,13 @@ class Agent:
         self.total_money = 0
         self.backlog = 0
         self.current_policy = np.random.randint(1, max_demand, 365)
-        self.current_payout = [-100000000] * 365
+        self.current_payout = [0] * 365
         self.best_policy = self.current_policy
-        self.best_payout = [-100000000] * 365
+        self.best_payout = [0] * 365
         self.best_inventory = [self.initial_inventory] + [0] * 364
-        self.q_function_value = [0] * 365
+        # self.q_function_value = [0] * 365 # TODO I think this is not necessary
         self.q_function_reward_for_action = [0] * 365
-        self.best_q_function_value = [-10000000] * 365
+        #self.best_q_function_value = [-10000000] * 365
         self.historic_payout = []
         self.time_for_zero_policy = np.random.uniform(0,1)
 
@@ -65,7 +65,7 @@ class Agent:
                 (self.inventory * warehouse_price)
         self.total_warehousing_costs = self.total_warehousing_costs + \
                 (self.inventory * warehouse_price)
-        
+
     def receive_upstream(self, orders):
         # Receives orders from upstream agent first thing in the morning
         self.inventory = self.inventory + orders
