@@ -5,16 +5,19 @@ import os
 import psycopg2
 import random
 import hashlib
+import datetime
 
-os.chdir('C:\\Users\\Fernanda Alcala\\Documents\\Personal\\Tesis_Maestria-master\\Tesis_Maestria-master\\code\\model\\')
-#os.chdir('/Users/fernandaalcala/Documents/Tesis_Maestria/code/model/')
+#os.chdir('C:\\Users\\Fernanda Alcala\\Documents\\Personal\\Tesis_Maestria-master\\Tesis_Maestria-master\\code\\model\\')
+os.chdir('/Users/fernandaalcala/Documents/Tesis_Maestria/code/model/')
 
 ## Setup hyperparameters for policy iteration ##########################
 np.random.seed(20170130)
 
-total_epochs = 100 # 10000 epochs is a good number to play, need to find a better way to constraint
+total_epochs =  4000 # 10000 epochs is a good number to play, need to find a better way to constraint
 # 10,000 epochs takes about 6 minutes to train
 # 100,000 eopchs takes about 40 minutes to train
+# for q learning
+# around 125 iterations per hour
 warmstart_proportion = 0.005  # How much time will the agents spend observing what the downstream agent does, not exploring
 max_demand = 100  # The maximum quantity an agent can ask for during one day
 epsilon_greedy_converges_to = 0.005
@@ -52,6 +55,11 @@ factory_ininv = 10
 exec(open("players.py").read())
 exec(open("world.py").read())
 
+# Choose which algorithms we want to run
+run_policy_iteration = False
+run_q_learning = True
+
+
 # Policy Iteration ############################################################
 # Basic idea of policy iteration:
 #    1. Start all agents with the [0]*365 policy, this would be just selling what they have and never restocking or making any decisions. This is the starting benchmark (best policy).
@@ -65,32 +73,22 @@ exec(open("world.py").read())
 # Also, towards the end of the learning process, they tend to stick to the best policy they found during the exploration phase,
 # so if this policy combined with the best policy of another agent leads them to start losing and losing...
 # I'm just saying it could happen.
-exec(open("policy_iteration.py").read())
-
-connection_params = """dbname='reinforcement_learning' user='experiments'
-                    host='localhost' password='learning'"""
-
-exec(open("insert_experiment_into_pi_database.py").read())
+if run_policy_iteration == True:
+    exec(open("policy_iteration.py").read())
+    
+    connection_params = """dbname='reinforcement_learning' user='experiments'
+                        host='localhost' password='learning'"""
+    
+    exec(open("insert_experiment_into_pi_database.py").read())
 
 # Q learning ##################################################################
-# The idea is to get a full year of actions (random, based on exploration/explotation prob)
-# Then each day, based on the inventory (k) on that day (n),
-# The value of the function Q is:
-# Q_day_n(inv k) = discount_factor * (sales_day_n+1(inv_k) +
-#                                     warehouse_cost_n+1(inv_k) +
-#                                     backlog_penalty_n+1(inv_k))     +
-#                  discount_factor^2 * (sales_day_n+2(inv_k) +
-#                                       warehouse_cost_n+2(inv_k) +
-#                                       backlog_penalty_n+2(inv_k))    +
-#                  ...                                                 +
-#                  discount_factor^365 * (sales_day_n+365(inv_k) +
-#                                       warehouse_cost_n+365(inv_k) +
-#                                       backlog_penalty_n+365(inv_k))
+# Basic idea of Q-learning:
+# TODO [missing]
+
 # Prepare results and insert into Postgresql database #
-
+if run_q_learning == True:
+    exec(open("q_learning.py").read())
 #
-
-#exec(open("q_learning.py").read())
 
 #connection_params = """dbname='reinforcement_learning' user='experiments'
 #                    host='localhost' password='learning'"""

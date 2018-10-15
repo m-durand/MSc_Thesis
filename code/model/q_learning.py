@@ -5,12 +5,12 @@ def create_demand(agent):
     x = np.random.uniform(0, 1)
     if x < p_exploration:  # exploRation
         return np.random.randint(0, max_demand)  # 70 is the maximum harvest of all year, occurs August 15th
-    else:  # exploTation
-        # we want to get the action that maximizes the q function for that state
+    else:  # exploTation we want to get the action that maximizes the q function for that state
         subset_current = q_learning_df.loc[(q_learning_df['agent'] == (agent.name)) & (q_learning_df['day'] == (day)) & (q_learning_df['inventory'] == (agent_inventory))]
+        subset_current = subset_current.reset_index()
         if subset_current.shape[0] > 0:
             best_action = subset_current.iloc[[subset_current["q_s_a"].idxmax()]]
-            return best_action["purchase"]
+            return best_action["purchase"].values.item(0)
         else:
             return np.random.randint(0, max_demand)
 
@@ -26,7 +26,7 @@ lambdas = [lambda_q_learning*(lambda_q_learning**n) for n in range(365)]
 
 # epochs for ----
 for j in range(total_epochs):
-    print(j)
+    print("iteration " + str(j) + " time " + str(datetime.datetime.now()))
     if j % (total_epochs/20) == 0:
         print(" ")  # These last two lines are used for printing - just make sure every time point appears clearly separated
     # starts in 1 ends in the first number so it always explores a bit
@@ -42,7 +42,6 @@ for j in range(total_epochs):
     # day for ----
     while day < 365:
         day+=1
-
         ################################# TRANSACTIONS BETWEEN AGENTS ###############
         # Transactions for previous day happen. These are fixed.
         # Orders are fulfilled first time in the morning
@@ -77,6 +76,7 @@ for j in range(total_epochs):
         retail_agent.policy_inventory[day-1] = retail_agent.inventory
 
         for agent in agents:
+            #print(str(agent.name))
             # PART 2
             # How much money did the agent end up with yesterday's decisions?
             agent.current_payout[day-1] = agent.total_money
@@ -108,6 +108,8 @@ for j in range(total_epochs):
 
             # first we identify what is the next state (day+1, inv at the end of the day)
             # two possible outcomes: the state (day+1,inv) exists already or not
+            #print("first checkpoint time " + str(datetime.datetime.now()))
+
             if day == 365:
                 next_day = 1
             else:
@@ -116,6 +118,7 @@ for j in range(total_epochs):
 
             # if yes, then we filter the df to find the max q function of that pair (s',a*)
             # if no, then we set q(s',a*) as zero, the default value
+            #print("second checkpoint time " + str(datetime.datetime.now()))
             if subset_s_prime_a_all.shape[0] > 0:
                 max_q_s_prime_a_all = subset_s_prime_a_all['q_s_a'].max()
             else:
@@ -126,19 +129,18 @@ for j in range(total_epochs):
 
             # third part - update Q function for (s,a) ------------------------------
             # eliminate the row from the data frame (if it existed)
-            q_learning_df = q_learning_df.loc[((q_learning_df['agent'] != (agent.name)) | (q_learning_df['day'] != (day)) | (q_learning_df['inventory'] != (agent_inventory)) | (q_learning_df['purchase'] != (agent_demand)))]
+            # print("third checkpoint time " + str(datetime.datetime.now()))
+            #q_learning_df = q_learning_df.loc[((q_learning_df['agent'] != (agent.name)) | (q_learning_df['day'] != (day)) | (q_learning_df['inventory'] != (agent_inventory)) | (q_learning_df['purchase'] != (agent_demand)))]
             # append the newly created row to update the value of both R and Q
             new_row = [agent.name, day, agent_inventory, agent_demand, r_s_a, q_s_a]
             q_learning_df.loc[q_learning_df.shape[0] + 1] = new_row
-
-
-
+            q_learning_df.sort_values('q_s_a', ascending=False).drop_duplicates(['agent','day','inventory','purchase'])
 
 elapsed_time = time.time() - start_time
 print("Total elapsed time for %s epochs : %s" % (total_epochs, elapsed_time))
 
 # TEMP THIS SHOULD GO TO A TABLE, FOR NOW A CSV
-q_learning_df.to_csv("../../aux_documents/temp_q_learning_output_from_algorithm.csv")
+q_learning_df.to_csv("../../aux_documents/temp_q_learning_output_from_algorithm" + str(datetime.datetime.now()) + ".csv")
 
 
 
