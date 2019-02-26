@@ -138,6 +138,12 @@ for j in range(total_epochs):
 
 elapsed_time = time.time() - start_time
 print("Total elapsed time for %s epochs : %s" % (total_epochs, elapsed_time))
+#iteration 1 time 2019-01-03 16:44:23.911986
+#iteration 100 time 2019-01-03 22:29:07.282015
+#iteration 200 time 2019-01-05 00:32:39.527549
+#iteration 300 time 2019-01-05 19:19:41.775814
+#iteration 399 time 2019-01-07 02:15:32.058813
+#Total elapsed time for 400 epochs : 294681.67162013054
 
 # TEMP THIS SHOULD GO TO A TABLE, FOR NOW A CSV
 q_learning_df.to_csv("../../aux_documents/temp_q_learning_output_from_algorithm" + str(datetime.datetime.now()) + ".csv")
