@@ -22,32 +22,30 @@ Sin embargo, incluso cuando todos los agentes tienen informaci\'on perfecta, pod
 
 Si la f\'abrica quisiera estimar su demanda para el siguiente a\~no solamente con esta informaci\'on, tendr\'ia que crear un modelo (aunque fuera muy sencillo) para interpolar aquellos d\'ias en los cuales no tuvo informaci\'on. En el caso optimista, usar\'a el mismo patr\'on observado retroactivamente, y tendr\'a una aproximaci\'on relativamente buena. En el caso pesimista, supondr\'a que la demanda del consumidor durante esos d\'ias fue efectivamente cero, y sin duda causar\'a una burbuja de falta de inventario que se propagar\'a hacia abajo en la cadena de suministro. El efecto l\'atigo habr\'a hecho de las suyas.\\
 
-
-
 \section{Estacional y aleatoria: m\'as parecido al mundo real}
 
 En el mundo real, ning\'un producto tiene una demanda perfectamente constante. M\'as a\'un, existen una infinidad de productos cuya demanda var\'ia con un patr\'on estacional: por ejemplo, las medicinas antigripales se venden m\'as en invierno. La cerveza (y, en general, las bebidas alcoh\'olicas) tambi\'en siguen este tipo de patrones.\\
 
-En primer lugar, existe un patr\'on semanal bastante esperado: seg\'un \citet{}, se consume m\'as cerveza los fines de semana (ver la figura \ref{weekly_base}). Adem\'as, existe un patr\'on relacionado a las festividades comunes. Seg\'un \citet{}, el consumo de bebidas alcoh\'olicas se duplica en las festividades navide\~nas. \\
+En primer lugar, existe un patr\'on semanal bastante esperado: seg\'un \citet{gallupbeer}, se consume m\'as cerveza los fines de semana (ver la figura \ref{weekly_base}). Adem\'as, existe un patr\'on relacionado a las festividades comunes: por ejemplo, en EUA el consumo de bebidas alcoh\'olicas se duplica en las festividades navide\~nas. \\
 
 \begin{figure}[ht!]
-\caption{ }
+\caption{Ejemplo de un Mes Normal}
 \label{weekly_base}
 \includegraphics[width=12cm]{monthly_customer_demand_ggplot.png}
 \centering
 \end{figure}
 
-Para el presente trabajo, combinaremos los dos patrones descritos anteriormente, y a\~nadiremos un peque\~no componente aleatorio que cambiar\'a la demanda cada a\~no. El comportamiento ''base'' de la demanda de puede consultar en la figura \ref{yearly_base}. Un ejemplo del comportamiento perturbado por un poco de aleatoriedad se puede consultar en la figura \ref{yearly_base_noisy}. Sin embargo, cabe mencionar que este es un modelo simple, pues en algunas regiones, podr\'ia tambi\'en existir un patr\'on relacionado al clima, o incluso un alza en la demanda siguiendo temporadas deportivas. \\
+Para el presente trabajo, se combinar\'an los dos patrones descritos anteriormente, y se a\~nadir\'a un peque\~no componente aleatorio que cambiar\'a la demanda cada a\~no. El comportamiento ''base'' de la demanda se puede consultar en la figura \ref{yearly_base}. En ella, se puede vislumbrar el patr\'on de aumento cada fin de semana, as\'i como un incremento en las festividades navide\~nas y un pico creado por la fiesta de Independencia de M\'exico. Un ejemplo del comportamiento base, pero perturbado por un poco de aleatoriedad se puede consultar en la figura \ref{yearly_base_noisy}. Sin embargo, cabe mencionar que este es un modelo simple, pues en algunas regiones, podr\'ia tambi\'en existir un patr\'on relacionado al clima, o incluso un alza en la demanda siguiendo temporadas deportivas. \\
 
 \begin{figure}[ht!]
-\caption{ }
+\caption{Demanda Anual de Cerveza}
 \label{yearly_base}
 \includegraphics[width=13cm]{monthly_demand_ggplot.png}
 \centering
 \end{figure}
 
 \begin{figure}[ht!]
-\caption{ }
+\caption{Realizaci\'on de una Demanda Anual de Cerveza con ruido }
 \label{yearly_base_noisy}
 \includegraphics[width=13cm]{monthly_demand_with_noise_ggplot.png}
 \centering

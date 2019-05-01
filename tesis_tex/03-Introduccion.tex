@@ -1,32 +1,22 @@
 \chapter{Introducci'on}
 
-\textit{Necesito una cita cool para empezar mi tesis.}
+\textit{Work is the curse of the drinking classes.}
 \begin{flushright}
- Fleo
+ Oscar Wilde
  \end{flushright}
 
 \vspace{10 pt}
-%business dynamics
-%sistemas complejos adaptativos
-%poner ejemplos?
 
-%dynamic stability : edge of chaos. no es que sean caóticos sino que la mayor parte de las fluctuaciones pequeñas se las comen los feedback, pero la línea de qué es "pequeño" no es nada clara
-%ley de Ashby: para poder controlar algo, se necesita al menos igual nivel de complejidad
+Objetivo\\
 
-Una cadena de suministro es el proceso en el cual una materia prima es transformada en un producto y este es vendido a un consumidor final [missing reference]. El comportamiento de una cadena puede representarse como un modelo en el cual existen flujos, ciclos y agentes. Por ejemplo, en una simplificaci\o'n de producci\'on automotriz, se representa a cada eslab\'on como un agente (la f\'abrica de partes, la ensambladora, el taller de pintura y la agencia de venta), los flujos como las entradas y salidas de materia en cada eslab\'on (por ejemplo, la f\'abrica de partes tiene como insumos metal y pl\'astico, mientras que el taller de pintura tiene como insumo el auto ensamblado y litros de pintura) y los ciclos pueden depender de estacionalidad, disponibilidad o simple predisposici\'on.\\
+Problem Statement\\
 
-El estudio de las cadenas de suministro cubre un campo vasto, dado que existen una infinidad de problemas relacionados a ellas: desde transporte, log\'istica y manejo de inventario hasta optimizaci\'on de la localizaci\'on geogr\'afica para cada uno de los eslabones[missing reference]. Sin embargo, una vez que la cadena est\'a en funcionamiento, uno de las principales dificultades es que los agentes encargados de optimizar las estrategias de demanda y producci\'on de cada eslab\'on solamente pueden tomar decisiones ``dentro'' de aquel en el que se encuentran, y no tienen informaci\'on m\'as all\'a de los eslabones inmediatamente conectados. As\'i, la informaci\'on acerca de la demanda del consumidor se va diluyendo en cada nivel, además de que las decisiones tomadas tienen repercusiones m\'as all\'a del futuro inmediato. \\
+Hip\'otesis\\
 
-Dado que el objetivo principal de cada agente es minimizar los costos al tiempo de maximizar los ingresos, cada uno de ellos debe tratar de inferir el patrón global por medio de información local bastante restringida. Volviendo al ejemplo sencillo de la producci\'on automotriz, la f\'abrica de partes debe ordenar metal y pl\'astico suficiente para producir y cubrir la demanda de la planta ensambladora, pero ambos eslabones producen para el objetivo final: el consumidor. Sin embargo, la planta no tiene ning\'un incentivo real para compartir con la f\'abrica la cantidad exacta de autos ensamblados que produce o que vende cada periodo al taller de pintura. Esto obliga a cada eslab\'on a contar solamente con datos limitados, adem\'as de que los datos de demanda que reciben obedecen al tiempo real y no tienen la oportunidad de repetir experimentos.\\
+Metodolog\'ia (research approach)\\
 
-Un modelo computacional que se comporte suficientemente parecido al mundo real, en el que todos los demás eslabones tomen estrategias que también maximizarían sus beneficios podría dar una opción: el experimento es replicable tantas veces como sea necesario y cada eslabón puede conocer una estrategia óptima para una gran cantidad de demandas de consumidor posibles.\\
+Resultado esperado\\
 
-\section{Acercamiento en el Presente Trabajo}
+Organizaci\'on de la tesis\\
 
-En este trabajo se modelará el Problema de Distribución de Cerveza, \textit{The Beer Distribution Game}, ampliamente utilizado y explicado por el Profesor \citet{Sterman} en la Escuela de Administraci\'on y Direcci\'on de Empresas Sloan del MIT, para ilustrar el concepto de \textit{efecto l\'atigo}. Este efecto recibi\'o tal nombre debido a que la varianza en la informaci\'on acerca de la demanda real tiene el mismo comportamiento que un l\'atigo: mientras m\'as lejano se encuentra del origen (consumidor), m\'as amplia es la onda (varianza).\\
 
-Existen acercamientos anteriores a este problema, en espec\'ifico \citet{Chaharsooghi} propone ya un acercamiento con \textit{Q-learning} \footnote{Los nombres de los algoritmos ser\'an representados con it\'alicas en este trabajo.} pero sin restricci\'on de estacionalidad en la materia prima, \citet{Strozzi}, por medio de Algoritmos Genéticos, \citet{} y \citet{Zarandi} proponen h\'ibridos de un algoritmo gen\'etico y aprendizaje reforzado.\\
-
-Por otro lado, algunas l\'ineas de investigaci\'on como \citet{Busoniu} se han concentrado en el aspecto de teor\'ia de juegos que compete a este problema: si en un vendedor no tiene existencias, los consumidores podr\'an elegir otro. En este caso, los agentes son construidos como adversarios. Dado que en el modelo que se resuelve en el presente trabajo los agentes no son ni adversarios ni cooperativos, sino maximizan su propia utilidad, no se implementar\'a como este tipo de modelo.\\
-
-Sin embargo, todos los acercamientos anteriores suponen que los campos pueden adaptarse de inmediato a la demanda de la f\'abrica, de cierta manera tienen "producci\'on infinita". El aporte de este trabajo es la imposici\'on de restricciones basadas en tendencias catalogadas por el departamento de agricultura de los EUA en la producci\'on de cebada, lo cual deber\'ia alterar el comportamiento de los agentes tal que mantengan una existencia positiva en sus almacenes para poder enfrentar la demanda en periodos de baja producci\'on.

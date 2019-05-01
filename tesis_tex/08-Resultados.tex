@@ -15,12 +15,12 @@ A pesar de que nuestro sistema tiene seis roles, en realidad solamente cuatro de
     \item Los campos \textbf{obedecen} a sus ciclos de siembra y cosecha
 \end{itemize}
 
-A pesar de que, estrictamente, en nuestro sistema multiagente todos los roles son agentes, por claridad en la descripci\'on y el flujo del c\'odigo nos referiremos como agentes solamente a aquellos roles que toman decisiones. Las ecuaciones de los agentes en los extremos ``encajan'' si suponemos que, para el consumidor, su \textit{policy} \'optimo es su demanda normal durante el a\~no, y para los campos, es su producci\'on.
+A pesar de que, estrictamente, en nuestro sistema multiagente todos los roles son agentes, por claridad en la descripci\'on y el flujo del c\'odigo nos referiremos como agentes solamente a aquellos roles que toman decisiones. Las ecuaciones de los agentes en los extremos ``encajan'' si suponemos que, para el consumidor, su \textit{policy} \'optimo es su demanda normal durante el a\~no, y para los campos, es su producci\'on.\\
 
-Durante el aprendizaje, todos los agentes siguen el mismo conjunto de reglas (aprender cu\'anto tienen que comprarle al agente superior en cada d\'ia), as\'i que las ecuaciones de ganancia y aprendizaje son las mismas. En este trabajo, usaremos la siguiente construcci\'on del mundo, con cierta notaci\'on para los distintos par\'ametros del mundo:
+Durante el aprendizaje, todos los agentes siguen el mismo conjunto de reglas (aprender cu\'anto tienen que comprarle al agente superior en cada d\'ia), as\'i que las ecuaciones de ganancia y aprendizaje son las mismas. En este trabajo, se utilizar\'a la siguiente construcci\'on del mundo, con cierta notaci\'on para los distintos par\'ametros del mundo:
 
 \begin{enumerate}
-    \item Para cada agente \textit{$a$}, el agente superior en la cadena de suministro es \textit{$a+1$}; el inferior es \textit{$a-1$}
+    \item Para cada agente \textit{$a$}, el agente superior en la cadena de suministro es \textit{$a+1$}; el inferior es \textit{$a-1$} y se representan con sub\'indices para cada atributo
     \item Cada agente tiene un precio de venta \textit{$p_{a}$}, un costo de almacenamiento \textit{$c_{a}$} y un costo por orden no cumplida (\textit{backlog}) \textit{$b_{a}$}
     \item En cada d\'ia \textit{$d$}, cada agente \textit{$a$} recibir\'a del agente superior \textit{$a+1$} la cantidad demandada por el primero en el d\'ia \textit{$d-1$}, sujeto a que tal cantidad sea menor o igual a la cantidad que el agente \textit{$a+1$} ten\'ia en el almac\'en
     \item En cada una de estas transacciones, cada agente recibe el dinero equivalente, basado en su respectivo precio de venta, e incurre en costos de almacn\'en y por \'ordenes no cumplidas
@@ -44,26 +44,24 @@ $$
 
 Es decir, cada agente recibe el dinero correspondiente a las ventas que hace al agente inferior, paga el costo castigo relacionado a las \'ordenes no cumplidas, paga las \'ordenes hechas al agente superior y paga el costo de almacenamiento.\\
 
-Una vez establecidas todas las relaciones entre todos los jugadores y establecidos los par\'ametros del mundo, hemos obtenido dos formas diferentes de solucionar el juego: la primera con \textit{policy iteration} y la segunda con \textit{Q-learning}.
+Una vez establecidas todas las relaciones entre todos los jugadores y establecidos los par\'ametros del mundo, se han obtenido dos formas diferentes de solucionar el juego: la primera con \textit{policy iteration} y la segunda con \textit{Q-learning}.
 
 \section{Policy Iteration}
 
 Las ecuaciones que describen el aprendizaje de un agente son:
 
 \begin{enumerate}
-    \item La ecuaci\'on de utilidad (reward) para cada agente $a$ en el d\'ia $d$:
+    \item La ecuaci\'on de utilidad (recompensa) para cada agente $a$ en el d\'ia $d$:
 
 $$
 R(a, d) = R(a,d) + \gamma*r_{a, d+1} + ... + \gamma^{364}*r_{a,d+364}
 $$
 
-    \item BLA
+    \item Aqu\'i falta describir el vector de policies para cada agente
+    \item Aqu\'i falta escribir el metodo para actualizar el vector de mejor policy cuando se encuentra
 \end{enumerate}
 
-
-
-
-Bajo este algoritmo, los agentes aprenden \textit{policies} que siguen el comportamiento de la oferta, lo cual es el comportamiento esperado dado que en las especificaciones iniciales, se defini\'o manualmente que el la demanda anual no sobrepasara la oferta anual. Este resultado puede observarse en la figura \ref{politer_policies}. \\
+Bajo este algoritmo, los agentes aprenden pol\'iticas que siguen el comportamiento de la oferta, lo cual es el comportamiento esperado dado que en las especificaciones iniciales, se defini\'o manualmente que el la demanda anual no sobrepasara la oferta anual. Este resultado puede observarse en la figura \ref{politer_policies}. \\
 
 \begin{figure}[ht]
 \caption{Policies \'optimas de cada agente bajo \textit{policy iteration}}
@@ -83,7 +81,7 @@ Podemos observar que todos los agentes presentan una tendencia positiva al encon
 
 \section{Q-Learning}
 
-A diferencia de \textit{policy iteration}, este m\'etodo encuentra, para cada estado, la acci\'on que acercar\'a al agente lo m\'as posible a la meta. Por supuesto, la \textit{policy} \'optima es equivalente con cualquiera de ambos m\'etodos, pero \textit{Q-learning} nos permite m\'as libertad respecto a empezar a jugar el juego a mitad de a\~no, arreglar malas decisiones tomadas por los agentes en periodos anteriores gracias a su adaptabilidad ante cambios estoc'asticos, etc.\\
+A diferencia de \textit{policy iteration}, este m\'etodo encuentra, para cada estado, la acci\'on que acercar\'a al agente lo m\'as posible a la meta. Por supuesto, la pol\'itica \'optima es equivalente con cualquiera de ambos m\'etodos, pero \textit{Q-learning} permite m\'as libertad respecto a empezar a jugar el juego a mitad de a\~no, arreglar malas decisiones tomadas por los agentes en periodos anteriores gracias a su adaptabilidad ante cambios estoc'asticos, etc.\\
 
 Las ecuaciones que describen el aprendizaje de un agente son:
 
