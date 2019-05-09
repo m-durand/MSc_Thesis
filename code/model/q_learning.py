@@ -21,6 +21,7 @@ start_time = time.time()
 # the table that may contain the q learning values, it may be empty
 #q_learning_df = [] # TODO return from sql database
 q_learning_df = pd.read_csv("../../aux_documents/temp_q_learning_output.csv")
+q_learning_df = q_learning_df[['agent','day','inventory','purchase','r_s_a','q_s_a']] # csv format sometimes kills this
 # the vector of lambdas
 lambdas = [lambda_q_learning*(lambda_q_learning**n) for n in range(365)]
 
@@ -114,6 +115,7 @@ for j in range(total_epochs):
                 next_day = 1
             else:
                 next_day = day + 1
+            
             subset_s_prime_a_all = q_learning_df.loc[(q_learning_df['agent'] == (agent.name)) & (q_learning_df['day'] == (next_day)) & (q_learning_df['inventory'] == (agent_inventory + agent_demand))]
 
             # if yes, then we filter the df to find the max q function of that pair (s',a*)
@@ -128,14 +130,23 @@ for j in range(total_epochs):
             q_s_a = r_s_a + (lambda_q_learning * max_q_s_prime_a_all)
 
             # third part - update Q function for (s,a) ------------------------------
-            # eliminate the row from the data frame (if it existed)
-            # print("third checkpoint time " + str(datetime.datetime.now()))
-            #q_learning_df = q_learning_df.loc[((q_learning_df['agent'] != (agent.name)) | (q_learning_df['day'] != (day)) | (q_learning_df['inventory'] != (agent_inventory)) | (q_learning_df['purchase'] != (agent_demand)))]
-            # append the newly created row to update the value of both R and Q
-            new_row = [agent.name, day, agent_inventory, agent_demand, r_s_a, q_s_a]
-            q_learning_df.loc[q_learning_df.shape[0] + 1] = new_row
-            q_learning_df.sort_values('q_s_a', ascending=False).drop_duplicates(['agent','day','inventory','purchase'])
+            # check if the current row exists already
+            subset_s_a_ = q_learning_df.loc[(q_learning_df['agent'] == (agent.name)) & (q_learning_df['day'] == (day)) & (q_learning_df['inventory'] == agent_inventory) & (q_learning_df['purchase'] == agent_demand)]
 
+            # append the newly created row to update the value of both R and Q
+            if subset_s_a_.shape[0] == 0:
+                new_row = [agent.name, day, agent_inventory, agent_demand, r_s_a, q_s_a]
+                q_learning_df.loc[q_learning_df.shape[0] + 1] = new_row
+            else:             # if it existed, only change the specific value
+                id_s = subset_s_a_.index
+                if id_s.shape[0] > 1: # if for some reason there are duplicates
+                    # remove from the dataframe the row with the lowest q_s_a
+                    row_lowest_q_s_a = subset_s_a_.groupby(['agent'], sort=False)['q_s_a'].min().index
+                    q_learning_df.drop(row_lowest_q_s_a, axis = 0)
+                else:
+                    if q_s_a > q_learning_df.iloc[id_s]['q_s_a']:
+                        q_learning_df.at[id_s, 'q_s_a'] = q_s_a
+            
 elapsed_time = time.time() - start_time
 print("Total elapsed time for %s epochs : %s" % (total_epochs, elapsed_time))
 #iteration 1 time 2019-01-03 16:44:23.911986
