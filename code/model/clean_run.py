@@ -13,7 +13,7 @@ os.chdir('/Users/fernandaalcala/Documents/Tesis_Maestria/code/model/')
 ## Setup hyperparameters for policy iteration ##########################
 np.random.seed(20170130)
 
-total_epochs =  400 # 10000 epochs is a good number to play, need to find a better way to constraint
+total_epochs = 1500 # 10000 epochs is a good number to play, need to find a better way to constraint
 # 10,000 epochs takes about 6 minutes to train
 # 100,000 eopchs takes about 40 minutes to train
 # for q learning

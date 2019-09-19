@@ -17,6 +17,8 @@ def create_demand(agent):
 # Q LEARNING  ----------------------------------------------------------------
 
 start_time = time.time()
+progress_time_1 = datetime.datetime.now()
+
 
 # the table that may contain the q learning values, it may be empty
 #q_learning_df = [] # TODO return from sql database
@@ -24,10 +26,25 @@ q_learning_df = pd.read_csv("../../aux_documents/temp_q_learning_output.csv")
 q_learning_df = q_learning_df[['agent','day','inventory','purchase','r_s_a','q_s_a']] # csv format sometimes kills this
 # the vector of lambdas
 lambdas = [lambda_q_learning*(lambda_q_learning**n) for n in range(365)]
+elapsed_epochs_in_time = list()
+times_history = list()
+
 
 # epochs for ----
 for j in range(total_epochs):
     print("iteration " + str(j) + " time " + str(datetime.datetime.now()))
+    times_history.append(str(datetime.datetime.now()))
+    # writing a file with a photo of the results to monitor the increase in performance over time
+    # writing a file every 10 minutes
+    progress_time_2 = datetime.datetime.now()
+    progress_diff = progress_time_2 - progress_time_1
+    if progress_diff.total_seconds()/60 >= 10:
+        # escribir un archivo
+        q_learning_df.to_csv("../../aux_documents/temp_q_learning_output_from_algorithm" + str(datetime.datetime.now()) + ".csv")
+        # actualizar progress_time_1
+        progress_time_1 = progress_time_2
+        elapsed_epochs_in_time.append(j)
+    
     if j % (total_epochs/20) == 0:
         print(" ")  # These last two lines are used for printing - just make sure every time point appears clearly separated
     # starts in 1 ends in the first number so it always explores a bit
@@ -144,8 +161,8 @@ for j in range(total_epochs):
                     row_lowest_q_s_a = subset_s_a_.groupby(['agent'], sort=False)['q_s_a'].min().index
                     q_learning_df.drop(row_lowest_q_s_a, axis = 0)
                 else:
-                    if q_s_a > q_learning_df.iloc[id_s]['q_s_a']:
-                        q_learning_df.at[id_s, 'q_s_a'] = q_s_a
+                    if q_s_a > q_learning_df.iloc[id_s[0]]['q_s_a']:
+                        q_learning_df.at[id_s[0], 'q_s_a'] = q_s_a
             
 elapsed_time = time.time() - start_time
 print("Total elapsed time for %s epochs : %s" % (total_epochs, elapsed_time))
@@ -158,6 +175,7 @@ print("Total elapsed time for %s epochs : %s" % (total_epochs, elapsed_time))
 
 # TEMP THIS SHOULD GO TO A TABLE, FOR NOW A CSV
 q_learning_df.to_csv("../../aux_documents/temp_q_learning_output_from_algorithm" + str(datetime.datetime.now()) + ".csv")
+times_history.to_csv("../../aux_documents/temp_times_history" + str(datetime.datetime.now()) + ".csv")
 
 
 
