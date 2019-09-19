@@ -3,3 +3,6 @@
 *.ipynb_checkpoints
 # python cache
 *.pyc
+.Rproj.user
+iter*
+old*
