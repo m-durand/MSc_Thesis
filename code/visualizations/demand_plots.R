@@ -1,21 +1,12 @@
 # This script creates the plots to illustrate the yearly demand trends
 # It also munches the "visual friendly" yearly demand to a decent csv file
 # that can be read directly as demand trend
-wd <- "C:/Users/Fernanda Alcala/Documents/Personal/Beer/aux_documents/"
-#wd <- "/Users/fernanda/Documents/Batmelon/ITAM/AprendizajeMaquina2/git_repo/Beerhouse/aux_documents/" ## where to find the
-      ## excel files that contain demand trends for consumer
-setwd(wd)
-
-library(readxl)
-library(ggplot2)
-library(tidyverse)
-library(forcats)
 
 # Reading files ##############################################################
-demands_no_noise <- read_excel("creating_consumer_trend.xlsx", sheet = 5,
+demands_no_noise <- read_excel("../../aux_documents/creating_consumer_trend.xlsx", sheet = 5,
                                  skip = 1)
 
-days_of_every_month <- read_excel("creating_consumer_trend.xlsx", sheet = 2,
+days_of_every_month <- read_excel("../../aux_documents/creating_consumer_trend.xlsx", sheet = 2,
                                  skip = 0)
 
 # Cleaning data ##############################################################
@@ -82,12 +73,12 @@ example_month <- ggplot(subset(demands_no_noise, Month == "August"), aes(x = Day
                   scale_y_continuous(limits = c(0.5, 2)) + 
                   #labs(x = "Day", y = "Demand") +
                   #ggtitle("Example Normal Month")
-                  labs(x = "Día", y = "Demanda") +
+                  labs(x = "D?a", y = "Demanda") +
                   ggtitle("Ejemplo de un Mes Normal",
                           subtitle = "El consumo aumenta considerablamente cada fin de semana") +
                   theme_minimal(base_size = 8)
 
-ggsave("~/Personal/Beer/tex/figures/monthly_customer_demand_ggplot.png", example_month, device = "png")
+ggsave("../../tesis_tex/figs/monthly_customer_demand_ggplot.png", example_month, device = "png")
 
 
 # All months, no noise
@@ -100,13 +91,13 @@ all_months <- ggplot(demands_no_noise, aes(x = Day, y = Demand, color = Demand))
                           theme(panel.background = element_rect(fill = "gray95")) + 
                           #labs(x = "Day", y = "Demand") +
                           #ggtitle("Yearly Beer Demand") +
-                          labs(x = "Día", y = "Demanda") +
+                          labs(x = "D?a", y = "Demanda") +
                           # Customer Demand - weekly trend with a peak on Independence Day and increased demand on Christmas Holidays
                           ggtitle("Demanda Anual de Cerveza", 
-                                  subtitle = "Tendencia semanal con un pico el Día de la Independencia y un aumento en las vacaciones de Navidad") +
+                                  subtitle = "Tendencia semanal con un pico el D?a de la Independencia y un aumento en las vacaciones de Navidad") +
                           theme_minimal(base_size = 8)
 
-ggsave("~/Personal/Beer/tex/figures/monthly_demand_ggplot.png", all_months, device = "png")
+ggsave("../../tesis_tex/figs/monthly_demand_ggplot.png", all_months, device = "png")
 
 # All months, with noise
 all_months_with_noise <- ggplot(demands_no_noise, aes(x = Day, y = Demand_with_noise, color = Demand)) + 
@@ -118,14 +109,13 @@ all_months_with_noise <- ggplot(demands_no_noise, aes(x = Day, y = Demand_with_n
                         theme(panel.background = element_rect(fill = "gray95")) + 
                         #labs(x = "Day", y = "Demand") +
                         #ggtitle("Yearly Beer Demand") +
-                        labs(x = "Día", y = "Demanda") +
-                        ggtitle("Demanda Anual de Cerveza (con ruido)",
-                                subtitle = "Tendencia base ligeramente alterada con valores aleatorios") +
+                        labs(x = "Dia", y = "Demanda") +
+                        #ggtitle("Demanda Anual de Cerveza (con ruido)",
+                        #        subtitle = "Tendencia base ligeramente alterada con valores aleatorios") +
                         theme_minimal(base_size = 8)
 
 
-#ggsave("~/Personal/Beer/tex/figures/monthly_demand_with_noise_ggplot.png", all_months_with_noise, device = "png")
-
+ggsave("../../tesis_tex/figs/monthly_demand_with_noise_ggplot.png", all_months_with_noise, device = "png")
 
 # Anything below this line is not part of the code, erase if present
 

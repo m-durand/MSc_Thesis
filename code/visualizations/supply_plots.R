@@ -1,16 +1,8 @@
 # This Script takes the consolidated table with harvest seasons
 #"1. Creates a decent csv that can be read directly as fields trend
-wd <- "C:/Users/Fernanda Alcala/Documents/Personal/Beer/aux_documents/" 
-#wd <- "/Users/fernanda/Documents/Batmelon/ITAM/AprendizajeMaquina2/git_repo/Beerhouse/aux_documents/" ## where to find the
-## excel files that contain demand trends for consumer
-setwd(wd)
-
-library(readxl)
-library(ggplot2)
-library(dplyr)
 
 # Reading files ##############################################################
-fields_no_noise <- read_excel("creating_fields_trend.xlsx", sheet = 2,
+fields_no_noise <- read_excel("../../aux_documents/creating_fields_trend.xlsx", sheet = 2,
                                skip = 0)
 all_harvests <- list()
 
@@ -67,7 +59,7 @@ fields_no_noise_for_csv <- one_year %>% left_join(fields_no_noise) %>%
 
 
 # Plots: Supply ##############################################################
-supply_no_noise <- read_csv("fields_trend.csv") %>% 
+supply_no_noise <- read_csv("../../aux_documents/fields_trend.csv") %>% 
   mutate(Month = factor(Month, levels = c("January", "February", "March",
                                           "April", "May", "June", "July",
                                           "August", "September", "October",
@@ -97,12 +89,13 @@ all_months_supply <- ggplot(supply_no_noise, aes(x = Day, y = Supply, color = Su
   theme(panel.background = element_rect(fill = "gray95")) + 
   #labs(x = "Day", y = "Demand") +
   #ggtitle("Yearly Beer Demand") +
-  labs(x = "Día", y = "Producción") +
+  labs(x = "Dia", y = "Produccion") +
   # Customer Demand - weekly trend with a peak on Independence Day and increased demand on Christmas Holidays
-  ggtitle("Oferta Anual de los Campos de Cebada", 
-          subtitle = "Solamente hay producción durante el verano, con un pico pequeño al final de junio y uno grande en agosto") +
+  #ggtitle("Oferta Anual de los Campos de Cebada", 
+  #        subtitle = "Solamente hay producci?n durante el verano, con un pico peque?o al final de junio y uno grande en agosto") +
   theme_minimal(base_size = 8)
-#ggsave("~/Personal/Beer/tex/figures/fields_monthly_supply_ggplot.png", all_months_supply, device = "png")
+
+ggsave("../../tesis_tex/figures/fields_monthly_supply_ggplot.png", all_months_supply, device = "png")
 
 # Anything below this line is not part of the code, erase if present
 
