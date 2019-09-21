@@ -23,14 +23,14 @@ sapply(.packages, require, character.only = TRUE)
 #Create a custom color scale for agents - lets use throughout the whole doc -----
 
 # english scale
-myColors_en <- c("#F60027", "#FDB34B", "#F76B50", "#006D6F")
+agent_colors_en <- c("#F60027", "#FDB34B", "#F76B50", "#006D6F")
 # c("#FE0068", "#F60027", "#FDB34B", "#F76B50", "#006D6F", "#6CAE3C") # if it contains customer and fields
-names(myColors_en) <- c("Retail", "Wholesale", "Factory", "Regional_Warehouse")
-agents_colors_en <- scale_colour_manual(name = "Agent",values = myColors_en)
+names(agent_colors_en) <- c("Retail", "Wholesale", "Factory", "Regional_Warehouse")
+agents_colors_en <- scale_colour_manual(name = "Agent",values = agent_colors_en)
 # english scale
-myColors_es <- c("#F60027", "#FDB34B", "#F76B50", "#006D6F")
+agent_colors_es <- c("#F60027", "#FDB34B", "#F76B50", "#006D6F")
 # c("#FE0068", "#F60027", "#FDB34B", "#F76B50", "#006D6F", "#6CAE3C") # if it contains customer and fields
-names(myColors_es) <- c("Menudeo","Mayoreo","Almacen regional","Fabrica")
-agents_colors_es <- scale_colour_manual(name = "Agente",values = myColors_es)
+names(agent_colors_es) <- c("Menudeo","Mayoreo","Almacen regional","Fabrica")
+agents_colors_es <- scale_colour_manual(name = "Agente",values = agent_colors_es)
 
 

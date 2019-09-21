@@ -95,7 +95,7 @@ all_months_supply <- ggplot(supply_no_noise, aes(x = Day, y = Supply, color = Su
   #        subtitle = "Solamente hay producci?n durante el verano, con un pico peque?o al final de junio y uno grande en agosto") +
   theme_minimal(base_size = 8)
 
-ggsave("../../tesis_tex/figures/fields_monthly_supply_ggplot.png", all_months_supply, device = "png")
+ggsave("../../tesis_tex/figs/fields_monthly_supply_ggplot.png", all_months_supply, device = "png")
 
 # Anything below this line is not part of the code, erase if present
 

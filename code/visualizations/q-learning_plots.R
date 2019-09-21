@@ -66,7 +66,11 @@ for(i in 1:length(iter_partial_files)){
     # Figure out the payouts for each agent based on this path
     group_by(agent) %>% 
     summarise(total_q_s_a = sum(q_s_a)) %>% 
-    mutate(iter_file = i)
+    mutate(iter_file = i) %>% 
+    mutate(agente = fct_recode(agent, "Menudeo" = "Retail",
+                                     "Mayoreo" = "Wholesale",
+                                     "Almacen regional" = "Regional_Warehouse",
+                                     "Fabrica" = "Factory"))
   
   # # Code to see the optimal paths on a specific iteration file
   # ggplot(f, aes (x = day, y = purchase, color = agent)) +
@@ -79,12 +83,14 @@ for(i in 1:length(iter_partial_files)){
 }
 
 # Code to see the optimal paths on a specific iteration file
-q_s_a_over_time_plot <- ggplot(q_s_a_over_time, aes (x = iter_file, y = total_q_s_a, color = agent)) +
+q_s_a_over_time_plot <- ggplot(q_s_a_over_time, aes (x = iter_file, y = total_q_s_a, color = agente)) +
   geom_line() +
-  xlab("Funcion Q") +
-  ylab("Iteracion") +
-  facet_grid(~agent) +
-  agents_colors_en
+  ylab("Funcion Q") +
+  xlab("Iteracion") +
+  facet_wrap(~agente, ncol = 2) +
+  agents_colors_es  +
+  theme_minimal() +
+  theme(legend.position = "none")
 
 q_s_a_over_time_plot
 

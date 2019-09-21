@@ -20,7 +20,7 @@ solution_0 <- read_excel("../../aux_documents/explicit_solution.xlsx", sheet = 3
 month <- ggplot(solution_0 %>% filter(day <=30), aes(x = day, y = value, color = name_spanish)) +
   geom_line(size = 1)  +
   theme_minimal(base_size = 8) +
-  #ggtitle("Demanda de los agentes en el primer mes del a?o - todos comienzan con inventarios diferentes",
+  #ggtitle("Demanda de los agentes en el primer mes del anio" ) + #,
   #        subtitle = "El tiempo de adecuamiento al patron depende de los inventarios iniciales") + 
   theme(axis.text.y=element_blank()) +
   xlab("Dia") +
@@ -35,8 +35,8 @@ ggsave("../../tesis_tex/figs/analytic_solution_0_all_0_inv.png", month, device =
 month <- ggplot(solution_0 %>% filter(day >=335), aes(x = day, y = value, color = name_spanish)) +
   geom_line(size = 1)  +
   theme_minimal(base_size = 8) +
-  ggtitle("Demanda de los agentes en el primer mes del a?o - todos comienzan con inventarios diferentes",
-          subtitle = "El tiempo de adecuamiento al patron depende de los inventarios iniciales") + 
+  #ggtitle("Demanda de los agentes en el ultimo mes del anio" ) + #,
+          #subtitle = "El tiempo de adecuamiento al patron depende de los inventarios iniciales") + 
   theme(axis.text.y=element_blank()) + 
   xlab("Dia") +
   ylab("Demanda") + guides(color=guide_legend(title="Agente"))  +
@@ -47,8 +47,7 @@ ggsave("../../tesis_tex/figs/analytic_solution_0_last_month.png", month, device 
 
 # Not infinite supply -----------------------------------------------------------------
 
-
-solution_1 <- read_excel("explicit_solution.xlsx", sheet = 4,
+solution_1 <- read_excel("../../aux_documents/explicit_solution.xlsx", sheet = 4,
                          skip = 25) %>% 
   melt(id.vars = c("AGENT / DAY ->")) %>% 
   mutate(name_english = factor(`AGENT / DAY ->`, levels = c("consumer", "retail", "wholesale", "regional_warehouse", "factory", "fields") )) %>% 
@@ -59,16 +58,6 @@ solution_1 <- read_excel("explicit_solution.xlsx", sheet = 4,
                                    "Fabrica" = "factory",
                                    "Campos" = "fields")) %>% 
   mutate(day = as.numeric(variable)) 
-
-# english scale
-myColors_en <- c("#FE0068", "#F60027", "#FDB34B", "#F76B50", "#006D6F", "#6CAE3C") # if it contains customer and fields
-names(myColors_en) <- levels(solution_1$name_english)
-agents_colors_en <- scale_colour_manual(name = "name_english",values = myColors_en)
-
-# english scale
-myColors_es <- c("#FE0068", "#F60027", "#FDB34B", "#F76B50", "#006D6F", "#6CAE3C") # if it contains customer and fields
-names(myColors_es) <- levels(solution_1$name_spanish)
-agents_colors_es <- scale_colour_manual(name = "name_spanish",values = myColors_es)
 
 # preparing data for plot
 demand <- solution_1 %>% filter(name_english %in% c("consumer")) %>% select(day, demand = value)
