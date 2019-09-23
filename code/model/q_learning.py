@@ -22,10 +22,10 @@ progress_time_1 = datetime.datetime.now()
 
 # the table that may contain the q learning values, it may be empty
 #q_learning_df = [] # TODO return from sql database
-q_learning_df = pd.read_csv("../../aux_documents/temp_q_learning_output.csv")
+q_learning_df = pd.read_csv("../../aux_documents/q_learning_base.csv")
 q_learning_df = q_learning_df[['agent','day','inventory','purchase','r_s_a','q_s_a']] # csv format sometimes kills this
 # the vector of lambdas
-lambdas = [lambda_q_learning*(lambda_q_learning**n) for n in range(365)]
+lambdas = [(lambda_q_learning**n) for n in range(365)]
 elapsed_epochs_in_time = list()
 times_history = list()
 
@@ -97,27 +97,28 @@ for j in range(total_epochs):
             #print(str(agent.name))
             # PART 2
             # How much money did the agent end up with yesterday's decisions?
+            # Paying for warehousing at the end of the day
+            agent.pay_for_warehousing()
             agent.current_payout[day-1] = agent.total_money
             agent.q_function_reward_for_action[day-1] = agent.current_payout[day-1] - agent.current_payout[day-2]
             # Agent decides demand for today, which will (might) be fulfilled tomorrow
             agent_demand = create_demand(agent)
             #agent_demand = 0  #If we want to evaluate any static policy
             agent.current_policy[day-1] = agent_demand
-            # Paying for warehousing at the end of the day
-            agent.pay_for_warehousing()
-
+            
             # first part of q function: reward ------------------------------------
             day = day
             agent_inventory = agent.policy_inventory[day-1]
 
+            # I do not understand why I removed this anymore
             # Removed because it is better to just use the one-day reward, no need for discounted
             # being on the day "day" then the reward action is ...
             # we "cut" the vector starting on the pos "day" and append the rest to the end
-            # rewards = agent.q_function_reward_for_action[day:] + agent.q_function_reward_for_action[0:day]
+            rewards = agent.q_function_reward_for_action[day-1:] + agent.q_function_reward_for_action[0:day-1]
             # afterwards we multiply by the vector of lambdas
-            # discounted_rewards = np.multiply(rewards, lambdas)
+            discounted_rewards = np.multiply(rewards, lambdas)
             # finally we sum and get the value of R
-            # r_s_a = np.sum(discounted_rewards)
+            r_s_a = np.sum(discounted_rewards)
 
             # money it had yesterday minus money it has today
             r_s_a = agent.q_function_reward_for_action[day-1]
@@ -175,7 +176,8 @@ print("Total elapsed time for %s epochs : %s" % (total_epochs, elapsed_time))
 
 # TEMP THIS SHOULD GO TO A TABLE, FOR NOW A CSV
 q_learning_df.to_csv("../../aux_documents/temp_q_learning_output_from_algorithm" + str(datetime.datetime.now()) + ".csv")
-times_history.to_csv("../../aux_documents/temp_times_history" + str(datetime.datetime.now()) + ".csv")
 
-
+with open("../../aux_documents/q-learning-times.csv", "w") as f:
+    for x in times_history:
+        f.write(x + "\n")
 

@@ -19,7 +19,7 @@ total_epochs = 1500 # 10000 epochs is a good number to play, need to find a bett
 # for q learning
 # around 125 iterations per hour
 warmstart_proportion = 0.005  # How much time will the agents spend observing what the downstream agent does, not exploring
-max_demand = 100  # The maximum quantity an agent can ask for during one day
+max_demand = 75  # The maximum quantity an agent can ask for during one day
 epsilon_greedy_converges_to = 0.005
 lambda_q_learning = 0.9
 

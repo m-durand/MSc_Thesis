@@ -95,3 +95,4 @@ q_s_a_over_time_plot <- ggplot(q_s_a_over_time, aes (x = iter_file, y = total_q_
 q_s_a_over_time_plot
 
 ggsave("../../tesis_tex/figs/q_function_over_time.png", q_s_a_over_time_plot, device = "png")
+  
