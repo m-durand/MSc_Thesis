@@ -7,16 +7,29 @@
 
 \vspace{10 pt}
 
-Objetivo\\
+\section{Objetivo y presentaci\'on del problema}
 
-Problem Statement\\
+% Problem Statement\\
+En una cadena de suministro cualquiera existen tres elementos b\'asicos: un material/informaci\'on, un origen y un destino. Sin embargo, esto es una sobresimplificaci\'on y cualquier cadena en la vida real tiene muchos m\'as factores.\\
 
-Hip\'otesis\\
+Idealmente, un sistema de simulaci\'on de tal cadena de suministro contemplar\'ia todas las variables presentes en su entorno: desde aquellas intr\'insecas al proceso como los costos de almacenamiento y los tiempos de espera para el cumplimiento de las \'ordenes, hasta externas como precio de bienes sustitutos y complementarios; o aquellas m\'as complejas, como din\'amicas entre distintos agentes tal que los consumidores cambien de distribuidor despu\'es de cierto n\'umero de \'ordenes no cumplidas. Sin embargo, es imposible replicar todas las condiciones de un sistema tan complejo como la econom\'ia en el mundo real, e incluso es dif\'icil incorporar un alto n\'umero de variables al tratar de optimizar un problema de este calibre.\\
 
-Metodolog\'ia (research approach)\\
+Por esta raz\'on, los problemas econ\'omicos a resolver matem\'atica o program\'aticamente deben hacer ciertos supuestos acerca de las condiciones que los rigen. Para asegurar la aplicabilidad de las soluciones, es necesario asegurar un equilibrio entre apego a la realidad (m\'as variables, menos supuestos) y control de complejidad (m\'as supuestos, menos variables).\\
 
-Resultado esperado\\
+En el presente trabajo, se pretende ayudar a cerrar una brecha causada por supuestos poco razonables o coherentes con el mundo real. En el Juego de Distribuci\'on de la Cerveza, com\'unmente se supone que uno de los agentes en la cadena de suministro, la f\'abrica, tiene acceso a las materias primas para producir cerveza en cualquier momento del a\~no. Sin embargo, la experiencia en el mundo real, con datos reales de producci\'on anual de cebada, nos muestra que este es un supuesto poco razonable y resta aplicabilidad a cualquier soluci\'on propuesta.\\
 
-Organizaci\'on de la tesis\\
+La hip\'otesis con la que se trabajar\'a se puede delinear de la siguiente manera: es posible encontrar las estrategias \'optimas para todos los agentes tomadores de decisiones en el Juego de la Distribuci\'on de Cerveza, por medio de algoritmos de aprendizaje reforzado, que produzcan resultados en un tiempo suficientemente veloz como para poder accionarlas.\\
 
+\section{Metodolog\'ia y resultado esperado}
 
+El juego de la distribuci\'on de cerveza es t\'ipicamente un problema de optimizaci\'on, sin embargo recientemente se ha explorado la soluci\'on por medio de distintos m\'etodos, desde algoritmos gen\'eticos hasta aprendizaje de m\'aquina reforzado. En el presente trabajo se explorar\'an dos algoritmos del segundo tipo: \textit{policy iteration} y \textit{Q-learning}. Adem\'as, se remover\'a el supuesto relacionado a la producci\'on constante en los campos, ya que de esta manera se obtiene un modelo m\'as realista respecto a los ciclos naturales de cosecha de las materias primas.
+
+\section{Organizaci\'on de la tesis}
+
+Este trabajo est\'a organizado en ocho cap\'itulos. El primero, del cual forma parte esta secci\'on, proporciona una vista general y la estructura del texto.
+
+Las secciones dos y tres establecen el contexto necesario para el problema a resolver; mientras que la cuarta muestra acercamientos previos a la soluci\'on, dentro de los cuales ya existen propuestas con los algoritmos presenta en este trabajo. La quinta secci\'on contiene una idea nueva para mejorar tales algoritmos conviertiendo el problema en uno m\'as cercano a la realidad: removiendo el supuesto de producci\'on ilimitada en los campos.
+
+La secci\'on seis contiene la estructura del producto de datos construido para guardar los resultados y las principales diferencias necesarias dada la forma diferente de la soluci\'on dependiendo del algoritmo. La secci\'on siete contiene los resultados de este trabajo y una comparaci\'on entre ellos.
+
+Por \'ultimo, la octava secci\'on contiene las conclusiones y posibles preguntas para investigaciones futuras en esta l\'inea.

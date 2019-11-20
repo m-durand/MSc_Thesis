@@ -14,7 +14,15 @@ El \textit{Juego de la Distribución de Cerveza} ejemplifica la relaci\'on causa
 
 Para plantear correctamente el \textit{Problema de la Distribuci\'n de Cerveza}, es necesario entender el concepto de una cadena de suministro. \\
 
-Una cadena de suministro (en ingl\'es, \textit{supply chain}), en la definici\'on de \citet{Jacobs},  es un proceso que desplaza informaci\'on y material con destino y origen en los procesos de manufactura y servicio de la empresa. Una manera com\'un de representar el comportamiento de una cadena como un modelo es a trav\'es de existencias, flujos, ciclos y agentes\footnote{Existen muchas otras maneras, como las redes de Petri, ampliamente utilizadas en la teor\'ia de aut\'omatas.}. Por ejemplo, en una simplificaci\o'n de producci\'on automotriz, se representa a cada eslab\'on como un agente (la f\'abrica de partes, la ensambladora, el taller de pintura y la agencia de venta), los flujos como las entradas y salidas de materia en cada eslab\'on (por ejemplo, la f\'abrica de partes tiene como insumos metal y pl\'astico, mientras que el taller de pintura tiene como insumo el auto ensamblado y litros de pintura) y los ciclos pueden depender de estacionalidad, disponibilidad o simple predisposici\'on.\\
+Una cadena de suministro (en ingl\'es, \textit{supply chain}), en la definici\'on de \citet{Jacobs},  es un proceso que desplaza informaci\'on y material con destino y origen en los procesos de manufactura y servicio de la empresa. Una manera com\'un de representar el comportamiento de una cadena como un modelo es a trav\'es de existencias, flujos, ciclos y agentes\footnote{Existen muchas otras maneras, como las redes de Petri, ampliamente utilizadas en la teor\'ia de aut\'omatas.}. Por ejemplo, en una simplificaci\o'n de producci\'on automotriz que se puede observar en la figura \ref{automotriz}, se representa a cada eslab\'on como un agente (la f\'abrica de partes, la ensambladora, el taller de pintura y la agencia de venta), los flujos como las entradas y salidas de materia en cada eslab\'on (por ejemplo, la f\'abrica de partes tiene como insumos metal y pl\'astico, mientras que el taller de pintura tiene como insumo el auto ensamblado y litros de pintura) y los ciclos pueden depender de estacionalidad, disponibilidad o simple predisposici\'on.\\
+
+\begin{figure}[ht]
+\caption{\textit{Simplificaci\'on de una cadena de suministro automotriz}}
+\label{automotriz}
+\includegraphics[width=15cm]{auto_chain_simple.png}
+\centering
+\end{figure}
+
 
 El estudio de las cadenas de suministro cubre un campo vasto, dado que existen una infinidad de problemas relacionados a ellas: desde transporte, log\'istica, manejo de inventario, optimizaci\'on de la localizaci\'on geogr\'afica para cada uno de los eslabones, sustentabilidad, etc. Sin embargo, una vez que la cadena est\'a en funcionamiento, uno de las principales dificultades es que los agentes encargados de optimizar las estrategias de demanda y producci\'on de cada eslab\'on solamente pueden tomar decisiones ``dentro'' de aquel en el que se encuentran, y no tienen informaci\'on m\'as all\'a de los eslabones inmediatamente conectados, solamente una estimaci\'on (en ingl\'es \textit{forecast}) que representa su mejor predicci\'on de tal comportamiento. As\'i, la informaci\'on acerca de la demanda del consumidor se va diluyendo en cada nivel, además de que las decisiones tomadas tienen repercusiones m\'as all\'a del futuro inmediato. \\
 
@@ -38,22 +46,31 @@ Todos los agentes cuentan con un inventario inicial de cajas de cerveza, y deben
 
 
 \begin{figure}[ht]
-\caption{Distribuci\'on de Cerveza}
+\caption{Estructura del Juego de Distribución de Cerveza}
 \label{structure}
 \includegraphics[width=15cm]{beer_distribution_game_structure.PNG}
 \centering
 \end{figure}
 
-De esta manera, las variables que tienen efecto en este problema son:
+De manera general, las variables que tienen efecto en la soluci\'n de este problema son:
 
 \begin{itemize}
-    \item Demanda del consumidor
-    \item Producci\'on (oferta) de los campos
-    \item Precio de la cerveza
-    \item Costo de almacenaje
-    \item Costo de oportunidad por \'ordenes no cumplidas
-    \item Inventario inicial
+    \item Demanda del consumidor durante el a\~no
+    \item Producci\'on (oferta) de los campos durante el a\~no
+    \item Precio de la cerveza (se supone el mismo margen nominal para cada agente)
+    \item Costo de almacenaje (se supone igual para todos los agentes)
+    \item Costo de oportunidad por \'ordenes no cumplidas (se supone igual para todos los agentes)
+    \item Inventario inicial (puede variar por agente)
 \end{itemize}
+
+Sin embargo, en cada tiempo $t$, cada agente se enfrenta a factores espec\'ificos que afectan su decisi\'on de compra para el siguiente d\'ia. Est conjunto de factores ha sido mapeado anteriormente por \citet{Duggan} y \citet{Grasl}, desde el punto de vista de diagramas causales. Una gran parte de la complejidad de este problema se puede identificar aqu\'i: ning\'un agente tienen visibilidad del proceso an\'alogo para su agente superior, por lo tanto debe actuar bajo informaci\'on incompleta y con indicaciones de comportamiento, tales como evitar el costo por \'ordenes no cumplidas y reaccionar a los cambios en la demanda del agente inferior. El diagrama que representa estos factores para un agente se puede consultar en la figura \ref{causal}.
+
+\begin{figure}[ht]
+\caption{Diagrama Causal para un agente del Juego}
+\label{causal}
+\includegraphics[width=10cm]{beer_distribution_game_causal.PNG}
+\centering
+\end{figure}
 
 Todas las variables, menos la demanda del consumidor y la producci\'on en los campos, pueden ser declaradas para el sistema (igual para todos los agentes) o individualmente (diferente para cada agente). Como se ver\'a m\'as adelante, el sistema es sumamente sensible a peque\~nos cambios en cualquiera de las variables; por ejemplo, si un agente comienza el juego con suficiente inventario para todo el a\~no, el agente superior nunca podr\'a venderle cerveza e incurrir\'a solamente en costos por almacenaje.
 

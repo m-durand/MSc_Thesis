@@ -6,7 +6,7 @@ Su principio se basa en la psicolog\'ia conductista: un \textit{agente} busca se
 
 \subsection{Terminolog\'ia com\'un}
 
-Existen conceptos utilizados en pr\'acticamente la totalidad de los algoritmos de aprendizaje reforzado, independientemente de las particularidades que presenten. A continuaci\'on se presenta una lista, basada en la recopilaci\'on de \citet{rlexplained} no exhaustiva de ellos, pero que cubre los t\'erminos utilizados en este trabajo.
+Existen conceptos utilizados en pr\'acticamente la totalidad de los algoritmos de aprendizaje reforzado, independientemente de las particularidades que presenten. A continuaci\'on se presenta una lista, basada en la recopilaci\'on de \citet{rlexplained} no exhaustiva de ellos, pero que cubre los t\'erminos utilizados en este trabajo. La relaci\'on entre estos conceptos se puede consultar en la figura \ref{rl_concepts}, popularizada por \cite{Sutton}.
 
 \begin{enumerate}
     \item Agente: es el concepto m\'as abstracto, pues es la entidad que aprender\'a durante el proceso. Por ejemplo, puede ser un rat\'on rob\'otico aprendiendo a llegar al queso en el laberinto; o un jugador virtual aprendiendo a superar todos los niveles de un videojuego.
@@ -16,6 +16,13 @@ Existen conceptos utilizados en pr\'acticamente la totalidad de los algoritmos d
     \item Recompensa: cuando un agente toma una acci\'on en un estado, recibe una recompensa. Es muy importante notar que la recompensa puede tomar muchas formas: es posible que sea solamente la meta \'ultima en vez de existir despu\'es de cada acci\'on (como el queso para el rat\'on). La recompensa tambi\'en puede ser negativa, equivalente a un castigo, lo cual causa que el agente aprenda a evitar las acciones que lo llevan a ella.
     \item Pol\'itica (\textit{policy}) es una funci\'on que toma como argumento un estado $s$ y devuelve una acci\'on $a$; equivalente a la estrategia del agente. La meta del aprendizaje reforzado es encontrar la pol\'itica \'optima. Generalmente se le representa como $\pi(s)->a$.
 \end{enumerate}
+
+\begin{figure}[ht]
+\caption{Interacci\'on de los conceptos en Aprendizaje Reforzado}
+\label{rl_concepts}
+\includegraphics[width=10cm]{rl_concepts.PNG}
+\centering
+\end{figure}
 
 Una vez que tenemos asignados estos elementos, resulta relativamente simple explicar el problema, pero no as\'i la implementaci\'on. Por ejemplo, para el rat\'on solamente recibir\'a la recompensa despu\'es de un movimiento espec\'ifico que lo lleve a la casilla en la que se encuentra el queso, todos los dem\'as movimientos son solamente un medio para acercarse. El aprendizaje reforzado resuelve esta situaci\'on asign\'andole valor a las recompensas a largo plazo en vez de solamente las inmediatas. Esto quiere decir que si planteamos el objetivo del aprendizaje como llegar al queso, el rat\'on no podr\'a decidir si es mejor un camino m\'as r\'apido o uno en el que dio vueltas sin sentido en un mismo lugar, siempre que en un tiempo finito haya llegado al centro. Sin embargo, acorde con la filosof\'ia del aprendizaje reforzado, si descontamos el valor del queso por cada casilla extra que le toma llegar a \'el, entonces buscar\'a el camino m\'as corto, optimizando su secuencia de acciones interactuando con el mundo que lo rodea para descubrir relaciones acci\'on-estado.\\
 
@@ -86,7 +93,7 @@ Uno de los algoritmos m\'as populares de aprendizaje es \textit{Q-learning}. Obt
 
 \subsection{Conceptos}
 
-Recordemos la ecuaci\'on de valor de un estado, basada en la ecuaci\'on de Bellman, que fue desarrollada en cap\'itulos anteriores:
+Recordemos la ecuaci\'on de valor de un estado, basada en la ecuaci\'on de Bellman, que fue desarrollada en la secci\'on introductoria:
 
 $$
 V^{\pi}(s) = E_{\pi}\left\{R_{t}|s_{t} = s\right\} = E_{\pi}\left\{\sum_{k=0}^{\infty}\gamma^{k}r_{t+k+1}|s_{t}=s\right\}
