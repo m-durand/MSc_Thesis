@@ -38,7 +38,7 @@ for j in range(total_epochs):
     # writing a file every 10 minutes
     progress_time_2 = datetime.datetime.now()
     progress_diff = progress_time_2 - progress_time_1
-    if progress_diff.total_seconds()/60 >= 10:
+    if progress_diff.total_seconds()/(60*60) >= 1:
         # escribir un archivo
         q_learning_df.to_csv("../../aux_documents/temp_q_learning_output_from_algorithm" + str(datetime.datetime.now()) + ".csv")
         # actualizar progress_time_1
