@@ -6,6 +6,7 @@ import psycopg2
 import random
 import hashlib
 import datetime
+import dill
 
 #os.chdir('C:\\Users\\Fernanda Alcala\\Documents\\Personal\\Tesis_Maestria-master\\Tesis_Maestria-master\\code\\model\\')
 os.chdir('/Users/fernandaalcala/Documents/Tesis_Maestria/code/model/')
@@ -13,7 +14,7 @@ os.chdir('/Users/fernandaalcala/Documents/Tesis_Maestria/code/model/')
 ## Setup hyperparameters for policy iteration ##########################
 np.random.seed(20170130)
 
-total_epochs = 2500 # 10000 epochs is a good number to play, need to find a better way to constraint
+total_epochs = 250000 # 10000 epochs is a good number to play, need to find a better way to constraint
 # 10,000 epochs takes about 6 minutes to train
 # 100,000 eopchs takes about 40 minutes to train
 # for q learning
@@ -26,8 +27,8 @@ lambda_q_learning = 0.9
 ## Necessary world information #########################################
 
 # Getting customer_demand and field_supply trends
-customer_demand = pd.read_csv("./../../aux_documents/customer_trend.csv")
-fields_supply = pd.read_csv("../../aux_documents/fields_trend.csv")
+customer_demand = pd.read_csv("/Users/fernandaalcala/Documents/Tesis_Maestria/aux_documents/customer_trend.csv")
+fields_supply = pd.read_csv("/Users/fernandaalcala/Documents/Tesis_Maestria/aux_documents/fields_trend.csv")
 
 # Prices and Costs
 # Prices of one beer at each level of the supply chain.
@@ -56,8 +57,8 @@ exec(open("players.py").read())
 exec(open("world.py").read())
 
 # Choose which algorithms we want to run
-run_policy_iteration = False
-run_q_learning = True
+run_policy_iteration = True
+run_q_learning = False
 
 
 # Policy Iteration ############################################################
