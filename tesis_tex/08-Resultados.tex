@@ -1,6 +1,11 @@
 \chapter{Resultados}
 
-El problema de llevar inventario de un a\~no a otro se resolvi\'o f\'acilmente con el m\'etodo \textit{Q-learning}, pues su misma estructura requiere valores descontados de los estados futuros en cada estado presente. Para lograr el mismo efecto con el m\'etodo \textit{Policy Iteration}, ser\'ia necesario crear artificialmente d\'ias de entrenamiento antes y despu\'es del periodo de 365 d\'ias en el que los agentes est\'an aprendiendo, sin embargo, esto a\~nadir\'ia complejidad computacional.
+%% Esto seria cierto si Q learning hubiera funcionado...
+%%El problema de llevar inventario de un a\~no a otro se resolvi\'o f\'acilmente con el m\'etodo \textit{Q-learning}, pues su misma estructura requiere valores descontados de los estados futuros en cada estado presente. Para lograr el mismo efecto con el m\'etodo \textit{Policy Iteration}, ser\'ia necesario crear artificialmente d\'ias de entrenamiento antes y despu\'es del periodo de 365 d\'ias en el que los agentes est\'an aprendiendo, sin embargo, esto a\~nadir\'ia complejidad computacional.
+
+Durante el aprendizaje se realizaron numerosos experimentos con diferentes metapar\'ametros (e.g. $\epsilon$ para el algoritmo $\epsilon-greedy$), par\'ametros del mundo (e.g. la penalizaci\'on por \'ordenes no cumplidas) y par\'ametros de los agentes (e.g. los m\'argenes de ganancia de cada uno). En esta secci\'on se presentar\'an algunos an\'alisis y resultados relevantes.\\
+
+En general, el m\'etodo \textit{policy iteration} convergi\'o r\'apidamente, siendo capaz de encontrar estrategias \'optimas para todos los agentes en menos de 10 minutos. Asimismo, se encontr\'o que en la gran mayor\'ia de los casos (obtenidos con simulaciones), se obtiene un mejor desempe\~no para todo el sistema de cadena de suministro favoreciendo la estrategia inteligente sobre m\'etodos comunes, incluso si solamente uno de los agentes lo hace.
 
 \section{El Mundo y los Agentes}
 
@@ -15,15 +20,15 @@ A pesar de que nuestro sistema tiene seis roles, en realidad solamente cuatro de
     \item Los campos \textbf{obedecen} a sus ciclos de siembra y cosecha
 \end{itemize}
 
-A pesar de que, estrictamente, en nuestro sistema multiagente todos los roles son agentes, por claridad en la descripci\'on y el flujo del c\'odigo nos referiremos como agentes solamente a aquellos roles que toman decisiones. Las ecuaciones de los agentes en los extremos ``encajan'' si suponemos que, para el consumidor, su \textit{policy} \'optimo es su demanda normal durante el a\~no, y para los campos, es su producci\'on.\\
+A pesar de que, estrictamente, en nuestro sistema multiagente todos los roles son agentes, por claridad en la descripci\'on y el flujo del c\'odigo nos referiremos como agentes solamente a aquellos roles que toman decisiones. Las ecuaciones de los agentes en los extremos se pueden conectar f\'acilmente al sistema manteniendo la misma l\'ogica si suponemos que, para el consumidor, su \textit{policy} \'optimo es su demanda normal durante el a\~no, y para los campos, es su producci\'on.\\
 
-Durante el aprendizaje, todos los agentes siguen el mismo conjunto de reglas (aprender cu\'anto tienen que comprarle al agente superior en cada d\'ia), as\'i que las ecuaciones de ganancia y aprendizaje son las mismas. En este trabajo, se utilizar\'a la siguiente construcci\'on del mundo, con cierta notaci\'on para los distintos par\'ametros del mundo:
+Durante el aprendizaje, todos los agentes siguen el mismo conjunto de reglas (aprender cu\'anto tienen que comprarle al agente superior en cada d\'ia, maximizando la ganancia que obtienen de venderle al agente inferior, al tiempo de minimizar los costos de almacenamiento y la penalizaci\'on por \'ordenes no cumplidas), as\'i que las ecuaciones de ganancia y aprendizaje son las mismas. En este trabajo, se utilizar\'a la siguiente construcci\'on del mundo, con cierta notaci\'on para los distintos par\'ametros del mundo:
 
 \begin{enumerate}
     \item Para cada agente \textit{$a$}, el agente superior en la cadena de suministro es \textit{$a+1$}; el inferior es \textit{$a-1$} y se representan con sub\'indices para cada atributo
     \item Cada agente tiene un precio de venta \textit{$p_{a}$}, un costo de almacenamiento \textit{$c_{a}$} y un costo por orden no cumplida (\textit{backlog}) \textit{$b_{a}$}
     \item En cada d\'ia \textit{$d$}, cada agente \textit{$a$} recibir\'a del agente superior \textit{$a+1$} la cantidad demandada por el primero en el d\'ia \textit{$d-1$}, sujeto a que tal cantidad sea menor o igual a la cantidad que el agente \textit{$a+1$} ten\'ia en el almac\'en
-    \item En cada una de estas transacciones, cada agente recibe el dinero equivalente, basado en su respectivo precio de venta, e incurre en costos de almacn\'en y por \'ordenes no cumplidas
+    \item En cada una de estas transacciones, cada agente recibe el dinero equivalente, basado en su respectivo precio de venta, e incurre en costos de almacenamiento y por \'ordenes no cumplidas
 \end{enumerate}
 
 
@@ -44,7 +49,11 @@ $$
 
 Es decir, cada agente recibe el dinero correspondiente a las ventas que hace al agente inferior, paga el costo castigo relacionado a las \'ordenes no cumplidas, paga las \'ordenes hechas al agente superior y paga el costo de almacenamiento.\\
 
-Una vez establecidas todas las relaciones entre todos los jugadores y establecidos los par\'ametros del mundo, se han obtenido dos formas diferentes de solucionar el juego: la primera con \textit{policy iteration} y la segunda con \textit{Q-learning}.
+Es importante notar que las reglas de funcionamiento del mundo lo convierten en un ambiente que, si bien no es estoc\'astico en el sentido estricto de la definici\'on, tampoco es puramente determinista: un agente que tome la misma acci\'on puede tener diferente recompensa de una realizaci\'on a otra debido a un manejo de inventario diferente del agente superior. El sistema presentado presenta un comportamiento m\'as estoc\'astico durante la fase de exploraci\'on, y tiende a completamente determinista durante la fase de explotaci\'on. Es por esto que en este trabajo, no se han incluido probabilidades de transici\'on (indicadas como $T(s, \pi(s), s'$ en las ecuaciones de secciones anteriores) en el modelo dado que cada acci\'on tomada en un estado por un agente, solo tiene una posible consecuencia, dada por las restricciones de inventario y los par\'ametros del mundo tales como costos y precios.\\
+
+Si bien el c\'odigo del modelo fue construido para tener flexibilidad en los par\'ametros del mundo (como los precios de compra y venta de los agentes, o los costos de almacenamiento), la mayor parte de los resultados presentados en esta secci\'on fueron obtenidos con la misma combinaci\'on prudente de tales par\'ametros. Existen casos extremos, por ejemplo que todos los agentes comenzaran el a\~no con m\'as inventario del que necesitar\'an, y por lo tanto nunca necesitar\'an presentar una cantidad demandada ante sus respectivos agentes superiores. Otro caso extremo podr\'ia surgir si el costo de almacenamiento fuera mayor al margen de ganancia y que la penalizaci\'on por \'ordenes no cumplidas no compesara tal diferencia. En este trabajo no se explorar\'an estos casos extremos.\\
+
+Una vez establecidas todas las relaciones entre todos los jugadores y establecidos los par\'ametros del mundo, se han obtenido dos formas diferentes de solucionar el juego: la primera con \textit{policy iteration} y la segunda con \textit{Q-learning}. En este trabajo no se ahondar\'a en los resultados de \textit{Q-learning} dado que el algoritmo no convergi\'o en un tiempo razonable, y tambi\'en dado que \textit{policy iteration}, a pesar de ser un algoritmo m\'as simple, dio buenos resultados en todas las simulaciones.
 
 \section{Policy Iteration}
 
@@ -54,30 +63,96 @@ Las ecuaciones que describen el aprendizaje de un agente son:
     \item La ecuaci\'on de utilidad (recompensa) para cada agente $a$ en el d\'ia $d$:
 
 $$
-R(a, d) = R(a,d) + \gamma*r_{a, d+1} + ... + \gamma^{364}*r_{a,d+364}
+R(a, d) = r_{a,d} + \gamma*r_{a, d+1} + ... + \gamma^{364}*r_{a,d+364}
 $$
 
-    \item Aqu\'i falta describir el vector de policies para cada agente
-    \item Aqu\'i falta escribir el metodo para actualizar el vector de mejor policy cuando se encuentra
+    \item El vector de pol\'itica para cada agente tiene la siguiente forma, guardando en cada elemento la cantidad demandada al agente superior en cada tiempo $t$, que en este caso es cada d\'ia del a\~no:
+    
+$$
+\pi(s) = \left \{ \pi(s)_{ t = 1}, \pi(s)_{ t = 22}, ..., \pi(s)_{ t = 365} \right \}
+$$
+
 \end{enumerate}
 
-Bajo este algoritmo, los agentes aprenden pol\'iticas que siguen el comportamiento de la oferta, lo cual es el comportamiento esperado dado que en las especificaciones iniciales, se defini\'o manualmente que el la demanda anual no sobrepasara la oferta anual. Este resultado puede observarse en la figura \ref{politer_policies}. \\
+Se utilizan las ecuaciones planteadas en secciones anteriores para actualizar el vector de pol\'itica \'optima cuando se encuentra una nueva pol\'itica con un valor mayor.\\
 
-\begin{figure}[ht]
-\caption{Policies \'optimas de cada agente bajo \textit{policy iteration}}
-\label{politer_policies}
-\includegraphics[width=15cm]{tesis_tex/figs/policyiteration_policies.png}
+Cabe destacar que el vector de pol\'itica \'optima puede razonablemente ser inicializado como un vector de ceros, lo cual representa una estrategia de completa inacci\'on, o como un vector cuyos elementos son realizaciones de un generador de n\'umeros aleatorios para no imponer ninguna estrategia.\\
+
+Los agentes aprenden estrategias que siguen el comportamiento de la oferta, lo cual es el comportamiento esperado dado que en las especificaciones iniciales, se defini\'o manualmente que el la demanda anual no sobrepasara la oferta anual. Este resultado puede observarse en las figuras \ref{politer_payouts_1000} a \ref{politer_payouts_1000000}, en donde se presentan las pol\'iticas encontradas con $1k$, $10k$, $100k$ y $1M$ iteraciones. \\
+
+\begin{figure}[!htb]
+   \begin{minipage}{0.48\textwidth}
+     \centering
+     \includegraphics[width=1\linewidth]{tesis_tex/figs/policyiteration_payouts_1000.png}
+     \caption{Evoluci\'on de recompensas con 1k iteraciones}\label{politer_payouts_1000}
+   \end{minipage}\hfill
+   \begin{minipage}{0.48\textwidth}
+     \centering
+     \includegraphics[width=1\linewidth]{tesis_tex/figs/policyiteration_payouts_10000.png}
+     \caption{10k iteraciones}\label{politer_payouts_10000}
+   \end{minipage}
+\end{figure}
+
+\begin{figure}[!htb]
+   \begin{minipage}{0.48\textwidth}
+     \centering
+     \includegraphics[width=1\linewidth]{tesis_tex/figs/policyiteration_payouts_100000.png}
+     \caption{100k iteraciones}\label{politer_payouts_100000}
+   \end{minipage}\hfill
+   \begin{minipage}{0.48\textwidth}
+     \centering
+     \includegraphics[width=1\linewidth]{tesis_tex/figs/policyiteration_payouts_1000000.png}
+     \caption{1M iteraciones}\label{politer_payouts_1000000}
+   \end{minipage}
+\end{figure}
+
+Es esperado observar  que todos los agentes presentan una tendencia positiva al encontrar mejores \textit{policies} en cada iteraci\'on del algoritmo. Sin embargo, es interesante notar que la funci\'on de valor del agente Menudeo empieza en un punto mucho m\'as cercano al \'optimo que los otros agentes. Esto puede explicarse porque, dada la configuraci\'on del mundo, el agente Menudeo tiene informaci\'on directa de la demanda del consumidor, y por lo tanto puede ajustar su pol\'itica mucho m\'as r\'apidamente.\\
+
+El algoritmo converge de manera relativamente r\'apida: en las figuras  \ref{politer_payouts_1000} a \ref{politer_payouts_1000000} se puede observar que, con diferente n\'umero de iteraciones, el comportamiento del crecimiento de la funci\'on de valor (inferida de la pol\'itica \'optima en la iteraci\'on $i$) es similar. Asimismo, en las figuras \ref{politer_policies_1000} a \ref{politer_policies_1000000} se puede observar una comparaci\'on de las pol\'iticas obtenidas con los mismos umbrales de iteraciones: la forma es extremadamente parecida sin importar la cantidad de iteraciones. Este fen\'omeno nos indica que no es necesario un n\'umero alto de iteraciones, pues se encuentra el valor m\'aximo y la forma correcta de la pol\'itica \'optima solamente con solamente $10,000$ iteraciones. Con las condiciones de hardware y software especificadas en secciones anteriores, este proceso tarda un poco menos de 5 minutos.\\
+
+Las pol\'iticas aprendidas tienen el comportamiento esperado: todos los agentes compran cantidades altas durante ambos picos de producci\'on que se presentan alrededor de la mitad del a\~no para abastecerse lo m\'as posible para las ventas del resto del a\~no. Es importante recordar que estas pol\'iticas \'optimas dependen de la selecci\'on de par\'ametros del mundo (precios, costos, etc.) en gran medida, as\'i como los metapar\'ametros (tiempo de calentamiento, $\epsilon$, etc.) y esto implica que es necesario realizar un entrenamiento nuevo en caso de que estos cambien, o si de un a\~no a otro los agentes tienen, por ejemplo, diferentes inventarios iniciales. Este problema puede ser resuelto entrenando un modelo como \textit{Q-learning}, opci\'on que se explorar\'a levemente m\'as adelante en esta secci\'on.\\
+
+
+AQUI VA MAS TEXTOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
+
+\begin{figure}[!htb]
+   \begin{minipage}{0.48\textwidth}
+     \centering
+     \includegraphics[width=1\linewidth]{tesis_tex/figs/policyiteration_policies_1000.png}
+     \caption{Evoluci\'on de recompensas con 1k iteraciones}\label{politer_policies_1000}
+   \end{minipage}\hfill
+   \begin{minipage}{0.48\textwidth}
+     \centering
+     \includegraphics[width=1\linewidth]{tesis_tex/figs/policyiteration_policies_10000.png}
+     \caption{10k iteraciones}\label{politer_policies_10000}
+   \end{minipage}
+\end{figure}
+
+\begin{figure}[!htb]
+   \begin{minipage}{0.48\textwidth}
+     \centering
+     \includegraphics[width=1\linewidth]{tesis_tex/figs/policyiteration_policies_100000.png}
+     \caption{100k iteraciones}\label{politer_policies_100000}
+   \end{minipage}\hfill
+   \begin{minipage}{0.48\textwidth}
+     \centering
+     \includegraphics[width=1\linewidth]{tesis_tex/figs/policyiteration_policies_1000000.png}
+     \caption{1M iteraciones}\label{politer_policies_1000000}
+   \end{minipage}
+\end{figure}
+
+Durante el an\'alisis de las pol\'iticas y sus resultados, sali\'o a la luz un fen\'omeno no esperado: la penalizaci\'on por \'ordenes no cumplidas afecta de manera desequilibrada a los agentes.\\
+
+Se ha hablado ya de las estrategias \'optimas obtenidas por el algoritmo de \textit{policy iteration}, sin embargo es de suma importancia comparar el potencial beneficio que podr\'ian tener los agentes tomando como l\'inea base una estrategia cre\'ible pero poco optimizada.\\
+
+
+\begin{figure}[H]
+\caption{Comparaci\'on de desempe\~no entre combinaciones de estrategias}
+\label{ev_policies_dumb}
+\includegraphics[width=14cm]{tesis_tex/figs/evaluating_policies_dumb_to_smart.png}
 \centering
 \end{figure}
 
-Podemos observar que todos los agentes presentan una tendencia positiva al encontrar mejores \textit{policies} en cada iteraci\'on del algoritmo.
-
-\begin{figure}[ht]
-\caption{Pagos \'optimos de cada agente}
-\label{politer_payouts}
-\includegraphics[width=15cm]{tesis_tex/figs/policyiteration_payouts.png}
-\centering
-\end{figure}
 
 \section{Q-Learning}
 

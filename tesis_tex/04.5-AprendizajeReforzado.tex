@@ -61,7 +61,7 @@ p_t{t} &= 1 - p_r{t} \quad \quad \forall t
 
 La funci\'on $\epsilon$ suele ser implementada como decreciente de forma lineal para el aprendizaje,  de tal forma que mientras pasa el tiempo, el agente escoge las acciones conocidas que le reportan mayor utilidad m\'as seguido; junto con un par\'ametro $\rho$ aleatorio para asegurar que siempre existe una probabilidad positiva de explorar.\\
 
-Generalmente se supone este tipo de problemas como Procesos de Decisi\'on de Markov (MDP), cuya principal caracter\'istica es que cumplen con la famosa propiedad de Markov: a grandes rasgos, el futuro solamente depende del presente, no del pasado.\\
+Generalmente se supone este tipo de problemas como Procesos de Decisi\'on de Markov (MDP, por sus siglas en ingl\'es), cuya principal caracter\'istica es que cumplen con la famosa propiedad de Markov: a grandes rasgos, el futuro solamente depende del presente, no del pasado.\\
 
 Formalmente, un proceso de Markov es una tupla $(X,U,f,\rho)$ en donde $X$ es el conjunto finito de estados, $U$ es el conjunto finito de aciones de un agente, $f:X*U*X\rightarrow[0,1]$ es la funci\'on de probabilidad de transici\'on de estado, y $\rho:X*U*X\rightarrow\mathbb{R}$ es la funci\'on de recompensa. \\
 
@@ -71,25 +71,44 @@ En este trabajo se aplicar\'an dos algoritmos sumamente conocidos y aplicados en
 
 \section{Policy Iteration}
 
-En este algoritmo, se empieza con una pol\'itica aleatoria, se encuentra el valor de ella, y se realiza un paso que encuentra una pol\'itica nueva (mejor) basado en la anterior. De esta manera, \textit{policy iteration} asegura convergencia a la pol\'itica \'optima. \\
+En este algoritmo, se empieza con una pol\'itica aleatoria, se encuentra su valor, y se realiza un paso que encuentra una pol\'itica nueva (mejor) basado en la anterior. Bajo el supuesto de que los agentes tienen una cantidad finita de acciones en cada estado, existen una cantidad finita de posibles pol\'iticas y es razonable esperar convergencia en un algoritmo de b\'usqueda. De cierta manera, dado un tiempo suficientemente grande y cardinalidad finita de las acciones a tomar en cada estado por cada agente, \textit{policy iteration} asegura convergencia a la pol\'itica \'optima. En general, el algoritmo parece terminar en tiempo exponencial o pseudopolinomial, pero el m\'aximo tiempo posible es todav\'ia un tema abierto de investigaci\'on.\\
 
-La ecuaci\'on que representa este algoritmo es:
+Recordemos que en cada tiempo $t$, cada agente puede tomar una acci\'on $a$ y recibe una recompensa $r$. De manera general se puede suponer que debido a esto, el proceso de aprendizaje se comporta como un proceso de Markov (MDP). As\'i, de manera iterativa se puede asignar una pol\'itica $\pi$ a cada agente (es importante recordar que una pol\'itica es el conjunto de acciones $a_t$ a tomar en cada estado $e_t$), evaluar su desempe\~no por medio de la recompensa final que representa para el agente, y avanzar a la siguiente iteraci\'on en la cual se intentar\'a mejorar la mejor pol\'itica hist\'orica.\\
+
+Esto quiere decir que, tomando una pol\'itica base $\pi_0$, se puede encontrar una pol\'itica $\pi_1$ que otorga una recompensa igual o mayor (i.e. $V^{\pi_0}(s)<V^{\pi_1}(s) \forall s \in S$). En alg\'un momento, el algoritmo llega a una pol\'itica $\pi_{*}$ que no puede ser mejorada, la cual es declarada la pol\'itica \'optima.\\
+
+
+Se puede representar este proceso como:
 
 $$
 \pi_0 \overset{E}{\rightarrow} V^{\pi_{0}} \overset{I}{\rightarrow}
 \pi_1 \overset{E}{\rightarrow} V^{\pi_{1}} \overset{I}{\rightarrow}
 \pi_2 \overset{E}{\rightarrow} 
 ...
-\overset{I}{\rightarrow} \pi_{*} \overset{I}{\rightarrow} V^{\pi_{*}}
+\overset{I}{\rightarrow} \pi_{*} \overset{E}{\rightarrow} V^{\pi_{*}}
 $$
 
 En donde $\overset{E}{\rightarrow}$ significa que una pol\'itica se \textit{eval\'ua}, y $\overset{I}{\rightarrow}$ significa que se mejora (por \textit{improvement}, en ingl\'es). \\
 
-Se suele preferir este algoritmo sobre \textit{value iteration}, pues es com\'un que se encuentre la pol\'itica \'optima mucho antes de que la funci\'on de valor converja. Adem\'as, dado que se itera sobre la pol\'itica anterior y se busca una mejor, el algoritmo converge r\'apidamente y cada paso asegura una mejora.
+Las ecuaciones que representan el algoritmo se presentan a continuaci\'on como son descritas por \citet{Frazzoli}. Para encontrar el valor de cada estado bajo la pol\'itica $\pi$:
+
+$$
+V(s) = \sum_{s' \in S}^{ } T(s, \pi(s), s')[R(s, \pi(s), s') + \gamma V(s')] \quad \forall s \in S
+$$
+
+Para mejorar la pol\'itica, se aplica para cada $s \in S$:
+
+$$
+\pi(s) \leftarrow \max_a \sum_{s' \in S}^{ }T(s,a,s')[R(s,a,s') + \gamma V(s')]
+$$
+
+iterando ambos pasos hasta que $\pi_*$ converja.\\
+
+Existe un algoritmo similar llamado \textit{value iteration}, el cual itera sobre la funci\'on de valor e infiere la pol\'itica relacionada al valor \'optimo obtenido al final, en lugar de iterar sobre la pol\'itica y evaluar el valor. Se suele preferir este algoritmo sobre \textit{value iteration}, pues converge m\'as r\'apidamente (en t\'erminos de iteraciones necesarias), presumiblemente porque la funci\'on de valor cambia muy poco de una pol\'itica a otra. Adem\'as, dado que se itera sobre la pol\'itica anterior y se busca una mejor, el algoritmo converge r\'apidamente y cada paso asegura una mejora. Se puede consultar m\'as acerca del algoritmo \textit{value iteration} y de la programaci\'on y convergencia de ambos en \citet{Sutton}.
 
 \section{Q-Learning}
 
-Uno de los algoritmos m\'as populares de aprendizaje es \textit{Q-learning}. Obtiene este nombre por la \textit{funci\'on Q}, la cual indica el valor descontado de la recompensa asociado a una acci\'on en un estado determinado.
+Uno de los algoritmos m\'as populares de aprendizaje es \textit{Q-learning}. Obtiene este nombre por la \textit{funci\'on Q}, la cual indica el valor descontado de la recompensa asociado a una acci\'on en un estado determinado. La principal ventaja de este tipo de aprendizaje es que no est\'a basado en un modelo, es decir que se conoce una cantidad m\'inima de detalles acerca del mundo y su funcionamiento, y el agente aprende con base en su experiencia al interactuar. Esta libertad permite, por ejemplo, relajar el supuesto del proceso comport\'andose como un proceso de Markov.
 
 \subsection{Conceptos}
 
