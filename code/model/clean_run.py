@@ -8,7 +8,8 @@ import hashlib
 import datetime
 import dill
 import matplotlib.pyplot  as plt
-import seaborn
+import seaborn as sns
+import pylab
 
 # For my Windows (work) computer
 os.chdir('C:\\Users\\Fernanda Alcala\\Documents\\GitHub\\Tesis_Maestria\\code\\model\\')
