@@ -1,17 +1,7 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-Created on Fri Jul 13 13:28:51 2018
-
-@author: fernandaalcala
-"""
 ##############################################################
 
 # this script fetches data from the database that contains the experiments
 # paarameters and prints various plots 
-
-import matplotlib
-from matplotlib import pyplot as plt
 
 path_to_write_figures = './../../tesis_tex/figs/'
 run_iteration_comparison = False
@@ -19,7 +9,7 @@ run_iteration_comparison = False
 ##############################################################################
 # Final policies
 fig = plt.figure(figsize=(10,7.5))
-st = fig.suptitle("Policies óptimas aprendidas -  iteraciones", fontsize="x-large") # Optimal Learnt Policies
+st = fig.suptitle("Policies óptimas aprendidas", fontsize="x-large") # Optimal Learnt Policies
 
 ax1 = fig.add_subplot(221)
 ax1.plot(retail_agent.best_policy)
@@ -54,38 +44,38 @@ fig.subplots_adjust(top=0.85)
 # save this experiment's result
 #figname = path_to_write_figures + "policies_" + experiment_id + ".png"
 # save as the latest (mainly so the TeX file can pull it by name)
-figname_latest = path_to_write_figures + "policyiteration_policies_100000.png"
+figname_latest = path_to_write_figures + "policyiteration_policies.png"
 #fig.savefig(figname)
 fig.savefig(figname_latest)
 
 ##############################################################################
 # Historic payout
 fig = plt.figure(figsize=(10,7.5))
-st = fig.suptitle("Pago final durante el aprendizaje - iteraciones", fontsize="x-large") #Historical Payouts during Learning
+st = fig.suptitle("Pago final durante el aprendizaje", fontsize="x-large") #Historical Payouts during Learning
 
 ax1 = fig.add_subplot(221)
 ax1.plot(retail_agent.historic_payout)
 ax1.set_title("Menudeo") #Retail
 plt.xlabel('Iteración')
-pylab.ylim([-10000,10000])
+pylab.ylim([-25000,10000])
 
 ax2 = fig.add_subplot(222)
 ax2.plot(wholesale_agent.historic_payout)
 ax2.set_title("Mayoreo") #Wholesale
 plt.xlabel('Iteración')
-pylab.ylim([-10000,10000])
+pylab.ylim([-25000,10000])
 
 ax3 = fig.add_subplot(223)
 ax3.plot(regional_warehouse_agent.historic_payout)
 ax3.set_title("Almacén regional") #Regional Warehouse
 plt.xlabel('Iteración')
-pylab.ylim([-10000,10000])
+pylab.ylim([-25000,10000])
 
 ax4 = fig.add_subplot(224)
 ax4.plot(factory_agent.historic_payout)
 ax4.set_title("Fábrica") #Factory
 plt.xlabel('Iteración')
-pylab.ylim([-10000,10000])
+pylab.ylim([-25000,10000])
 
 fig.tight_layout()
 
@@ -96,7 +86,7 @@ fig.subplots_adjust(top=0.85)
 # save this experiment's result
 #figname = path_to_write_figures + "payouts_" + experiment_id + ".png"
 # save as the latest (mainly so the TeX file can pull it by name)
-figname_latest = path_to_write_figures + "policyiteration_payouts_100000.png"
+figname_latest = path_to_write_figures + "policyiteration_payouts.png"
 #fig.savefig(figname)
 fig.savefig(figname_latest)
 
