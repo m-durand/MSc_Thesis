@@ -166,7 +166,7 @@ eval_policies_df_sp = eval_policies_df_sp.replace(['Dumber','Dumb', 'Smart'],
 
 
 # Visualizing as a faceted plot
-g = seaborn.FacetGrid(eval_policies_df_sp, 
+g = sns.FacetGrid(eval_policies_df_sp, 
                       row='agente', 
                       col = 'estrategia', col_order = ['Nadie óptima','Un agente óptimo', 'Todos óptima'],
                       margin_titles=True)
