@@ -10,11 +10,12 @@ import dill
 import matplotlib.pyplot  as plt
 import seaborn as sns
 import pylab
+import shelve
 
 # For my Windows (work) computer
-os.chdir('C:\\Users\\Fernanda Alcala\\Documents\\GitHub\\Tesis_Maestria\\code\\model\\')
+#os.chdir('C:\\Users\\Fernanda Alcala\\Documents\\GitHub\\Tesis_Maestria\\code\\model\\')
 # For my Mac (personal) computer
-#os.chdir('/Users/fernandaalcala/Documents/Tesis_Maestria/code/model/')
+os.chdir('/Users/fernandaalcala/Documents/Tesis_Maestria/code/model/')
 
 ## Setup hyperparameters for policy iteration ##########################
 np.random.seed(20170130)
