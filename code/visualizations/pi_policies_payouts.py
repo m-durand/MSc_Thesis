@@ -137,14 +137,9 @@ fig.savefig(figname_latest)
 # Run training many times with diferent total epochs ################
 if run_iteration_comparison == True:
     # Different iterations that will be tested
-    iteration_tests = [100,500,1000,1500,2000,2500,
-                       3500,4000,5000,6000,7500,
-                       10000,12500,15000,17500,
-                       20000,25000,30000,35000,40000,45000,50000,
-                       60000,70000,80000, 90000, 100000,125000,150000,
-                       200000,250000, 300000, 350000,400000,450000,500000]
+    iteration_tests = [(x*10000)+10000 for x in range(50)]
     
-    eval_iter_df_1 = pd.DataFrame(columns=['agent', 'iterations', 'total_money', 'current_payout']) 
+    eval_iter_df = pd.DataFrame(columns=['agent', 'iterations', 'total_money', 'current_payout']) 
     
     # Setting world parameters for all the simulations
     # For an in-depth explanatiof of parameters please refer to the clean run script
@@ -176,27 +171,27 @@ if run_iteration_comparison == True:
         exec(open("policy_iteration.py").read())
         # Add final payouts to the main dataframe   
         new_row = ['Retail',iter_i,retail_agent.total_money,retail_agent.current_payout[-1]]
-        eval_iter_df_1.loc[eval_iter_df.shape[0] + 1] = new_row
+        eval_iter_df.loc[eval_iter_df.shape[0] + 1] = new_row
         new_row = ['Wholesale',iter_i,wholesale_agent.total_money,wholesale_agent.current_payout[-1]]
-        eval_iter_df_1.loc[eval_iter_df.shape[0] + 1] = new_row
+        eval_iter_df.loc[eval_iter_df.shape[0] + 1] = new_row
         new_row = ['Regional Warehouse',iter_i,regional_warehouse_agent.total_money,regional_warehouse_agent.current_payout[-1]]
-        eval_iter_df_1.loc[eval_iter_df.shape[0] + 1] = new_row
+        eval_iter_df.loc[eval_iter_df.shape[0] + 1] = new_row
         new_row = ['Factory',iter_i,factory_agent.total_money,factory_agent.current_payout[-1]]
-        eval_iter_df_1.loc[eval_iter_df.shape[0] + 1] = new_row
+        eval_iter_df.loc[eval_iter_df.shape[0] + 1] = new_row
     
-        eval_iter_df_1.to_csv('./../../aux_documents/evaluate_payout_iterations_2.csv')
+        eval_iter_df.to_csv('./../../aux_documents/evaluate_payout_iterations.csv')
     
     # Change levels to spanish to have visualization ready for document
-    eval_iter_df_1.columns = ['agente', 'iteración', 'dinero final', 'pago final']
-    eval_iter_df_1 = eval_iter_df.replace(['Retail','Wholesale', 'Regional Warehouse','Factory'],
+    eval_iter_df.columns = ['id', 'agente', 'iteración', 'dinero final', 'pago final']
+    eval_iter_df = eval_iter_df.replace(['Retail','Wholesale', 'Regional Warehouse','Factory'],
                                 ['Menudeo','Mayoreo', 'Almacén Regional','Fábrica'])
     
-    
-    # Plots ##########################
+    # Plots ##########################  
     
     # Visualizing as a faceted plot
     
-    fig = sns.lineplot('iteración', 'dinero final', data=eval_iter_df.iloc[:116,], hue='agente')
+    fig = sns.lineplot('iteración', 'dinero final', data=eval_iter_df_1, hue='agente')
+    fig.set(ylim=(0, 8000))
     fig.show()
     
     figname_latest = path_to_write_figures + "evaluating_iterations_money_2.png"

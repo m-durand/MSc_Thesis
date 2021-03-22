@@ -11,6 +11,7 @@ import matplotlib.pyplot  as plt
 import seaborn as sns
 import pylab
 import shelve
+from matplotlib.ticker import FuncFormatter
 
 # For my Windows (work) computer
 #os.chdir('C:\\Users\\Fernanda Alcala\\Documents\\GitHub\\Tesis_Maestria\\code\\model\\')
