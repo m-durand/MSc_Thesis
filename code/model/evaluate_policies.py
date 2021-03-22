@@ -286,7 +286,6 @@ eval_policies_df_ids['strategy'] = eval_policies_df_ids['strategy'].str.slice(0,
 eval_policies_df_ids.columns = ['iteration', 'agent', 'strategy', 'index']
 
 eval_policies_df_complete = eval_policies_df.set_index(['iteration','strategy','agent']).join(eval_policies_df_ids.set_index(['iteration','strategy','agent'])).reset_index()
-eval_policies_df_complete.to_csv('./../../aux_documents/evaluate_policies_index.csv')
 
 #This part creates the same dataframe but in Spanish since the final document needs the viz
 eval_policies_df_sp = eval_policies_df_ids
@@ -305,7 +304,7 @@ eval_policies_df_sp.groupby(['agente', 'estrategia'])['desempeño'].median().res
 # preprocessing a bit because outliers mess up the plots
 eval_policies_df_sp_no_outl = eval_policies_df_sp[eval_policies_df_sp.desempeño < 5]
 eval_policies_df_sp_no_outl = eval_policies_df_sp_no_outl[eval_policies_df_sp_no_outl.desempeño > (10*(-1))]
-eval_policies_df_sp_no_outl.to_csv('./../../aux_documents/evaluate_policies_clean.csv')
+eval_policies_df_sp_no_outl.to_csv('./../../aux_documents/evaluate_policies_index.csv')
 
 
 sns.set()
