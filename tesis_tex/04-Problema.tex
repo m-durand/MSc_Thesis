@@ -1,6 +1,6 @@
 \chapter{El Problema: Juego de Distribuci\'on de la Cerveza}
 
-El \textit{Juego de la Distribución de Cerveza} ejemplifica la relaci\'on causal entre la toma de decisiones de cada agente con el comportamiento de todo el sistema, en este caso una cadena de suministro. Asimismo, presenta el efecto l\'atigo claramente: el retraso en la informaci\'on entre agentes causa que, a trav\'es del tiempo, el comportamiento de cada uno se vuelva menos constante cuanto m\'as lejos se encuentre del consumidor final. Por \'ultimo, evidencia las ineficiencias inherentes a tratar de resolver el problema enfoc\'andose en los agentes, ignorando que es un sistema completo. 
+El \textit{Juego de la Distribución de Cerveza} ejemplifica la relaci\'on causal entre la toma de decisiones de cada agente (que no tiene informaci\'on global) con el comportamiento de todo el sistema, en este caso una cadena de suministro. Asimismo, a falta de una estrategia \'optima, inherentemente presenta el efecto l\'atigo: el retraso en la informaci\'on entre agentes causa que, a trav\'es del tiempo, el comportamiento de cada uno se vuelva menos constante cuanto m\'as lejos se encuentre del consumidor final. Por \'ultimo, evidencia las ineficiencias inherentes a tratar de resolver el problema enfoc\'andose en los agentes, ignorando que es un sistema completo. 
 
 %business dynamics
 %sistemas complejos adaptativos
@@ -14,17 +14,17 @@ El \textit{Juego de la Distribución de Cerveza} ejemplifica la relaci\'on causa
 
 Para plantear correctamente el \textit{Problema de la Distribuci\'n de Cerveza}, es necesario entender el concepto de una cadena de suministro. \\
 
-Una cadena de suministro (en ingl\'es, \textit{supply chain}), en la definici\'on de \citet{Jacobs},  es un proceso que desplaza informaci\'on y material con destino y origen en los procesos de manufactura y servicio de la empresa. Una manera com\'un de representar el comportamiento de una cadena como un modelo es a trav\'es de existencias, flujos, ciclos y agentes\footnote{Existen muchas otras maneras, como las redes de Petri, ampliamente utilizadas en la teor\'ia de aut\'omatas.}. Por ejemplo, en una simplificaci\o'n de producci\'on automotriz que se puede observar en la figura \ref{automotriz}, se representa a cada eslab\'on como un agente (la f\'abrica de partes, la ensambladora, el taller de pintura y la agencia de venta), los flujos como las entradas y salidas de materia en cada eslab\'on (por ejemplo, la f\'abrica de partes tiene como insumos metal y pl\'astico, mientras que el taller de pintura tiene como insumo el auto ensamblado y litros de pintura) y los ciclos pueden depender de estacionalidad, disponibilidad o simple predisposici\'on.\\
+Una cadena de suministro (en ingl\'es, \textit{supply chain}), en la definici\'on de \citet{Jacobs},  es un proceso que desplaza informaci\'on y material con destino y origen en los procesos de manufactura y servicio de la empresa. Una manera com\'un de representar el comportamiento de una cadena como un modelo es a trav\'es de existencias, flujos, ciclos y agentes\footnote{Existen muchas otras maneras, como las redes de Petri, ampliamente utilizadas en la teor\'ia de aut\'omatas. \citet{Shiflet}}. Por ejemplo, en una simplificaci\o'n de producci\'on automotriz que se puede observar en la figura \ref{automotriz}, se puede observar un ejemplo en el cual se representa cada eslab\'on como un agente (la f\'abrica de partes, la ensambladora, el taller de pintura y la agencia de venta), los flujos de producto como las entradas y salidas de materia en cada eslab\'on (por ejemplo, la f\'abrica de partes tiene como insumos metal y pl\'astico, mientras que el taller de pintura tiene como insumo el auto ensamblado y litros de pintura), los flujos de informaci\'on se suponen globales y sin retraso, y los ciclos pueden depender de estacionalidad, disponibilidad o simple predisposici\'on.\\
 
 \begin{figure}[ht]
-\caption{\textit{Simplificaci\'on de una cadena de suministro automotriz}}
+\caption{\textit{Ejemplo de simplificaci\'on de una cadena de suministro automotriz}}
 \label{automotriz}
 \includegraphics[width=15cm]{auto_chain_simple.png}
 \centering
 \end{figure}
 
 
-El estudio de las cadenas de suministro cubre un campo vasto, dado que existen una infinidad de problemas relacionados a ellas: desde transporte, log\'istica, manejo de inventario, optimizaci\'on de la localizaci\'on geogr\'afica para cada uno de los eslabones, sustentabilidad, etc. Sin embargo, una vez que la cadena est\'a en funcionamiento, uno de las principales dificultades es que los agentes encargados de optimizar las estrategias de demanda y producci\'on de cada eslab\'on solamente pueden tomar decisiones ``dentro'' de aquel en el que se encuentran, y no tienen informaci\'on m\'as all\'a de los eslabones inmediatamente conectados, solamente una estimaci\'on (en ingl\'es \textit{forecast}) que representa su mejor predicci\'on de tal comportamiento. As\'i, la informaci\'on acerca de la demanda del consumidor se va diluyendo en cada nivel, además de que las decisiones tomadas tienen repercusiones m\'as all\'a del futuro inmediato. \\
+El estudio de las cadenas de suministro puede cubrir un campo vasto, dado que existen una gran cantidad de problemas relacionados a ellas: transporte, log\'istica, manejo de inventario, optimizaci\'on de la localizaci\'on geogr\'afica para cada uno de los eslabones, sustentabilidad, etc. Sin embargo, una vez que la cadena est\'a en funcionamiento, uno de las principales dificultades es que los agentes encargados de optimizar las estrategias de demanda y producci\'on de cada eslab\'on solamente pueden tomar decisiones ``dentro'' de aquel en el que se encuentran, y no tienen informaci\'on m\'as all\'a de los eslabones inmediatamente conectados, solamente una estimaci\'on (en ingl\'es \textit{forecast}) que representa su mejor predicci\'on de tal comportamiento. As\'i, la informaci\'on acerca de la demanda del consumidor se va diluyendo en cada nivel, además de que las decisiones tomadas tienen repercusiones m\'as all\'a del futuro inmediato. \\
 
 El objetivo principal de cada agente es minimizar los costos al tiempo de maximizar los ingresos, donde los costos pueden no ser flujos de dinero sino, por ejemplo, castigos por \'ordenes no cumplidas o varianza alta en la producci\'on que implique mayores costos de mantenimiento. Para llegar a este objetivo, cada uno de ellos debe tratar de inferir el patr\'on de demanda del consumidor, que llegar\'a distorsionado a \'el, por medio de información local bastante restringida. Al tener una estimaci\'on \'util de tal patr\'on, as\'i como del comportamiento de sus eslabones inmediatamente conectado, puede crear su estrategia de inventario y producci\'on para maximizar su utlidad. Volviendo al ejemplo anterior de la producci\'on automotriz, la f\'abrica de partes debe ordenar metal y pl\'astico suficiente para producir y cubrir la demanda de la planta ensambladora, pero ambos eslabones deben producir manteniendo en mente que la tendencia de demanda proviene, al final, del consumidor. Sin embargo, la planta no tiene ning\'un incentivo real para compartir con la f\'abrica la cantidad exacta de autos ensamblados que produce o que vende cada periodo al taller de pintura. Esto obliga a cada eslab\'on a contar solamente con datos limitados, adem\'as de que los datos de demanda que reciben obedecen al tiempo real y los agentes no tienen la oportunidad de repetir experimentos.\\
 
@@ -32,9 +32,9 @@ Un modelo computacional que se comporte suficientemente parecido al mundo real, 
 
 \section{El Juego de la Distribuci\'on de Cerveza}
 
-El Juego de la Distribuci\'on de Cerveza (en ingl\'es \textit{The Beer Distribution Game}) \cite{StermanArt} fue planteado por primera vez en la Escuela de Administraci\'on y Direcci\'on de Empresas Sloan del MIT en los años 60 para ejemplificar el \textit{efecto l\'atigo}, llamado as\'i por la similaridad que tiene el comportamiento la informaci\'on en cada nivel de la cadena con el patr\'on ondulado que toma un l\'atigo, en el cual existe una mayor amplitud de onda (comparable con el ruido o la varianza en la informaci\'on) al alejarse del punto de origen (comparable al consumidor). \\
+El Juego de la Distribuci\'on de Cerveza (en ingl\'es \textit{The Beer Distribution Game}) \cite{StermanArt} fue planteado por primera vez en la Escuela de Administraci\'on y Direcci\'on de Empresas Sloan del MIT para ejemplificar el \textit{efecto l\'atigo}, llamado as\'i por la similaridad que tiene el comportamiento la informaci\'on en cada nivel de la cadena con el patr\'on ondulado que toma un l\'atigo, en el cual existe una mayor amplitud de onda (comparable con el ruido o la varianza en la informaci\'on) al alejarse del punto de origen (comparable al consumidor). \\
 
-En su forma de juego de mesa, se presenta com\'unmente a alumnos reci\'en ingresados a distintas escuelas de negocios. El MIT ha publicado en el cual se nota que, independientemente del rol que jueguen y de cu\'anta experiencia y preparaci\'on en negocios tengan, los humanos consistentemente fallan en encontrar la estrategia para maximizar la utilidad (ver \citet{Dizikes}). Para nosotros los humanos, es sumamente dif\'icil pensar de manera no lineal y tomar en cuenta efectos como retrasos (tanto en entrega de los pedidos como en la informaci\'on) o la retroalimentaci\'on en los ciclos (cuando hay inventario sobrante, puede ser llevado al siguiente periodo). Estos conceptos son manejados correctamente cuando se modelan como efectos de sistemas din\'amicos, tarea considerablemente m\'as f\'acil para una computadora que para una persona. Asimismo, nota que es inevitable la frustraci\'on, y que incluso los equipos que obtienen los mejores resultados del juego terminan lejos del \'optimo te\'orico.\\
+En su forma de juego de mesa, se presenta com\'unmente a alumnos reci\'en ingresados a distintas escuelas de negocios. El MIT (\citet{Dizikes}) y varios autores como \citet{Sterman} han publicado que, independientemente del rol que jueguen y de cu\'anta experiencia y preparaci\'on en negocios tengan, los humanos consistentemente fallan en encontrar la estrategia para maximizar la utilidad. Para nosotros los humanos, es sumamente dif\'icil pensar de manera no lineal y tomar en cuenta efectos como retrasos (tanto en entrega de los pedidos como en la informaci\'on) o la retroalimentaci\'on en los ciclos (cuando hay inventario sobrante, puede ser llevado al siguiente periodo). Estos conceptos son manejados correctamente cuando se modelan como efectos de sistemas din\'amicos, tarea considerablemente m\'as f\'acil para una computadora que para una persona. Asimismo, nota que es inevitable la frustraci\'on, y que incluso los equipos que obtienen los mejores resultados del juego terminan lejos del \'optimo te\'orico.\\
 
 \section{Principales caracter\'isticas}
 
@@ -42,17 +42,19 @@ El juego consiste, a grandes rasgos, en asignar a cada agente un rol en una cade
 
 Existen cuatro jugadores: minorista (\textit{retail}), mayorista (\textit{wholesale}), distribuidor (\textit{regional warehouse}) y f\'abrica (\textit{factory}). Dentro del juego transcurren 52 semanas (un a\~no), durante las cuales existe una demanda del consumidor, que se revela al inicio de la semana. De esta manera, el minorista debe cubrir (restringido a su inventario) la demanda del consumidor, y decidir la orden que pedir\'a al mayorista para recibir la siguiente semana. Cada jugador sigue instrucciones similares, con el objetivo de maximizar sus ganancias al final del juego.\\
 
-Todos los agentes cuentan con un inventario inicial de cajas de cerveza, y deben manejar correctamente su inventario para poder cumplir con la demanda del agente siguiente, al tiempo de minimizar los costos de almacenamiento por cada caja. Todos reciben ingresos por vender cajas de cerveza, e incurren en costos por comprar inventario, almacenar inventario, y por \'ultimo, una penalizaci\'on por no cubrir las \'ordenes. La estructura del juego se puede observar en la figura \ref{structure}.\footnote{Iconos creados por Freepik, Iconnice, Roundicons en \textit{www.flaticon.com}}\\
+Todos los agentes cuentan con un inventario inicial de cajas de cerveza, y deben manejar correctamente su inventario para poder cumplir con la demanda del agente siguiente, al tiempo de minimizar los costos de almacenamiento por cada caja. Todos reciben ingresos por vender cajas de cerveza, e incurren en costos por comprar inventario, almacenar inventario, y por \'ultimo, una penalizaci\'on por no cubrir las \'ordenes. La estructura del juego se puede observar en la figura \ref{structure}.\\
 
 
 \begin{figure}[ht]
-\caption{Estructura del Juego de Distribución de Cerveza}
 \label{structure}
 \includegraphics[width=15cm]{beer_distribution_game_structure.PNG}
+\caption[Estructura del Juego de Distribución de Cerveza]{Estructura del Juego de Distribución de Cerveza\protect\footnotemark}
 \centering
 \end{figure}
 
-De manera general, las variables que tienen efecto en la soluci\'n de este problema son:
+\footnotetext{Iconos creados por Freepik, Iconnice, Roundicons en \textit{www.flaticon.com}}
+
+De manera general, las variables que tienen efecto en la soluci\'on de este problema son:
 
 \begin{itemize}
     \item Demanda del consumidor durante el a\~no
@@ -63,7 +65,7 @@ De manera general, las variables que tienen efecto en la soluci\'n de este probl
     \item Inventario inicial (puede variar por agente)
 \end{itemize}
 
-Sin embargo, en cada tiempo $t$, cada agente se enfrenta a factores espec\'ificos que afectan su decisi\'on de compra para el siguiente d\'ia. Est conjunto de factores ha sido mapeado anteriormente por \citet{Duggan} y \citet{Grasl}, desde el punto de vista de diagramas causales. Una gran parte de la complejidad de este problema se puede identificar aqu\'i: ning\'un agente tienen visibilidad del proceso an\'alogo para su agente superior, por lo tanto debe actuar bajo informaci\'on incompleta y con indicaciones de comportamiento, tales como evitar el costo por \'ordenes no cumplidas y reaccionar a los cambios en la demanda del agente inferior. El diagrama que representa estos factores para un agente se puede consultar en la figura \ref{causal}.
+Sin embargo, en cada tiempo $t$, cada agente se enfrenta a factores espec\'ificos que afectan su decisi\'on de compra para el siguiente d\'ia, cuyo diagrama se puede consultar en la figura \ref{causal}. Este conjunto de factores ha sido mapeado anteriormente por \citet{Duggan} y \citet{Grasl}, desde el punto de vista de diagramas causales. Una gran parte de la complejidad de este problema se puede identificar aqu\'i: ning\'un agente tienen visibilidad del proceso an\'alogo para su agente superior, por lo tanto debe actuar bajo informaci\'on incompleta y con indicaciones de comportamiento, tales como evitar el costo por \'ordenes no cumplidas y reaccionar a los cambios en la demanda del agente inferior.
 
 \begin{figure}[ht]
 \caption{Diagrama Causal para un agente del Juego}
@@ -72,12 +74,12 @@ Sin embargo, en cada tiempo $t$, cada agente se enfrenta a factores espec\'ifico
 \centering
 \end{figure}
 
-Este diagrama causal desemboca en un diagrama de existencias y flujos (\textit{stock and flow diagram}), el cual describe las ecuaciones del sistema que ser\'an presentadas en las secciones siguientes. Se puede consultar en la figura \ref{stockflow}
+Este diagrama causal describe un diagrama de existencias y flujos (\textit{stock and flow diagram}), el cual describe las ecuaciones del sistema que ser\'an presentadas en las secciones siguientes. Se puede consultar en la figura \ref{stockflow}
 
 \begin{figure}[ht]
 \caption{Diagrama de Existencias y Flujos para el Juego}
 \label{stockflow}
-\includegraphics[width=10cm]{beer_distribution_game_stock_flow.PNG}
+\includegraphics[width=14cm]{beer_distribution_game_stock_flow.PNG}
 \centering
 \end{figure}
 
@@ -110,9 +112,9 @@ $$
 
 Es com\'un que en un sistema con varias existencias con sus respectivos flujos ocurran retrasos. Esto sucede porque, en general, los flujos de entrada y salida son gobernados por decisiones diferentes. En el Juego de Distribuci\'on de Cerveza, para cada agente, su flujo de salida depende de la demanda del agente inmediatamente inferior limitada por su propia existencia, y su flujo de entrada depende de su propia demanda limitada por la existencia del agente inmediatamente superior. Esto, aunado a un comportamiento ligeramente aleatorio de la demanda del consumidor, puede desembocar en insuficiencia de existencias para cualquier agente en cualquier tiempo $t$. \\
 
-Un capital est\'a en equilibrio cuando no cambia (un sistema est\'a en equilibrio cuando ninguna de sus existencias cambia). Esta condici\'on se obtiene cuando el cambio neto de sus flujos es cero, es decir, cuando el flujo entrante es igual al flujo saliente. \\
+Un sistema est\'a en equilibrio cuando ninguna de sus existencias cambia. Esta condici\'on se obtiene cuando el cambio neto de sus flujos es cero, es decir, cuando el flujo entrante es igual al flujo saliente. \\
 
-La soluci\'on trivial para este equilibrio es que todos los flujos sean nulos (\textit{equilibrio est\'atico}), sin embargo, en el caso de la cadena de suministro, este escenario llevar\'ia a que ning\'un agente tuviera ventas, y por consiguiente, tampoco tuviera ganancias. Una situaci\'on m\'as adecuada ser\'ia un \textit{equilibrio din\'amico}, en el cual las existencias totales se mantienen constantes, pero los flujos son diferences de cero\footnote{Para m\'as informaci\'on de un sistema en el cual se optimiza con base en se\~nales de baja existencia para disparar producci\'on, se puede consultar el proceso visual Kanban\cite{Majowska}}. Para la cerveza, esto significar\'ia que la cantidad de cerveza en los almacenes se mantiene constante, pero cada caja de cerveza se mueve de un agente a otro en alg\'un punto en el tiempo. Sin restricciones de oferta, la situaci\'on ideal tender\'ia a no guardar cerveza en los almacenes. Sin embargo, el efecto l\'atigo, causado por cambios en la demanda del consumidor, complica la estimaci\'on de los flujos entrantes y salientes en cada tiempo, pues para cada agente son desconocidas tanto la demanda del agente inferior como la capacidad del agente superior de cubrir la demanda propia. Existe una complicaci\'on extra al a\~nadir estacionalidad en la producci\'on de los campos de cebada. \\
+La soluci\'on trivial para este equilibrio es que todos los flujos sean nulos (\textit{equilibrio est\'atico}), sin embargo, en el caso de la cadena de suministro, este escenario llevar\'ia a que ning\'un agente tuviera ventas, y por consiguiente, tampoco tuviera ganancias. Una situaci\'on m\'as adecuada ser\'ia un \textit{equilibrio din\'amico}, en el cual las existencias totales se mantienen constantes, pero los flujos son diferences de cero. Para la cerveza, esto significar\'ia que la cantidad de cerveza en los almacenes se mantiene constante, pero cada caja de cerveza se mueve de un agente a otro en alg\'un punto en el tiempo. Sin restricciones de oferta, la situaci\'on ideal tender\'ia a no guardar cerveza en los almacenes. Sin embargo, el efecto l\'atigo, causado por cambios en la demanda del consumidor, complica la estimaci\'on de los flujos entrantes y salientes en cada tiempo, pues para cada agente son desconocidas tanto la demanda del agente inferior como la capacidad del agente superior de cubrir la demanda propia. Existe una complicaci\'on extra al a\~nadir estacionalidad en la producci\'on de los campos de cebada. \\
 
 \section{Acercamiento en el Presente Trabajo}
 
@@ -120,6 +122,19 @@ En este trabajo se modelará el Problema de Distribución de Cerveza, \textit{Th
 
 Existen acercamientos anteriores a este problema, en espec\'ifico \citet{Chaharsooghi} propone ya un acercamiento con \textit{Q-learning} \footnote{Los nombres de los algoritmos ser\'an representados con it\'alicas en este trabajo.} pero sin restricci\'on de estacionalidad en la materia prima, \citet{Strozzi}, por medio de Algoritmos Genéticos, \citet{Kimbrough} y \citet{Zarandi} proponen h\'ibridos de un algoritmo gen\'etico y aprendizaje reforzado.\\
 
-Por otro lado, algunas l\'ineas de investigaci\'on como \citet{Busoniu} se han concentrado en el aspecto de teor\'ia de juegos que compete a este problema: si en un vendedor no tiene existencias, los consumidores podr\'an elegir otro. En este caso, los agentes son construidos como adversarios. Dado que en el modelo que se resuelve en el presente trabajo los agentes no son ni adversarios ni cooperativos, sino maximizan su propia utilidad, no se implementar\'a como este tipo de modelo.\\
+Por otro lado, algunas l\'ineas de investigaci\'on como \citet{Busoniu} se han concentrado en el aspecto de teor\'ia de juegos que compete a este problema: si en un vendedor de menudeo no tiene existencias, los consumidores podr\'an elegir otro. En este caso, los agentes son construidos como adversarios. Dado que en el modelo que se resuelve en el presente trabajo, el sistema se compone de agentes representativos (i.e.. se resuelve la ecuaci\'on para el agente prototipo llamado `tienda de menudeo', pero tal soluci\'on \'optima podr\'ia ser adoptada por cualquier tienda de menudeo espec\'ifica), es equivalente a tener un solo agente, que por s\'i mismo no puede ser ni adversario ni cooperativo, sino solamente maximiza su propia utilidad, as\'i que no se implementar\'a tal metodolog\'ia.\\
 
-Sin embargo, todos los acercamientos anteriores suponen que los campos pueden adaptarse de inmediato a la demanda de la f\'abrica, de cierta manera tienen "producci\'on infinita". El aporte de este trabajo es la imposici\'on de restricciones basadas en tendencias catalogadas por el departamento de agricultura de los EUA en la producci\'on de cebada, lo cual deber\'ia alterar el comportamiento de los agentes tal que mantengan una existencia positiva en sus almacenes para poder enfrentar la demanda en periodos de baja producci\'on.
+Sin embargo, todos los acercamientos anteriores suponen que los campos pueden adaptarse de inmediato a la demanda de la f\'abrica, de cierta manera tienen "producci\'on infinita". Los aportes de este trabajo son:
+
+\begin{enumerate}
+    \item Una tendencia de demanda de consumidor de cerveza m\'as flexible y cercana a la vida real, basada en tendencias catalogadas por una agencia de investigaci\'on de los EUA
+    \item La imposici\'on de restricciones estacionales en la producci\'on de cebada, basadas en tendencias catalogadas por el departamento de agricultura de los EUA
+\end{enumerate}
+
+Tales supuestos cual deber\'ian alterar el comportamiento de los agentes tal que respondan a la tendencia de demanda de consumidor, y mantengan una existencia positiva en sus almacenes para poder enfrentar tal demanda en periodos de baja producci\'on. Esto deber\'ia verse reflejado en estrategias que sigan la curva de producci'on cuando existe una restricci\'on en los campos, o que se asemejen m\'as  a la curva de demanda del consumidor si tal restricci\'on no existe.\\
+
+En la vida real, los agentes tienen acceso a esta informaci\'on, a sus propios datos internos de ventas de a\~nos pasados, a predicciones del a\~no en curso, etc. El modelo que se construir\'a en este trabajo solamente considera los datos p\'ublicos, el cual ser\'ia el caso para un agente completamente nuevo en el juego, pero es una oportunidad de desarrollo futuro.\\
+
+En este trabajo se presentar\'an diversas simulaciones, las cuales reflejan distintos escenarios tanto de condiciones iniciales, como de comportamiento. Se analizar\'a, por ejemplo, qu\'e pasa si un agente comienza el a\~no con suficiente inventario como para cubrir toda la demanda del agente inferior, si solamente un agente sigue una estrategia \'optima, si los costos de almacenamiento son demasiado altos, entre otros.
+
+
