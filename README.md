@@ -12,7 +12,8 @@ The basic structure of this repository is:
   - `world.py` creates the world for agents
   - `players.py` creates all the agents (retailer, wholesaler, regional warehouse, factory) and non-agents (customer and fields)
   - `policy_iteration.py` trains the agents to solve _The Beer Distribution Game_ using policy iteration
-  - `` which prepares the data on flat tables and inserts them into te database
+  - `q_learning.py` trains the agents to solve _The Beer Distribution Game_ using Q-learning
+  - `insert_experiment_into_[pi/q]_database` which prepares the data on flat tables and inserts them into the database
   - other Jupyter notebooks - temporary files to be removed on the final repo structure - they contain visualizations in _Bokeh_, for which the rendering on Github's inferface is not ideal - feel free to ignore
-* `visualizations` which contains mostly R codes to create various plots in R based on outputs - these should be useful not only for the document, but for an interactive dashboard that I would like to build as part of the final product
-3. `tesis_tex` containg code that generates the final `.tex` file. The subfolder `figures`contains some interesting visualizations. A pdf with the latest version of the document can also be found, so that local compiling would not be necessary.
+* `visualizations` which contains mostly R codes to create various plots in R based on outputs
+3. `tesis_tex` containg code that generates the final `.tex` file. The subfolder `figs` contains some interesting visualizations. A pdf with the latest version of the document can also be found, so that local compiling would not be necessary.
