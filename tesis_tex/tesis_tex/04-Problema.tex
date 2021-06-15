@@ -14,12 +14,12 @@ El \textit{Juego de la Distribución de Cerveza} ejemplifica la relaci\'on causa
 
 Para plantear correctamente el \textit{Problema de la Distribuci\'n de Cerveza}, es necesario entender el concepto de una cadena de suministro. \\
 
-Una cadena de suministro (en ingl\'es, \textit{supply chain}), en la definici\'on de \citet{Jacobs},  es un proceso que desplaza informaci\'on y material con destino y origen en los procesos de manufactura y servicio de la empresa. Una manera com\'un de representar el comportamiento de una cadena como un modelo es a trav\'es de existencias, flujos, ciclos y agentes\footnote{Existen muchas otras maneras, como las redes de Petri, ampliamente utilizadas en la teor\'ia de aut\'omatas. \citet{Shiflet}}. Por ejemplo, en una simplificaci\o'n de producci\'on automotriz que se puede observar en la figura \ref{automotriz}, se puede observar un ejemplo en el cual se representa cada eslab\'on como un agente (la f\'abrica de partes, la ensambladora, el taller de pintura y la agencia de venta), los flujos de producto como las entradas y salidas de materia en cada eslab\'on (por ejemplo, la f\'abrica de partes tiene como insumos metal y pl\'astico, mientras que el taller de pintura tiene como insumo el auto ensamblado y litros de pintura), los flujos de informaci\'on se suponen globales y sin retraso, y los ciclos pueden depender de estacionalidad, disponibilidad o simple predisposici\'on.\\
+Para construir sobre la definici\'on de \citet{Sterman} descrita en el cap\'itulo anterior, una cadena de suministro (en ingl\'es, \textit{supply chain}), seg\'un \citet{Jacobs}, es un proceso que desplaza informaci\'on y material con destino y origen en los procesos de manufactura y servicio de la empresa. Una manera com\'un de representar el comportamiento de una cadena como un modelo es a trav\'es de existencias, flujos, ciclos y agentes\footnote{Existen muchas otras maneras, como las redes de Petri, ampliamente utilizadas en la teor\'ia de aut\'omatas. ( \citet{Shiflet})}. Por ejemplo, en una simplificaci\o'n de producci\'on automotriz que se puede observar en la figura \ref{automotriz}, se puede observar un ejemplo en el cual se representa cada eslab\'on como un agente (la f\'abrica de partes, la ensambladora, el taller de pintura y la agencia de venta), los flujos de producto como las entradas y salidas de materia en cada eslab\'on (por ejemplo, la f\'abrica de partes tiene como insumos metal y pl\'astico, mientras que el taller de pintura tiene como insumo el auto ensamblado y litros de pintura), los flujos de informaci\'on se suponen globales y sin retraso, y los ciclos pueden depender de estacionalidad, disponibilidad o simple predisposici\'on.\\
 
 \begin{figure}[ht]
 \caption{\textit{Ejemplo de simplificaci\'on de una cadena de suministro automotriz}}
 \label{automotriz}
-\includegraphics[width=15cm]{auto_chain_simple.png}
+\includegraphics[width=15cm]{tesis_tex/figs/auto_chain_simple.png}
 \centering
 \end{figure}
 
@@ -47,7 +47,7 @@ Todos los agentes cuentan con un inventario inicial de cajas de cerveza, y deben
 
 \begin{figure}[ht]
 \label{structure}
-\includegraphics[width=15cm]{beer_distribution_game_structure.PNG}
+\includegraphics[width=15cm]{tesis_tex/figs/beer_distribution_game_structure.PNG}
 \caption[Estructura del Juego de Distribución de Cerveza]{Estructura del Juego de Distribución de Cerveza\protect\footnotemark}
 \centering
 \end{figure}
@@ -70,7 +70,7 @@ Sin embargo, en cada tiempo $t$, cada agente se enfrenta a factores espec\'ifico
 \begin{figure}[ht]
 \caption{Diagrama Causal para un agente del Juego}
 \label{causal}
-\includegraphics[width=10cm]{beer_distribution_game_causal.PNG}
+\includegraphics[width=10cm]{tesis_tex/figs/beer_distribution_game_causal.PNG}
 \centering
 \end{figure}
 
@@ -79,7 +79,7 @@ Este diagrama causal describe un diagrama de existencias y flujos (\textit{stock
 \begin{figure}[ht]
 \caption{Diagrama de Existencias y Flujos para el Juego}
 \label{stockflow}
-\includegraphics[width=14cm]{beer_distribution_game_stock_flow.PNG}
+\includegraphics[width=14cm]{tesis_tex/figs/beer_distribution_game_stock_flow.PNG}
 \centering
 \end{figure}
 
@@ -89,7 +89,9 @@ Todas las variables, menos la demanda del consumidor y la producci\'on en los ca
 
 El \textit{Efecto Látigo} es un fen\'omeno que se produce en cadenas de suministro. Se llama de esa manera porque, mientras m\'as ``arriba'' en la cadena de suministro se encuentre un agente (es decir, m\'as lejos del contacto directo con el comprador), m\'as distorsionada es la informaci\'on que tiene acerca de la verdadera demanda del comprador; tal varianza se puede visualizar como una curva que asemeja un l\'atigo. \citet{Chaharsooghi} nota que la distorsi\'on se debe mayormente a tres factores: prejuicios en la informaci\'on de la demanda por parte de los miembros cercanos al consumidor, retraso en el intercambio de informaci\'on entre los miembros de la cadena y soporte log\'istico inapropiado a trav\'es de la cadena. \\
 
-Se puede ejemplificar con el siguiente escenario:
+El caso m\'as com\'un de efecto l\'atigo surge por la necesidad de un inventario de seguridad, para asegurar que un agente no incurrir\'a en costos por \'ordenes no cumplidas. Cada agente a\~nadir\'ia cantidad a su orden, causando una orden artificialmente inflada para el agente m\'as lejano al consumidor. Si el comportamiento del consumidor no cambia, las \'ordenes se estabilizar\'ian en un nivel inferior despu\'es de un tiempo, pero los agentes superiores podr\'ian estar incurriendo en un mayor costo de almacenamiento en el mismo tiempo. Adem\'as, tener menos claridad acerca de la demanda real del consumidor \\
+
+El efecto puede ejemplificar con el siguiente escenario:
 
 \begin{enumerate}
     \item El consumidor, que generalmente compra $6$ cervezas, ahora quiere $10$, pero la tienda minorista solamente cuenta con $7$. El minorista le venderá todo su inventario, pues es la acci\'on que maximiza su ganancia. Despu\'es, debe decidir si volverá a tener un inventario de $6$ o si debe pedir un número mayor de cervezas, atendiendo la posible creciente demanda. Decide pedir $9$ cervezas al siguiente nivel, la tienda de mayoreo.
@@ -98,7 +100,7 @@ Se puede ejemplificar con el siguiente escenario:
     \item La f\'abrica conoce la restricci\'on de estacionalidad de la cebada, as\'i que compra una m\'inima cantidad a los campos.
 \end{enumerate}
 
-En este escenario, el mayorista obtuvo informaci\'on distorsionada acerca del repentino crecimiento en la demanda del comprador, mientras que la tienda de distribución podr\'ia incluso interpretar que el comprador disminuy\'o su consumo. Si este comportamiento se mantiene durante algunos periodos m\'as, recibir\'ia la noticia (por medio de un incremento en las \'ordenes regulares) con un retraso considerable.\\
+En este escenario, el mayorista obtuvo informaci\'on distorsionada acerca del repentino crecimiento en la demanda del comprador, mientras que la tienda de distribución podr\'ia incluso interpretar que el comprador disminuy\'o su consumo. Si este comportamiento se mantiene durante algunos periodos m\'as, recibir\'ia la noticia (por medio de un incremento en las \'ordenes regulares) con un retraso considerable, lo cual inevitablemente causar\'a perturbaciones en sentido contrario cuando incrementen sus \'ordenes recibidas.\\
 
 En el caso de que la demanda sea determinista (con un castigo por \'ordenes no cumplidas), la orden \'optima en cada tiempo para cada miembro de la cadena es ``una por una'', es decir, demandar al agente superior exactamente lo mismo que fue demandado por el agente inferior.
 

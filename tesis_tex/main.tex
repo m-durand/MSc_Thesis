@@ -30,6 +30,9 @@
 \usepackage{wrapfig}
 \usepackage{minted}
 \usepackage{xcolor}
+\usepackage{listings}
+\usepackage{natbib}
+
 \definecolor{LightGray}{gray}{0.9}
 
 \usemintedstyle{borland}
@@ -71,12 +74,12 @@
 \graphicspath{{figs/}}
 
 %% # Portada de la tesis #
-\include{00-PaginaTitulo}
+\include{tesis_tex/00-PaginaTitulo}
 
 %% # Prefacios #
 \preface
-\include{01-Gracias}
-\include{02-Abstract}
+\include{tesis_tex/01-Gracias}
+\include{tesis_tex/02-Abstract}
 
 %% # 'Indices y listas de contenido #
 %% Quitar los comentarios en las lineas siguientes para obtener listas de
@@ -87,20 +90,20 @@
 
 %% # Cap'itulos #
 \cuerpo
-\include{03-Introduccion}
-\include{04-Problema}
-\include{04.5-AprendizajeReforzado}
-\include{05-SolucionesPrevias}
-\include{06-Complicacion}
-\include{07-ProductoDatos}
-\include{08-Resultados}
-\include{09-Conclusiones}
+\include{tesis_tex/03-Introduccion}
+\include{tesis_tex/04-Problema}
+\include{tesis_tex/04.5-AprendizajeReforzado}
+\include{tesis_tex/05-SolucionesPrevias}
+\include{tesis_tex/06-Complicacion}
+\include{tesis_tex/07-ProductoDatos}
+\include{tesis_tex/08-Resultados}
+\include{tesis_tex/09-Conclusiones}
 
 \appendix
 %% Cap'itulos incluidos despues del comando \appendix aparecen como ap'endices
 %% de la tesis.
-\include{ApendiceA}
-\include{ApendiceB}
+\include{tesis_tex/ApendiceA}
+\include{tesis_tex/ApendiceB}
 
 %% Incluir la bibliograf'ia. 
 \bibliography{Bibliografia}

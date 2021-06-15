@@ -5,7 +5,7 @@ Se cre\'o un pipeline completo que toma los par\'ametros iniciales, los cuales c
 \begin{figure}[ht]
 \caption{\textit{Pipeline} del proceso}
 \label{pipeline}
-\includegraphics[width=15cm]{pipeline.PNG}
+\includegraphics[width=15cm]{tesis_tex/figs/pipeline.PNG}
 \centering
 \end{figure}
 
@@ -19,9 +19,7 @@ Es necesario crear tablas que contengan los par\'ametros necesarios: una para el
 
 Como llave de las tablas, se asigna el identificador (id) del experimento como el \textit{hashlib}\footnote{Las funciones de \textit{hashing} toman datos de tama\~no arbitrario y los mapean a un \textit{hash} de longitud fija.} de la concantenaci\'on de ciertos atributos de este: el sello de tiempo en el cual fue ejecutado y las \textit{policies} \'optimas de cada uno de los agentes. Esto crea un identificador \'unico y tambi\'en permite revisar que ning\'un dato haya sido modificado manualmente, en caso de que tal revisi\'on sea pertinente.\\
 
-Se obtienen un total de 4 tablas que se relacionan de esta manera\footnote{Representaci\'on de los esquemas obtenida directamente del software }:\\
-
-[Aqui falta el diagrama de las tablas en el esquema Policy Iteration]
+Se obtienen un total de 4 tablas (una por agente) que se relacionan por medio del identificador del experimento.\\
 
 % https://stackoverflow.com/questions/3223770/tools-to-generate-database-tables-diagram-with-postgresql
 
@@ -30,11 +28,7 @@ Se obtienen un total de 4 tablas que se relacionan de esta manera\footnote{Repre
 
 \section{Q-Learning}
 
-El resultado de este algoritmo es una tabla que relaciona a cada par de (estado, acci\'on) con un valor de la funci\'on Q, as\'i que no es pr\'actico utilizar el mismo formato de tabla de resultados que con \textit{policy iteration}, en el cual un rengl\'on contiene un resultado. Se crea entonces una tabla por resultado, y una tabla extra que relaciona el identificador (id) del experimento con el nombre respectivo de la tabla. El resto de la estructura del esquema es parecido al de \textit{policy iteration}, pues tambi\'en existe necesidad de relacionar los par\'ametros de cada experimento con sus resultados.\\
-
-Debido a la estructura de la base, el n\'umero de tablas es variable, y se relacionan de esta manera:\\ 
-
-[Aqui falta el diagrama de las tablas en el esquema Q-learning]
+El resultado de este algoritmo es una tabla que relaciona a cada par de (estado, acci\'on) con un valor de la funci\'on Q, as\'i que no es pr\'actico utilizar el mismo formato de tabla de resultados que con \textit{policy iteration}, en el cual un rengl\'on contiene un resultado. Se crea entonces una tabla por resultado, y una tabla extra que relaciona el identificador (id) del experimento con el nombre respectivo de la tabla. El resto de la estructura del esquema es parecido al de \textit{policy iteration}, pues tambi\'en existe necesidad de relacionar los par\'ametros de cada experimento con sus resultados. Debido a la estructura de la base, el n\'umero de tablas es variable.\\
 
 \section{Especificaciones t\'ecnicas}
 

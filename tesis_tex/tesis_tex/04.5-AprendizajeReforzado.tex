@@ -20,7 +20,7 @@ Existen conceptos utilizados en pr\'acticamente la totalidad de los algoritmos d
 \begin{figure}[ht]
 \caption{Interacci\'on de los conceptos en Aprendizaje Reforzado}
 \label{rl_concepts}
-\includegraphics[width=10cm]{rl_concepts.PNG}
+\includegraphics[width=10cm]{tesis_tex/figs/rl_concepts.PNG}
 \centering
 \end{figure}
 
@@ -130,7 +130,7 @@ $$
 
 iterando ambos pasos hasta que $\pi_*$ converja.\\
 
-El modelo desarrollado en este trabajo ser\'a implementado como un algoritmo de \textit{policy iteration}. Algunas partes relevantes del c\'odigo se pueden consultar en la secci\'on de Resultados~\ref{section:Resultados}.\\
+El modelo desarrollado en este trabajo ser\'a implementado como un algoritmo de \textit{policy iteration}. Algunas partes relevantes del c\'odigo se pueden consultar en la secci\'on de Resultados~\ref{chapter:Resultados}.\\
 
 Existe un algoritmo similar llamado \textit{value iteration}, el cual itera sobre la funci\'on de valor e infiere la pol\'itica relacionada al valor \'optimo obtenido al final, en lugar de iterar sobre la pol\'itica y evaluar el valor. Se suele preferir el algoritmo de \textit{policy iteration} sobre \textit{value iteration}, pues converge m\'as r\'apidamente (en t\'erminos de iteraciones necesarias), presumiblemente porque la funci\'on de valor cambia muy poco de una pol\'itica a otra. Adem\'as, dado que se itera sobre la pol\'itica anterior y se busca una mejor, el algoritmo converge r\'apidamente y cada paso asegura una mejora. Se puede consultar m\'as acerca del algoritmo \textit{value iteration} y de la programaci\'on y convergencia de ambos en \citet{Sutton}.
 
