@@ -48,8 +48,7 @@ def evaluate_world_policies(retail_policy, wholesale_policy, regional_warehouse_
 # Compare two scenarios:
 # 1. Everyone acts according to the optimal policy, and field restriction is in place
 # 2. Everyone acts according to the optimal policy, no field restriction
-total_epochs = 250000 
-
+total_epochs = 10000 
 
 customer_demand_daily = pd.read_csv("./../../aux_documents/customer_trend.csv")
 fields_supply_daily = pd.read_csv("../../aux_documents/fields_trend.csv")
@@ -158,10 +157,11 @@ fields_supply_daily = pd.read_csv("../../aux_documents/fields_trend.csv")['Suppl
 
 eval_policies_df = pd.DataFrame(columns=['iteration','smart_agent', 'strategy', 'agent', 'money']) 
 
-for agent in ["retail", "wholesale", "regional warehouse", "factory"]:
+for agent_i in ["Retail", "Wholesale", "Regional Warehouse", "Factory"]:
     for i in range(250):
         
         print(i)
+        print(agent_i)
         
         np.random.seed(None)
         # Prices and Costs
@@ -221,7 +221,7 @@ for agent in ["retail", "wholesale", "regional warehouse", "factory"]:
             dumb_regional_warehouse_policy = np.repeat(average_daily_demand,365)
             dumb_factory_policy = factory_agent.best_policy      
      
-        # Dumb: all agents have constant demand equal to average yearly demand
+        # Dumber: all agents have constant demand equal to average yearly demand
         dumber_retail_policy = np.repeat(average_daily_demand,365)
         dumber_wholesale_policy = np.repeat(average_daily_demand,365)
         dumber_regional_warehouse_policy = np.repeat(average_daily_demand,365)
@@ -248,52 +248,62 @@ for agent in ["retail", "wholesale", "regional warehouse", "factory"]:
                                             customer_demand['Demand'])
         
         # Add new rows to the original df
-        new_row = [i,agent,'Smart','Retail',smart_retail_final_money]
+        new_row = [i,agent_i,'Smart','Retail',smart_retail_final_money]
         eval_policies_df.loc[eval_policies_df.shape[0] + 1] = new_row
-        new_row = [i,agent,'Smart','Wholesale',smart_wholesale_final_money]
+        new_row = [i,agent_i,'Smart','Wholesale',smart_wholesale_final_money]
         eval_policies_df.loc[eval_policies_df.shape[0] + 1] = new_row
-        new_row = [i,agent,'Smart','Regional Warehouse',smart_regional_warehouse_final_money]
+        new_row = [i,agent_i,'Smart','Regional Warehouse',smart_regional_warehouse_final_money]
         eval_policies_df.loc[eval_policies_df.shape[0] + 1] = new_row
-        new_row = [i,agent,'Smart','Factory',smart_factory_final_money]
+        new_row = [i,agent_i,'Smart','Factory',smart_factory_final_money]
         eval_policies_df.loc[eval_policies_df.shape[0] + 1] = new_row
-        new_row = [i,agent,'Dumb','Retail',dumb_retail_final_money]
+        new_row = [i,agent_i,'Dumb','Retail',dumb_retail_final_money]
         eval_policies_df.loc[eval_policies_df.shape[0] + 1] = new_row
-        new_row = [i,agent,'Dumb','Wholesale',dumb_wholesale_final_money]
+        new_row = [i,agent_i,'Dumb','Wholesale',dumb_wholesale_final_money]
         eval_policies_df.loc[eval_policies_df.shape[0] + 1] = new_row
-        new_row = [i,agent,'Dumb','Regional Warehouse',dumb_regional_warehouse_final_money]
+        new_row = [i,agent_i,'Dumb','Regional Warehouse',dumb_regional_warehouse_final_money]
         eval_policies_df.loc[eval_policies_df.shape[0] + 1] = new_row
-        new_row = [i,agent,'Dumb','Factory',dumb_factory_final_money]
+        new_row = [i,agent_i,'Dumb','Factory',dumb_factory_final_money]
         eval_policies_df.loc[eval_policies_df.shape[0] + 1] = new_row
-        new_row = [i,agent,'Dumber','Retail',dumber_retail_final_money]
+        new_row = [i,agent_i,'Dumber','Retail',dumber_retail_final_money]
         eval_policies_df.loc[eval_policies_df.shape[0] + 1] = new_row
-        new_row = [i,agent,'Dumber','Wholesale',dumber_wholesale_final_money]
+        new_row = [i,agent_i,'Dumber','Wholesale',dumber_wholesale_final_money]
         eval_policies_df.loc[eval_policies_df.shape[0] + 1] = new_row
-        new_row = [i,agent,'Dumber','Regional Warehouse',dumber_regional_warehouse_final_money]
+        new_row = [i,agent_i,'Dumber','Regional Warehouse',dumber_regional_warehouse_final_money]
         eval_policies_df.loc[eval_policies_df.shape[0] + 1] = new_row
-        new_row = [i,agent,'Dumber','Factory',dumber_factory_final_money]
+        new_row = [i,agent_i,'Dumber','Factory',dumber_factory_final_money]
         eval_policies_df.loc[eval_policies_df.shape[0] + 1] = new_row
         
-        eval_policies_df.to_csv('./../../aux_documents/evaluate_policies.csv')
+        eval_policies_df.to_csv('./../../aux_documents/evaluate_policies1.csv')
+
+# Now there are four scenarios to compare for each agent:
+# Everyone smart, only that agent smart but everyone else dumb,
+# only another agent smart but that agent dumb, everyone dumb
+# not nesting just to not get confused
+eval_policies_df['scenario'] = np.where(eval_policies_df['strategy']== 'Dumber', "No agent learnt", "Pending")
+eval_policies_df['scenario'] = np.where((eval_policies_df['strategy']== 'Dumb') & (eval_policies_df['smart_agent'] != eval_policies_df['agent']), "Another agent learnt", eval_policies_df['scenario'])
+eval_policies_df['scenario'] = np.where((eval_policies_df['strategy']== 'Dumb') & (eval_policies_df['smart_agent'] == eval_policies_df['agent']), "This agent learnt", eval_policies_df['scenario'])
+eval_policies_df['scenario'] = np.where(eval_policies_df['strategy']== 'Smart', "All agents learnt", eval_policies_df['scenario'])
 
 # Create the indices based on the "dumber" policy to interpret uplifts
-eval_policies_df_ids = eval_policies_df.pivot_table(index=['iteration','agent'], columns='strategy', values = 'money', aggfunc=np.sum)
-eval_policies_df_ids['Dumber_idx'] = (eval_policies_df_ids['Dumber']-eval_policies_df_ids['Dumber'])/abs(eval_policies_df_ids['Dumber'])
-eval_policies_df_ids['Dumb_idx'] = (eval_policies_df_ids['Dumb']-eval_policies_df_ids['Dumber'])/abs(eval_policies_df_ids['Dumber'])
-eval_policies_df_ids['Smart_idx'] = (eval_policies_df_ids['Smart']-eval_policies_df_ids['Dumber'])/abs(eval_policies_df_ids['Dumber'])
+eval_policies_df_ids = eval_policies_df.pivot_table(index=['iteration','agent'], columns='scenario', values = 'money', aggfunc=np.sum)
+eval_policies_df_ids['Dumbest_idx'] = (eval_policies_df_ids['No agent learnt']-eval_policies_df_ids['No agent learnt'])/abs(eval_policies_df_ids['No agent learnt'])
+eval_policies_df_ids['Dumber_idx'] = (eval_policies_df_ids['Another agent learnt']-eval_policies_df_ids['No agent learnt'])/abs(eval_policies_df_ids['No agent learnt'])
+eval_policies_df_ids['Dumb_idx'] = (eval_policies_df_ids['This agent learnt']-eval_policies_df_ids['No agent learnt'])/abs(eval_policies_df_ids['No agent learnt'])
+eval_policies_df_ids['Smart_idx'] = (eval_policies_df_ids['All agents learnt']-eval_policies_df_ids['No agent learnt'])/abs(eval_policies_df_ids['No agent learnt'])
 eval_policies_df_ids = eval_policies_df_ids.stack().reset_index()
-eval_policies_df_ids = eval_policies_df_ids[eval_policies_df_ids['strategy'].isin(['Dumber_idx', 'Dumb_idx', 'Smart_idx'])]
-eval_policies_df_ids['strategy'] = eval_policies_df_ids['strategy'].str.slice(0, -4)
-eval_policies_df_ids.columns = ['iteration', 'agent', 'strategy', 'index']
+eval_policies_df_ids = eval_policies_df_ids[eval_policies_df_ids['scenario'].isin(['Dumbest_idx', 'Dumber_idx', 'Dumb_idx', 'Smart_idx'])]
+eval_policies_df_ids['scenario'] = eval_policies_df_ids['scenario'].str.slice(0, -4)
+eval_policies_df_ids.columns = ['iteration', 'agent', 'scenario', 'index']
 
-eval_policies_df_complete = eval_policies_df.set_index(['iteration','strategy','agent']).join(eval_policies_df_ids.set_index(['iteration','strategy','agent'])).reset_index()
+eval_policies_df_complete = eval_policies_df.set_index(['iteration','scenario','agent']).join(eval_policies_df_ids.set_index(['iteration','scenario','agent'])).reset_index()
 
 #This part creates the same dataframe but in Spanish since the final document needs the viz
 eval_policies_df_sp = eval_policies_df_ids
 eval_policies_df_sp.columns = ['iteracion', 'agente', 'estrategia', 'desempeño']
 eval_policies_df_sp = eval_policies_df_sp.replace(['Retail','Wholesale', 'Regional Warehouse','Factory'],
                             ['Menudeo','Mayoreo', 'Almacén Regional','Fábrica'])
-eval_policies_df_sp = eval_policies_df_sp.replace(['Dumber','Dumb', 'Smart'],
-                            ['Nadie óptima','Un agente óptimo', 'Todos óptima'])
+eval_policies_df_sp = eval_policies_df_sp.replace(['Dumbest', 'Dumber','Dumb', 'Smart'],
+                            ['Nadie aprendió', 'Solo otro agente aprendió', 'Solo este agente aprendió', 'Todos aprendieron'])
 
 # Getting distributions
 eval_policies_df_sp.groupby(['agente', 'estrategia'])['desempeño'].mean().reset_index().pivot(index='agente', columns='estrategia', values='desempeño')
@@ -317,7 +327,7 @@ grid = sns.FacetGrid(eval_policies_df_sp_no_outl,
                      size=3.2, 
                      aspect=2)
 grid.map(sns.kdeplot, 'desempeño', shade=True)
-grid.set(xlim=(-1, eval_policies_df_sp_no_outl['desempeño'].max()), ylim=(0,6))
+grid.set(xlim=(-1, eval_policies_df_sp_no_outl['desempeño'].max()), ylim=(0,2))
 grid.add_legend()
 
 

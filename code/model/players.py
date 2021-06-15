@@ -46,7 +46,7 @@ class Agent:
         self.best_policy = self.current_policy
         self.best_payout = [0] * 365
         self.best_inventory = [self.initial_inventory] + [0] * 364
-        # self.q_function_value = [0] * 365 # TODO I think this is not necessary
+        # self.q_function_value = [0] * 365
         self.q_function_reward_for_action = [0] * 365
         #self.best_q_function_value = [-10000000] * 365
         self.historic_payout = []
@@ -58,19 +58,6 @@ class Agent:
         # This is needed for having a warm start and not going crazy
         self.average_downstream_demand = 0
 
-    def pay_for_warehousing(self):
-        # Pays for warehousing of inventory: must be done either
-        # "first thing in the morning" or "last time in the night"
-        self.total_money = self.total_money - \
-                (self.inventory * warehouse_price)
-        self.total_warehousing_costs = self.total_warehousing_costs + \
-                (self.inventory * warehouse_price)
-
-    def receive_upstream(self, orders):
-        # Receives orders from upstream agent first thing in the morning
-        self.inventory = self.inventory + orders
-        self.total_money = self.total_money - \
-                (orders * self.buying_price)
 
     def give_downstream(self, orders):
         # Checks if he has availability to fulfill order,
@@ -90,3 +77,18 @@ class Agent:
             self.total_money = self.total_money - self.backlog
             self.inventory = 0
             return orders_that_could_be_fulfilled
+        
+    def receive_upstream(self, orders):
+        # Receives orders from upstream agent first thing in the morning
+        self.inventory = self.inventory + orders
+        self.total_money = self.total_money - \
+                (orders * self.buying_price)
+
+    def pay_for_warehousing(self):
+        # Pays for warehousing of inventory: must be done either
+        # "first thing in the morning" or "last time in the night"
+        self.total_money = self.total_money - \
+                (self.inventory * warehouse_price)
+        self.total_warehousing_costs = self.total_warehousing_costs + \
+                (self.inventory * warehouse_price)
+    
