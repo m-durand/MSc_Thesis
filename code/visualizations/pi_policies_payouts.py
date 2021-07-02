@@ -7,6 +7,54 @@ path_to_write_figures = './../../tesis_tex/figs/'
 run_iteration_comparison = False
 
 ##############################################################################
+# Gif for training up until policies
+
+
+##### First take all the csvs and turn them into plots
+# Iterate over agents
+agent_names = ["retail_agent", "wholesale_agent",
+               "regional_warehouse_agent", "factory_agent"]
+
+for agent_name in agent_names:
+    k = 0
+    # get the csvs for each agent
+    def num_string(x):
+        num = re.findall(r'\d+', x)
+        return(int(num[0]))
+    
+    agent_csvs = sorted(glob.glob('../../aux_documents/training_gif/csvs/' + agent_name + '*.csv'), key = num_string)
+    
+    # iterate over each csv, create the corresponding plot
+    for agent_csv in agent_csvs:
+        # read each file
+        current_policy_for_plot = pd.read_csv(agent_csv)
+        current_policy_for_plot.set_axis(['día', 'policy'], axis='columns', inplace=True)
+        
+        # create the plot
+        figname_latest = "../../aux_documents/training_gif/figs/" + agent_name +"_" + str(k) + ".png"
+        
+        sns.set()
+        sns.set_style(style='white')
+        plt.clf()
+        fig = sns.lineplot('día', 'policy', data=current_policy_for_plot)
+        fig.set(ylim=(0, 100)) 
+        fig_get = fig.get_figure()
+        fig_get.savefig(figname_latest)
+        
+        k = k + 1
+
+# Then grab each agents' pngs and create a gif for each
+for agent_name in agent_names:
+    agent_figs = sorted(glob.glob('../../aux_documents/training_gif/figs/' + agent_name + '*.png'), key = num_string)
+              
+    with imageio.get_writer('../../aux_documents/training_gif/' + agent_name  + '.gif', mode='I') as writer:
+        for filename in agent_figs:
+            image = imageio.imread(filename)
+            writer.append_data(image)
+
+
+
+##############################################################################
 # Final policies
 fig = plt.figure(figsize=(10,7.5))
 st = fig.suptitle("Políticas óptimas aprendidas con restricción estacional", fontsize="x-large") # Optimal Learnt Policies
