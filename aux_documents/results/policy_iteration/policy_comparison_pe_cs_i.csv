@@ -1,0 +1,4381 @@
+day,agent,policy,action
+1,retail,smart,
+2,retail,smart,
+3,retail,smart,
+4,retail,smart,
+5,retail,smart,
+6,retail,smart,
+7,retail,smart,
+8,retail,smart,
+9,retail,smart,
+10,retail,smart,
+11,retail,smart,
+12,retail,smart,
+13,retail,smart,
+14,retail,smart,
+15,retail,smart,
+16,retail,smart,
+17,retail,smart,
+18,retail,smart,
+19,retail,smart,
+20,retail,smart,
+21,retail,smart,
+22,retail,smart,
+23,retail,smart,
+24,retail,smart,
+25,retail,smart,
+26,retail,smart,
+27,retail,smart,
+28,retail,smart,
+29,retail,smart,
+30,retail,smart,
+31,retail,smart,
+32,retail,smart,
+33,retail,smart,
+34,retail,smart,
+35,retail,smart,
+36,retail,smart,
+37,retail,smart,
+38,retail,smart,
+39,retail,smart,
+40,retail,smart,
+41,retail,smart,
+42,retail,smart,
+43,retail,smart,
+44,retail,smart,
+45,retail,smart,
+46,retail,smart,
+47,retail,smart,
+48,retail,smart,
+49,retail,smart,
+50,retail,smart,
+51,retail,smart,
+52,retail,smart,
+53,retail,smart,
+54,retail,smart,
+55,retail,smart,
+56,retail,smart,
+57,retail,smart,
+58,retail,smart,
+59,retail,smart,
+60,retail,smart,
+61,retail,smart,
+62,retail,smart,
+63,retail,smart,
+64,retail,smart,
+65,retail,smart,
+66,retail,smart,
+67,retail,smart,
+68,retail,smart,
+69,retail,smart,
+70,retail,smart,
+71,retail,smart,
+72,retail,smart,
+73,retail,smart,
+74,retail,smart,
+75,retail,smart,
+76,retail,smart,
+77,retail,smart,
+78,retail,smart,
+79,retail,smart,
+80,retail,smart,
+81,retail,smart,
+82,retail,smart,
+83,retail,smart,
+84,retail,smart,
+85,retail,smart,
+86,retail,smart,
+87,retail,smart,
+88,retail,smart,
+89,retail,smart,
+90,retail,smart,
+91,retail,smart,
+92,retail,smart,
+93,retail,smart,
+94,retail,smart,
+95,retail,smart,
+96,retail,smart,
+97,retail,smart,
+98,retail,smart,
+99,retail,smart,
+100,retail,smart,
+101,retail,smart,
+102,retail,smart,
+103,retail,smart,
+104,retail,smart,
+105,retail,smart,
+106,retail,smart,
+107,retail,smart,
+108,retail,smart,
+109,retail,smart,
+110,retail,smart,
+111,retail,smart,
+112,retail,smart,
+113,retail,smart,
+114,retail,smart,
+115,retail,smart,
+116,retail,smart,
+117,retail,smart,
+118,retail,smart,
+119,retail,smart,
+120,retail,smart,
+121,retail,smart,
+122,retail,smart,
+123,retail,smart,
+124,retail,smart,
+125,retail,smart,
+126,retail,smart,
+127,retail,smart,
+128,retail,smart,
+129,retail,smart,
+130,retail,smart,
+131,retail,smart,
+132,retail,smart,
+133,retail,smart,
+134,retail,smart,
+135,retail,smart,
+136,retail,smart,
+137,retail,smart,
+138,retail,smart,
+139,retail,smart,
+140,retail,smart,
+141,retail,smart,
+142,retail,smart,
+143,retail,smart,
+144,retail,smart,
+145,retail,smart,
+146,retail,smart,
+147,retail,smart,
+148,retail,smart,
+149,retail,smart,
+150,retail,smart,
+151,retail,smart,
+152,retail,smart,
+153,retail,smart,
+154,retail,smart,
+155,retail,smart,
+156,retail,smart,
+157,retail,smart,
+158,retail,smart,
+159,retail,smart,
+160,retail,smart,
+161,retail,smart,
+162,retail,smart,
+163,retail,smart,
+164,retail,smart,
+165,retail,smart,
+166,retail,smart,
+167,retail,smart,
+168,retail,smart,
+169,retail,smart,
+170,retail,smart,
+171,retail,smart,
+172,retail,smart,
+173,retail,smart,
+174,retail,smart,
+175,retail,smart,
+176,retail,smart,
+177,retail,smart,
+178,retail,smart,
+179,retail,smart,
+180,retail,smart,
+181,retail,smart,
+182,retail,smart,
+183,retail,smart,
+184,retail,smart,
+185,retail,smart,
+186,retail,smart,
+187,retail,smart,
+188,retail,smart,
+189,retail,smart,
+190,retail,smart,
+191,retail,smart,
+192,retail,smart,
+193,retail,smart,
+194,retail,smart,
+195,retail,smart,
+196,retail,smart,
+197,retail,smart,
+198,retail,smart,
+199,retail,smart,
+200,retail,smart,
+201,retail,smart,
+202,retail,smart,
+203,retail,smart,
+204,retail,smart,
+205,retail,smart,
+206,retail,smart,
+207,retail,smart,
+208,retail,smart,
+209,retail,smart,
+210,retail,smart,
+211,retail,smart,
+212,retail,smart,
+213,retail,smart,
+214,retail,smart,
+215,retail,smart,
+216,retail,smart,
+217,retail,smart,
+218,retail,smart,
+219,retail,smart,
+220,retail,smart,
+221,retail,smart,
+222,retail,smart,
+223,retail,smart,
+224,retail,smart,
+225,retail,smart,
+226,retail,smart,
+227,retail,smart,
+228,retail,smart,
+229,retail,smart,
+230,retail,smart,
+231,retail,smart,
+232,retail,smart,
+233,retail,smart,
+234,retail,smart,
+235,retail,smart,
+236,retail,smart,
+237,retail,smart,
+238,retail,smart,
+239,retail,smart,
+240,retail,smart,
+241,retail,smart,
+242,retail,smart,
+243,retail,smart,
+244,retail,smart,
+245,retail,smart,
+246,retail,smart,
+247,retail,smart,
+248,retail,smart,
+249,retail,smart,
+250,retail,smart,
+251,retail,smart,
+252,retail,smart,
+253,retail,smart,
+254,retail,smart,
+255,retail,smart,
+256,retail,smart,
+257,retail,smart,
+258,retail,smart,
+259,retail,smart,
+260,retail,smart,
+261,retail,smart,
+262,retail,smart,
+263,retail,smart,
+264,retail,smart,
+265,retail,smart,
+266,retail,smart,
+267,retail,smart,
+268,retail,smart,
+269,retail,smart,
+270,retail,smart,
+271,retail,smart,
+272,retail,smart,
+273,retail,smart,
+274,retail,smart,
+275,retail,smart,
+276,retail,smart,
+277,retail,smart,
+278,retail,smart,
+279,retail,smart,
+280,retail,smart,
+281,retail,smart,
+282,retail,smart,
+283,retail,smart,
+284,retail,smart,
+285,retail,smart,
+286,retail,smart,
+287,retail,smart,
+288,retail,smart,
+289,retail,smart,
+290,retail,smart,
+291,retail,smart,
+292,retail,smart,
+293,retail,smart,
+294,retail,smart,
+295,retail,smart,
+296,retail,smart,
+297,retail,smart,
+298,retail,smart,
+299,retail,smart,
+300,retail,smart,
+301,retail,smart,
+302,retail,smart,
+303,retail,smart,
+304,retail,smart,
+305,retail,smart,
+306,retail,smart,
+307,retail,smart,
+308,retail,smart,
+309,retail,smart,
+310,retail,smart,
+311,retail,smart,
+312,retail,smart,
+313,retail,smart,
+314,retail,smart,
+315,retail,smart,
+316,retail,smart,
+317,retail,smart,
+318,retail,smart,
+319,retail,smart,
+320,retail,smart,
+321,retail,smart,
+322,retail,smart,
+323,retail,smart,
+324,retail,smart,
+325,retail,smart,
+326,retail,smart,
+327,retail,smart,
+328,retail,smart,
+329,retail,smart,
+330,retail,smart,
+331,retail,smart,
+332,retail,smart,
+333,retail,smart,
+334,retail,smart,
+335,retail,smart,
+336,retail,smart,
+337,retail,smart,
+338,retail,smart,
+339,retail,smart,
+340,retail,smart,
+341,retail,smart,
+342,retail,smart,
+343,retail,smart,
+344,retail,smart,
+345,retail,smart,
+346,retail,smart,
+347,retail,smart,
+348,retail,smart,
+349,retail,smart,
+350,retail,smart,
+351,retail,smart,
+352,retail,smart,
+353,retail,smart,
+354,retail,smart,
+355,retail,smart,
+356,retail,smart,
+357,retail,smart,
+358,retail,smart,
+359,retail,smart,
+360,retail,smart,
+361,retail,smart,
+362,retail,smart,
+363,retail,smart,
+364,retail,smart,
+365,retail,smart,
+1,wholesale,smart,
+2,wholesale,smart,
+3,wholesale,smart,
+4,wholesale,smart,
+5,wholesale,smart,
+6,wholesale,smart,
+7,wholesale,smart,
+8,wholesale,smart,
+9,wholesale,smart,
+10,wholesale,smart,
+11,wholesale,smart,
+12,wholesale,smart,
+13,wholesale,smart,
+14,wholesale,smart,
+15,wholesale,smart,
+16,wholesale,smart,
+17,wholesale,smart,
+18,wholesale,smart,
+19,wholesale,smart,
+20,wholesale,smart,
+21,wholesale,smart,
+22,wholesale,smart,
+23,wholesale,smart,
+24,wholesale,smart,
+25,wholesale,smart,
+26,wholesale,smart,
+27,wholesale,smart,
+28,wholesale,smart,
+29,wholesale,smart,
+30,wholesale,smart,
+31,wholesale,smart,
+32,wholesale,smart,
+33,wholesale,smart,
+34,wholesale,smart,
+35,wholesale,smart,
+36,wholesale,smart,
+37,wholesale,smart,
+38,wholesale,smart,
+39,wholesale,smart,
+40,wholesale,smart,
+41,wholesale,smart,
+42,wholesale,smart,
+43,wholesale,smart,
+44,wholesale,smart,
+45,wholesale,smart,
+46,wholesale,smart,
+47,wholesale,smart,
+48,wholesale,smart,
+49,wholesale,smart,
+50,wholesale,smart,
+51,wholesale,smart,
+52,wholesale,smart,
+53,wholesale,smart,
+54,wholesale,smart,
+55,wholesale,smart,
+56,wholesale,smart,
+57,wholesale,smart,
+58,wholesale,smart,
+59,wholesale,smart,
+60,wholesale,smart,
+61,wholesale,smart,
+62,wholesale,smart,
+63,wholesale,smart,
+64,wholesale,smart,
+65,wholesale,smart,
+66,wholesale,smart,
+67,wholesale,smart,
+68,wholesale,smart,
+69,wholesale,smart,
+70,wholesale,smart,
+71,wholesale,smart,
+72,wholesale,smart,
+73,wholesale,smart,
+74,wholesale,smart,
+75,wholesale,smart,
+76,wholesale,smart,
+77,wholesale,smart,
+78,wholesale,smart,
+79,wholesale,smart,
+80,wholesale,smart,
+81,wholesale,smart,
+82,wholesale,smart,
+83,wholesale,smart,
+84,wholesale,smart,
+85,wholesale,smart,
+86,wholesale,smart,
+87,wholesale,smart,
+88,wholesale,smart,
+89,wholesale,smart,
+90,wholesale,smart,
+91,wholesale,smart,
+92,wholesale,smart,
+93,wholesale,smart,
+94,wholesale,smart,
+95,wholesale,smart,
+96,wholesale,smart,
+97,wholesale,smart,
+98,wholesale,smart,
+99,wholesale,smart,
+100,wholesale,smart,
+101,wholesale,smart,
+102,wholesale,smart,
+103,wholesale,smart,
+104,wholesale,smart,
+105,wholesale,smart,
+106,wholesale,smart,
+107,wholesale,smart,
+108,wholesale,smart,
+109,wholesale,smart,
+110,wholesale,smart,
+111,wholesale,smart,
+112,wholesale,smart,
+113,wholesale,smart,
+114,wholesale,smart,
+115,wholesale,smart,
+116,wholesale,smart,
+117,wholesale,smart,
+118,wholesale,smart,
+119,wholesale,smart,
+120,wholesale,smart,
+121,wholesale,smart,
+122,wholesale,smart,
+123,wholesale,smart,
+124,wholesale,smart,
+125,wholesale,smart,
+126,wholesale,smart,
+127,wholesale,smart,
+128,wholesale,smart,
+129,wholesale,smart,
+130,wholesale,smart,
+131,wholesale,smart,
+132,wholesale,smart,
+133,wholesale,smart,
+134,wholesale,smart,
+135,wholesale,smart,
+136,wholesale,smart,
+137,wholesale,smart,
+138,wholesale,smart,
+139,wholesale,smart,
+140,wholesale,smart,
+141,wholesale,smart,
+142,wholesale,smart,
+143,wholesale,smart,
+144,wholesale,smart,
+145,wholesale,smart,
+146,wholesale,smart,
+147,wholesale,smart,
+148,wholesale,smart,
+149,wholesale,smart,
+150,wholesale,smart,
+151,wholesale,smart,
+152,wholesale,smart,
+153,wholesale,smart,
+154,wholesale,smart,
+155,wholesale,smart,
+156,wholesale,smart,
+157,wholesale,smart,
+158,wholesale,smart,
+159,wholesale,smart,
+160,wholesale,smart,
+161,wholesale,smart,
+162,wholesale,smart,
+163,wholesale,smart,
+164,wholesale,smart,
+165,wholesale,smart,
+166,wholesale,smart,
+167,wholesale,smart,
+168,wholesale,smart,
+169,wholesale,smart,
+170,wholesale,smart,
+171,wholesale,smart,
+172,wholesale,smart,
+173,wholesale,smart,
+174,wholesale,smart,
+175,wholesale,smart,
+176,wholesale,smart,
+177,wholesale,smart,
+178,wholesale,smart,
+179,wholesale,smart,
+180,wholesale,smart,
+181,wholesale,smart,
+182,wholesale,smart,
+183,wholesale,smart,
+184,wholesale,smart,
+185,wholesale,smart,
+186,wholesale,smart,
+187,wholesale,smart,
+188,wholesale,smart,
+189,wholesale,smart,
+190,wholesale,smart,
+191,wholesale,smart,
+192,wholesale,smart,
+193,wholesale,smart,
+194,wholesale,smart,
+195,wholesale,smart,
+196,wholesale,smart,
+197,wholesale,smart,
+198,wholesale,smart,
+199,wholesale,smart,
+200,wholesale,smart,
+201,wholesale,smart,
+202,wholesale,smart,
+203,wholesale,smart,
+204,wholesale,smart,
+205,wholesale,smart,
+206,wholesale,smart,
+207,wholesale,smart,
+208,wholesale,smart,
+209,wholesale,smart,
+210,wholesale,smart,
+211,wholesale,smart,
+212,wholesale,smart,
+213,wholesale,smart,
+214,wholesale,smart,
+215,wholesale,smart,
+216,wholesale,smart,
+217,wholesale,smart,
+218,wholesale,smart,
+219,wholesale,smart,
+220,wholesale,smart,
+221,wholesale,smart,
+222,wholesale,smart,
+223,wholesale,smart,
+224,wholesale,smart,
+225,wholesale,smart,
+226,wholesale,smart,
+227,wholesale,smart,
+228,wholesale,smart,
+229,wholesale,smart,
+230,wholesale,smart,
+231,wholesale,smart,
+232,wholesale,smart,
+233,wholesale,smart,
+234,wholesale,smart,
+235,wholesale,smart,
+236,wholesale,smart,
+237,wholesale,smart,
+238,wholesale,smart,
+239,wholesale,smart,
+240,wholesale,smart,
+241,wholesale,smart,
+242,wholesale,smart,
+243,wholesale,smart,
+244,wholesale,smart,
+245,wholesale,smart,
+246,wholesale,smart,
+247,wholesale,smart,
+248,wholesale,smart,
+249,wholesale,smart,
+250,wholesale,smart,
+251,wholesale,smart,
+252,wholesale,smart,
+253,wholesale,smart,
+254,wholesale,smart,
+255,wholesale,smart,
+256,wholesale,smart,
+257,wholesale,smart,
+258,wholesale,smart,
+259,wholesale,smart,
+260,wholesale,smart,
+261,wholesale,smart,
+262,wholesale,smart,
+263,wholesale,smart,
+264,wholesale,smart,
+265,wholesale,smart,
+266,wholesale,smart,
+267,wholesale,smart,
+268,wholesale,smart,
+269,wholesale,smart,
+270,wholesale,smart,
+271,wholesale,smart,
+272,wholesale,smart,
+273,wholesale,smart,
+274,wholesale,smart,
+275,wholesale,smart,
+276,wholesale,smart,
+277,wholesale,smart,
+278,wholesale,smart,
+279,wholesale,smart,
+280,wholesale,smart,
+281,wholesale,smart,
+282,wholesale,smart,
+283,wholesale,smart,
+284,wholesale,smart,
+285,wholesale,smart,
+286,wholesale,smart,
+287,wholesale,smart,
+288,wholesale,smart,
+289,wholesale,smart,
+290,wholesale,smart,
+291,wholesale,smart,
+292,wholesale,smart,
+293,wholesale,smart,
+294,wholesale,smart,
+295,wholesale,smart,
+296,wholesale,smart,
+297,wholesale,smart,
+298,wholesale,smart,
+299,wholesale,smart,
+300,wholesale,smart,
+301,wholesale,smart,
+302,wholesale,smart,
+303,wholesale,smart,
+304,wholesale,smart,
+305,wholesale,smart,
+306,wholesale,smart,
+307,wholesale,smart,
+308,wholesale,smart,
+309,wholesale,smart,
+310,wholesale,smart,
+311,wholesale,smart,
+312,wholesale,smart,
+313,wholesale,smart,
+314,wholesale,smart,
+315,wholesale,smart,
+316,wholesale,smart,
+317,wholesale,smart,
+318,wholesale,smart,
+319,wholesale,smart,
+320,wholesale,smart,
+321,wholesale,smart,
+322,wholesale,smart,
+323,wholesale,smart,
+324,wholesale,smart,
+325,wholesale,smart,
+326,wholesale,smart,
+327,wholesale,smart,
+328,wholesale,smart,
+329,wholesale,smart,
+330,wholesale,smart,
+331,wholesale,smart,
+332,wholesale,smart,
+333,wholesale,smart,
+334,wholesale,smart,
+335,wholesale,smart,
+336,wholesale,smart,
+337,wholesale,smart,
+338,wholesale,smart,
+339,wholesale,smart,
+340,wholesale,smart,
+341,wholesale,smart,
+342,wholesale,smart,
+343,wholesale,smart,
+344,wholesale,smart,
+345,wholesale,smart,
+346,wholesale,smart,
+347,wholesale,smart,
+348,wholesale,smart,
+349,wholesale,smart,
+350,wholesale,smart,
+351,wholesale,smart,
+352,wholesale,smart,
+353,wholesale,smart,
+354,wholesale,smart,
+355,wholesale,smart,
+356,wholesale,smart,
+357,wholesale,smart,
+358,wholesale,smart,
+359,wholesale,smart,
+360,wholesale,smart,
+361,wholesale,smart,
+362,wholesale,smart,
+363,wholesale,smart,
+364,wholesale,smart,
+365,wholesale,smart,
+1,regional warehouse,smart,
+2,regional warehouse,smart,
+3,regional warehouse,smart,
+4,regional warehouse,smart,
+5,regional warehouse,smart,
+6,regional warehouse,smart,
+7,regional warehouse,smart,
+8,regional warehouse,smart,
+9,regional warehouse,smart,
+10,regional warehouse,smart,
+11,regional warehouse,smart,
+12,regional warehouse,smart,
+13,regional warehouse,smart,
+14,regional warehouse,smart,
+15,regional warehouse,smart,
+16,regional warehouse,smart,
+17,regional warehouse,smart,
+18,regional warehouse,smart,
+19,regional warehouse,smart,
+20,regional warehouse,smart,
+21,regional warehouse,smart,
+22,regional warehouse,smart,
+23,regional warehouse,smart,
+24,regional warehouse,smart,
+25,regional warehouse,smart,
+26,regional warehouse,smart,
+27,regional warehouse,smart,
+28,regional warehouse,smart,
+29,regional warehouse,smart,
+30,regional warehouse,smart,
+31,regional warehouse,smart,
+32,regional warehouse,smart,
+33,regional warehouse,smart,
+34,regional warehouse,smart,
+35,regional warehouse,smart,
+36,regional warehouse,smart,
+37,regional warehouse,smart,
+38,regional warehouse,smart,
+39,regional warehouse,smart,
+40,regional warehouse,smart,
+41,regional warehouse,smart,
+42,regional warehouse,smart,
+43,regional warehouse,smart,
+44,regional warehouse,smart,
+45,regional warehouse,smart,
+46,regional warehouse,smart,
+47,regional warehouse,smart,
+48,regional warehouse,smart,
+49,regional warehouse,smart,
+50,regional warehouse,smart,
+51,regional warehouse,smart,
+52,regional warehouse,smart,
+53,regional warehouse,smart,
+54,regional warehouse,smart,
+55,regional warehouse,smart,
+56,regional warehouse,smart,
+57,regional warehouse,smart,
+58,regional warehouse,smart,
+59,regional warehouse,smart,
+60,regional warehouse,smart,
+61,regional warehouse,smart,
+62,regional warehouse,smart,
+63,regional warehouse,smart,
+64,regional warehouse,smart,
+65,regional warehouse,smart,
+66,regional warehouse,smart,
+67,regional warehouse,smart,
+68,regional warehouse,smart,
+69,regional warehouse,smart,
+70,regional warehouse,smart,
+71,regional warehouse,smart,
+72,regional warehouse,smart,
+73,regional warehouse,smart,
+74,regional warehouse,smart,
+75,regional warehouse,smart,
+76,regional warehouse,smart,
+77,regional warehouse,smart,
+78,regional warehouse,smart,
+79,regional warehouse,smart,
+80,regional warehouse,smart,
+81,regional warehouse,smart,
+82,regional warehouse,smart,
+83,regional warehouse,smart,
+84,regional warehouse,smart,
+85,regional warehouse,smart,
+86,regional warehouse,smart,
+87,regional warehouse,smart,
+88,regional warehouse,smart,
+89,regional warehouse,smart,
+90,regional warehouse,smart,
+91,regional warehouse,smart,
+92,regional warehouse,smart,
+93,regional warehouse,smart,
+94,regional warehouse,smart,
+95,regional warehouse,smart,
+96,regional warehouse,smart,
+97,regional warehouse,smart,
+98,regional warehouse,smart,
+99,regional warehouse,smart,
+100,regional warehouse,smart,
+101,regional warehouse,smart,
+102,regional warehouse,smart,
+103,regional warehouse,smart,
+104,regional warehouse,smart,
+105,regional warehouse,smart,
+106,regional warehouse,smart,
+107,regional warehouse,smart,
+108,regional warehouse,smart,
+109,regional warehouse,smart,
+110,regional warehouse,smart,
+111,regional warehouse,smart,
+112,regional warehouse,smart,
+113,regional warehouse,smart,
+114,regional warehouse,smart,
+115,regional warehouse,smart,
+116,regional warehouse,smart,
+117,regional warehouse,smart,
+118,regional warehouse,smart,
+119,regional warehouse,smart,
+120,regional warehouse,smart,
+121,regional warehouse,smart,
+122,regional warehouse,smart,
+123,regional warehouse,smart,
+124,regional warehouse,smart,
+125,regional warehouse,smart,
+126,regional warehouse,smart,
+127,regional warehouse,smart,
+128,regional warehouse,smart,
+129,regional warehouse,smart,
+130,regional warehouse,smart,
+131,regional warehouse,smart,
+132,regional warehouse,smart,
+133,regional warehouse,smart,
+134,regional warehouse,smart,
+135,regional warehouse,smart,
+136,regional warehouse,smart,
+137,regional warehouse,smart,
+138,regional warehouse,smart,
+139,regional warehouse,smart,
+140,regional warehouse,smart,
+141,regional warehouse,smart,
+142,regional warehouse,smart,
+143,regional warehouse,smart,
+144,regional warehouse,smart,
+145,regional warehouse,smart,
+146,regional warehouse,smart,
+147,regional warehouse,smart,
+148,regional warehouse,smart,
+149,regional warehouse,smart,
+150,regional warehouse,smart,
+151,regional warehouse,smart,
+152,regional warehouse,smart,
+153,regional warehouse,smart,
+154,regional warehouse,smart,
+155,regional warehouse,smart,
+156,regional warehouse,smart,
+157,regional warehouse,smart,
+158,regional warehouse,smart,
+159,regional warehouse,smart,
+160,regional warehouse,smart,
+161,regional warehouse,smart,
+162,regional warehouse,smart,
+163,regional warehouse,smart,
+164,regional warehouse,smart,
+165,regional warehouse,smart,
+166,regional warehouse,smart,
+167,regional warehouse,smart,
+168,regional warehouse,smart,
+169,regional warehouse,smart,
+170,regional warehouse,smart,
+171,regional warehouse,smart,
+172,regional warehouse,smart,
+173,regional warehouse,smart,
+174,regional warehouse,smart,
+175,regional warehouse,smart,
+176,regional warehouse,smart,
+177,regional warehouse,smart,
+178,regional warehouse,smart,
+179,regional warehouse,smart,
+180,regional warehouse,smart,
+181,regional warehouse,smart,
+182,regional warehouse,smart,
+183,regional warehouse,smart,
+184,regional warehouse,smart,
+185,regional warehouse,smart,
+186,regional warehouse,smart,
+187,regional warehouse,smart,
+188,regional warehouse,smart,
+189,regional warehouse,smart,
+190,regional warehouse,smart,
+191,regional warehouse,smart,
+192,regional warehouse,smart,
+193,regional warehouse,smart,
+194,regional warehouse,smart,
+195,regional warehouse,smart,
+196,regional warehouse,smart,
+197,regional warehouse,smart,
+198,regional warehouse,smart,
+199,regional warehouse,smart,
+200,regional warehouse,smart,
+201,regional warehouse,smart,
+202,regional warehouse,smart,
+203,regional warehouse,smart,
+204,regional warehouse,smart,
+205,regional warehouse,smart,
+206,regional warehouse,smart,
+207,regional warehouse,smart,
+208,regional warehouse,smart,
+209,regional warehouse,smart,
+210,regional warehouse,smart,
+211,regional warehouse,smart,
+212,regional warehouse,smart,
+213,regional warehouse,smart,
+214,regional warehouse,smart,
+215,regional warehouse,smart,
+216,regional warehouse,smart,
+217,regional warehouse,smart,
+218,regional warehouse,smart,
+219,regional warehouse,smart,
+220,regional warehouse,smart,
+221,regional warehouse,smart,
+222,regional warehouse,smart,
+223,regional warehouse,smart,
+224,regional warehouse,smart,
+225,regional warehouse,smart,
+226,regional warehouse,smart,
+227,regional warehouse,smart,
+228,regional warehouse,smart,
+229,regional warehouse,smart,
+230,regional warehouse,smart,
+231,regional warehouse,smart,
+232,regional warehouse,smart,
+233,regional warehouse,smart,
+234,regional warehouse,smart,
+235,regional warehouse,smart,
+236,regional warehouse,smart,
+237,regional warehouse,smart,
+238,regional warehouse,smart,
+239,regional warehouse,smart,
+240,regional warehouse,smart,
+241,regional warehouse,smart,
+242,regional warehouse,smart,
+243,regional warehouse,smart,
+244,regional warehouse,smart,
+245,regional warehouse,smart,
+246,regional warehouse,smart,
+247,regional warehouse,smart,
+248,regional warehouse,smart,
+249,regional warehouse,smart,
+250,regional warehouse,smart,
+251,regional warehouse,smart,
+252,regional warehouse,smart,
+253,regional warehouse,smart,
+254,regional warehouse,smart,
+255,regional warehouse,smart,
+256,regional warehouse,smart,
+257,regional warehouse,smart,
+258,regional warehouse,smart,
+259,regional warehouse,smart,
+260,regional warehouse,smart,
+261,regional warehouse,smart,
+262,regional warehouse,smart,
+263,regional warehouse,smart,
+264,regional warehouse,smart,
+265,regional warehouse,smart,
+266,regional warehouse,smart,
+267,regional warehouse,smart,
+268,regional warehouse,smart,
+269,regional warehouse,smart,
+270,regional warehouse,smart,
+271,regional warehouse,smart,
+272,regional warehouse,smart,
+273,regional warehouse,smart,
+274,regional warehouse,smart,
+275,regional warehouse,smart,
+276,regional warehouse,smart,
+277,regional warehouse,smart,
+278,regional warehouse,smart,
+279,regional warehouse,smart,
+280,regional warehouse,smart,
+281,regional warehouse,smart,
+282,regional warehouse,smart,
+283,regional warehouse,smart,
+284,regional warehouse,smart,
+285,regional warehouse,smart,
+286,regional warehouse,smart,
+287,regional warehouse,smart,
+288,regional warehouse,smart,
+289,regional warehouse,smart,
+290,regional warehouse,smart,
+291,regional warehouse,smart,
+292,regional warehouse,smart,
+293,regional warehouse,smart,
+294,regional warehouse,smart,
+295,regional warehouse,smart,
+296,regional warehouse,smart,
+297,regional warehouse,smart,
+298,regional warehouse,smart,
+299,regional warehouse,smart,
+300,regional warehouse,smart,
+301,regional warehouse,smart,
+302,regional warehouse,smart,
+303,regional warehouse,smart,
+304,regional warehouse,smart,
+305,regional warehouse,smart,
+306,regional warehouse,smart,
+307,regional warehouse,smart,
+308,regional warehouse,smart,
+309,regional warehouse,smart,
+310,regional warehouse,smart,
+311,regional warehouse,smart,
+312,regional warehouse,smart,
+313,regional warehouse,smart,
+314,regional warehouse,smart,
+315,regional warehouse,smart,
+316,regional warehouse,smart,
+317,regional warehouse,smart,
+318,regional warehouse,smart,
+319,regional warehouse,smart,
+320,regional warehouse,smart,
+321,regional warehouse,smart,
+322,regional warehouse,smart,
+323,regional warehouse,smart,
+324,regional warehouse,smart,
+325,regional warehouse,smart,
+326,regional warehouse,smart,
+327,regional warehouse,smart,
+328,regional warehouse,smart,
+329,regional warehouse,smart,
+330,regional warehouse,smart,
+331,regional warehouse,smart,
+332,regional warehouse,smart,
+333,regional warehouse,smart,
+334,regional warehouse,smart,
+335,regional warehouse,smart,
+336,regional warehouse,smart,
+337,regional warehouse,smart,
+338,regional warehouse,smart,
+339,regional warehouse,smart,
+340,regional warehouse,smart,
+341,regional warehouse,smart,
+342,regional warehouse,smart,
+343,regional warehouse,smart,
+344,regional warehouse,smart,
+345,regional warehouse,smart,
+346,regional warehouse,smart,
+347,regional warehouse,smart,
+348,regional warehouse,smart,
+349,regional warehouse,smart,
+350,regional warehouse,smart,
+351,regional warehouse,smart,
+352,regional warehouse,smart,
+353,regional warehouse,smart,
+354,regional warehouse,smart,
+355,regional warehouse,smart,
+356,regional warehouse,smart,
+357,regional warehouse,smart,
+358,regional warehouse,smart,
+359,regional warehouse,smart,
+360,regional warehouse,smart,
+361,regional warehouse,smart,
+362,regional warehouse,smart,
+363,regional warehouse,smart,
+364,regional warehouse,smart,
+365,regional warehouse,smart,
+1,factory,smart,
+2,factory,smart,
+3,factory,smart,
+4,factory,smart,
+5,factory,smart,
+6,factory,smart,
+7,factory,smart,
+8,factory,smart,
+9,factory,smart,
+10,factory,smart,
+11,factory,smart,
+12,factory,smart,
+13,factory,smart,
+14,factory,smart,
+15,factory,smart,
+16,factory,smart,
+17,factory,smart,
+18,factory,smart,
+19,factory,smart,
+20,factory,smart,
+21,factory,smart,
+22,factory,smart,
+23,factory,smart,
+24,factory,smart,
+25,factory,smart,
+26,factory,smart,
+27,factory,smart,
+28,factory,smart,
+29,factory,smart,
+30,factory,smart,
+31,factory,smart,
+32,factory,smart,
+33,factory,smart,
+34,factory,smart,
+35,factory,smart,
+36,factory,smart,
+37,factory,smart,
+38,factory,smart,
+39,factory,smart,
+40,factory,smart,
+41,factory,smart,
+42,factory,smart,
+43,factory,smart,
+44,factory,smart,
+45,factory,smart,
+46,factory,smart,
+47,factory,smart,
+48,factory,smart,
+49,factory,smart,
+50,factory,smart,
+51,factory,smart,
+52,factory,smart,
+53,factory,smart,
+54,factory,smart,
+55,factory,smart,
+56,factory,smart,
+57,factory,smart,
+58,factory,smart,
+59,factory,smart,
+60,factory,smart,
+61,factory,smart,
+62,factory,smart,
+63,factory,smart,
+64,factory,smart,
+65,factory,smart,
+66,factory,smart,
+67,factory,smart,
+68,factory,smart,
+69,factory,smart,
+70,factory,smart,
+71,factory,smart,
+72,factory,smart,
+73,factory,smart,
+74,factory,smart,
+75,factory,smart,
+76,factory,smart,
+77,factory,smart,
+78,factory,smart,
+79,factory,smart,
+80,factory,smart,
+81,factory,smart,
+82,factory,smart,
+83,factory,smart,
+84,factory,smart,
+85,factory,smart,
+86,factory,smart,
+87,factory,smart,
+88,factory,smart,
+89,factory,smart,
+90,factory,smart,
+91,factory,smart,
+92,factory,smart,
+93,factory,smart,
+94,factory,smart,
+95,factory,smart,
+96,factory,smart,
+97,factory,smart,
+98,factory,smart,
+99,factory,smart,
+100,factory,smart,
+101,factory,smart,
+102,factory,smart,
+103,factory,smart,
+104,factory,smart,
+105,factory,smart,
+106,factory,smart,
+107,factory,smart,
+108,factory,smart,
+109,factory,smart,
+110,factory,smart,
+111,factory,smart,
+112,factory,smart,
+113,factory,smart,
+114,factory,smart,
+115,factory,smart,
+116,factory,smart,
+117,factory,smart,
+118,factory,smart,
+119,factory,smart,
+120,factory,smart,
+121,factory,smart,
+122,factory,smart,
+123,factory,smart,
+124,factory,smart,
+125,factory,smart,
+126,factory,smart,
+127,factory,smart,
+128,factory,smart,
+129,factory,smart,
+130,factory,smart,
+131,factory,smart,
+132,factory,smart,
+133,factory,smart,
+134,factory,smart,
+135,factory,smart,
+136,factory,smart,
+137,factory,smart,
+138,factory,smart,
+139,factory,smart,
+140,factory,smart,
+141,factory,smart,
+142,factory,smart,
+143,factory,smart,
+144,factory,smart,
+145,factory,smart,
+146,factory,smart,
+147,factory,smart,
+148,factory,smart,
+149,factory,smart,
+150,factory,smart,
+151,factory,smart,
+152,factory,smart,
+153,factory,smart,
+154,factory,smart,
+155,factory,smart,
+156,factory,smart,
+157,factory,smart,
+158,factory,smart,
+159,factory,smart,
+160,factory,smart,
+161,factory,smart,
+162,factory,smart,
+163,factory,smart,
+164,factory,smart,
+165,factory,smart,
+166,factory,smart,
+167,factory,smart,
+168,factory,smart,
+169,factory,smart,
+170,factory,smart,
+171,factory,smart,
+172,factory,smart,
+173,factory,smart,
+174,factory,smart,
+175,factory,smart,
+176,factory,smart,
+177,factory,smart,
+178,factory,smart,
+179,factory,smart,
+180,factory,smart,
+181,factory,smart,
+182,factory,smart,
+183,factory,smart,
+184,factory,smart,
+185,factory,smart,
+186,factory,smart,
+187,factory,smart,
+188,factory,smart,
+189,factory,smart,
+190,factory,smart,
+191,factory,smart,
+192,factory,smart,
+193,factory,smart,
+194,factory,smart,
+195,factory,smart,
+196,factory,smart,
+197,factory,smart,
+198,factory,smart,
+199,factory,smart,
+200,factory,smart,
+201,factory,smart,
+202,factory,smart,
+203,factory,smart,
+204,factory,smart,
+205,factory,smart,
+206,factory,smart,
+207,factory,smart,
+208,factory,smart,
+209,factory,smart,
+210,factory,smart,
+211,factory,smart,
+212,factory,smart,
+213,factory,smart,
+214,factory,smart,
+215,factory,smart,
+216,factory,smart,
+217,factory,smart,
+218,factory,smart,
+219,factory,smart,
+220,factory,smart,
+221,factory,smart,
+222,factory,smart,
+223,factory,smart,
+224,factory,smart,
+225,factory,smart,
+226,factory,smart,
+227,factory,smart,
+228,factory,smart,
+229,factory,smart,
+230,factory,smart,
+231,factory,smart,
+232,factory,smart,
+233,factory,smart,
+234,factory,smart,
+235,factory,smart,
+236,factory,smart,
+237,factory,smart,
+238,factory,smart,
+239,factory,smart,
+240,factory,smart,
+241,factory,smart,
+242,factory,smart,
+243,factory,smart,
+244,factory,smart,
+245,factory,smart,
+246,factory,smart,
+247,factory,smart,
+248,factory,smart,
+249,factory,smart,
+250,factory,smart,
+251,factory,smart,
+252,factory,smart,
+253,factory,smart,
+254,factory,smart,
+255,factory,smart,
+256,factory,smart,
+257,factory,smart,
+258,factory,smart,
+259,factory,smart,
+260,factory,smart,
+261,factory,smart,
+262,factory,smart,
+263,factory,smart,
+264,factory,smart,
+265,factory,smart,
+266,factory,smart,
+267,factory,smart,
+268,factory,smart,
+269,factory,smart,
+270,factory,smart,
+271,factory,smart,
+272,factory,smart,
+273,factory,smart,
+274,factory,smart,
+275,factory,smart,
+276,factory,smart,
+277,factory,smart,
+278,factory,smart,
+279,factory,smart,
+280,factory,smart,
+281,factory,smart,
+282,factory,smart,
+283,factory,smart,
+284,factory,smart,
+285,factory,smart,
+286,factory,smart,
+287,factory,smart,
+288,factory,smart,
+289,factory,smart,
+290,factory,smart,
+291,factory,smart,
+292,factory,smart,
+293,factory,smart,
+294,factory,smart,
+295,factory,smart,
+296,factory,smart,
+297,factory,smart,
+298,factory,smart,
+299,factory,smart,
+300,factory,smart,
+301,factory,smart,
+302,factory,smart,
+303,factory,smart,
+304,factory,smart,
+305,factory,smart,
+306,factory,smart,
+307,factory,smart,
+308,factory,smart,
+309,factory,smart,
+310,factory,smart,
+311,factory,smart,
+312,factory,smart,
+313,factory,smart,
+314,factory,smart,
+315,factory,smart,
+316,factory,smart,
+317,factory,smart,
+318,factory,smart,
+319,factory,smart,
+320,factory,smart,
+321,factory,smart,
+322,factory,smart,
+323,factory,smart,
+324,factory,smart,
+325,factory,smart,
+326,factory,smart,
+327,factory,smart,
+328,factory,smart,
+329,factory,smart,
+330,factory,smart,
+331,factory,smart,
+332,factory,smart,
+333,factory,smart,
+334,factory,smart,
+335,factory,smart,
+336,factory,smart,
+337,factory,smart,
+338,factory,smart,
+339,factory,smart,
+340,factory,smart,
+341,factory,smart,
+342,factory,smart,
+343,factory,smart,
+344,factory,smart,
+345,factory,smart,
+346,factory,smart,
+347,factory,smart,
+348,factory,smart,
+349,factory,smart,
+350,factory,smart,
+351,factory,smart,
+352,factory,smart,
+353,factory,smart,
+354,factory,smart,
+355,factory,smart,
+356,factory,smart,
+357,factory,smart,
+358,factory,smart,
+359,factory,smart,
+360,factory,smart,
+361,factory,smart,
+362,factory,smart,
+363,factory,smart,
+364,factory,smart,
+365,factory,smart,
+1,retail,common sense,2
+2,retail,common sense,1.15
+3,retail,common sense,1.11
+4,retail,common sense,1.26
+5,retail,common sense,1.4
+6,retail,common sense,1.326
+7,retail,common sense,1.334
+8,retail,common sense,1.312
+9,retail,common sense,1.29
+10,retail,common sense,1.216
+11,retail,common sense,1.142
+12,retail,common sense,1.2
+13,retail,common sense,1.326
+14,retail,common sense,1.334
+15,retail,common sense,1.312
+16,retail,common sense,1.29
+17,retail,common sense,1.216
+18,retail,common sense,1.142
+19,retail,common sense,1.2
+20,retail,common sense,1.326
+21,retail,common sense,1.334
+22,retail,common sense,1.312
+23,retail,common sense,1.29
+24,retail,common sense,1.216
+25,retail,common sense,1.142
+26,retail,common sense,1.2
+27,retail,common sense,1.326
+28,retail,common sense,1.334
+29,retail,common sense,1.312
+30,retail,common sense,1.29
+31,retail,common sense,1.216
+32,retail,common sense,1.142
+33,retail,common sense,1.2
+34,retail,common sense,1.326
+35,retail,common sense,1.334
+36,retail,common sense,1.312
+37,retail,common sense,1.29
+38,retail,common sense,1.216
+39,retail,common sense,1.142
+40,retail,common sense,1.2
+41,retail,common sense,1.326
+42,retail,common sense,1.334
+43,retail,common sense,1.312
+44,retail,common sense,1.29
+45,retail,common sense,1.216
+46,retail,common sense,1.142
+47,retail,common sense,1.2
+48,retail,common sense,1.326
+49,retail,common sense,1.334
+50,retail,common sense,1.312
+51,retail,common sense,1.29
+52,retail,common sense,1.216
+53,retail,common sense,1.142
+54,retail,common sense,1.2
+55,retail,common sense,1.326
+56,retail,common sense,1.334
+57,retail,common sense,1.312
+58,retail,common sense,1.29
+59,retail,common sense,1.216
+60,retail,common sense,1.142
+61,retail,common sense,1.2
+62,retail,common sense,1.326
+63,retail,common sense,1.334
+64,retail,common sense,1.312
+65,retail,common sense,1.29
+66,retail,common sense,1.216
+67,retail,common sense,1.142
+68,retail,common sense,1.2
+69,retail,common sense,1.326
+70,retail,common sense,1.334
+71,retail,common sense,1.312
+72,retail,common sense,1.29
+73,retail,common sense,1.216
+74,retail,common sense,1.142
+75,retail,common sense,1.2
+76,retail,common sense,1.326
+77,retail,common sense,1.334
+78,retail,common sense,1.312
+79,retail,common sense,1.29
+80,retail,common sense,1.216
+81,retail,common sense,1.142
+82,retail,common sense,1.2
+83,retail,common sense,1.326
+84,retail,common sense,1.334
+85,retail,common sense,1.312
+86,retail,common sense,1.29
+87,retail,common sense,1.216
+88,retail,common sense,1.142
+89,retail,common sense,1.2
+90,retail,common sense,1.326
+91,retail,common sense,1.334
+92,retail,common sense,1.312
+93,retail,common sense,1.29
+94,retail,common sense,1.216
+95,retail,common sense,1.142
+96,retail,common sense,1.2
+97,retail,common sense,1.326
+98,retail,common sense,1.334
+99,retail,common sense,1.312
+100,retail,common sense,1.29
+101,retail,common sense,1.216
+102,retail,common sense,1.142
+103,retail,common sense,1.2
+104,retail,common sense,1.326
+105,retail,common sense,1.334
+106,retail,common sense,1.312
+107,retail,common sense,1.29
+108,retail,common sense,1.216
+109,retail,common sense,1.142
+110,retail,common sense,1.2
+111,retail,common sense,1.326
+112,retail,common sense,1.334
+113,retail,common sense,1.312
+114,retail,common sense,1.29
+115,retail,common sense,1.216
+116,retail,common sense,1.142
+117,retail,common sense,1.2
+118,retail,common sense,1.326
+119,retail,common sense,1.334
+120,retail,common sense,1.312
+121,retail,common sense,1.26
+122,retail,common sense,1.194
+123,retail,common sense,1.09
+124,retail,common sense,1.104
+125,retail,common sense,1.2
+126,retail,common sense,1.326
+127,retail,common sense,1.334
+128,retail,common sense,1.312
+129,retail,common sense,1.29
+130,retail,common sense,1.216
+131,retail,common sense,1.142
+132,retail,common sense,1.2
+133,retail,common sense,1.326
+134,retail,common sense,1.334
+135,retail,common sense,1.312
+136,retail,common sense,1.29
+137,retail,common sense,1.216
+138,retail,common sense,1.142
+139,retail,common sense,1.2
+140,retail,common sense,1.326
+141,retail,common sense,1.334
+142,retail,common sense,1.312
+143,retail,common sense,1.29
+144,retail,common sense,1.216
+145,retail,common sense,1.142
+146,retail,common sense,1.2
+147,retail,common sense,1.326
+148,retail,common sense,1.334
+149,retail,common sense,1.312
+150,retail,common sense,1.29
+151,retail,common sense,1.216
+152,retail,common sense,1.142
+153,retail,common sense,1.2
+154,retail,common sense,1.326
+155,retail,common sense,1.334
+156,retail,common sense,1.312
+157,retail,common sense,1.29
+158,retail,common sense,1.216
+159,retail,common sense,1.142
+160,retail,common sense,1.2
+161,retail,common sense,1.326
+162,retail,common sense,1.334
+163,retail,common sense,1.312
+164,retail,common sense,1.29
+165,retail,common sense,1.216
+166,retail,common sense,1.142
+167,retail,common sense,1.2
+168,retail,common sense,1.326
+169,retail,common sense,1.334
+170,retail,common sense,1.312
+171,retail,common sense,1.29
+172,retail,common sense,1.216
+173,retail,common sense,1.142
+174,retail,common sense,1.2
+175,retail,common sense,1.326
+176,retail,common sense,1.334
+177,retail,common sense,1.312
+178,retail,common sense,1.29
+179,retail,common sense,1.216
+180,retail,common sense,1.142
+181,retail,common sense,1.2
+182,retail,common sense,1.326
+183,retail,common sense,1.334
+184,retail,common sense,1.312
+185,retail,common sense,1.29
+186,retail,common sense,1.216
+187,retail,common sense,1.142
+188,retail,common sense,1.2
+189,retail,common sense,1.326
+190,retail,common sense,1.334
+191,retail,common sense,1.312
+192,retail,common sense,1.29
+193,retail,common sense,1.216
+194,retail,common sense,1.142
+195,retail,common sense,1.2
+196,retail,common sense,1.326
+197,retail,common sense,1.334
+198,retail,common sense,1.312
+199,retail,common sense,1.29
+200,retail,common sense,1.216
+201,retail,common sense,1.142
+202,retail,common sense,1.2
+203,retail,common sense,1.326
+204,retail,common sense,1.334
+205,retail,common sense,1.312
+206,retail,common sense,1.29
+207,retail,common sense,1.216
+208,retail,common sense,1.142
+209,retail,common sense,1.2
+210,retail,common sense,1.326
+211,retail,common sense,1.334
+212,retail,common sense,1.312
+213,retail,common sense,1.26
+214,retail,common sense,1.194
+215,retail,common sense,1.09
+216,retail,common sense,1.104
+217,retail,common sense,1.2
+218,retail,common sense,1.326
+219,retail,common sense,1.334
+220,retail,common sense,1.312
+221,retail,common sense,1.29
+222,retail,common sense,1.216
+223,retail,common sense,1.142
+224,retail,common sense,1.2
+225,retail,common sense,1.326
+226,retail,common sense,1.334
+227,retail,common sense,1.312
+228,retail,common sense,1.29
+229,retail,common sense,1.216
+230,retail,common sense,1.142
+231,retail,common sense,1.2
+232,retail,common sense,1.326
+233,retail,common sense,1.334
+234,retail,common sense,1.312
+235,retail,common sense,1.29
+236,retail,common sense,1.216
+237,retail,common sense,1.142
+238,retail,common sense,1.2
+239,retail,common sense,1.326
+240,retail,common sense,1.334
+241,retail,common sense,1.312
+242,retail,common sense,1.29
+243,retail,common sense,1.216
+244,retail,common sense,1.142
+245,retail,common sense,1.2
+246,retail,common sense,1.326
+247,retail,common sense,1.334
+248,retail,common sense,1.312
+249,retail,common sense,1.29
+250,retail,common sense,1.216
+251,retail,common sense,1.142
+252,retail,common sense,1.2
+253,retail,common sense,1.326
+254,retail,common sense,1.334
+255,retail,common sense,1.312
+256,retail,common sense,1.29
+257,retail,common sense,1.216
+258,retail,common sense,1.646
+259,retail,common sense,2.296
+260,retail,common sense,2.422
+261,retail,common sense,2.43
+262,retail,common sense,2.408
+263,retail,common sense,1.882
+264,retail,common sense,1.216
+265,retail,common sense,1.142
+266,retail,common sense,1.2
+267,retail,common sense,1.326
+268,retail,common sense,1.334
+269,retail,common sense,1.312
+270,retail,common sense,1.29
+271,retail,common sense,1.216
+272,retail,common sense,1.142
+273,retail,common sense,1.2
+274,retail,common sense,1.326
+275,retail,common sense,1.334
+276,retail,common sense,1.312
+277,retail,common sense,1.29
+278,retail,common sense,1.216
+279,retail,common sense,1.142
+280,retail,common sense,1.2
+281,retail,common sense,1.326
+282,retail,common sense,1.334
+283,retail,common sense,1.312
+284,retail,common sense,1.29
+285,retail,common sense,1.216
+286,retail,common sense,1.142
+287,retail,common sense,1.2
+288,retail,common sense,1.326
+289,retail,common sense,1.334
+290,retail,common sense,1.312
+291,retail,common sense,1.29
+292,retail,common sense,1.216
+293,retail,common sense,1.142
+294,retail,common sense,1.2
+295,retail,common sense,1.326
+296,retail,common sense,1.334
+297,retail,common sense,1.312
+298,retail,common sense,1.29
+299,retail,common sense,1.216
+300,retail,common sense,1.142
+301,retail,common sense,1.2
+302,retail,common sense,1.326
+303,retail,common sense,1.334
+304,retail,common sense,1.312
+305,retail,common sense,1.26
+306,retail,common sense,1.194
+307,retail,common sense,1.09
+308,retail,common sense,1.104
+309,retail,common sense,1.2
+310,retail,common sense,1.326
+311,retail,common sense,1.334
+312,retail,common sense,1.312
+313,retail,common sense,1.29
+314,retail,common sense,1.216
+315,retail,common sense,1.142
+316,retail,common sense,1.2
+317,retail,common sense,1.326
+318,retail,common sense,1.334
+319,retail,common sense,1.312
+320,retail,common sense,1.29
+321,retail,common sense,1.216
+322,retail,common sense,1.142
+323,retail,common sense,1.2
+324,retail,common sense,1.326
+325,retail,common sense,1.334
+326,retail,common sense,1.312
+327,retail,common sense,1.29
+328,retail,common sense,1.216
+329,retail,common sense,1.142
+330,retail,common sense,1.2
+331,retail,common sense,1.326
+332,retail,common sense,1.334
+333,retail,common sense,1.312
+334,retail,common sense,1.29
+335,retail,common sense,1.216
+336,retail,common sense,1.142
+337,retail,common sense,1.2
+338,retail,common sense,1.326
+339,retail,common sense,1.334
+340,retail,common sense,1.312
+341,retail,common sense,1.29
+342,retail,common sense,1.216
+343,retail,common sense,1.142
+344,retail,common sense,1.2
+345,retail,common sense,1.326
+346,retail,common sense,1.334
+347,retail,common sense,1.312
+348,retail,common sense,1.29
+349,retail,common sense,1.216
+350,retail,common sense,1.142
+351,retail,common sense,1.2
+352,retail,common sense,1.652
+353,retail,common sense,1.898
+354,retail,common sense,2.076
+355,retail,common sense,2.284
+356,retail,common sense,2.432
+357,retail,common sense,2.284
+358,retail,common sense,2.4
+359,retail,common sense,2.652
+360,retail,common sense,2.668
+361,retail,common sense,2.624
+362,retail,common sense,2.58
+363,retail,common sense,2.432
+364,retail,common sense,2.284
+365,retail,common sense,2.4
+1,wholesale,common sense,2
+2,wholesale,common sense,1.15
+3,wholesale,common sense,1.11
+4,wholesale,common sense,1.26
+5,wholesale,common sense,1.384
+6,wholesale,common sense,1.2492
+7,wholesale,common sense,1.286
+8,wholesale,common sense,1.3264
+9,wholesale,common sense,1.3324
+10,wholesale,common sense,1.2956
+11,wholesale,common sense,1.2588
+12,wholesale,common sense,1.232
+13,wholesale,common sense,1.2348
+14,wholesale,common sense,1.2436
+15,wholesale,common sense,1.2628
+16,wholesale,common sense,1.2924
+17,wholesale,common sense,1.2956
+18,wholesale,common sense,1.2588
+19,wholesale,common sense,1.232
+20,wholesale,common sense,1.2348
+21,wholesale,common sense,1.2436
+22,wholesale,common sense,1.2628
+23,wholesale,common sense,1.2924
+24,wholesale,common sense,1.2956
+25,wholesale,common sense,1.2588
+26,wholesale,common sense,1.232
+27,wholesale,common sense,1.2348
+28,wholesale,common sense,1.2436
+29,wholesale,common sense,1.2628
+30,wholesale,common sense,1.2924
+31,wholesale,common sense,1.2956
+32,wholesale,common sense,1.2588
+33,wholesale,common sense,1.232
+34,wholesale,common sense,1.2348
+35,wholesale,common sense,1.2436
+36,wholesale,common sense,1.2628
+37,wholesale,common sense,1.2924
+38,wholesale,common sense,1.2956
+39,wholesale,common sense,1.2588
+40,wholesale,common sense,1.232
+41,wholesale,common sense,1.2348
+42,wholesale,common sense,1.2436
+43,wholesale,common sense,1.2628
+44,wholesale,common sense,1.2924
+45,wholesale,common sense,1.2956
+46,wholesale,common sense,1.2588
+47,wholesale,common sense,1.232
+48,wholesale,common sense,1.2348
+49,wholesale,common sense,1.2436
+50,wholesale,common sense,1.2628
+51,wholesale,common sense,1.2924
+52,wholesale,common sense,1.2956
+53,wholesale,common sense,1.2588
+54,wholesale,common sense,1.232
+55,wholesale,common sense,1.2348
+56,wholesale,common sense,1.2436
+57,wholesale,common sense,1.2628
+58,wholesale,common sense,1.2924
+59,wholesale,common sense,1.2956
+60,wholesale,common sense,1.2588
+61,wholesale,common sense,1.232
+62,wholesale,common sense,1.2348
+63,wholesale,common sense,1.2436
+64,wholesale,common sense,1.2628
+65,wholesale,common sense,1.2924
+66,wholesale,common sense,1.2956
+67,wholesale,common sense,1.2588
+68,wholesale,common sense,1.232
+69,wholesale,common sense,1.2348
+70,wholesale,common sense,1.2436
+71,wholesale,common sense,1.2628
+72,wholesale,common sense,1.2924
+73,wholesale,common sense,1.2956
+74,wholesale,common sense,1.2588
+75,wholesale,common sense,1.232
+76,wholesale,common sense,1.2348
+77,wholesale,common sense,1.2436
+78,wholesale,common sense,1.2628
+79,wholesale,common sense,1.2924
+80,wholesale,common sense,1.2956
+81,wholesale,common sense,1.2588
+82,wholesale,common sense,1.232
+83,wholesale,common sense,1.2348
+84,wholesale,common sense,1.2436
+85,wholesale,common sense,1.2628
+86,wholesale,common sense,1.2924
+87,wholesale,common sense,1.2956
+88,wholesale,common sense,1.2588
+89,wholesale,common sense,1.232
+90,wholesale,common sense,1.2348
+91,wholesale,common sense,1.2436
+92,wholesale,common sense,1.2628
+93,wholesale,common sense,1.2924
+94,wholesale,common sense,1.2956
+95,wholesale,common sense,1.2588
+96,wholesale,common sense,1.232
+97,wholesale,common sense,1.2348
+98,wholesale,common sense,1.2436
+99,wholesale,common sense,1.2628
+100,wholesale,common sense,1.2924
+101,wholesale,common sense,1.2956
+102,wholesale,common sense,1.2588
+103,wholesale,common sense,1.232
+104,wholesale,common sense,1.2348
+105,wholesale,common sense,1.2436
+106,wholesale,common sense,1.2628
+107,wholesale,common sense,1.2924
+108,wholesale,common sense,1.2956
+109,wholesale,common sense,1.2588
+110,wholesale,common sense,1.232
+111,wholesale,common sense,1.2348
+112,wholesale,common sense,1.2436
+113,wholesale,common sense,1.2628
+114,wholesale,common sense,1.2924
+115,wholesale,common sense,1.2956
+116,wholesale,common sense,1.2588
+117,wholesale,common sense,1.232
+118,wholesale,common sense,1.2348
+119,wholesale,common sense,1.2436
+120,wholesale,common sense,1.2628
+121,wholesale,common sense,1.2864
+122,wholesale,common sense,1.2852
+123,wholesale,common sense,1.238
+124,wholesale,common sense,1.192
+125,wholesale,common sense,1.1696
+126,wholesale,common sense,1.1828
+127,wholesale,common sense,1.2108
+128,wholesale,common sense,1.2552
+129,wholesale,common sense,1.2924
+130,wholesale,common sense,1.2956
+131,wholesale,common sense,1.2588
+132,wholesale,common sense,1.232
+133,wholesale,common sense,1.2348
+134,wholesale,common sense,1.2436
+135,wholesale,common sense,1.2628
+136,wholesale,common sense,1.2924
+137,wholesale,common sense,1.2956
+138,wholesale,common sense,1.2588
+139,wholesale,common sense,1.232
+140,wholesale,common sense,1.2348
+141,wholesale,common sense,1.2436
+142,wholesale,common sense,1.2628
+143,wholesale,common sense,1.2924
+144,wholesale,common sense,1.2956
+145,wholesale,common sense,1.2588
+146,wholesale,common sense,1.232
+147,wholesale,common sense,1.2348
+148,wholesale,common sense,1.2436
+149,wholesale,common sense,1.2628
+150,wholesale,common sense,1.2924
+151,wholesale,common sense,1.2956
+152,wholesale,common sense,1.2588
+153,wholesale,common sense,1.232
+154,wholesale,common sense,1.2348
+155,wholesale,common sense,1.2436
+156,wholesale,common sense,1.2628
+157,wholesale,common sense,1.2924
+158,wholesale,common sense,1.2956
+159,wholesale,common sense,1.2588
+160,wholesale,common sense,1.232
+161,wholesale,common sense,1.2348
+162,wholesale,common sense,1.2436
+163,wholesale,common sense,1.2628
+164,wholesale,common sense,1.2924
+165,wholesale,common sense,1.2956
+166,wholesale,common sense,1.2588
+167,wholesale,common sense,1.232
+168,wholesale,common sense,1.2348
+169,wholesale,common sense,1.2436
+170,wholesale,common sense,1.2628
+171,wholesale,common sense,1.2924
+172,wholesale,common sense,1.2956
+173,wholesale,common sense,1.2588
+174,wholesale,common sense,1.232
+175,wholesale,common sense,1.2348
+176,wholesale,common sense,1.2436
+177,wholesale,common sense,1.2628
+178,wholesale,common sense,1.2924
+179,wholesale,common sense,1.2956
+180,wholesale,common sense,1.2588
+181,wholesale,common sense,1.232
+182,wholesale,common sense,1.2348
+183,wholesale,common sense,1.2436
+184,wholesale,common sense,1.2628
+185,wholesale,common sense,1.2924
+186,wholesale,common sense,1.2956
+187,wholesale,common sense,1.2588
+188,wholesale,common sense,1.232
+189,wholesale,common sense,1.2348
+190,wholesale,common sense,1.2436
+191,wholesale,common sense,1.2628
+192,wholesale,common sense,1.2924
+193,wholesale,common sense,1.2956
+194,wholesale,common sense,1.2588
+195,wholesale,common sense,1.232
+196,wholesale,common sense,1.2348
+197,wholesale,common sense,1.2436
+198,wholesale,common sense,1.2628
+199,wholesale,common sense,1.2924
+200,wholesale,common sense,1.2956
+201,wholesale,common sense,1.2588
+202,wholesale,common sense,1.232
+203,wholesale,common sense,1.2348
+204,wholesale,common sense,1.2436
+205,wholesale,common sense,1.2628
+206,wholesale,common sense,1.2924
+207,wholesale,common sense,1.2956
+208,wholesale,common sense,1.2588
+209,wholesale,common sense,1.232
+210,wholesale,common sense,1.2348
+211,wholesale,common sense,1.2436
+212,wholesale,common sense,1.2628
+213,wholesale,common sense,1.2864
+214,wholesale,common sense,1.2852
+215,wholesale,common sense,1.238
+216,wholesale,common sense,1.192
+217,wholesale,common sense,1.1696
+218,wholesale,common sense,1.1828
+219,wholesale,common sense,1.2108
+220,wholesale,common sense,1.2552
+221,wholesale,common sense,1.2924
+222,wholesale,common sense,1.2956
+223,wholesale,common sense,1.2588
+224,wholesale,common sense,1.232
+225,wholesale,common sense,1.2348
+226,wholesale,common sense,1.2436
+227,wholesale,common sense,1.2628
+228,wholesale,common sense,1.2924
+229,wholesale,common sense,1.2956
+230,wholesale,common sense,1.2588
+231,wholesale,common sense,1.232
+232,wholesale,common sense,1.2348
+233,wholesale,common sense,1.2436
+234,wholesale,common sense,1.2628
+235,wholesale,common sense,1.2924
+236,wholesale,common sense,1.2956
+237,wholesale,common sense,1.2588
+238,wholesale,common sense,1.232
+239,wholesale,common sense,1.2348
+240,wholesale,common sense,1.2436
+241,wholesale,common sense,1.2628
+242,wholesale,common sense,1.2924
+243,wholesale,common sense,1.2956
+244,wholesale,common sense,1.2588
+245,wholesale,common sense,1.232
+246,wholesale,common sense,1.2348
+247,wholesale,common sense,1.2436
+248,wholesale,common sense,1.2628
+249,wholesale,common sense,1.2924
+250,wholesale,common sense,1.2956
+251,wholesale,common sense,1.2588
+252,wholesale,common sense,1.232
+253,wholesale,common sense,1.2348
+254,wholesale,common sense,1.2436
+255,wholesale,common sense,1.2628
+256,wholesale,common sense,1.2924
+257,wholesale,common sense,1.2956
+258,wholesale,common sense,1.3596
+259,wholesale,common sense,1.552
+260,wholesale,common sense,1.774
+261,wholesale,common sense,2.002
+262,wholesale,common sense,2.2404
+263,wholesale,common sense,2.2876
+264,wholesale,common sense,2.0716
+265,wholesale,common sense,1.8156
+266,wholesale,common sense,1.5696
+267,wholesale,common sense,1.3532
+268,wholesale,common sense,1.2436
+269,wholesale,common sense,1.2628
+270,wholesale,common sense,1.2924
+271,wholesale,common sense,1.2956
+272,wholesale,common sense,1.2588
+273,wholesale,common sense,1.232
+274,wholesale,common sense,1.2348
+275,wholesale,common sense,1.2436
+276,wholesale,common sense,1.2628
+277,wholesale,common sense,1.2924
+278,wholesale,common sense,1.2956
+279,wholesale,common sense,1.2588
+280,wholesale,common sense,1.232
+281,wholesale,common sense,1.2348
+282,wholesale,common sense,1.2436
+283,wholesale,common sense,1.2628
+284,wholesale,common sense,1.2924
+285,wholesale,common sense,1.2956
+286,wholesale,common sense,1.2588
+287,wholesale,common sense,1.232
+288,wholesale,common sense,1.2348
+289,wholesale,common sense,1.2436
+290,wholesale,common sense,1.2628
+291,wholesale,common sense,1.2924
+292,wholesale,common sense,1.2956
+293,wholesale,common sense,1.2588
+294,wholesale,common sense,1.232
+295,wholesale,common sense,1.2348
+296,wholesale,common sense,1.2436
+297,wholesale,common sense,1.2628
+298,wholesale,common sense,1.2924
+299,wholesale,common sense,1.2956
+300,wholesale,common sense,1.2588
+301,wholesale,common sense,1.232
+302,wholesale,common sense,1.2348
+303,wholesale,common sense,1.2436
+304,wholesale,common sense,1.2628
+305,wholesale,common sense,1.2864
+306,wholesale,common sense,1.2852
+307,wholesale,common sense,1.238
+308,wholesale,common sense,1.192
+309,wholesale,common sense,1.1696
+310,wholesale,common sense,1.1828
+311,wholesale,common sense,1.2108
+312,wholesale,common sense,1.2552
+313,wholesale,common sense,1.2924
+314,wholesale,common sense,1.2956
+315,wholesale,common sense,1.2588
+316,wholesale,common sense,1.232
+317,wholesale,common sense,1.2348
+318,wholesale,common sense,1.2436
+319,wholesale,common sense,1.2628
+320,wholesale,common sense,1.2924
+321,wholesale,common sense,1.2956
+322,wholesale,common sense,1.2588
+323,wholesale,common sense,1.232
+324,wholesale,common sense,1.2348
+325,wholesale,common sense,1.2436
+326,wholesale,common sense,1.2628
+327,wholesale,common sense,1.2924
+328,wholesale,common sense,1.2956
+329,wholesale,common sense,1.2588
+330,wholesale,common sense,1.232
+331,wholesale,common sense,1.2348
+332,wholesale,common sense,1.2436
+333,wholesale,common sense,1.2628
+334,wholesale,common sense,1.2924
+335,wholesale,common sense,1.2956
+336,wholesale,common sense,1.2588
+337,wholesale,common sense,1.232
+338,wholesale,common sense,1.2348
+339,wholesale,common sense,1.2436
+340,wholesale,common sense,1.2628
+341,wholesale,common sense,1.2924
+342,wholesale,common sense,1.2956
+343,wholesale,common sense,1.2588
+344,wholesale,common sense,1.232
+345,wholesale,common sense,1.2348
+346,wholesale,common sense,1.2436
+347,wholesale,common sense,1.2628
+348,wholesale,common sense,1.2924
+349,wholesale,common sense,1.2956
+350,wholesale,common sense,1.2588
+351,wholesale,common sense,1.232
+352,wholesale,common sense,1.3
+353,wholesale,common sense,1.4216
+354,wholesale,common sense,1.5936
+355,wholesale,common sense,1.822
+356,wholesale,common sense,2.0684
+357,wholesale,common sense,2.1948
+358,wholesale,common sense,2.2952
+359,wholesale,common sense,2.4104
+360,wholesale,common sense,2.4872
+361,wholesale,common sense,2.5256
+362,wholesale,common sense,2.5848
+363,wholesale,common sense,2.5912
+364,wholesale,common sense,2.5176
+365,wholesale,common sense,2.464
+1,regional warehouse,common sense,2
+2,regional warehouse,common sense,1.15
+3,regional warehouse,common sense,1.11
+4,regional warehouse,common sense,1.26
+5,regional warehouse,common sense,1.3808
+6,regional warehouse,common sense,1.23064
+7,regional warehouse,common sense,1.25784
+8,regional warehouse,common sense,1.30112
+9,regional warehouse,common sense,1.3156
+10,regional warehouse,common sense,1.29792
+11,regional warehouse,common sense,1.29984
+12,regional warehouse,common sense,1.28904
+13,regional warehouse,common sense,1.27072
+14,regional warehouse,common sense,1.25296
+15,regional warehouse,common sense,1.2464
+16,regional warehouse,common sense,1.25312
+17,regional warehouse,common sense,1.26584
+18,regional warehouse,common sense,1.27064
+19,regional warehouse,common sense,1.26832
+20,regional warehouse,common sense,1.26272
+21,regional warehouse,common sense,1.25296
+22,regional warehouse,common sense,1.2464
+23,regional warehouse,common sense,1.25312
+24,regional warehouse,common sense,1.26584
+25,regional warehouse,common sense,1.27064
+26,regional warehouse,common sense,1.26832
+27,regional warehouse,common sense,1.26272
+28,regional warehouse,common sense,1.25296
+29,regional warehouse,common sense,1.2464
+30,regional warehouse,common sense,1.25312
+31,regional warehouse,common sense,1.26584
+32,regional warehouse,common sense,1.27064
+33,regional warehouse,common sense,1.26832
+34,regional warehouse,common sense,1.26272
+35,regional warehouse,common sense,1.25296
+36,regional warehouse,common sense,1.2464
+37,regional warehouse,common sense,1.25312
+38,regional warehouse,common sense,1.26584
+39,regional warehouse,common sense,1.27064
+40,regional warehouse,common sense,1.26832
+41,regional warehouse,common sense,1.26272
+42,regional warehouse,common sense,1.25296
+43,regional warehouse,common sense,1.2464
+44,regional warehouse,common sense,1.25312
+45,regional warehouse,common sense,1.26584
+46,regional warehouse,common sense,1.27064
+47,regional warehouse,common sense,1.26832
+48,regional warehouse,common sense,1.26272
+49,regional warehouse,common sense,1.25296
+50,regional warehouse,common sense,1.2464
+51,regional warehouse,common sense,1.25312
+52,regional warehouse,common sense,1.26584
+53,regional warehouse,common sense,1.27064
+54,regional warehouse,common sense,1.26832
+55,regional warehouse,common sense,1.26272
+56,regional warehouse,common sense,1.25296
+57,regional warehouse,common sense,1.2464
+58,regional warehouse,common sense,1.25312
+59,regional warehouse,common sense,1.26584
+60,regional warehouse,common sense,1.27064
+61,regional warehouse,common sense,1.26832
+62,regional warehouse,common sense,1.26272
+63,regional warehouse,common sense,1.25296
+64,regional warehouse,common sense,1.2464
+65,regional warehouse,common sense,1.25312
+66,regional warehouse,common sense,1.26584
+67,regional warehouse,common sense,1.27064
+68,regional warehouse,common sense,1.26832
+69,regional warehouse,common sense,1.26272
+70,regional warehouse,common sense,1.25296
+71,regional warehouse,common sense,1.2464
+72,regional warehouse,common sense,1.25312
+73,regional warehouse,common sense,1.26584
+74,regional warehouse,common sense,1.27064
+75,regional warehouse,common sense,1.26832
+76,regional warehouse,common sense,1.26272
+77,regional warehouse,common sense,1.25296
+78,regional warehouse,common sense,1.2464
+79,regional warehouse,common sense,1.25312
+80,regional warehouse,common sense,1.26584
+81,regional warehouse,common sense,1.27064
+82,regional warehouse,common sense,1.26832
+83,regional warehouse,common sense,1.26272
+84,regional warehouse,common sense,1.25296
+85,regional warehouse,common sense,1.2464
+86,regional warehouse,common sense,1.25312
+87,regional warehouse,common sense,1.26584
+88,regional warehouse,common sense,1.27064
+89,regional warehouse,common sense,1.26832
+90,regional warehouse,common sense,1.26272
+91,regional warehouse,common sense,1.25296
+92,regional warehouse,common sense,1.2464
+93,regional warehouse,common sense,1.25312
+94,regional warehouse,common sense,1.26584
+95,regional warehouse,common sense,1.27064
+96,regional warehouse,common sense,1.26832
+97,regional warehouse,common sense,1.26272
+98,regional warehouse,common sense,1.25296
+99,regional warehouse,common sense,1.2464
+100,regional warehouse,common sense,1.25312
+101,regional warehouse,common sense,1.26584
+102,regional warehouse,common sense,1.27064
+103,regional warehouse,common sense,1.26832
+104,regional warehouse,common sense,1.26272
+105,regional warehouse,common sense,1.25296
+106,regional warehouse,common sense,1.2464
+107,regional warehouse,common sense,1.25312
+108,regional warehouse,common sense,1.26584
+109,regional warehouse,common sense,1.27064
+110,regional warehouse,common sense,1.26832
+111,regional warehouse,common sense,1.26272
+112,regional warehouse,common sense,1.25296
+113,regional warehouse,common sense,1.2464
+114,regional warehouse,common sense,1.25312
+115,regional warehouse,common sense,1.26584
+116,regional warehouse,common sense,1.27064
+117,regional warehouse,common sense,1.26832
+118,regional warehouse,common sense,1.26272
+119,regional warehouse,common sense,1.25296
+120,regional warehouse,common sense,1.2464
+121,regional warehouse,common sense,1.25192
+122,regional warehouse,common sense,1.26256
+123,regional warehouse,common sense,1.2632
+124,regional warehouse,common sense,1.25288
+125,regional warehouse,common sense,1.23424
+126,regional warehouse,common sense,1.21352
+127,regional warehouse,common sense,1.19864
+128,regional warehouse,common sense,1.20208
+129,regional warehouse,common sense,1.22216
+130,regional warehouse,common sense,1.24736
+131,regional warehouse,common sense,1.26256
+132,regional warehouse,common sense,1.2668
+133,regional warehouse,common sense,1.26272
+134,regional warehouse,common sense,1.25296
+135,regional warehouse,common sense,1.2464
+136,regional warehouse,common sense,1.25312
+137,regional warehouse,common sense,1.26584
+138,regional warehouse,common sense,1.27064
+139,regional warehouse,common sense,1.26832
+140,regional warehouse,common sense,1.26272
+141,regional warehouse,common sense,1.25296
+142,regional warehouse,common sense,1.2464
+143,regional warehouse,common sense,1.25312
+144,regional warehouse,common sense,1.26584
+145,regional warehouse,common sense,1.27064
+146,regional warehouse,common sense,1.26832
+147,regional warehouse,common sense,1.26272
+148,regional warehouse,common sense,1.25296
+149,regional warehouse,common sense,1.2464
+150,regional warehouse,common sense,1.25312
+151,regional warehouse,common sense,1.26584
+152,regional warehouse,common sense,1.27064
+153,regional warehouse,common sense,1.26832
+154,regional warehouse,common sense,1.26272
+155,regional warehouse,common sense,1.25296
+156,regional warehouse,common sense,1.2464
+157,regional warehouse,common sense,1.25312
+158,regional warehouse,common sense,1.26584
+159,regional warehouse,common sense,1.27064
+160,regional warehouse,common sense,1.26832
+161,regional warehouse,common sense,1.26272
+162,regional warehouse,common sense,1.25296
+163,regional warehouse,common sense,1.2464
+164,regional warehouse,common sense,1.25312
+165,regional warehouse,common sense,1.26584
+166,regional warehouse,common sense,1.27064
+167,regional warehouse,common sense,1.26832
+168,regional warehouse,common sense,1.26272
+169,regional warehouse,common sense,1.25296
+170,regional warehouse,common sense,1.2464
+171,regional warehouse,common sense,1.25312
+172,regional warehouse,common sense,1.26584
+173,regional warehouse,common sense,1.27064
+174,regional warehouse,common sense,1.26832
+175,regional warehouse,common sense,1.26272
+176,regional warehouse,common sense,1.25296
+177,regional warehouse,common sense,1.2464
+178,regional warehouse,common sense,1.25312
+179,regional warehouse,common sense,1.26584
+180,regional warehouse,common sense,1.27064
+181,regional warehouse,common sense,1.26832
+182,regional warehouse,common sense,1.26272
+183,regional warehouse,common sense,1.25296
+184,regional warehouse,common sense,1.2464
+185,regional warehouse,common sense,1.25312
+186,regional warehouse,common sense,1.26584
+187,regional warehouse,common sense,1.27064
+188,regional warehouse,common sense,1.26832
+189,regional warehouse,common sense,1.26272
+190,regional warehouse,common sense,1.25296
+191,regional warehouse,common sense,1.2464
+192,regional warehouse,common sense,1.25312
+193,regional warehouse,common sense,1.26584
+194,regional warehouse,common sense,1.27064
+195,regional warehouse,common sense,1.26832
+196,regional warehouse,common sense,1.26272
+197,regional warehouse,common sense,1.25296
+198,regional warehouse,common sense,1.2464
+199,regional warehouse,common sense,1.25312
+200,regional warehouse,common sense,1.26584
+201,regional warehouse,common sense,1.27064
+202,regional warehouse,common sense,1.26832
+203,regional warehouse,common sense,1.26272
+204,regional warehouse,common sense,1.25296
+205,regional warehouse,common sense,1.2464
+206,regional warehouse,common sense,1.25312
+207,regional warehouse,common sense,1.26584
+208,regional warehouse,common sense,1.27064
+209,regional warehouse,common sense,1.26832
+210,regional warehouse,common sense,1.26272
+211,regional warehouse,common sense,1.25296
+212,regional warehouse,common sense,1.2464
+213,regional warehouse,common sense,1.25192
+214,regional warehouse,common sense,1.26256
+215,regional warehouse,common sense,1.2632
+216,regional warehouse,common sense,1.25288
+217,regional warehouse,common sense,1.23424
+218,regional warehouse,common sense,1.21352
+219,regional warehouse,common sense,1.19864
+220,regional warehouse,common sense,1.20208
+221,regional warehouse,common sense,1.22216
+222,regional warehouse,common sense,1.24736
+223,regional warehouse,common sense,1.26256
+224,regional warehouse,common sense,1.2668
+225,regional warehouse,common sense,1.26272
+226,regional warehouse,common sense,1.25296
+227,regional warehouse,common sense,1.2464
+228,regional warehouse,common sense,1.25312
+229,regional warehouse,common sense,1.26584
+230,regional warehouse,common sense,1.27064
+231,regional warehouse,common sense,1.26832
+232,regional warehouse,common sense,1.26272
+233,regional warehouse,common sense,1.25296
+234,regional warehouse,common sense,1.2464
+235,regional warehouse,common sense,1.25312
+236,regional warehouse,common sense,1.26584
+237,regional warehouse,common sense,1.27064
+238,regional warehouse,common sense,1.26832
+239,regional warehouse,common sense,1.26272
+240,regional warehouse,common sense,1.25296
+241,regional warehouse,common sense,1.2464
+242,regional warehouse,common sense,1.25312
+243,regional warehouse,common sense,1.26584
+244,regional warehouse,common sense,1.27064
+245,regional warehouse,common sense,1.26832
+246,regional warehouse,common sense,1.26272
+247,regional warehouse,common sense,1.25296
+248,regional warehouse,common sense,1.2464
+249,regional warehouse,common sense,1.25312
+250,regional warehouse,common sense,1.26584
+251,regional warehouse,common sense,1.27064
+252,regional warehouse,common sense,1.26832
+253,regional warehouse,common sense,1.26272
+254,regional warehouse,common sense,1.25296
+255,regional warehouse,common sense,1.2464
+256,regional warehouse,common sense,1.25312
+257,regional warehouse,common sense,1.26584
+258,regional warehouse,common sense,1.2908
+259,regional warehouse,common sense,1.35248
+260,regional warehouse,common sense,1.45472
+261,regional warehouse,common sense,1.59664
+262,regional warehouse,common sense,1.7856
+263,regional warehouse,common sense,1.9712
+264,regional warehouse,common sense,2.07512
+265,regional warehouse,common sense,2.08344
+266,regional warehouse,common sense,1.99696
+267,regional warehouse,common sense,1.81952
+268,regional warehouse,common sense,1.61072
+269,regional warehouse,common sense,1.44896
+270,regional warehouse,common sense,1.34432
+271,regional warehouse,common sense,1.28952
+272,regional warehouse,common sense,1.27064
+273,regional warehouse,common sense,1.26832
+274,regional warehouse,common sense,1.26272
+275,regional warehouse,common sense,1.25296
+276,regional warehouse,common sense,1.2464
+277,regional warehouse,common sense,1.25312
+278,regional warehouse,common sense,1.26584
+279,regional warehouse,common sense,1.27064
+280,regional warehouse,common sense,1.26832
+281,regional warehouse,common sense,1.26272
+282,regional warehouse,common sense,1.25296
+283,regional warehouse,common sense,1.2464
+284,regional warehouse,common sense,1.25312
+285,regional warehouse,common sense,1.26584
+286,regional warehouse,common sense,1.27064
+287,regional warehouse,common sense,1.26832
+288,regional warehouse,common sense,1.26272
+289,regional warehouse,common sense,1.25296
+290,regional warehouse,common sense,1.2464
+291,regional warehouse,common sense,1.25312
+292,regional warehouse,common sense,1.26584
+293,regional warehouse,common sense,1.27064
+294,regional warehouse,common sense,1.26832
+295,regional warehouse,common sense,1.26272
+296,regional warehouse,common sense,1.25296
+297,regional warehouse,common sense,1.2464
+298,regional warehouse,common sense,1.25312
+299,regional warehouse,common sense,1.26584
+300,regional warehouse,common sense,1.27064
+301,regional warehouse,common sense,1.26832
+302,regional warehouse,common sense,1.26272
+303,regional warehouse,common sense,1.25296
+304,regional warehouse,common sense,1.2464
+305,regional warehouse,common sense,1.25192
+306,regional warehouse,common sense,1.26256
+307,regional warehouse,common sense,1.2632
+308,regional warehouse,common sense,1.25288
+309,regional warehouse,common sense,1.23424
+310,regional warehouse,common sense,1.21352
+311,regional warehouse,common sense,1.19864
+312,regional warehouse,common sense,1.20208
+313,regional warehouse,common sense,1.22216
+314,regional warehouse,common sense,1.24736
+315,regional warehouse,common sense,1.26256
+316,regional warehouse,common sense,1.2668
+317,regional warehouse,common sense,1.26272
+318,regional warehouse,common sense,1.25296
+319,regional warehouse,common sense,1.2464
+320,regional warehouse,common sense,1.25312
+321,regional warehouse,common sense,1.26584
+322,regional warehouse,common sense,1.27064
+323,regional warehouse,common sense,1.26832
+324,regional warehouse,common sense,1.26272
+325,regional warehouse,common sense,1.25296
+326,regional warehouse,common sense,1.2464
+327,regional warehouse,common sense,1.25312
+328,regional warehouse,common sense,1.26584
+329,regional warehouse,common sense,1.27064
+330,regional warehouse,common sense,1.26832
+331,regional warehouse,common sense,1.26272
+332,regional warehouse,common sense,1.25296
+333,regional warehouse,common sense,1.2464
+334,regional warehouse,common sense,1.25312
+335,regional warehouse,common sense,1.26584
+336,regional warehouse,common sense,1.27064
+337,regional warehouse,common sense,1.26832
+338,regional warehouse,common sense,1.26272
+339,regional warehouse,common sense,1.25296
+340,regional warehouse,common sense,1.2464
+341,regional warehouse,common sense,1.25312
+342,regional warehouse,common sense,1.26584
+343,regional warehouse,common sense,1.27064
+344,regional warehouse,common sense,1.26832
+345,regional warehouse,common sense,1.26272
+346,regional warehouse,common sense,1.25296
+347,regional warehouse,common sense,1.2464
+348,regional warehouse,common sense,1.25312
+349,regional warehouse,common sense,1.26584
+350,regional warehouse,common sense,1.27064
+351,regional warehouse,common sense,1.26832
+352,regional warehouse,common sense,1.27576
+353,regional warehouse,common sense,1.3016
+354,regional warehouse,common sense,1.3612
+355,regional warehouse,common sense,1.47384
+356,regional warehouse,common sense,1.64112
+357,regional warehouse,common sense,1.82008
+358,regional warehouse,common sense,1.9948
+359,regional warehouse,common sense,2.15816
+360,regional warehouse,common sense,2.2912
+361,regional warehouse,common sense,2.38264
+362,regional warehouse,common sense,2.46064
+363,regional warehouse,common sense,2.51984
+364,regional warehouse,common sense,2.54128
+365,regional warehouse,common sense,2.53664
+1,factory,common sense,2
+2,factory,common sense,1.15
+3,factory,common sense,1.11
+4,factory,common sense,1.26
+5,factory,common sense,1.38016
+6,factory,common sense,1.226288
+7,factory,common sense,1.247856
+8,factory,common sense,1.28608
+9,factory,common sense,1.2972
+10,factory,common sense,1.280624
+11,factory,common sense,1.294464
+12,factory,common sense,1.300704
+13,factory,common sense,1.294624
+14,factory,common sense,1.282096
+15,factory,common sense,1.271792
+16,factory,common sense,1.262448
+17,factory,common sense,1.257808
+18,factory,common sense,1.257792
+19,factory,common sense,1.260864
+20,factory,common sense,1.264128
+21,factory,common sense,1.264096
+22,factory,common sense,1.260208
+23,factory,common sense,1.256704
+24,factory,common sense,1.256208
+25,factory,common sense,1.257792
+26,factory,common sense,1.260864
+27,factory,common sense,1.264128
+28,factory,common sense,1.264096
+29,factory,common sense,1.260208
+30,factory,common sense,1.256704
+31,factory,common sense,1.256208
+32,factory,common sense,1.257792
+33,factory,common sense,1.260864
+34,factory,common sense,1.264128
+35,factory,common sense,1.264096
+36,factory,common sense,1.260208
+37,factory,common sense,1.256704
+38,factory,common sense,1.256208
+39,factory,common sense,1.257792
+40,factory,common sense,1.260864
+41,factory,common sense,1.264128
+42,factory,common sense,1.264096
+43,factory,common sense,1.260208
+44,factory,common sense,1.256704
+45,factory,common sense,1.256208
+46,factory,common sense,1.257792
+47,factory,common sense,1.260864
+48,factory,common sense,1.264128
+49,factory,common sense,1.264096
+50,factory,common sense,1.260208
+51,factory,common sense,1.256704
+52,factory,common sense,1.256208
+53,factory,common sense,1.257792
+54,factory,common sense,1.260864
+55,factory,common sense,1.264128
+56,factory,common sense,1.264096
+57,factory,common sense,1.260208
+58,factory,common sense,1.256704
+59,factory,common sense,1.256208
+60,factory,common sense,1.257792
+61,factory,common sense,1.260864
+62,factory,common sense,1.264128
+63,factory,common sense,1.264096
+64,factory,common sense,1.260208
+65,factory,common sense,1.256704
+66,factory,common sense,1.256208
+67,factory,common sense,1.257792
+68,factory,common sense,1.260864
+69,factory,common sense,1.264128
+70,factory,common sense,1.264096
+71,factory,common sense,1.260208
+72,factory,common sense,1.256704
+73,factory,common sense,1.256208
+74,factory,common sense,1.257792
+75,factory,common sense,1.260864
+76,factory,common sense,1.264128
+77,factory,common sense,1.264096
+78,factory,common sense,1.260208
+79,factory,common sense,1.256704
+80,factory,common sense,1.256208
+81,factory,common sense,1.257792
+82,factory,common sense,1.260864
+83,factory,common sense,1.264128
+84,factory,common sense,1.264096
+85,factory,common sense,1.260208
+86,factory,common sense,1.256704
+87,factory,common sense,1.256208
+88,factory,common sense,1.257792
+89,factory,common sense,1.260864
+90,factory,common sense,1.264128
+91,factory,common sense,1.264096
+92,factory,common sense,1.260208
+93,factory,common sense,1.256704
+94,factory,common sense,1.256208
+95,factory,common sense,1.257792
+96,factory,common sense,1.260864
+97,factory,common sense,1.264128
+98,factory,common sense,1.264096
+99,factory,common sense,1.260208
+100,factory,common sense,1.256704
+101,factory,common sense,1.256208
+102,factory,common sense,1.257792
+103,factory,common sense,1.260864
+104,factory,common sense,1.264128
+105,factory,common sense,1.264096
+106,factory,common sense,1.260208
+107,factory,common sense,1.256704
+108,factory,common sense,1.256208
+109,factory,common sense,1.257792
+110,factory,common sense,1.260864
+111,factory,common sense,1.264128
+112,factory,common sense,1.264096
+113,factory,common sense,1.260208
+114,factory,common sense,1.256704
+115,factory,common sense,1.256208
+116,factory,common sense,1.257792
+117,factory,common sense,1.260864
+118,factory,common sense,1.264128
+119,factory,common sense,1.264096
+120,factory,common sense,1.260208
+121,factory,common sense,1.256464
+122,factory,common sense,1.255312
+123,factory,common sense,1.255408
+124,factory,common sense,1.255392
+125,factory,common sense,1.25296
+126,factory,common sense,1.24528
+127,factory,common sense,1.232496
+128,factory,common sense,1.220272
+129,factory,common sense,1.214128
+130,factory,common sense,1.216752
+131,factory,common sense,1.22656
+132,factory,common sense,1.240192
+133,factory,common sense,1.25232
+134,factory,common sense,1.25848
+135,factory,common sense,1.258288
+136,factory,common sense,1.2564
+137,factory,common sense,1.256208
+138,factory,common sense,1.257792
+139,factory,common sense,1.260864
+140,factory,common sense,1.264128
+141,factory,common sense,1.264096
+142,factory,common sense,1.260208
+143,factory,common sense,1.256704
+144,factory,common sense,1.256208
+145,factory,common sense,1.257792
+146,factory,common sense,1.260864
+147,factory,common sense,1.264128
+148,factory,common sense,1.264096
+149,factory,common sense,1.260208
+150,factory,common sense,1.256704
+151,factory,common sense,1.256208
+152,factory,common sense,1.257792
+153,factory,common sense,1.260864
+154,factory,common sense,1.264128
+155,factory,common sense,1.264096
+156,factory,common sense,1.260208
+157,factory,common sense,1.256704
+158,factory,common sense,1.256208
+159,factory,common sense,1.257792
+160,factory,common sense,1.260864
+161,factory,common sense,1.264128
+162,factory,common sense,1.264096
+163,factory,common sense,1.260208
+164,factory,common sense,1.256704
+165,factory,common sense,1.256208
+166,factory,common sense,1.257792
+167,factory,common sense,1.260864
+168,factory,common sense,1.264128
+169,factory,common sense,1.264096
+170,factory,common sense,1.260208
+171,factory,common sense,1.256704
+172,factory,common sense,1.256208
+173,factory,common sense,1.257792
+174,factory,common sense,1.260864
+175,factory,common sense,1.264128
+176,factory,common sense,1.264096
+177,factory,common sense,1.260208
+178,factory,common sense,1.256704
+179,factory,common sense,1.256208
+180,factory,common sense,1.257792
+181,factory,common sense,1.260864
+182,factory,common sense,1.264128
+183,factory,common sense,1.264096
+184,factory,common sense,1.260208
+185,factory,common sense,1.256704
+186,factory,common sense,1.256208
+187,factory,common sense,1.257792
+188,factory,common sense,1.260864
+189,factory,common sense,1.264128
+190,factory,common sense,1.264096
+191,factory,common sense,1.260208
+192,factory,common sense,1.256704
+193,factory,common sense,1.256208
+194,factory,common sense,1.257792
+195,factory,common sense,1.260864
+196,factory,common sense,1.264128
+197,factory,common sense,1.264096
+198,factory,common sense,1.260208
+199,factory,common sense,1.256704
+200,factory,common sense,1.256208
+201,factory,common sense,1.257792
+202,factory,common sense,1.260864
+203,factory,common sense,1.264128
+204,factory,common sense,1.264096
+205,factory,common sense,1.260208
+206,factory,common sense,1.256704
+207,factory,common sense,1.256208
+208,factory,common sense,1.257792
+209,factory,common sense,1.260864
+210,factory,common sense,1.264128
+211,factory,common sense,1.264096
+212,factory,common sense,1.260208
+213,factory,common sense,1.256464
+214,factory,common sense,1.255312
+215,factory,common sense,1.255408
+216,factory,common sense,1.255392
+217,factory,common sense,1.25296
+218,factory,common sense,1.24528
+219,factory,common sense,1.232496
+220,factory,common sense,1.220272
+221,factory,common sense,1.214128
+222,factory,common sense,1.216752
+223,factory,common sense,1.22656
+224,factory,common sense,1.240192
+225,factory,common sense,1.25232
+226,factory,common sense,1.25848
+227,factory,common sense,1.258288
+228,factory,common sense,1.2564
+229,factory,common sense,1.256208
+230,factory,common sense,1.257792
+231,factory,common sense,1.260864
+232,factory,common sense,1.264128
+233,factory,common sense,1.264096
+234,factory,common sense,1.260208
+235,factory,common sense,1.256704
+236,factory,common sense,1.256208
+237,factory,common sense,1.257792
+238,factory,common sense,1.260864
+239,factory,common sense,1.264128
+240,factory,common sense,1.264096
+241,factory,common sense,1.260208
+242,factory,common sense,1.256704
+243,factory,common sense,1.256208
+244,factory,common sense,1.257792
+245,factory,common sense,1.260864
+246,factory,common sense,1.264128
+247,factory,common sense,1.264096
+248,factory,common sense,1.260208
+249,factory,common sense,1.256704
+250,factory,common sense,1.256208
+251,factory,common sense,1.257792
+252,factory,common sense,1.260864
+253,factory,common sense,1.264128
+254,factory,common sense,1.264096
+255,factory,common sense,1.260208
+256,factory,common sense,1.256704
+257,factory,common sense,1.256208
+258,factory,common sense,1.261824
+259,factory,common sense,1.281728
+260,factory,common sense,1.323392
+261,factory,common sense,1.392096
+262,factory,common sense,1.496048
+263,factory,common sense,1.632128
+264,factory,common sense,1.776656
+265,factory,common sense,1.9024
+266,factory,common sense,1.982464
+267,factory,common sense,1.989248
+268,factory,common sense,1.917152
+269,factory,common sense,1.79192
+270,factory,common sense,1.644096
+271,factory,common sense,1.502608
+272,factory,common sense,1.392832
+273,factory,common sense,1.324352
+274,factory,common sense,1.287104
+275,factory,common sense,1.268832
+276,factory,common sense,1.260208
+277,factory,common sense,1.256704
+278,factory,common sense,1.256208
+279,factory,common sense,1.257792
+280,factory,common sense,1.260864
+281,factory,common sense,1.264128
+282,factory,common sense,1.264096
+283,factory,common sense,1.260208
+284,factory,common sense,1.256704
+285,factory,common sense,1.256208
+286,factory,common sense,1.257792
+287,factory,common sense,1.260864
+288,factory,common sense,1.264128
+289,factory,common sense,1.264096
+290,factory,common sense,1.260208
+291,factory,common sense,1.256704
+292,factory,common sense,1.256208
+293,factory,common sense,1.257792
+294,factory,common sense,1.260864
+295,factory,common sense,1.264128
+296,factory,common sense,1.264096
+297,factory,common sense,1.260208
+298,factory,common sense,1.256704
+299,factory,common sense,1.256208
+300,factory,common sense,1.257792
+301,factory,common sense,1.260864
+302,factory,common sense,1.264128
+303,factory,common sense,1.264096
+304,factory,common sense,1.260208
+305,factory,common sense,1.256464
+306,factory,common sense,1.255312
+307,factory,common sense,1.255408
+308,factory,common sense,1.255392
+309,factory,common sense,1.25296
+310,factory,common sense,1.24528
+311,factory,common sense,1.232496
+312,factory,common sense,1.220272
+313,factory,common sense,1.214128
+314,factory,common sense,1.216752
+315,factory,common sense,1.22656
+316,factory,common sense,1.240192
+317,factory,common sense,1.25232
+318,factory,common sense,1.25848
+319,factory,common sense,1.258288
+320,factory,common sense,1.2564
+321,factory,common sense,1.256208
+322,factory,common sense,1.257792
+323,factory,common sense,1.260864
+324,factory,common sense,1.264128
+325,factory,common sense,1.264096
+326,factory,common sense,1.260208
+327,factory,common sense,1.256704
+328,factory,common sense,1.256208
+329,factory,common sense,1.257792
+330,factory,common sense,1.260864
+331,factory,common sense,1.264128
+332,factory,common sense,1.264096
+333,factory,common sense,1.260208
+334,factory,common sense,1.256704
+335,factory,common sense,1.256208
+336,factory,common sense,1.257792
+337,factory,common sense,1.260864
+338,factory,common sense,1.264128
+339,factory,common sense,1.264096
+340,factory,common sense,1.260208
+341,factory,common sense,1.256704
+342,factory,common sense,1.256208
+343,factory,common sense,1.257792
+344,factory,common sense,1.260864
+345,factory,common sense,1.264128
+346,factory,common sense,1.264096
+347,factory,common sense,1.260208
+348,factory,common sense,1.256704
+349,factory,common sense,1.256208
+350,factory,common sense,1.257792
+351,factory,common sense,1.260864
+352,factory,common sense,1.266736
+353,factory,common sense,1.276432
+354,factory,common sense,1.295504
+355,factory,common sense,1.336144
+356,factory,common sense,1.410704
+357,factory,common sense,1.519568
+358,factory,common sense,1.658208
+359,factory,common sense,1.8176
+360,factory,common sense,1.981072
+361,factory,common sense,2.129376
+362,factory,common sense,2.257488
+363,factory,common sense,2.362496
+364,factory,common sense,2.43912
+365,factory,common sense,2.488208
+1,retail,inaction,0
+2,retail,inaction,0
+3,retail,inaction,0
+4,retail,inaction,0
+5,retail,inaction,0
+6,retail,inaction,0
+7,retail,inaction,0
+8,retail,inaction,0
+9,retail,inaction,0
+10,retail,inaction,0
+11,retail,inaction,0
+12,retail,inaction,0
+13,retail,inaction,0
+14,retail,inaction,0
+15,retail,inaction,0
+16,retail,inaction,0
+17,retail,inaction,0
+18,retail,inaction,0
+19,retail,inaction,0
+20,retail,inaction,0
+21,retail,inaction,0
+22,retail,inaction,0
+23,retail,inaction,0
+24,retail,inaction,0
+25,retail,inaction,0
+26,retail,inaction,0
+27,retail,inaction,0
+28,retail,inaction,0
+29,retail,inaction,0
+30,retail,inaction,0
+31,retail,inaction,0
+32,retail,inaction,0
+33,retail,inaction,0
+34,retail,inaction,0
+35,retail,inaction,0
+36,retail,inaction,0
+37,retail,inaction,0
+38,retail,inaction,0
+39,retail,inaction,0
+40,retail,inaction,0
+41,retail,inaction,0
+42,retail,inaction,0
+43,retail,inaction,0
+44,retail,inaction,0
+45,retail,inaction,0
+46,retail,inaction,0
+47,retail,inaction,0
+48,retail,inaction,0
+49,retail,inaction,0
+50,retail,inaction,0
+51,retail,inaction,0
+52,retail,inaction,0
+53,retail,inaction,0
+54,retail,inaction,0
+55,retail,inaction,0
+56,retail,inaction,0
+57,retail,inaction,0
+58,retail,inaction,0
+59,retail,inaction,0
+60,retail,inaction,0
+61,retail,inaction,0
+62,retail,inaction,0
+63,retail,inaction,0
+64,retail,inaction,0
+65,retail,inaction,0
+66,retail,inaction,0
+67,retail,inaction,0
+68,retail,inaction,0
+69,retail,inaction,0
+70,retail,inaction,0
+71,retail,inaction,0
+72,retail,inaction,0
+73,retail,inaction,0
+74,retail,inaction,0
+75,retail,inaction,0
+76,retail,inaction,0
+77,retail,inaction,0
+78,retail,inaction,0
+79,retail,inaction,0
+80,retail,inaction,0
+81,retail,inaction,0
+82,retail,inaction,0
+83,retail,inaction,0
+84,retail,inaction,0
+85,retail,inaction,0
+86,retail,inaction,0
+87,retail,inaction,0
+88,retail,inaction,0
+89,retail,inaction,0
+90,retail,inaction,0
+91,retail,inaction,0
+92,retail,inaction,0
+93,retail,inaction,0
+94,retail,inaction,0
+95,retail,inaction,0
+96,retail,inaction,0
+97,retail,inaction,0
+98,retail,inaction,0
+99,retail,inaction,0
+100,retail,inaction,0
+101,retail,inaction,0
+102,retail,inaction,0
+103,retail,inaction,0
+104,retail,inaction,0
+105,retail,inaction,0
+106,retail,inaction,0
+107,retail,inaction,0
+108,retail,inaction,0
+109,retail,inaction,0
+110,retail,inaction,0
+111,retail,inaction,0
+112,retail,inaction,0
+113,retail,inaction,0
+114,retail,inaction,0
+115,retail,inaction,0
+116,retail,inaction,0
+117,retail,inaction,0
+118,retail,inaction,0
+119,retail,inaction,0
+120,retail,inaction,0
+121,retail,inaction,0
+122,retail,inaction,0
+123,retail,inaction,0
+124,retail,inaction,0
+125,retail,inaction,0
+126,retail,inaction,0
+127,retail,inaction,0
+128,retail,inaction,0
+129,retail,inaction,0
+130,retail,inaction,0
+131,retail,inaction,0
+132,retail,inaction,0
+133,retail,inaction,0
+134,retail,inaction,0
+135,retail,inaction,0
+136,retail,inaction,0
+137,retail,inaction,0
+138,retail,inaction,0
+139,retail,inaction,0
+140,retail,inaction,0
+141,retail,inaction,0
+142,retail,inaction,0
+143,retail,inaction,0
+144,retail,inaction,0
+145,retail,inaction,0
+146,retail,inaction,0
+147,retail,inaction,0
+148,retail,inaction,0
+149,retail,inaction,0
+150,retail,inaction,0
+151,retail,inaction,0
+152,retail,inaction,0
+153,retail,inaction,0
+154,retail,inaction,0
+155,retail,inaction,0
+156,retail,inaction,0
+157,retail,inaction,0
+158,retail,inaction,0
+159,retail,inaction,0
+160,retail,inaction,0
+161,retail,inaction,0
+162,retail,inaction,0
+163,retail,inaction,0
+164,retail,inaction,0
+165,retail,inaction,0
+166,retail,inaction,0
+167,retail,inaction,0
+168,retail,inaction,0
+169,retail,inaction,0
+170,retail,inaction,0
+171,retail,inaction,0
+172,retail,inaction,0
+173,retail,inaction,0
+174,retail,inaction,0
+175,retail,inaction,0
+176,retail,inaction,0
+177,retail,inaction,0
+178,retail,inaction,0
+179,retail,inaction,0
+180,retail,inaction,0
+181,retail,inaction,0
+182,retail,inaction,0
+183,retail,inaction,0
+184,retail,inaction,0
+185,retail,inaction,0
+186,retail,inaction,0
+187,retail,inaction,0
+188,retail,inaction,0
+189,retail,inaction,0
+190,retail,inaction,0
+191,retail,inaction,0
+192,retail,inaction,0
+193,retail,inaction,0
+194,retail,inaction,0
+195,retail,inaction,0
+196,retail,inaction,0
+197,retail,inaction,0
+198,retail,inaction,0
+199,retail,inaction,0
+200,retail,inaction,0
+201,retail,inaction,0
+202,retail,inaction,0
+203,retail,inaction,0
+204,retail,inaction,0
+205,retail,inaction,0
+206,retail,inaction,0
+207,retail,inaction,0
+208,retail,inaction,0
+209,retail,inaction,0
+210,retail,inaction,0
+211,retail,inaction,0
+212,retail,inaction,0
+213,retail,inaction,0
+214,retail,inaction,0
+215,retail,inaction,0
+216,retail,inaction,0
+217,retail,inaction,0
+218,retail,inaction,0
+219,retail,inaction,0
+220,retail,inaction,0
+221,retail,inaction,0
+222,retail,inaction,0
+223,retail,inaction,0
+224,retail,inaction,0
+225,retail,inaction,0
+226,retail,inaction,0
+227,retail,inaction,0
+228,retail,inaction,0
+229,retail,inaction,0
+230,retail,inaction,0
+231,retail,inaction,0
+232,retail,inaction,0
+233,retail,inaction,0
+234,retail,inaction,0
+235,retail,inaction,0
+236,retail,inaction,0
+237,retail,inaction,0
+238,retail,inaction,0
+239,retail,inaction,0
+240,retail,inaction,0
+241,retail,inaction,0
+242,retail,inaction,0
+243,retail,inaction,0
+244,retail,inaction,0
+245,retail,inaction,0
+246,retail,inaction,0
+247,retail,inaction,0
+248,retail,inaction,0
+249,retail,inaction,0
+250,retail,inaction,0
+251,retail,inaction,0
+252,retail,inaction,0
+253,retail,inaction,0
+254,retail,inaction,0
+255,retail,inaction,0
+256,retail,inaction,0
+257,retail,inaction,0
+258,retail,inaction,0
+259,retail,inaction,0
+260,retail,inaction,0
+261,retail,inaction,0
+262,retail,inaction,0
+263,retail,inaction,0
+264,retail,inaction,0
+265,retail,inaction,0
+266,retail,inaction,0
+267,retail,inaction,0
+268,retail,inaction,0
+269,retail,inaction,0
+270,retail,inaction,0
+271,retail,inaction,0
+272,retail,inaction,0
+273,retail,inaction,0
+274,retail,inaction,0
+275,retail,inaction,0
+276,retail,inaction,0
+277,retail,inaction,0
+278,retail,inaction,0
+279,retail,inaction,0
+280,retail,inaction,0
+281,retail,inaction,0
+282,retail,inaction,0
+283,retail,inaction,0
+284,retail,inaction,0
+285,retail,inaction,0
+286,retail,inaction,0
+287,retail,inaction,0
+288,retail,inaction,0
+289,retail,inaction,0
+290,retail,inaction,0
+291,retail,inaction,0
+292,retail,inaction,0
+293,retail,inaction,0
+294,retail,inaction,0
+295,retail,inaction,0
+296,retail,inaction,0
+297,retail,inaction,0
+298,retail,inaction,0
+299,retail,inaction,0
+300,retail,inaction,0
+301,retail,inaction,0
+302,retail,inaction,0
+303,retail,inaction,0
+304,retail,inaction,0
+305,retail,inaction,0
+306,retail,inaction,0
+307,retail,inaction,0
+308,retail,inaction,0
+309,retail,inaction,0
+310,retail,inaction,0
+311,retail,inaction,0
+312,retail,inaction,0
+313,retail,inaction,0
+314,retail,inaction,0
+315,retail,inaction,0
+316,retail,inaction,0
+317,retail,inaction,0
+318,retail,inaction,0
+319,retail,inaction,0
+320,retail,inaction,0
+321,retail,inaction,0
+322,retail,inaction,0
+323,retail,inaction,0
+324,retail,inaction,0
+325,retail,inaction,0
+326,retail,inaction,0
+327,retail,inaction,0
+328,retail,inaction,0
+329,retail,inaction,0
+330,retail,inaction,0
+331,retail,inaction,0
+332,retail,inaction,0
+333,retail,inaction,0
+334,retail,inaction,0
+335,retail,inaction,0
+336,retail,inaction,0
+337,retail,inaction,0
+338,retail,inaction,0
+339,retail,inaction,0
+340,retail,inaction,0
+341,retail,inaction,0
+342,retail,inaction,0
+343,retail,inaction,0
+344,retail,inaction,0
+345,retail,inaction,0
+346,retail,inaction,0
+347,retail,inaction,0
+348,retail,inaction,0
+349,retail,inaction,0
+350,retail,inaction,0
+351,retail,inaction,0
+352,retail,inaction,0
+353,retail,inaction,0
+354,retail,inaction,0
+355,retail,inaction,0
+356,retail,inaction,0
+357,retail,inaction,0
+358,retail,inaction,0
+359,retail,inaction,0
+360,retail,inaction,0
+361,retail,inaction,0
+362,retail,inaction,0
+363,retail,inaction,0
+364,retail,inaction,0
+365,retail,inaction,0
+1,wholesale,inaction,0
+2,wholesale,inaction,0
+3,wholesale,inaction,0
+4,wholesale,inaction,0
+5,wholesale,inaction,0
+6,wholesale,inaction,0
+7,wholesale,inaction,0
+8,wholesale,inaction,0
+9,wholesale,inaction,0
+10,wholesale,inaction,0
+11,wholesale,inaction,0
+12,wholesale,inaction,0
+13,wholesale,inaction,0
+14,wholesale,inaction,0
+15,wholesale,inaction,0
+16,wholesale,inaction,0
+17,wholesale,inaction,0
+18,wholesale,inaction,0
+19,wholesale,inaction,0
+20,wholesale,inaction,0
+21,wholesale,inaction,0
+22,wholesale,inaction,0
+23,wholesale,inaction,0
+24,wholesale,inaction,0
+25,wholesale,inaction,0
+26,wholesale,inaction,0
+27,wholesale,inaction,0
+28,wholesale,inaction,0
+29,wholesale,inaction,0
+30,wholesale,inaction,0
+31,wholesale,inaction,0
+32,wholesale,inaction,0
+33,wholesale,inaction,0
+34,wholesale,inaction,0
+35,wholesale,inaction,0
+36,wholesale,inaction,0
+37,wholesale,inaction,0
+38,wholesale,inaction,0
+39,wholesale,inaction,0
+40,wholesale,inaction,0
+41,wholesale,inaction,0
+42,wholesale,inaction,0
+43,wholesale,inaction,0
+44,wholesale,inaction,0
+45,wholesale,inaction,0
+46,wholesale,inaction,0
+47,wholesale,inaction,0
+48,wholesale,inaction,0
+49,wholesale,inaction,0
+50,wholesale,inaction,0
+51,wholesale,inaction,0
+52,wholesale,inaction,0
+53,wholesale,inaction,0
+54,wholesale,inaction,0
+55,wholesale,inaction,0
+56,wholesale,inaction,0
+57,wholesale,inaction,0
+58,wholesale,inaction,0
+59,wholesale,inaction,0
+60,wholesale,inaction,0
+61,wholesale,inaction,0
+62,wholesale,inaction,0
+63,wholesale,inaction,0
+64,wholesale,inaction,0
+65,wholesale,inaction,0
+66,wholesale,inaction,0
+67,wholesale,inaction,0
+68,wholesale,inaction,0
+69,wholesale,inaction,0
+70,wholesale,inaction,0
+71,wholesale,inaction,0
+72,wholesale,inaction,0
+73,wholesale,inaction,0
+74,wholesale,inaction,0
+75,wholesale,inaction,0
+76,wholesale,inaction,0
+77,wholesale,inaction,0
+78,wholesale,inaction,0
+79,wholesale,inaction,0
+80,wholesale,inaction,0
+81,wholesale,inaction,0
+82,wholesale,inaction,0
+83,wholesale,inaction,0
+84,wholesale,inaction,0
+85,wholesale,inaction,0
+86,wholesale,inaction,0
+87,wholesale,inaction,0
+88,wholesale,inaction,0
+89,wholesale,inaction,0
+90,wholesale,inaction,0
+91,wholesale,inaction,0
+92,wholesale,inaction,0
+93,wholesale,inaction,0
+94,wholesale,inaction,0
+95,wholesale,inaction,0
+96,wholesale,inaction,0
+97,wholesale,inaction,0
+98,wholesale,inaction,0
+99,wholesale,inaction,0
+100,wholesale,inaction,0
+101,wholesale,inaction,0
+102,wholesale,inaction,0
+103,wholesale,inaction,0
+104,wholesale,inaction,0
+105,wholesale,inaction,0
+106,wholesale,inaction,0
+107,wholesale,inaction,0
+108,wholesale,inaction,0
+109,wholesale,inaction,0
+110,wholesale,inaction,0
+111,wholesale,inaction,0
+112,wholesale,inaction,0
+113,wholesale,inaction,0
+114,wholesale,inaction,0
+115,wholesale,inaction,0
+116,wholesale,inaction,0
+117,wholesale,inaction,0
+118,wholesale,inaction,0
+119,wholesale,inaction,0
+120,wholesale,inaction,0
+121,wholesale,inaction,0
+122,wholesale,inaction,0
+123,wholesale,inaction,0
+124,wholesale,inaction,0
+125,wholesale,inaction,0
+126,wholesale,inaction,0
+127,wholesale,inaction,0
+128,wholesale,inaction,0
+129,wholesale,inaction,0
+130,wholesale,inaction,0
+131,wholesale,inaction,0
+132,wholesale,inaction,0
+133,wholesale,inaction,0
+134,wholesale,inaction,0
+135,wholesale,inaction,0
+136,wholesale,inaction,0
+137,wholesale,inaction,0
+138,wholesale,inaction,0
+139,wholesale,inaction,0
+140,wholesale,inaction,0
+141,wholesale,inaction,0
+142,wholesale,inaction,0
+143,wholesale,inaction,0
+144,wholesale,inaction,0
+145,wholesale,inaction,0
+146,wholesale,inaction,0
+147,wholesale,inaction,0
+148,wholesale,inaction,0
+149,wholesale,inaction,0
+150,wholesale,inaction,0
+151,wholesale,inaction,0
+152,wholesale,inaction,0
+153,wholesale,inaction,0
+154,wholesale,inaction,0
+155,wholesale,inaction,0
+156,wholesale,inaction,0
+157,wholesale,inaction,0
+158,wholesale,inaction,0
+159,wholesale,inaction,0
+160,wholesale,inaction,0
+161,wholesale,inaction,0
+162,wholesale,inaction,0
+163,wholesale,inaction,0
+164,wholesale,inaction,0
+165,wholesale,inaction,0
+166,wholesale,inaction,0
+167,wholesale,inaction,0
+168,wholesale,inaction,0
+169,wholesale,inaction,0
+170,wholesale,inaction,0
+171,wholesale,inaction,0
+172,wholesale,inaction,0
+173,wholesale,inaction,0
+174,wholesale,inaction,0
+175,wholesale,inaction,0
+176,wholesale,inaction,0
+177,wholesale,inaction,0
+178,wholesale,inaction,0
+179,wholesale,inaction,0
+180,wholesale,inaction,0
+181,wholesale,inaction,0
+182,wholesale,inaction,0
+183,wholesale,inaction,0
+184,wholesale,inaction,0
+185,wholesale,inaction,0
+186,wholesale,inaction,0
+187,wholesale,inaction,0
+188,wholesale,inaction,0
+189,wholesale,inaction,0
+190,wholesale,inaction,0
+191,wholesale,inaction,0
+192,wholesale,inaction,0
+193,wholesale,inaction,0
+194,wholesale,inaction,0
+195,wholesale,inaction,0
+196,wholesale,inaction,0
+197,wholesale,inaction,0
+198,wholesale,inaction,0
+199,wholesale,inaction,0
+200,wholesale,inaction,0
+201,wholesale,inaction,0
+202,wholesale,inaction,0
+203,wholesale,inaction,0
+204,wholesale,inaction,0
+205,wholesale,inaction,0
+206,wholesale,inaction,0
+207,wholesale,inaction,0
+208,wholesale,inaction,0
+209,wholesale,inaction,0
+210,wholesale,inaction,0
+211,wholesale,inaction,0
+212,wholesale,inaction,0
+213,wholesale,inaction,0
+214,wholesale,inaction,0
+215,wholesale,inaction,0
+216,wholesale,inaction,0
+217,wholesale,inaction,0
+218,wholesale,inaction,0
+219,wholesale,inaction,0
+220,wholesale,inaction,0
+221,wholesale,inaction,0
+222,wholesale,inaction,0
+223,wholesale,inaction,0
+224,wholesale,inaction,0
+225,wholesale,inaction,0
+226,wholesale,inaction,0
+227,wholesale,inaction,0
+228,wholesale,inaction,0
+229,wholesale,inaction,0
+230,wholesale,inaction,0
+231,wholesale,inaction,0
+232,wholesale,inaction,0
+233,wholesale,inaction,0
+234,wholesale,inaction,0
+235,wholesale,inaction,0
+236,wholesale,inaction,0
+237,wholesale,inaction,0
+238,wholesale,inaction,0
+239,wholesale,inaction,0
+240,wholesale,inaction,0
+241,wholesale,inaction,0
+242,wholesale,inaction,0
+243,wholesale,inaction,0
+244,wholesale,inaction,0
+245,wholesale,inaction,0
+246,wholesale,inaction,0
+247,wholesale,inaction,0
+248,wholesale,inaction,0
+249,wholesale,inaction,0
+250,wholesale,inaction,0
+251,wholesale,inaction,0
+252,wholesale,inaction,0
+253,wholesale,inaction,0
+254,wholesale,inaction,0
+255,wholesale,inaction,0
+256,wholesale,inaction,0
+257,wholesale,inaction,0
+258,wholesale,inaction,0
+259,wholesale,inaction,0
+260,wholesale,inaction,0
+261,wholesale,inaction,0
+262,wholesale,inaction,0
+263,wholesale,inaction,0
+264,wholesale,inaction,0
+265,wholesale,inaction,0
+266,wholesale,inaction,0
+267,wholesale,inaction,0
+268,wholesale,inaction,0
+269,wholesale,inaction,0
+270,wholesale,inaction,0
+271,wholesale,inaction,0
+272,wholesale,inaction,0
+273,wholesale,inaction,0
+274,wholesale,inaction,0
+275,wholesale,inaction,0
+276,wholesale,inaction,0
+277,wholesale,inaction,0
+278,wholesale,inaction,0
+279,wholesale,inaction,0
+280,wholesale,inaction,0
+281,wholesale,inaction,0
+282,wholesale,inaction,0
+283,wholesale,inaction,0
+284,wholesale,inaction,0
+285,wholesale,inaction,0
+286,wholesale,inaction,0
+287,wholesale,inaction,0
+288,wholesale,inaction,0
+289,wholesale,inaction,0
+290,wholesale,inaction,0
+291,wholesale,inaction,0
+292,wholesale,inaction,0
+293,wholesale,inaction,0
+294,wholesale,inaction,0
+295,wholesale,inaction,0
+296,wholesale,inaction,0
+297,wholesale,inaction,0
+298,wholesale,inaction,0
+299,wholesale,inaction,0
+300,wholesale,inaction,0
+301,wholesale,inaction,0
+302,wholesale,inaction,0
+303,wholesale,inaction,0
+304,wholesale,inaction,0
+305,wholesale,inaction,0
+306,wholesale,inaction,0
+307,wholesale,inaction,0
+308,wholesale,inaction,0
+309,wholesale,inaction,0
+310,wholesale,inaction,0
+311,wholesale,inaction,0
+312,wholesale,inaction,0
+313,wholesale,inaction,0
+314,wholesale,inaction,0
+315,wholesale,inaction,0
+316,wholesale,inaction,0
+317,wholesale,inaction,0
+318,wholesale,inaction,0
+319,wholesale,inaction,0
+320,wholesale,inaction,0
+321,wholesale,inaction,0
+322,wholesale,inaction,0
+323,wholesale,inaction,0
+324,wholesale,inaction,0
+325,wholesale,inaction,0
+326,wholesale,inaction,0
+327,wholesale,inaction,0
+328,wholesale,inaction,0
+329,wholesale,inaction,0
+330,wholesale,inaction,0
+331,wholesale,inaction,0
+332,wholesale,inaction,0
+333,wholesale,inaction,0
+334,wholesale,inaction,0
+335,wholesale,inaction,0
+336,wholesale,inaction,0
+337,wholesale,inaction,0
+338,wholesale,inaction,0
+339,wholesale,inaction,0
+340,wholesale,inaction,0
+341,wholesale,inaction,0
+342,wholesale,inaction,0
+343,wholesale,inaction,0
+344,wholesale,inaction,0
+345,wholesale,inaction,0
+346,wholesale,inaction,0
+347,wholesale,inaction,0
+348,wholesale,inaction,0
+349,wholesale,inaction,0
+350,wholesale,inaction,0
+351,wholesale,inaction,0
+352,wholesale,inaction,0
+353,wholesale,inaction,0
+354,wholesale,inaction,0
+355,wholesale,inaction,0
+356,wholesale,inaction,0
+357,wholesale,inaction,0
+358,wholesale,inaction,0
+359,wholesale,inaction,0
+360,wholesale,inaction,0
+361,wholesale,inaction,0
+362,wholesale,inaction,0
+363,wholesale,inaction,0
+364,wholesale,inaction,0
+365,wholesale,inaction,0
+1,regional warehouse,inaction,0
+2,regional warehouse,inaction,0
+3,regional warehouse,inaction,0
+4,regional warehouse,inaction,0
+5,regional warehouse,inaction,0
+6,regional warehouse,inaction,0
+7,regional warehouse,inaction,0
+8,regional warehouse,inaction,0
+9,regional warehouse,inaction,0
+10,regional warehouse,inaction,0
+11,regional warehouse,inaction,0
+12,regional warehouse,inaction,0
+13,regional warehouse,inaction,0
+14,regional warehouse,inaction,0
+15,regional warehouse,inaction,0
+16,regional warehouse,inaction,0
+17,regional warehouse,inaction,0
+18,regional warehouse,inaction,0
+19,regional warehouse,inaction,0
+20,regional warehouse,inaction,0
+21,regional warehouse,inaction,0
+22,regional warehouse,inaction,0
+23,regional warehouse,inaction,0
+24,regional warehouse,inaction,0
+25,regional warehouse,inaction,0
+26,regional warehouse,inaction,0
+27,regional warehouse,inaction,0
+28,regional warehouse,inaction,0
+29,regional warehouse,inaction,0
+30,regional warehouse,inaction,0
+31,regional warehouse,inaction,0
+32,regional warehouse,inaction,0
+33,regional warehouse,inaction,0
+34,regional warehouse,inaction,0
+35,regional warehouse,inaction,0
+36,regional warehouse,inaction,0
+37,regional warehouse,inaction,0
+38,regional warehouse,inaction,0
+39,regional warehouse,inaction,0
+40,regional warehouse,inaction,0
+41,regional warehouse,inaction,0
+42,regional warehouse,inaction,0
+43,regional warehouse,inaction,0
+44,regional warehouse,inaction,0
+45,regional warehouse,inaction,0
+46,regional warehouse,inaction,0
+47,regional warehouse,inaction,0
+48,regional warehouse,inaction,0
+49,regional warehouse,inaction,0
+50,regional warehouse,inaction,0
+51,regional warehouse,inaction,0
+52,regional warehouse,inaction,0
+53,regional warehouse,inaction,0
+54,regional warehouse,inaction,0
+55,regional warehouse,inaction,0
+56,regional warehouse,inaction,0
+57,regional warehouse,inaction,0
+58,regional warehouse,inaction,0
+59,regional warehouse,inaction,0
+60,regional warehouse,inaction,0
+61,regional warehouse,inaction,0
+62,regional warehouse,inaction,0
+63,regional warehouse,inaction,0
+64,regional warehouse,inaction,0
+65,regional warehouse,inaction,0
+66,regional warehouse,inaction,0
+67,regional warehouse,inaction,0
+68,regional warehouse,inaction,0
+69,regional warehouse,inaction,0
+70,regional warehouse,inaction,0
+71,regional warehouse,inaction,0
+72,regional warehouse,inaction,0
+73,regional warehouse,inaction,0
+74,regional warehouse,inaction,0
+75,regional warehouse,inaction,0
+76,regional warehouse,inaction,0
+77,regional warehouse,inaction,0
+78,regional warehouse,inaction,0
+79,regional warehouse,inaction,0
+80,regional warehouse,inaction,0
+81,regional warehouse,inaction,0
+82,regional warehouse,inaction,0
+83,regional warehouse,inaction,0
+84,regional warehouse,inaction,0
+85,regional warehouse,inaction,0
+86,regional warehouse,inaction,0
+87,regional warehouse,inaction,0
+88,regional warehouse,inaction,0
+89,regional warehouse,inaction,0
+90,regional warehouse,inaction,0
+91,regional warehouse,inaction,0
+92,regional warehouse,inaction,0
+93,regional warehouse,inaction,0
+94,regional warehouse,inaction,0
+95,regional warehouse,inaction,0
+96,regional warehouse,inaction,0
+97,regional warehouse,inaction,0
+98,regional warehouse,inaction,0
+99,regional warehouse,inaction,0
+100,regional warehouse,inaction,0
+101,regional warehouse,inaction,0
+102,regional warehouse,inaction,0
+103,regional warehouse,inaction,0
+104,regional warehouse,inaction,0
+105,regional warehouse,inaction,0
+106,regional warehouse,inaction,0
+107,regional warehouse,inaction,0
+108,regional warehouse,inaction,0
+109,regional warehouse,inaction,0
+110,regional warehouse,inaction,0
+111,regional warehouse,inaction,0
+112,regional warehouse,inaction,0
+113,regional warehouse,inaction,0
+114,regional warehouse,inaction,0
+115,regional warehouse,inaction,0
+116,regional warehouse,inaction,0
+117,regional warehouse,inaction,0
+118,regional warehouse,inaction,0
+119,regional warehouse,inaction,0
+120,regional warehouse,inaction,0
+121,regional warehouse,inaction,0
+122,regional warehouse,inaction,0
+123,regional warehouse,inaction,0
+124,regional warehouse,inaction,0
+125,regional warehouse,inaction,0
+126,regional warehouse,inaction,0
+127,regional warehouse,inaction,0
+128,regional warehouse,inaction,0
+129,regional warehouse,inaction,0
+130,regional warehouse,inaction,0
+131,regional warehouse,inaction,0
+132,regional warehouse,inaction,0
+133,regional warehouse,inaction,0
+134,regional warehouse,inaction,0
+135,regional warehouse,inaction,0
+136,regional warehouse,inaction,0
+137,regional warehouse,inaction,0
+138,regional warehouse,inaction,0
+139,regional warehouse,inaction,0
+140,regional warehouse,inaction,0
+141,regional warehouse,inaction,0
+142,regional warehouse,inaction,0
+143,regional warehouse,inaction,0
+144,regional warehouse,inaction,0
+145,regional warehouse,inaction,0
+146,regional warehouse,inaction,0
+147,regional warehouse,inaction,0
+148,regional warehouse,inaction,0
+149,regional warehouse,inaction,0
+150,regional warehouse,inaction,0
+151,regional warehouse,inaction,0
+152,regional warehouse,inaction,0
+153,regional warehouse,inaction,0
+154,regional warehouse,inaction,0
+155,regional warehouse,inaction,0
+156,regional warehouse,inaction,0
+157,regional warehouse,inaction,0
+158,regional warehouse,inaction,0
+159,regional warehouse,inaction,0
+160,regional warehouse,inaction,0
+161,regional warehouse,inaction,0
+162,regional warehouse,inaction,0
+163,regional warehouse,inaction,0
+164,regional warehouse,inaction,0
+165,regional warehouse,inaction,0
+166,regional warehouse,inaction,0
+167,regional warehouse,inaction,0
+168,regional warehouse,inaction,0
+169,regional warehouse,inaction,0
+170,regional warehouse,inaction,0
+171,regional warehouse,inaction,0
+172,regional warehouse,inaction,0
+173,regional warehouse,inaction,0
+174,regional warehouse,inaction,0
+175,regional warehouse,inaction,0
+176,regional warehouse,inaction,0
+177,regional warehouse,inaction,0
+178,regional warehouse,inaction,0
+179,regional warehouse,inaction,0
+180,regional warehouse,inaction,0
+181,regional warehouse,inaction,0
+182,regional warehouse,inaction,0
+183,regional warehouse,inaction,0
+184,regional warehouse,inaction,0
+185,regional warehouse,inaction,0
+186,regional warehouse,inaction,0
+187,regional warehouse,inaction,0
+188,regional warehouse,inaction,0
+189,regional warehouse,inaction,0
+190,regional warehouse,inaction,0
+191,regional warehouse,inaction,0
+192,regional warehouse,inaction,0
+193,regional warehouse,inaction,0
+194,regional warehouse,inaction,0
+195,regional warehouse,inaction,0
+196,regional warehouse,inaction,0
+197,regional warehouse,inaction,0
+198,regional warehouse,inaction,0
+199,regional warehouse,inaction,0
+200,regional warehouse,inaction,0
+201,regional warehouse,inaction,0
+202,regional warehouse,inaction,0
+203,regional warehouse,inaction,0
+204,regional warehouse,inaction,0
+205,regional warehouse,inaction,0
+206,regional warehouse,inaction,0
+207,regional warehouse,inaction,0
+208,regional warehouse,inaction,0
+209,regional warehouse,inaction,0
+210,regional warehouse,inaction,0
+211,regional warehouse,inaction,0
+212,regional warehouse,inaction,0
+213,regional warehouse,inaction,0
+214,regional warehouse,inaction,0
+215,regional warehouse,inaction,0
+216,regional warehouse,inaction,0
+217,regional warehouse,inaction,0
+218,regional warehouse,inaction,0
+219,regional warehouse,inaction,0
+220,regional warehouse,inaction,0
+221,regional warehouse,inaction,0
+222,regional warehouse,inaction,0
+223,regional warehouse,inaction,0
+224,regional warehouse,inaction,0
+225,regional warehouse,inaction,0
+226,regional warehouse,inaction,0
+227,regional warehouse,inaction,0
+228,regional warehouse,inaction,0
+229,regional warehouse,inaction,0
+230,regional warehouse,inaction,0
+231,regional warehouse,inaction,0
+232,regional warehouse,inaction,0
+233,regional warehouse,inaction,0
+234,regional warehouse,inaction,0
+235,regional warehouse,inaction,0
+236,regional warehouse,inaction,0
+237,regional warehouse,inaction,0
+238,regional warehouse,inaction,0
+239,regional warehouse,inaction,0
+240,regional warehouse,inaction,0
+241,regional warehouse,inaction,0
+242,regional warehouse,inaction,0
+243,regional warehouse,inaction,0
+244,regional warehouse,inaction,0
+245,regional warehouse,inaction,0
+246,regional warehouse,inaction,0
+247,regional warehouse,inaction,0
+248,regional warehouse,inaction,0
+249,regional warehouse,inaction,0
+250,regional warehouse,inaction,0
+251,regional warehouse,inaction,0
+252,regional warehouse,inaction,0
+253,regional warehouse,inaction,0
+254,regional warehouse,inaction,0
+255,regional warehouse,inaction,0
+256,regional warehouse,inaction,0
+257,regional warehouse,inaction,0
+258,regional warehouse,inaction,0
+259,regional warehouse,inaction,0
+260,regional warehouse,inaction,0
+261,regional warehouse,inaction,0
+262,regional warehouse,inaction,0
+263,regional warehouse,inaction,0
+264,regional warehouse,inaction,0
+265,regional warehouse,inaction,0
+266,regional warehouse,inaction,0
+267,regional warehouse,inaction,0
+268,regional warehouse,inaction,0
+269,regional warehouse,inaction,0
+270,regional warehouse,inaction,0
+271,regional warehouse,inaction,0
+272,regional warehouse,inaction,0
+273,regional warehouse,inaction,0
+274,regional warehouse,inaction,0
+275,regional warehouse,inaction,0
+276,regional warehouse,inaction,0
+277,regional warehouse,inaction,0
+278,regional warehouse,inaction,0
+279,regional warehouse,inaction,0
+280,regional warehouse,inaction,0
+281,regional warehouse,inaction,0
+282,regional warehouse,inaction,0
+283,regional warehouse,inaction,0
+284,regional warehouse,inaction,0
+285,regional warehouse,inaction,0
+286,regional warehouse,inaction,0
+287,regional warehouse,inaction,0
+288,regional warehouse,inaction,0
+289,regional warehouse,inaction,0
+290,regional warehouse,inaction,0
+291,regional warehouse,inaction,0
+292,regional warehouse,inaction,0
+293,regional warehouse,inaction,0
+294,regional warehouse,inaction,0
+295,regional warehouse,inaction,0
+296,regional warehouse,inaction,0
+297,regional warehouse,inaction,0
+298,regional warehouse,inaction,0
+299,regional warehouse,inaction,0
+300,regional warehouse,inaction,0
+301,regional warehouse,inaction,0
+302,regional warehouse,inaction,0
+303,regional warehouse,inaction,0
+304,regional warehouse,inaction,0
+305,regional warehouse,inaction,0
+306,regional warehouse,inaction,0
+307,regional warehouse,inaction,0
+308,regional warehouse,inaction,0
+309,regional warehouse,inaction,0
+310,regional warehouse,inaction,0
+311,regional warehouse,inaction,0
+312,regional warehouse,inaction,0
+313,regional warehouse,inaction,0
+314,regional warehouse,inaction,0
+315,regional warehouse,inaction,0
+316,regional warehouse,inaction,0
+317,regional warehouse,inaction,0
+318,regional warehouse,inaction,0
+319,regional warehouse,inaction,0
+320,regional warehouse,inaction,0
+321,regional warehouse,inaction,0
+322,regional warehouse,inaction,0
+323,regional warehouse,inaction,0
+324,regional warehouse,inaction,0
+325,regional warehouse,inaction,0
+326,regional warehouse,inaction,0
+327,regional warehouse,inaction,0
+328,regional warehouse,inaction,0
+329,regional warehouse,inaction,0
+330,regional warehouse,inaction,0
+331,regional warehouse,inaction,0
+332,regional warehouse,inaction,0
+333,regional warehouse,inaction,0
+334,regional warehouse,inaction,0
+335,regional warehouse,inaction,0
+336,regional warehouse,inaction,0
+337,regional warehouse,inaction,0
+338,regional warehouse,inaction,0
+339,regional warehouse,inaction,0
+340,regional warehouse,inaction,0
+341,regional warehouse,inaction,0
+342,regional warehouse,inaction,0
+343,regional warehouse,inaction,0
+344,regional warehouse,inaction,0
+345,regional warehouse,inaction,0
+346,regional warehouse,inaction,0
+347,regional warehouse,inaction,0
+348,regional warehouse,inaction,0
+349,regional warehouse,inaction,0
+350,regional warehouse,inaction,0
+351,regional warehouse,inaction,0
+352,regional warehouse,inaction,0
+353,regional warehouse,inaction,0
+354,regional warehouse,inaction,0
+355,regional warehouse,inaction,0
+356,regional warehouse,inaction,0
+357,regional warehouse,inaction,0
+358,regional warehouse,inaction,0
+359,regional warehouse,inaction,0
+360,regional warehouse,inaction,0
+361,regional warehouse,inaction,0
+362,regional warehouse,inaction,0
+363,regional warehouse,inaction,0
+364,regional warehouse,inaction,0
+365,regional warehouse,inaction,0
+1,factory,inaction,0
+2,factory,inaction,0
+3,factory,inaction,0
+4,factory,inaction,0
+5,factory,inaction,0
+6,factory,inaction,0
+7,factory,inaction,0
+8,factory,inaction,0
+9,factory,inaction,0
+10,factory,inaction,0
+11,factory,inaction,0
+12,factory,inaction,0
+13,factory,inaction,0
+14,factory,inaction,0
+15,factory,inaction,0
+16,factory,inaction,0
+17,factory,inaction,0
+18,factory,inaction,0
+19,factory,inaction,0
+20,factory,inaction,0
+21,factory,inaction,0
+22,factory,inaction,0
+23,factory,inaction,0
+24,factory,inaction,0
+25,factory,inaction,0
+26,factory,inaction,0
+27,factory,inaction,0
+28,factory,inaction,0
+29,factory,inaction,0
+30,factory,inaction,0
+31,factory,inaction,0
+32,factory,inaction,0
+33,factory,inaction,0
+34,factory,inaction,0
+35,factory,inaction,0
+36,factory,inaction,0
+37,factory,inaction,0
+38,factory,inaction,0
+39,factory,inaction,0
+40,factory,inaction,0
+41,factory,inaction,0
+42,factory,inaction,0
+43,factory,inaction,0
+44,factory,inaction,0
+45,factory,inaction,0
+46,factory,inaction,0
+47,factory,inaction,0
+48,factory,inaction,0
+49,factory,inaction,0
+50,factory,inaction,0
+51,factory,inaction,0
+52,factory,inaction,0
+53,factory,inaction,0
+54,factory,inaction,0
+55,factory,inaction,0
+56,factory,inaction,0
+57,factory,inaction,0
+58,factory,inaction,0
+59,factory,inaction,0
+60,factory,inaction,0
+61,factory,inaction,0
+62,factory,inaction,0
+63,factory,inaction,0
+64,factory,inaction,0
+65,factory,inaction,0
+66,factory,inaction,0
+67,factory,inaction,0
+68,factory,inaction,0
+69,factory,inaction,0
+70,factory,inaction,0
+71,factory,inaction,0
+72,factory,inaction,0
+73,factory,inaction,0
+74,factory,inaction,0
+75,factory,inaction,0
+76,factory,inaction,0
+77,factory,inaction,0
+78,factory,inaction,0
+79,factory,inaction,0
+80,factory,inaction,0
+81,factory,inaction,0
+82,factory,inaction,0
+83,factory,inaction,0
+84,factory,inaction,0
+85,factory,inaction,0
+86,factory,inaction,0
+87,factory,inaction,0
+88,factory,inaction,0
+89,factory,inaction,0
+90,factory,inaction,0
+91,factory,inaction,0
+92,factory,inaction,0
+93,factory,inaction,0
+94,factory,inaction,0
+95,factory,inaction,0
+96,factory,inaction,0
+97,factory,inaction,0
+98,factory,inaction,0
+99,factory,inaction,0
+100,factory,inaction,0
+101,factory,inaction,0
+102,factory,inaction,0
+103,factory,inaction,0
+104,factory,inaction,0
+105,factory,inaction,0
+106,factory,inaction,0
+107,factory,inaction,0
+108,factory,inaction,0
+109,factory,inaction,0
+110,factory,inaction,0
+111,factory,inaction,0
+112,factory,inaction,0
+113,factory,inaction,0
+114,factory,inaction,0
+115,factory,inaction,0
+116,factory,inaction,0
+117,factory,inaction,0
+118,factory,inaction,0
+119,factory,inaction,0
+120,factory,inaction,0
+121,factory,inaction,0
+122,factory,inaction,0
+123,factory,inaction,0
+124,factory,inaction,0
+125,factory,inaction,0
+126,factory,inaction,0
+127,factory,inaction,0
+128,factory,inaction,0
+129,factory,inaction,0
+130,factory,inaction,0
+131,factory,inaction,0
+132,factory,inaction,0
+133,factory,inaction,0
+134,factory,inaction,0
+135,factory,inaction,0
+136,factory,inaction,0
+137,factory,inaction,0
+138,factory,inaction,0
+139,factory,inaction,0
+140,factory,inaction,0
+141,factory,inaction,0
+142,factory,inaction,0
+143,factory,inaction,0
+144,factory,inaction,0
+145,factory,inaction,0
+146,factory,inaction,0
+147,factory,inaction,0
+148,factory,inaction,0
+149,factory,inaction,0
+150,factory,inaction,0
+151,factory,inaction,0
+152,factory,inaction,0
+153,factory,inaction,0
+154,factory,inaction,0
+155,factory,inaction,0
+156,factory,inaction,0
+157,factory,inaction,0
+158,factory,inaction,0
+159,factory,inaction,0
+160,factory,inaction,0
+161,factory,inaction,0
+162,factory,inaction,0
+163,factory,inaction,0
+164,factory,inaction,0
+165,factory,inaction,0
+166,factory,inaction,0
+167,factory,inaction,0
+168,factory,inaction,0
+169,factory,inaction,0
+170,factory,inaction,0
+171,factory,inaction,0
+172,factory,inaction,0
+173,factory,inaction,0
+174,factory,inaction,0
+175,factory,inaction,0
+176,factory,inaction,0
+177,factory,inaction,0
+178,factory,inaction,0
+179,factory,inaction,0
+180,factory,inaction,0
+181,factory,inaction,0
+182,factory,inaction,0
+183,factory,inaction,0
+184,factory,inaction,0
+185,factory,inaction,0
+186,factory,inaction,0
+187,factory,inaction,0
+188,factory,inaction,0
+189,factory,inaction,0
+190,factory,inaction,0
+191,factory,inaction,0
+192,factory,inaction,0
+193,factory,inaction,0
+194,factory,inaction,0
+195,factory,inaction,0
+196,factory,inaction,0
+197,factory,inaction,0
+198,factory,inaction,0
+199,factory,inaction,0
+200,factory,inaction,0
+201,factory,inaction,0
+202,factory,inaction,0
+203,factory,inaction,0
+204,factory,inaction,0
+205,factory,inaction,0
+206,factory,inaction,0
+207,factory,inaction,0
+208,factory,inaction,0
+209,factory,inaction,0
+210,factory,inaction,0
+211,factory,inaction,0
+212,factory,inaction,0
+213,factory,inaction,0
+214,factory,inaction,0
+215,factory,inaction,0
+216,factory,inaction,0
+217,factory,inaction,0
+218,factory,inaction,0
+219,factory,inaction,0
+220,factory,inaction,0
+221,factory,inaction,0
+222,factory,inaction,0
+223,factory,inaction,0
+224,factory,inaction,0
+225,factory,inaction,0
+226,factory,inaction,0
+227,factory,inaction,0
+228,factory,inaction,0
+229,factory,inaction,0
+230,factory,inaction,0
+231,factory,inaction,0
+232,factory,inaction,0
+233,factory,inaction,0
+234,factory,inaction,0
+235,factory,inaction,0
+236,factory,inaction,0
+237,factory,inaction,0
+238,factory,inaction,0
+239,factory,inaction,0
+240,factory,inaction,0
+241,factory,inaction,0
+242,factory,inaction,0
+243,factory,inaction,0
+244,factory,inaction,0
+245,factory,inaction,0
+246,factory,inaction,0
+247,factory,inaction,0
+248,factory,inaction,0
+249,factory,inaction,0
+250,factory,inaction,0
+251,factory,inaction,0
+252,factory,inaction,0
+253,factory,inaction,0
+254,factory,inaction,0
+255,factory,inaction,0
+256,factory,inaction,0
+257,factory,inaction,0
+258,factory,inaction,0
+259,factory,inaction,0
+260,factory,inaction,0
+261,factory,inaction,0
+262,factory,inaction,0
+263,factory,inaction,0
+264,factory,inaction,0
+265,factory,inaction,0
+266,factory,inaction,0
+267,factory,inaction,0
+268,factory,inaction,0
+269,factory,inaction,0
+270,factory,inaction,0
+271,factory,inaction,0
+272,factory,inaction,0
+273,factory,inaction,0
+274,factory,inaction,0
+275,factory,inaction,0
+276,factory,inaction,0
+277,factory,inaction,0
+278,factory,inaction,0
+279,factory,inaction,0
+280,factory,inaction,0
+281,factory,inaction,0
+282,factory,inaction,0
+283,factory,inaction,0
+284,factory,inaction,0
+285,factory,inaction,0
+286,factory,inaction,0
+287,factory,inaction,0
+288,factory,inaction,0
+289,factory,inaction,0
+290,factory,inaction,0
+291,factory,inaction,0
+292,factory,inaction,0
+293,factory,inaction,0
+294,factory,inaction,0
+295,factory,inaction,0
+296,factory,inaction,0
+297,factory,inaction,0
+298,factory,inaction,0
+299,factory,inaction,0
+300,factory,inaction,0
+301,factory,inaction,0
+302,factory,inaction,0
+303,factory,inaction,0
+304,factory,inaction,0
+305,factory,inaction,0
+306,factory,inaction,0
+307,factory,inaction,0
+308,factory,inaction,0
+309,factory,inaction,0
+310,factory,inaction,0
+311,factory,inaction,0
+312,factory,inaction,0
+313,factory,inaction,0
+314,factory,inaction,0
+315,factory,inaction,0
+316,factory,inaction,0
+317,factory,inaction,0
+318,factory,inaction,0
+319,factory,inaction,0
+320,factory,inaction,0
+321,factory,inaction,0
+322,factory,inaction,0
+323,factory,inaction,0
+324,factory,inaction,0
+325,factory,inaction,0
+326,factory,inaction,0
+327,factory,inaction,0
+328,factory,inaction,0
+329,factory,inaction,0
+330,factory,inaction,0
+331,factory,inaction,0
+332,factory,inaction,0
+333,factory,inaction,0
+334,factory,inaction,0
+335,factory,inaction,0
+336,factory,inaction,0
+337,factory,inaction,0
+338,factory,inaction,0
+339,factory,inaction,0
+340,factory,inaction,0
+341,factory,inaction,0
+342,factory,inaction,0
+343,factory,inaction,0
+344,factory,inaction,0
+345,factory,inaction,0
+346,factory,inaction,0
+347,factory,inaction,0
+348,factory,inaction,0
+349,factory,inaction,0
+350,factory,inaction,0
+351,factory,inaction,0
+352,factory,inaction,0
+353,factory,inaction,0
+354,factory,inaction,0
+355,factory,inaction,0
+356,factory,inaction,0
+357,factory,inaction,0
+358,factory,inaction,0
+359,factory,inaction,0
+360,factory,inaction,0
+361,factory,inaction,0
+362,factory,inaction,0
+363,factory,inaction,0
+364,factory,inaction,0
+365,factory,inaction,0
