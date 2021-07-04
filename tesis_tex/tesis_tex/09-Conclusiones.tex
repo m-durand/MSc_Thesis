@@ -2,18 +2,25 @@
 
 Vale la pena revisitar la hip\'otesis con la que se comenz\'o este trabajo:\\
 
-\textit{`Bajo este nuevo conjunto de supuestos, es posible encontrar las estrategias \'optimas para todos los agentes tomadores de decisiones en el Juego de la Distribuci\'on de Cerveza, por medio de algoritmos de aprendizaje reforzado, que produzcan resultados en un tiempo suficientemente veloz como para poder accionarlas.'}
+\textit{`Bajo este nuevo conjunto de supuestos, es posible encontrar estrategias \'optimas para todos los agentes tomadores de decisiones en el Juego de la Distribuci\'on de Cerveza, por medio de algoritmos de aprendizaje reforzado, que produzcan resultados en un tiempo suficientemente veloz como para poder accionarlas.'}\\
 
-(Hay que escribir esto mejor, pero...)
+En primer lugar, se confirm\'o que, para cualquier agente, la estrategia aprendida con \textit{policy iteration} es preferible a estrategias de sentido com\'un, como aquella en la que se considera un promedio m\'ovil de d\'ias recientes; sin embargo, ning\'un agente est\'a obligado a seguir estas estrategias. Al analizar distintos escenarios con diferente adopci\'on de estrategias inteligentes, se encontr\'o que, para cualquier agente, en promedio es preferible tomar la estrategia inteligente, sin importar lo que los dem\'as agentes hagan.\\
 
-* Vimos que efectivamente la estrategia aprendida con policy iteration le gana a la estrategia "obvia" constante de demanda promedio
-* Vimos tambien que para cualquier agente es preferible seguir la estrategia de aprendizaje, sin importat lo que los demas agentes hagan: la utilidad total es mayor si todos se portan bien, pero no es necesario que todos se porten bien para que un solo agente mejore sus decisiones y su utilidad
-* Es un algoritmo que converge relativamente rapido, asi que se puede ajustar rapidamente a cambios en la demanda: sin problema podria reentrenarse diario 
+Tambi\'en se observ\'o que las pol\'iticas (\textit{policies}) \'optimas son encontradas por el algoritmo de manera relativamente r\'apida, necesitando solamente $4-5$ minutos para completar $10,000$ iteraciones, las cuales son suficientes para llegar a estrategias estables que no cambian considerablemente al aumentar a $100,000$ o incluso $1,000,000$ de iteraciones. Esto dota al algoritmo de flexibilidad para ajustarse a cambios en la demanda del consumidor o la oferta de los campos, pues puede reentrenarse diario o incluso m\'as de una vez al d\'ia.\\
 
+Adicionalmente, se encontr\'o un comportamiento de efecto l\'atigo doble: el primero por parte del consumidor y el segundo por parte de los campos. Esto quiere decir que aquellos agentes que est\'en m\'as al centro de una cadena, es decir, m\'as lejos de ambas fuentes de informaci\'on simult\'aneamente, recibir\'an m\'as varianza en la informaci\'on total. Por lo tanto, mientras que en promedio todos los agentes tienen un mejor resultado si al menos uno de ellos toma la estrategia inteligente, aquellos en el centro de la cadena deber\'ian ser los m\'as interesados en asegurar que todos toman decisiones \'optimas, e incluso en invertir en modelos m\'as poderosos.\\
+
+Por \'ultimo, se concluy\'o que la implementaci\'on de \textit{Q-learning} construida no es viable para una situaci\'on del mundo real, dado el tiempo necesario por iteraci\'on y la tendencia creciente de este. Tal comportamiento se debe a que cada agente debe conservar conocimiento de todos los estados y valores de la \textit{funci\'on $Q$} para todas la acciones que ha probado. Al llegar a $2,000$ iteraciones, el tiempo supera los dos minutos para cada una de ellas. En contraste, el tiempo total para encontrar estrategias \'optimas con \textit{policy iteration}, para $10,000$ iteraciones, es de $4-5$ minutos. 
 
 
 \section{Trabajo futuro}
 
-La parte de Q learning que no me convergio?
-Generalizar a un numero no fijo de agentes?
+Se identificaron algunas oportunidades notables de mejora para este modelo, pero que implican un trabajo considerable y podr\'ian ser temas para ahondar en un futuro:
+
+\begin{itemize}
+    \item Comparaci\'on de desempe\~no de soluciones existentes con otros m\'etodos (din\'amica de sistemas, algoritmos gen\'eticos) incluyendo la restricci\'on de estacionalidad en la oferta
+    \item Relajaci\'on del supuesto de agentes representativos a individuales: por ejemplo, en vez de existir una sola tienda minorista, permitir que existan un n\'umero $n$ de ellas cuya penalizaci\'on por \'ordenes no cumplidas no sea fija, sino la p\'erdida de un consumidor que se va a otra tienda
+    \item Planteamiento diferente del algoritmo aprendizaje con \textit{Q-learning} de tal manera que el obst\'aculo de tiempo de entrenamiento no sea un bloqueo
+\end{itemize}
+
 
