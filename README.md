@@ -16,4 +16,5 @@ The basic structure of this repository is:
   - `insert_experiment_into_[pi/q]_database` which prepares the data on flat tables and inserts them into the database
   - other Jupyter notebooks - temporary files to be removed on the final repo structure - they contain visualizations in _Bokeh_, for which the rendering on Github's inferface is not ideal - feel free to ignore
 * `visualizations` which contains mostly R codes to create various plots in R based on outputs
-3. `tesis_tex` containg code that generates the final `.tex` file. The subfolder `figs` contains some interesting visualizations. A pdf with the latest version of the document can also be found, so that local compiling would not be necessary.
+3. `tesis_tex` containg code that generates the final `.tex` file. The subfolder `figs` contains some interesting visualizations.
+4. `final_documents` where the final thesis `pdf` and `pptx` files can be found, so that local compiling is not necessary
