@@ -96,11 +96,11 @@ for j in range(total_epochs):
     for agent in agents:  # At the end of the year, save the final payout they got
         if j % (total_epochs/50) == 0:   # I will only print 20 views, doesn't matter how many epochs
             print("Year %s Agent %s current payout %s historical best payout %s" % (j, agent.name, agent.current_payout[-1], agent.best_payout[-1]))
-            # temporary code: write policies to a csv so I can create gifs
-            pd.DataFrame(retail_agent.best_policy).to_csv("../../aux_documents/training_gif/csvs/" + "retail_agent_" + str(j) + ".csv")
-            pd.DataFrame(wholesale_agent.best_policy).to_csv("../../aux_documents/training_gif/csvs/" + "wholesale_agent_" + str(j) + ".csv")
-            pd.DataFrame(regional_warehouse_agent.best_policy).to_csv("../../aux_documents/training_gif/csvs/" + "regional_warehouse_agent_" + str(j) + ".csv")
-            pd.DataFrame(factory_agent.best_policy).to_csv("../../aux_documents/training_gif/csvs/" + "factory_agent_" + str(j) + ".csv")
+        #     # temporary code: write policies to a csv so I can create gifs
+        #     pd.DataFrame(retail_agent.best_policy).to_csv("../../aux_documents/training_gif/csvs/" + "retail_agent_" + str(j) + ".csv")
+        #     pd.DataFrame(wholesale_agent.best_policy).to_csv("../../aux_documents/training_gif/csvs/" + "wholesale_agent_" + str(j) + ".csv")
+        #     pd.DataFrame(regional_warehouse_agent.best_policy).to_csv("../../aux_documents/training_gif/csvs/" + "regional_warehouse_agent_" + str(j) + ".csv")
+        #     pd.DataFrame(factory_agent.best_policy).to_csv("../../aux_documents/training_gif/csvs/" + "factory_agent_" + str(j) + ".csv")
         agent.historic_payout.append(agent.current_payout[-1])
         
 elapsed_time = time.time() - start_time

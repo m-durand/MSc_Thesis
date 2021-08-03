@@ -53,6 +53,7 @@ total_epochs = 10000
 customer_demand_daily = pd.read_csv("./../../aux_documents/customer_trend.csv")
 fields_supply_daily = pd.read_csv("../../aux_documents/fields_trend.csv")
 fields_supply_infinite = pd.read_csv("../../aux_documents/fields_trend_infinite.csv")
+fields_supply_alternative = pd.read_csv("../../aux_documents/fields_trend_alternative.csv")
 
 eval_policies_df = pd.DataFrame(columns=['iteration', 'scenario', 'agent', 'money']) 
 

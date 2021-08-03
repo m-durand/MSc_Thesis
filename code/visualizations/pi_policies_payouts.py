@@ -3,7 +3,7 @@
 # this script fetches data from the database that contains the experiments
 # paarameters and prints various plots 
 
-path_to_write_figures = './../../tesis_tex/figs/'
+path_to_write_figures = './../../tesis_tex/tesis_tex/figs/'
 run_iteration_comparison = False
 
 ##############################################################################
@@ -57,11 +57,12 @@ for agent_name in agent_names:
 ##############################################################################
 # Final policies
 fig = plt.figure(figsize=(10,7.5))
-st = fig.suptitle("Políticas óptimas aprendidas con restricción estacional", fontsize="x-large") # Optimal Learnt Policies
+st = fig.suptitle("Políticas óptimas", fontsize="x-large") # Optimal Learnt Policies
 
 ax1 = fig.add_subplot(221)
 ax1.plot(restricted_retail_policy)
 ax1.plot(fields_supply_daily['Supply'])
+#ax1.plot(customer_demand_daily['Demand'])
 ax1.set_title("Menudeo") #Retail
 plt.xlabel('Día')
 
@@ -92,32 +93,36 @@ fig.subplots_adjust(top=0.85)
 # save this experiment's result
 #figname = path_to_write_figures + "policies_" + experiment_id + ".png"
 # save as the latest (mainly so the TeX file can pull it by name)
-figname_latest = path_to_write_figures + "policyiteration_policies_restricted.png"
+figname_latest = path_to_write_figures + "policyiteration_restricted.png"
 #fig.savefig(figname)
 fig.savefig(figname_latest)
 
 ##############################################################################
 # Final policies
 fig = plt.figure(figsize=(10,7.5))
-st = fig.suptitle("Políticas óptimas aprendidas sin restricción estacional", fontsize="x-large") # Optimal Learnt Policies
+st = fig.suptitle("Políticas óptimas", fontsize="x-large") # Optimal Learnt Policies
 
 ax1 = fig.add_subplot(221)
 ax1.plot(nonrestricted_retail_policy)
+ax1.plot(fields_supply_daily['Supply'])
 ax1.set_title("Menudeo") #Retail
 plt.xlabel('Día')
 
 ax2 = fig.add_subplot(222)
 ax2.plot(nonrestricted_wholesale_policy)
+ax2.plot(fields_supply_daily['Supply'])
 ax2.set_title("Mayoreo") #Wholesale
 plt.xlabel('Día')
 
 ax3 = fig.add_subplot(223)
 ax3.plot(nonrestricted_regional_warehouse_policy)
+ax3.plot(fields_supply_daily['Supply'])
 ax3.set_title("Almacén Regional") #Regional Warehouse
 plt.xlabel('Día')
 
 ax4 = fig.add_subplot(224)
 ax4.plot(nonrestricted_factory_policy)
+ax4.plot(fields_supply_daily['Supply'])
 ax4.set_title("Fábrica") #Factory
 plt.xlabel('Día')
 
@@ -130,7 +135,7 @@ fig.subplots_adjust(top=0.85)
 # save this experiment's result
 #figname = path_to_write_figures + "policies_" + experiment_id + ".png"
 # save as the latest (mainly so the TeX file can pull it by name)
-figname_latest = path_to_write_figures + "policyiteration_policies_nonrestricted.png"
+figname_latest = path_to_write_figures + "policyiteration_nonrestricted.png"
 #fig.savefig(figname)
 fig.savefig(figname_latest)
 
