@@ -76,7 +76,7 @@ example_month <- ggplot(subset(demands_no_noise, Month == "August"), aes(x = Day
                   labs(x = "Dia", y = "Demanda") +
                   #ggtitle("Ejemplo de un Mes Normal") +#,
                           #subtitle = "El consumo aumenta considerablamente cada fin de semana") +
-                  theme_minimal(base_size = 8)
+                  theme_minimal(base_size = 14)
 
 ggsave("../../tesis_tex/figs/monthly_customer_demand_ggplot.png", example_month, device = "png")
 
@@ -95,7 +95,7 @@ all_months <- ggplot(demands_no_noise, aes(x = Day, y = Demand, color = Demand))
                           # Customer Demand - weekly trend with a peak on Independence Day and increased demand on Christmas Holidays
                           #ggtitle("Demanda Anual de Cerveza" ) +#, 
                                   #subtitle = "Tendencia semanal con un pico el D?a de la Independencia y un aumento en las vacaciones de Navidad") +
-                          theme_minimal(base_size = 8)
+                          theme_minimal(base_size = 14)
 
 ggsave("../../tesis_tex/figs/monthly_demand_ggplot.png", all_months, device = "png")
 
@@ -112,7 +112,7 @@ all_months_with_noise <- ggplot(demands_no_noise, aes(x = Day, y = Demand_with_n
                         labs(x = "Dia", y = "Demanda") +
                         #ggtitle("Demanda Anual de Cerveza (con ruido)",
                         #        subtitle = "Tendencia base ligeramente alterada con valores aleatorios") +
-                        theme_minimal(base_size = 8)
+                        theme_minimal(base_size = 14)
 
 
 ggsave("../../tesis_tex/figs/monthly_demand_with_noise_ggplot.png", all_months_with_noise, device = "png")

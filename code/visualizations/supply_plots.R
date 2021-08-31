@@ -93,7 +93,7 @@ all_months_supply <- ggplot(supply_no_noise, aes(x = Day, y = Supply, color = Su
   # Customer Demand - weekly trend with a peak on Independence Day and increased demand on Christmas Holidays
   #ggtitle("Oferta Anual de los Campos de Cebada", 
   #        subtitle = "Solamente hay producci?n durante el verano, con un pico peque?o al final de junio y uno grande en agosto") +
-  theme_minimal(base_size = 8)
+  theme_minimal(base_size = 14)
 
 ggsave("../../tesis_tex/figs/fields_monthly_supply_ggplot.png", all_months_supply, device = "png")
 
