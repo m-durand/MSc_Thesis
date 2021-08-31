@@ -1,6 +1,6 @@
-\chapter{El Producto de Datos}
+\chapter{El producto de datos}
 
-Se cre\'o un \textit{pipeline} completo que toma los par\'ametros iniciales, los cuales consisten tanto en condiciones del mundo como en los datos hist\'oricos de demanda y oferta; ejecuta el modelo de aprendizaje elegido (ya sea \textit{policy iteration} o \textit{Q-learning}; y por \'ultimo inserta los resultados en una base de datos para hacer posible consulta y an\'alisis posteriores.\\
+Se cre\'o un \textit{pipeline} completo que toma los par\'ametros iniciales, los cuales consisten tanto en condiciones del mundo como en los datos hist\'oricos de demanda y oferta; ejecuta el modelo de aprendizaje elegido (ya sea \textit{policy iteration} o \textit{Q-learning}); y por \'ultimo inserta los resultados en una base de datos para hacer posible consulta y an\'alisis posteriores.\\
 
 \begin{figure}[ht]
 \caption{\textit{Pipeline} del proceso}
@@ -13,7 +13,7 @@ Al construir la base en la cual se albergan los resultados, se adoptaron las mej
 
 Dado que cada uno de los algoritmos de aprendizaje, \textit{policy iteration} y \textit{q-learning}, tiene requerimentos diferentes y la forma en que presenta resultados es distinta, en la base de datos se construyeron dos esquemas respectivamente, cada uno portando el nombre del algoritmo respectivo.
 
-\section{Policy Iteration}
+\section{Policy iteration}
 
 Es necesario crear tablas que contengan los par\'ametros necesarios: una para el mundo (tales como la demanda y oferta), otra para los agentes (tales como precios de venta, inventarios iniciales) y una \'ultima para los experimentos (los hiperpar\'ametros del algoritmo, tales como $\epsilon$ y $\lambda$). Por otro lado, dado que este m\'etodo produce una pol\'itica en forma de vector de tipo num\'erico, la manera \'optima de almacenar los resultados es en una tabla que contenga como llave el identificador (id) del experimento y el agente, y un rengl\'on por resultado.\\ 
 
@@ -32,4 +32,4 @@ El resultado de este algoritmo es una tabla que relaciona a cada par $(s,a)$ (es
 
 \section{Especificaciones t\'ecnicas}
 
-Para el proceso se utilizaron PostgreSQL 10 y Python 3.6.5 en la distribuci\'on contenida en Anaconda, as\'i como varios paquetes de Python descritos en el archivo de requerimentos del repositorio de Github. Todos los procesos fueron ejecutados en una computadora Macbook Air con 8 GB de RAM y 1 procesador tipo intel i5 con 2 cores.
+Para el proceso se utilizaron PostgreSQL 10 y Python 3.6.5 en la distribuci\'on contenida en Anaconda, as\'i como varios paquetes de Python descritos en el archivo \textbf{requirements.txt} del repositorio de Github asociado a este trabajo, \url{https://github.com/fleoren/Tesis\_Maestria}. Todos los procesos fueron ejecutados en una computadora Macbook Air con 8 GB de RAM y 1 procesador tipo intel i5 con 2 cores.

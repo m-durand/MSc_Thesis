@@ -1,15 +1,16 @@
 \chapter{Resultados}
+\label{ch:resultados}
 
 %% Esto seria cierto si Q learning hubiera funcionado...
 %%El problema de llevar inventario de un a\~no a otro se resolvi\'o f\'acilmente con el m\'etodo \textit{Q-learning}, pues su misma estructura requiere valores descontados de los estados futuros en cada estado presente. Para lograr el mismo efecto con el m\'etodo \textit{Policy Iteration}, ser\'ia necesario crear artificialmente d\'ias de entrenamiento antes y despu\'es del periodo de 365 d\'ias en el que los agentes est\'an aprendiendo, sin embargo, esto a\~nadir\'ia complejidad computacional.
 
-En esta secci\'on se presentar\'a el c\'odigo utilizado para el modelo de aprendizaje reforzado, as\'i como los resultados en cada experimento realizado. El c\'odigo completo puede consultarse en el repositorio p\'ublico $https://github.com/fleoren/Tesis\_Maestria$. Para maximizar la reusabilidad y la posible exposici\'on a otras audiencias, tal c\'odigo est\'a escrito y documentado en ingl\'es.\\
+En esta secci\'on se presentar\'a el c\'odigo utilizado para el modelo de aprendizaje reforzado, as\'i como los resultados en cada experimento realizado. El c\'odigo completo puede consultarse en el repositorio p\'ublico \url{https://github.com/fleoren/Tesis\_Maestria}. Para maximizar la reusabilidad y la posible exposici\'on a otras audiencias, tal c\'odigo est\'a escrito y documentado en ingl\'es.\\
 
 Durante el aprendizaje se realizaron numerosos experimentos con diferentes metapar\'ametros (e.g. $\epsilon$ para el algoritmo $\epsilon-greedy$), par\'ametros del mundo (e.g. la penalizaci\'on por \'ordenes no cumplidas) y par\'ametros de los agentes (e.g. los m\'argenes de ganancia de cada uno). En esta secci\'on se presentar\'an algunos an\'alisis y resultados relevantes.\\
 
-En general, el m\'etodo \textit{policy iteration} convergi\'o r\'apidamente, siendo capaz de encontrar estrategias \'optimas para todos los agentes en menos de 10 minutos. Asimismo, se encontr\'o que en la gran mayor\'ia de los casos (obtenidos con simulaciones), se obtiene un mejor desempe\~no para todo el sistema de cadena de suministro favoreciendo la estrategia inteligente sobre m\'etodos comunes, incluso si solamente uno de los agentes lo hace.
+En general, el m\'etodo \textit{policy iteration} convergi\'o r\'apidamente, siendo capaz de encontrar estrategias \'optimas para todos los agentes en $10,000$ iteraciones, lo cual toma menos de 10 minutos. Asimismo, se encontr\'o que en la gran mayor\'ia de los casos (obtenidos con simulaciones), se obtiene un mejor desempe\~no para todo el sistema de cadena de suministro favoreciendo la estrategia inteligente sobre m\'etodos comunes, incluso si solamente uno de los agentes lo hace.
 
-\section{C\'odigo: el Modelo, el Mundo y los Agentes}
+\section{C\'odigo: el modelo, el mundo y los agentes}
 
 A pesar de que nuestro sistema tiene seis roles, en realidad solamente cuatro de ellos toman decisiones:
 
@@ -176,7 +177,7 @@ def pay_for_warehousing(self):
 
 Cada uno de estos m\'etodos mapea limpiamente a los renglones: los primeros dos se refieren al precio propio y las ventas al agente inferior; el tercero se refiere al precio del agente superior y las ventas del agente superior (por lo tanto, las compras del agente de inter\'es); y por \'ultimo el cuarto es el costo de inventario y las cervezas guardadas.\\
 
-Es importante notar que las reglas de funcionamiento del mundo lo convierten en un ambiente que, si bien no es estoc\'astico en el sentido estricto de la definici\'on, tampoco es puramente determinista: un agente que tome la misma acci\'on puede tener diferente recompensa de una realizaci\'on a otra debido a un manejo de inventario diferente del agente superior. El sistema  presenta un comportamiento m\'as estoc\'astico durante la fase de exploraci\'on, y tiende a uno completamente determinista durante la fase de explotaci\'on. Es por esto que en este trabajo, no se han incluido probabilidades de transici\'on (indicadas como $T(s, \pi(s), s'$ en las ecuaciones de secciones anteriores) en el modelo empleado, cada acci\'on tomada en un estado por un agente solo tiene una posible consecuencia, dada por las restricciones de inventario y los par\'ametros del mundo tales como costos y precios.\\
+Es importante notar que las reglas de funcionamiento del mundo lo convierten en un ambiente que, si bien no es estoc\'astico en el sentido estricto de la definici\'on, tampoco es puramente determinista: un agente que tome la misma acci\'on puede tener diferente recompensa de una realizaci\'on a otra debido a un manejo de inventario diferente del agente superior. El sistema  presenta un comportamiento m\'as estoc\'astico durante la fase de exploraci\'on, y tiende a uno completamente determinista durante la fase de explotaci\'on. Es por esto que en este trabajo, no se han incluido probabilidades de transici\'on (indicadas como $T(s, \pi(s), s')$ en ecuaciones anteriores) en el modelo empleado, cada acci\'on tomada en un estado por un agente solo tiene una posible consecuencia, dada por las restricciones de inventario y los par\'ametros del mundo tales como costos y precios.\\
 
 Si bien el c\'odigo del modelo fue construido para tener flexibilidad en los par\'ametros del mundo (como los precios de compra y venta de los agentes, o los costos de almacenamiento), la mayor parte de los resultados presentados en esta secci\'on fueron obtenidos con la misma combinaci\'on prudente de tales par\'ametros. Existen casos extremos, por ejemplo que todos los agentes comenzaran el a\~no con m\'as inventario del que necesitar\'an, y por lo tanto nunca necesitar\'an presentar una cantidad demandada ante sus respectivos agentes superiores. Otro caso extremo podr\'ia surgir si el costo de almacenamiento fuera mayor al margen de ganancia y que la penalizaci\'on por \'ordenes no cumplidas no compesara tal diferencia. En este trabajo no se explorar\'an estos casos extremos.\\
 
@@ -203,7 +204,7 @@ $$
 
 Se utilizan las ecuaciones planteadas en secciones anteriores para actualizar el vector de pol\'itica \'optima cuando se encuentra una nueva pol\'itica con un valor mayor.\\
 
-El código utilizado para el aprendizaje con \textit{policy iteration} se encuentra a continuaci\'on. Los comentarios se han omitido, aunque los originales en ingl\'es pueden encontrarse en el repositorio de \textit{Github}, pues se ha procurado tener explicaciones en espa\~nol en el documento. Tambi\'en se omitieron las l\'ineas de c\'odigo que crean \textit{logs} o archivos utilizados para visualizaciones. \\
+El código utilizado para el aprendizaje con \textit{policy iteration} se encuentra a continuaci\'on. Los comentarios se han omitido, aunque los originales en ingl\'es pueden encontrarse en el repositorio de \textit{Github}, pues se ha procurado tener explicaciones en espa\~nol en el documento. Tambi\'en se omitieron las l\'ineas de c\'odigo que crean \textit{logs} o archivos utilizados para visualizaciones.\\
 
 Antes de inicializar el aprendizaje, el par\'ametro $\epsilon$ juega su papel para crear la cantidad demandada cada d\'ia. Puede ser aleatoria (exploraci\'on) o la cantidad aprendida (explotaci\'on); dependiento de la realizaci\'on aleatoria del par\'ametro.
 
@@ -286,6 +287,8 @@ Cabe destacar que el vector de pol\'itica \'optima puede ser inicializado de cua
 
 Se hicieron pruebas con distintas iterationes totales y el tiempo que tomó realizarlas:
 
+\begin{table}
+\caption{\label{tab:table-name}Tiempo de entrenamiento para iteraciones de \textit{policy iteration}}
 \begin{center}
 \begin{tabular}{c|c}
 Iteraciones     &  Tiempo\\
@@ -295,22 +298,24 @@ Iteraciones     &  Tiempo\\
 1,000,000     & 6.5 h
 \end{tabular}
 \end{center}
+\end{table}
+
 
 Se puede notar que el tiempo necesario para iteraciones crece de forma lineal, pues los agentes no deben aumentar la cantidad de informaci\'on que aprenden a medida que el tiempo pasa. Incluso si se decidiera tomar la opci\'on de $1,000,000$ de iteraciones, el modelo entrena suficientemente r\'apido como para reentrenarlo diario de ser necesario (ante cambios abruptos en demanda u oferta).
 
 \subsection{Mundo ideal: agentes inteligentes}
 
-Los agentes aprenden estrategias que siguen el comportamiento de la oferta, lo cual es el comportamiento esperado dado que en las especificaciones iniciales, se defini\'o manualmente que la demanda anual no sobrepasara la oferta anual. Este resultado puede observarse en las figuras \ref{politer_payouts_1000} a \ref{politer_payouts_1000000}, en donde se presentan las pol\'iticas encontradas con $1k$, $10k$, $100k$ y $1M$ iteraciones. \\
+Los agentes aprenden estrategias que siguen el comportamiento de la oferta, lo cual es el comportamiento esperado dado que en las especificaciones iniciales, se defini\'o manualmente que la demanda anual no sobrepasara la oferta anual. Este resultado puede observarse en las Figuras \ref{politer_payouts_1000} a \ref{politer_payouts_1000000}, en donde se presentan las pol\'iticas encontradas con $1k$, $10k$, $100k$ y $1M$ iteraciones. \\
 
 \begin{figure}[!htb]
    \begin{minipage}{0.48\textwidth}
      \centering
-     \includegraphics[width=1\linewidth]{tesis_tex/figs/policyiteration_payouts_1000.png}
+     \includegraphics[width=0.9\linewidth]{tesis_tex/figs/policyiteration_payouts_1000.png}
      \caption{Evoluci\'on de recompensas con 1k iteraciones}\label{politer_payouts_1000}
    \end{minipage}\hfill
    \begin{minipage}{0.48\textwidth}
      \centering
-     \includegraphics[width=1\linewidth]{tesis_tex/figs/policyiteration_payouts_10000.png}
+     \includegraphics[width=0.9\linewidth]{tesis_tex/figs/policyiteration_payouts_10000.png}
      \caption{10k iteraciones}\label{politer_payouts_10000}
    \end{minipage}
 \end{figure}
@@ -318,26 +323,26 @@ Los agentes aprenden estrategias que siguen el comportamiento de la oferta, lo c
 \begin{figure}[!htb]
    \begin{minipage}{0.48\textwidth}
      \centering
-     \includegraphics[width=1\linewidth]{tesis_tex/figs/policyiteration_payouts_100000.png}
+     \includegraphics[width=0.9\linewidth]{tesis_tex/figs/policyiteration_payouts_100000.png}
      \caption{100k iteraciones}\label{politer_payouts_100000}
    \end{minipage}\hfill
    \begin{minipage}{0.48\textwidth}
      \centering
-     \includegraphics[width=1\linewidth]{tesis_tex/figs/policyiteration_payouts_1000000.png}
+     \includegraphics[width=0.9\linewidth]{tesis_tex/figs/policyiteration_payouts_1000000.png}
      \caption{1M iteraciones}\label{politer_payouts_1000000}
    \end{minipage}
 \end{figure}
 
-Es esperado observar  que todos los agentes presentan una tendencia positiva al encontrar mejores \textit{policies} en cada iteraci\'on del algoritmo. Sin embargo, es interesante notar que la funci\'on de valor del agente Menudeo empieza (despu\'es de un periodo de pre-calentamiento de $0.5\%$ del total de iteraciones) en un punto mucho m\'as cercano al \'optimo que los otros agentes. Esto puede explicarse porque, dada la configuraci\'on del mundo, el agente Menudeo tiene informaci\'on directa de la demanda del consumidor, y por lo tanto puede ajustar su pol\'itica mucho m\'as r\'apidamente.\\
+Todos los agentes presentan una tendencia positiva al encontrar mejores \textit{policies} en cada iteraci\'on del algoritmo. Sin embargo, es interesante notar que la funci\'on de valor del agente Menudeo empieza en un punto mucho m\'as cercano al \'optimo que los otros agentes. Por el efecto l\'atigo, el agente Menudeo tiene informaci\'on directa de la demanda del consumidor, y por lo tanto puede ajustar su pol\'itica mucho m\'as r\'apidamente.\\
 
-El algoritmo converge de manera relativamente r\'apida: en las figuras  \ref{politer_payouts_1000} a \ref{politer_payouts_1000000} se puede observar que, con diferente n\'umero de iteraciones, el comportamiento del crecimiento de la funci\'on de valor (inferida de la pol\'itica \'optima en la iteraci\'on $i$) es similar. Asimismo, en las figuras \ref{politer_policies_1000} a \ref{politer_policies_1000000} se puede observar una comparaci\'on de las pol\'iticas obtenidas con los mismos umbrales de iteraciones: la forma es extremadamente parecida sin importar la cantidad de iteraciones. Este fen\'omeno nos indica que no es necesario un n\'umero alto de iteraciones, pues se encuentra el valor m\'aximo y la forma correcta de la pol\'itica \'optima con solamente $10,000$ iteraciones. Con las condiciones de \textit{hardware} y \textit{software} especificadas en secciones anteriores, este proceso tarda un poco menos de 5 minutos.\\
+El algoritmo converge de manera relativamente r\'apida: en las Figuras  \ref{politer_payouts_1000} a \ref{politer_payouts_1000000} se puede observar que, con diferente n\'umero de iteraciones, el comportamiento del crecimiento de la funci\'on de valor (inferida de la pol\'itica \'optima en la iteraci\'on $i$) es similar. Asimismo, en las Figuras \ref{politer_policies_1000} a \ref{politer_policies_1000000} se puede observar una comparaci\'on de las pol\'iticas obtenidas con los mismos umbrales de iteraciones: la forma es extremadamente parecida sin importar la cantidad de iteraciones. Se encuentra el valor m\'aximo y la forma correcta de la pol\'itica \'optima con solamente $10,000$ iteraciones. Con las condiciones de \textit{hardware} y \textit{software} especificadas en secciones anteriores, este proceso tarda un poco menos de 5 minutos.\\
 
-Otra manera de analizar la r\'apida convergencia al \'optimo del algoritmo es comparando las recompensas finales (asociadas a la estrategia \'optima encontrada) para cada agente, con diferente n\'umero de iteraciones. En la figura \ref{money_over_time} se puede observar que no es necesario un n\'umero alto de iteraciones, ya que el resultado final es sumamente estable.\\
+Otra manera de analizar la r\'apida convergencia al \'optimo del algoritmo es comparando las recompensas finales (asociadas a la estrategia \'optima encontrada) para cada agente, con diferente n\'umero de iteraciones. En la Figura \ref{money_over_time} se puede observar que no es necesario un n\'umero alto de iteraciones, ya que el resultado final es sumamente estable.\\
 
 \begin{figure}[H]
 \caption{Comparaci\'on de recompensa final con diferente total de iteraciones}
 \label{money_over_time}
-\includegraphics[width=10cm]{tesis_tex/figs/evaluating_interations_money.png}
+\includegraphics[width=8cm]{tesis_tex/figs/evaluating_interations_money.png}
 \centering
 \end{figure}
 
@@ -388,7 +393,7 @@ Para este an\'alisis, se cre\'o un \'indice que se puede interpretar como la gan
 
 Tambi\'en es relevante explorar si la estrategia \'optima es preferible en cualquier escenario respecto a los par\'ametros del mundo (inventarios iniciales, precios de compra/venta, costo de almacenamiento, entre otros). Para analizar este aspecto simult\'aneamente, en cada nueva iteraci\'on se reinicializan todos los valores de tales par\'ametros de manera casi aleatoria; con restricciones de valores no-negativos para todos, y adicionalmente para los m\'argenes de los agentes. As\'i, el an\'alisis abarca una gran cantidad de casos y demuestra flexibilidad ante condiciones iniciales.\\
 
-En la figura \ref{ev_policies_dumb} se puede ver una comparaci\'on del desempe\~no de todos los agentes con respecto a la l\'inea base elegida. Se muestra la l\'inea base, o la estrategia \textit{nadie \'optima} como una l\'inea azul punteada. Las dos curvas de comparaci\'on son: una combinaci\'on de estrategias en las que solamente el agente indicado toma y actualiza sus decisiones con el algoritmo de aprendizaje \textit{un agente \'optimo} y una combinaci\'on en la que todos los agentes aprenden con el algoritmo. Para esta figura se hicieron $250$ realizaciones del algoritmo con $1000$ etapas de aprendizaje, inicializando todos los par\'ametros del mundo de manera aleatoria cada vez, con restricciones m\'inimas relacionadas a los rangos de cada variable (por ejemplo, asegurar m\'argenes e inventarios no negativos)\\
+En la Figura \ref{ev_policies_dumb} se puede ver una comparaci\'on del desempe\~no de todos los agentes con respecto a la l\'inea base elegida. Se muestra la l\'inea base, o la estrategia \textit{nadie \'optima} como una l\'inea azul punteada. Las dos curvas de comparaci\'on son: una combinaci\'on de estrategias en las que solamente el agente indicado toma y actualiza sus decisiones con el algoritmo de aprendizaje \textit{un agente \'optimo} y una combinaci\'on en la que todos los agentes aprenden con el algoritmo. Para esta figura se hicieron $250$ realizaciones del algoritmo con $1000$ etapas de aprendizaje, inicializando todos los par\'ametros del mundo de manera aleatoria cada vez, con restricciones m\'inimas relacionadas a los rangos de cada variable (por ejemplo, asegurar m\'argenes e inventarios no negativos)\\
 
 En general, las distribuciones de índices relacionados a todos los agentes usando las estrategias \'optimas (obtenidas del algoritmo de aprendizaje), se encuentran a la derecha de las distribuciones de un solo agente aprendiendo. Esto es el comportamiento esperado, pues uno de los principales castigos para todos los agentes es el costo por orden no cumplida, y si no aprenden que deben tener suficiente inventario para cubrir esas \'ordenes, siempre cargar\'an con ese tipo de costos. Queda claro que es preferible para todos los agentes en conjunto trabajar de manera \'optima (con aprendizaje) al mismo tiempo, sin importar los par\'ametros iniciales de costos, inventarios o m\'argenes. Esta comparaci\'on puede consultarse de manera m\'as puntual en el siguiente par de tablas, para la cual es importante recordar que el cero es la l\'inea base, as\'i que un comportamiento positivo significa un resultado por encima de ella.\\
 
@@ -427,13 +432,7 @@ En general, las distribuciones de índices relacionados a todos los agentes usan
 
 Es importante notar que las distribuciones de \'indices cuando solamente un agente utiliza la estrategia de aprendizaje se encuentran constantemente a la derecha de la l\'inea base. Esto quiere decir que siempre es preferible utilizar la estrategia de aprendizaje, sin importar la estrategia que el resto de los agentes escojan.\\
 
-Una situaci\'on muy interesante se presenta en el escenario complementario al anterior: se ha establecido que es preferible usar la estrategia aprendida a pesar de que los otros agentes no hagan lo mismo, pero ¿qu\'e pasa con los agentes que no escogen la estrategia aprendida, cuando otro agente s\'i lo hace? El comportamiento esperado ser\'ia que la utilidad fuera mejor que si nadie estuviera aprendiendo, dado que al menos uno de los agentes estar\'ia optimizando su inventario. Sin embargo, esto no es cierto para todos los agentes: tanto \textit{mayoreo} como \textit{almac\'en regional} tienen valor esperado negativo si solamente otro agente toma acciones inteligentes y cada uno de ellos sigue la estrategia base. Adem\'as, las desviaciones est\'andar asociada a estas distribuciones - y, en realidad, a las de todos los escenarios - son considerablemente mayores a las correspondientes a los otros dos agentes. Esto quiere decir que los agentes hacia el centro de la cadena tienen mayor presi\'on de seguir estrategias inteligentes, independientemente de si los dem\'as agentes en la cadena lo hacen. Este comportamiento se puede ver tambi\'en en la figura \ref{ev_policies_dumb}.\\
-
-Por \'ultimo, podemos observar que las distribuciones de un solo agente tomando decisiones \'optimas son diferentes a pares: las de menudeo y f\'abrica son similares entre s\'i, al igual que las de mayoreo y almac\'en regional. Es notable que este comportamiento se presenta en los dos agentes que tienen una realidad diferente, ligada a agentes con estrategias estables y de donde provienen la demanda y oferta reales. El agente de menudeo siempre podr\'a vender todo su inventario lo m\'as pronto posible, dado que el comprador siempre tiene demanda positiva. Por otro lado, el agente de f\'abrica tambi\'en carga con presi\'on de los agentes inferiores de reducir sus costos de \'ordenes no cumplidas, as\'i que tambi\'en tiene asegurado vender su inventario pronto, mientras no compre cantidades innecesariamente altas. Los agentes de mayoreo y almac\'en regional no tienen ninguna de estas consideraciones.\\
-
-Una posible hip\'otesis para este comportamiento se remonta al efecto l\'atigo: aquellos agentes m\'as cercanos a la informaci\'on pueden reaccionar m\'as r\'apidamente a cambios y tomar decisiones m'as ego\'istas que aquellos en medio de la cadena de suministro. As\'i, el agente menudeo tiene cercan\'ia al consumidor y el agente f\'abrica tiene cercan\'ia a los campos y conocen directamente ciertas partes de la informaci\'on del sistema, lo cual les permite tener estrategias m\'as s\'olidas y menos dependientes de lo que decidan los dem\'as agentes.\\
-
-En conclusi\'on, para cualquier agente es preferible usar la estrategia aprendida, sin importar lo que hagan los dem\'as agentes. Adem\'as, los agentes en los extremos de la cadena sufren menor presi\'on por varianza en la informaci\'on recibida directamente del consumidor y de los campos.\\
+Una situaci\'on muy interesante se presenta en el escenario complementario al anterior: se ha establecido que es preferible usar la estrategia aprendida a pesar de que los otros agentes no hagan lo mismo, pero ¿qu\'e pasa con los agentes que no escogen la estrategia aprendida, cuando otro agente s\'i lo hace? El comportamiento esperado ser\'ia que la utilidad fuera mejor que si nadie estuviera aprendiendo, dado que al menos uno de los agentes estar\'ia optimizando su inventario. Sin embargo, esto no es cierto para todos los agentes: tanto \textit{mayoreo} como \textit{almac\'en regional} tienen valor esperado negativo si solamente otro agente toma acciones inteligentes y cada uno de ellos sigue la estrategia base. Adem\'as, las desviaciones est\'andar asociada a estas distribuciones - y, en realidad, a las de todos los escenarios - son considerablemente mayores a las correspondientes a los otros dos agentes. Esto quiere decir que los agentes hacia el centro de la cadena tienen mayor presi\'on de seguir estrategias inteligentes, independientemente de si los dem\'as agentes en la cadena lo hacen. Este comportamiento se puede ver tambi\'en en la Figura \ref{ev_policies_dumb}.\\
 
 \begin{figure}[H]
 \caption{Comparaci\'on de desempe\~no entre combinaciones de estrategias}
@@ -441,6 +440,14 @@ En conclusi\'on, para cualquier agente es preferible usar la estrategia aprendid
 \includegraphics[width=9cm]{tesis_tex/figs/evaluating_policies_dumb_to_smart.png}
 \centering
 \end{figure}
+
+Por \'ultimo, podemos observar que las distribuciones de un solo agente tomando decisiones \'optimas son diferentes a pares: las de menudeo y f\'abrica son similares entre s\'i, al igual que las de mayoreo y almac\'en regional. Es notable que este comportamiento se presenta en los dos agentes que tienen una realidad diferente, ligada a agentes con estrategias estables y de donde provienen la demanda y oferta reales. El agente de menudeo siempre podr\'a vender todo su inventario lo m\'as pronto posible, dado que el comprador siempre tiene demanda positiva. Por otro lado, el agente de f\'abrica tambi\'en carga con presi\'on de los agentes inferiores de reducir sus costos de \'ordenes no cumplidas, as\'i que tambi\'en tiene asegurado vender su inventario pronto, mientras no compre cantidades innecesariamente altas. Los agentes de mayoreo y almac\'en regional no tienen ninguna de estas consideraciones.\\
+
+Una posible hip\'otesis para este comportamiento se remonta al efecto l\'atigo: aquellos agentes m\'as cercanos a la informaci\'on pueden reaccionar m\'as r\'apidamente a cambios y tomar decisiones m'as ego\'istas que aquellos en medio de la cadena de suministro. As\'i, el agente menudeo tiene cercan\'ia al consumidor y el agente f\'abrica tiene cercan\'ia a los campos y conocen directamente ciertas partes de la informaci\'on del sistema, lo cual les permite tener estrategias m\'as s\'olidas y menos dependientes de lo que decidan los dem\'as agentes.\\
+
+En conclusi\'on, para cualquier agente es preferible usar la estrategia aprendida, sin importar lo que hagan los dem\'as agentes. Adem\'as, los agentes en los extremos de la cadena sufren menor presi\'on por varianza en la informaci\'on recibida directamente del consumidor y de los campos.\\
+
+
 
 \section{Q-Learning}
 
@@ -496,7 +503,7 @@ Adem\'as, similarmente a \textit{policy iteration}, se implement\'o este algorit
 
 El resultado de \textit{Q-learning} es fundamentalmente diferente que el de \textit{policy iteration}. El \'ultimo solamente itera en cuatro vectores de longitud 365 (dado que hay 4 agentes, y 365 d\'ias en un a\~no), manteniendo para cada agente solamente uno en la memoria de largo plazo: aquel que se ha determinado como el \'optimo hist\'orico. Por otro lado, el primero explora estados del mundo, incluso si no provienen de acciones ``buenas'' y mantiene en la memoria de largo plazo la mejor acci\'on a tomar si se llega a ese estado, adem\'as del valor de la funci\'on $Q$ para cada una de las posibles acciones exploradas. Esto significa que en cada iteraci\'on, el conocimiento de cada agente aumenta, pues recuerda la mejor acci\'on a tomar para cada estado, el cual es una combinaci\'on del d\'ia del a\~no y el inventario en tal d\'ia.\\
 
-A diferencia de las iteraciones de \textit{policy iteration}, las iteraciones de \textit{Q-learning} toman m\'as memoria, y por lo tanto m\'as tiempo, a medida que el modelo va entrenando. En la figura \ref{q_learning_times} puede observarse este comportamiento, el cual se ajusta a un modelo polinomial $y=3.59x^{0.452}$ con una $R^2=0.975$. Esto quiere decir que crece m\'as lento que un modelo lineal, sin embargo la tasa es suficientemente grande como para convertirlo en un modelo prohibitivo desde el punto de vista de tiempo necesario para entrenamiento.
+Tal diferencia en la forma de los resultados de \textit{policy iteration} y \textit{Q-learning}, causa que para el segundo m\'etodo, en cada iteraci\'on crezca el tama\~no de la tabla, y por lo tanto tome m\'as tiempo, a medida que el modelo va entrenando. En la Figura \ref{q_learning_times} puede observarse este comportamiento, el cual se ajusta a un modelo polinomial $y=3.59x^{0.452}$ con una $R^2=0.975$. Esto quiere decir que crece m\'as lento que un modelo lineal, sin embargo la tasa es suficientemente grande como para convertirlo en un modelo prohibitivo desde el punto de vista de tiempo necesario para entrenamiento.
 
 \begin{figure}[H]
 \caption{Tiempo (segundos) por iteraci\'on en Q-learning}
@@ -507,6 +514,8 @@ A diferencia de las iteraciones de \textit{policy iteration}, las iteraciones de
 
 Al notar el comportamiento creciente del tiempo por iteraci\'on, se hicieron varias pruebas para documentar el tiempo necesario para correr el algoritmo de aprendizaje. En secciones anteriores se mostr\'o que $10,000$ iteraciones eran suficientes para que \textit{policy iteration} encontrara \textit{policies} \'optimas en menos de $10$ minutos; sin embargo, para obtener $10,000$ iteraciones en \textit{Q-learning}, parecen necesarias m\'as de 3 semanas de entrenamiento continuo. Adem\'as, dado que por definici\'on, este \'ultimo explora y aprende a reaccionar a estados a\'un si no son \'optimos, es probable que $10,000$ iteraciones no sean suficientes para tener un resultado utilizable.
 
+\begin{table}
+\caption{\label{tab:table-name}Tiempo de entrenamiento para iteraciones de \textit{Q-learning}}
 \begin{center}
 \begin{tabular}{c|c}
 Iteraciones     &  Tiempo\\
@@ -515,13 +524,15 @@ Iteraciones     &  Tiempo\\
 10,000     & 25 d\'ias (est)
 \end{tabular}
 \end{center}
+\end{table}
+
 
 \subsection{Estrategias}
 
-Como se ha descrito anteriormente, los resultados de \textit{Q-learning} tienen una forma muy extensa: para cada agente, existe un conjunto de posibles acciones en cada estado (combinaci\'on de d\'ia e inventario) y sus respectivos valores de la \textit{funci\'on Q}. La manera de obtener la acci\'on \'optima para cada agente en cada tiempo $t$ es por medio de la b\'usqueda de la acci\'on $a$ que maximiza la \textit{funci\'on Q} dado el estado $s$, es decir dado el inventario. En la figura \ref{q_learning_results} se puede visualizar esta estructura.\
+Como se ha descrito anteriormente, los resultados de \textit{Q-learning} tienen una forma muy extensa: para cada agente, existe un conjunto de posibles acciones en cada estado (combinaci\'on de d\'ia e inventario) y sus respectivos valores de la \textit{funci\'on Q}. La manera de obtener la acci\'on \'optima para cada agente en cada tiempo $t$ es por medio de la b\'usqueda de la acci\'on $a$ que maximiza la \textit{funci\'on Q} dado el estado $s$, es decir dado el inventario. En la Figura \ref{q_learning_results} se puede visualizar esta estructura, aunque esta no representa resultados del modelo sino solamente la forma que tomar\'ian al final del entrenamiento.\
 
 \begin{figure}[H]
-\caption{Estructura de resultados de Q-learning}
+\caption{Ejemplo de estructura de resultados de Q-learning}
 \label{q_learning_results}
 \includegraphics[width=12cm]{tesis_tex/figs/q_learning_results.png}
 \centering

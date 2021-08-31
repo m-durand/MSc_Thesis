@@ -1,8 +1,8 @@
-\chapter{Acercamientos Previos a la Soluci\'on}
+\chapter{Acercamientos previos a la soluci\'on}
 
 \section{Est\'atica: m\'axima ganancia posible}
 
-El sistema tiene una soluci\'on anal\'itica si no existe una restricci\'on en la oferta (es decir, el campo siempre puede cubrir la demanda de la f\'abrica) y cada agente tiene en el d\'ia $n$ informaci\'on acerca de la demanda del d\'ia $n+1$ de su agente inmediatamente inferior. En este caso, los agentes ni siquiera necesitan usar sus almacenes: sencillamente compran cada d\'ia lo necesario para el d\'ia siguiente. Podemos observar el comportamiento de esta soluci\'on en la figura \ref{analytic_1}.
+El sistema tiene una soluci\'on anal\'itica si no existe una restricci\'on en la oferta (es decir, el campo siempre puede cubrir la demanda de la f\'abrica) y cada agente tiene en el d\'ia $n$ informaci\'on acerca de la demanda del d\'ia $n+1$ de su agente inmediatamente inferior. En este caso, los agentes ni siquiera necesitan usar sus almacenes: sencillamente compran cada d\'ia lo necesario para el d\'ia siguiente. Podemos observar el comportamiento de esta soluci\'on en la Figura \ref{analytic_1}.
 
 \begin{figure}[ht!]
 \caption{Estrategias aprendidas con informaci\'on perfecta}
@@ -11,7 +11,7 @@ El sistema tiene una soluci\'on anal\'itica si no existe una restricci\'on en la
 \centering
 \end{figure}
 
-Sin embargo, incluso cuando todos los agentes tienen informaci\'on perfecta, podemos observar una versi\'on muy ligera del efecto l\'atigo. Si el minorista tiene suficiente cerveza para cubrir algunos d\'ias de demanda del consumidor, entonces no tiene incentivo para comprarle al mayorista hasta que su inventario se agote. Esta situaci\'on puede replicarse en los dos niveles superiores, de tal manera que la f\'abrica no recibe nada de informaci\'on acerca de la demanda del consumidor durante una cantidad considerable de tiempo. Este efecto se puede observar en la figura \ref{analytic_2}.
+Sin embargo, incluso cuando todos los agentes tienen informaci\'on perfecta, podemos observar una versi\'on muy ligera del efecto l\'atigo. Si el minorista tiene suficiente cerveza para cubrir algunos d\'ias de demanda del consumidor, entonces no tiene incentivo para comprarle al mayorista hasta que su inventario se agote. Esta situaci\'on puede replicarse en los dos niveles superiores, de tal manera que la f\'abrica no recibe nada de informaci\'on acerca de la demanda del consumidor durante una cantidad considerable de tiempo. Este efecto se puede observar en la Figura \ref{analytic_2}.
 
 \begin{figure}[ht!]
 \caption{Retraso en visibilidad de la informaci\'on para agentes en la cadena}
@@ -26,16 +26,16 @@ Si la f\'abrica quisiera estimar su demanda para el siguiente a\~no solamente co
 
 En el mundo real, ning\'un producto tiene una demanda perfectamente constante. M\'as a\'un, existen una infinidad de productos cuya demanda var\'ia con un patr\'on estacional: por ejemplo, las medicinas antigripales se venden m\'as en invierno. La cerveza (y, en general, las bebidas alcoh\'olicas) tambi\'en siguen este tipo de patrones.\\
 
-En primer lugar, existe un patr\'on semanal bastante esperado: seg\'un \citet{gallupbeer}, se consume m\'as cerveza los fines de semana (ver la figura \ref{weekly_base}). Adem\'as, existe un patr\'on relacionado a las festividades comunes: por ejemplo, en EUA el consumo de bebidas alcoh\'olicas se duplica en las festividades navide\~nas. \\
+En primer lugar, existe un patr\'on semanal bastante esperado: seg\'un \citet{gallupbeer}, se consume m\'as cerveza los fines de semana (ver la Figura \ref{weekly_base}). Adem\'as, existe un patr\'on relacionado a las festividades comunes: por ejemplo, en EUA el consumo de bebidas alcoh\'olicas se duplica en las festividades navide\~nas. \\
 
 \begin{figure}[ht!]
-\caption{Ejemplo de un Mes T\'ipico}
+\caption{Ejemplo de un mes t\'ipico}
 \label{weekly_base}
 \includegraphics[width=12cm]{tesis_tex/figs/monthly_customer_demand_ggplot.png}
 \centering
 \end{figure}
 
-Para el presente trabajo, se combinar\'an los dos patrones descritos anteriormente, y se a\~nadir\'a un peque\~no componente aleatorio que cambiar\'a la demanda cada a\~no. El comportamiento ''base'' de la demanda se puede consultar en la figura \ref{yearly_base}. En ella, se puede vislumbrar el patr\'on de aumento cada fin de semana, as\'i como un incremento en las festividades navide\~nas y un pico creado por la fiesta de Independencia de M\'exico. Un ejemplo del comportamiento base, pero perturbado por un poco de aleatoriedad se puede consultar en la figura \ref{yearly_base_noisy}. Sin embargo, cabe mencionar que este es un modelo simple, pues en algunas regiones, podr\'ia tambi\'en existir un patr\'on relacionado al clima, o incluso un alza en la demanda siguiendo temporadas deportivas. \\
+Para el presente trabajo, se combinar\'an los dos patrones descritos anteriormente, y se a\~nadir\'a un peque\~no componente aleatorio que cambiar\'a la demanda cada a\~no. El comportamiento ''base'' de la demanda se puede consultar en la Figura \ref{yearly_base}. En ella, se puede vislumbrar el patr\'on de aumento cada fin de semana, as\'i como un incremento en las festividades navide\~nas y un pico creado por la fiesta de Independencia de M\'exico. Un ejemplo del comportamiento base, pero perturbado por un poco de aleatoriedad se puede consultar en la Figura \ref{yearly_base_noisy}. Sin embargo, cabe mencionar que este es un modelo simple, pues en algunas regiones, podr\'ia tambi\'en existir un patr\'on relacionado al clima, o incluso un alza en la demanda siguiendo temporadas deportivas. \\
 
 \begin{figure}[ht!]
 \caption{Demanda Anual de Cerveza}

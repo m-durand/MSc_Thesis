@@ -1,8 +1,8 @@
-\chapter{Aprendizaje Reforzado}
+\chapter{Aprendizaje reforzado}
 
-\section{Or\'igenes y Descripci\'on}
+\section{Or\'igenes y descripci\'on}
 
-El Aprendizaje Reforzado se basa en la psicolog\'ia conductista: un \textit{agente} busca ser recompensado con un premio, el cual obtiene cuando realiza una secuencia de \textit{acciones} que lo llevan a concluir una tarea exitosamente. Adem\'as, para maximizar la cantidad de \textit{recompensa} que recibe - o, alternativamente, minimizar el tiempo que espera entre un premio y el siguiente - comienza a optimizar su pol\'itica (\textit{$\pi$}) para llegar a la meta satisfactoriamente. As\'i, tal agente \textit{aprende} estrategias y va \textit{reforzando} el aprendizaje de tales estrategias que maximicen sus recompensas. Una explicaci\'on mucho m\'as profunda de las bases e historia del aprendizaje reforzado, as\'i como la mayor parte de las definiciones mencionadas en este cap\'itulo, pueden ser encontradas en \citet{Sutton}.\\
+El Aprendizaje Reforzado se basa en la psicolog\'ia conductista: un \textit{agente} busca ser recompensado con un premio, el cual obtiene cuando realiza una secuencia de \textit{acciones} que lo llevan a concluir una tarea exitosamente. Adem\'as, para maximizar la cantidad de \textit{recompensa} que recibe (o, alternativamente, minimizar el tiempo que espera entre un premio y el siguiente) comienza a optimizar su pol\'itica (\textit{$\pi$}) para llegar a la meta satisfactoriamente. As\'i, tal agente \textit{aprende} estrategias y va \textit{reforzando} el aprendizaje de tales estrategias que maximicen sus recompensas. Una explicaci\'on mucho m\'as profunda de las bases e historia del aprendizaje reforzado, as\'i como la mayor parte de las definiciones mencionadas en este cap\'itulo, pueden ser encontradas en \citet{Sutton}.\\
 
 \subsection{Terminolog\'ia com\'un}
 
@@ -14,10 +14,10 @@ Existen conceptos utilizados en pr\'acticamente la totalidad de los algoritmos d
     \item Mundo: se refiere la totalidad de los posibles estados.
     \item Acci\'on: es lo que un agente puede hacer en cada estado. Generalmente, el conjunto de acciones que puede tomar un agente en un estado determinado es finito, aunque el conjunto de acciones que tome durante todo el tiempo pueda tener combinaciones que se aproximen al infinito. Por ejemplo, para el rat\'on rob\'otico, sus acciones son realizar un movimiento hacia adelante, atr'as, derecha o izquierda.
     \item Recompensa: cuando un agente toma una acci\'on en un estado, recibe una recompensa. Es muy importante notar que la recompensa puede tomar muchas formas: es posible que sea solamente la meta \'ultima, en vez de existir despu\'es de cada acci\'on (como el queso para el rat\'on). La recompensa tambi\'en puede ser negativa, equivalente a un castigo, lo cual causa que el agente aprenda a evitar las acciones que lo llevan a ella.
-    \item Pol\'itica (\textit{policy}) es una funci\'on que toma como argumento un estado $s$ y devuelve una acci\'on $a$; equivalente a la estrategia del agente. La meta del aprendizaje reforzado es encontrar la pol\'itica \'optima. Generalmente se le representa como $\pi(s)->a$.
+    \item Pol\'itica (\textit{policy}) es una funci\'on que toma como argumento un estado $s$ y devuelve una acci\'on $a$; equivalente a la estrategia del agente. La meta del aprendizaje reforzado es encontrar la pol\'itica \'optima. Generalmente se le representa como $\pi(s)\rightarrow a$.
 \end{enumerate}
 
-La relaci\'on entre estos conceptos se puede consultar en la figura \ref{rl_concepts}, popularizada por \citet{Sutton}.\\
+La relaci\'on entre estos conceptos se puede consultar en la Figura \ref{rl_concepts}, popularizada por \citet{Sutton}.\\
 
 \begin{figure}[ht]
 \caption{Interacci\'on de los conceptos en Aprendizaje Reforzado}
@@ -32,13 +32,13 @@ Una vez que tenemos asignados estos elementos, resulta relativamente simple expl
 
 \hspace{22mm} \textit{Calor\'ias necesarias para moverse una casilla * Total de casillas visitadas}
   
-\subsection{La Ecuaci\'on de Bellman}  
+\subsection{La ecuaci\'on de Bellman}  
     
 La principal caracter\'istica del agente es que tiene la capacidad de tomar decisiones sobre sus acciones, las cuales son su forma de interactuar con el mundo, llev\'andolo de un estado a otro. El agente no tiene acceso a todas las consecuencias de sus acciones; de hecho, ni siquiera conoce todo el mundo. Adem\'as, como se ver\'a, su percepci\'on es que no existe un retraso en la recompensa.\\
 
 El agente toma una acci\'on en el tiempo $t$, la cual depende del estado $s_t$ del mundo. En $t+1$, el mundo reaccion\'o ya a la interacci\'on del agente con \'el, as\'i que el agente recibe una recompensa $r_{t+1}$ y toma una nueva acci\'on dependiendo del estado $s_{t+1}$ del mundo. Sin embargo, no es \'optimo seleccionar acciones solamente con base en la recompensa $r_{t+1}$, pues la naturaleza temporal del problema lo convierte en un problema a largo plazo, y el agente estar\'ia considerando solamente consecuencias en el corto plazo.\\
 
-As\'i, el agente debe aprender que existe un \textit{retraso} entre cada acci\'on que toma y el premio. Supongamos que, en una cuadr\'icula, el premio se encuentra en la casilla (x,y). El agente solamente puede llegar a esa casilla meta desde las adyacentes, pero si no se encuentra en una de estas, primero debe acercarse a alguna de las casillas adyacentes, por ejemplo (x-1,y). Recursivamente, si no se encuentra en ninguna de estas casillas, debe encontrar un camino que lo lleve ah\'i. Este proceso se conoce como \textit{exploraci\'on}, pues es posible que el agente no reciba ninguna recompensa por sus acciones hasta que encuentre por primera vez la casilla (x,y) en el tiempo \textit{t} y asigne un valor de recompensa positivo (aunque descontado) a la casilla en la que se encontraba al tiempo \textit{t-1}. As\'i, cuando el agente comienza su exploraci\'on, ir\'a aprendiendo que, lejos de que la recompensa sea inmediata, debe tomar una secuencia de acciones para llegar a ella. Una vez que el agente tiene mejor conocimiento acerca de cu\'ales casillas lo acercan al premio, pasa a una fase llamada \textit{explotaci\'on}, en la cual busca la recompensa m\'as grande entre todas las que conoce. Un agente debe comenzar su aprendizaje puramente en modo exploratorio, y transicionar al modo de explotaci\'on conforme conoce mejor su ambiente.\\
+As\'i, el agente debe aprender que existe un \textit{retraso} entre cada acci\'on que toma y el premio. Supongamos que, en una cuadr\'icula, el premio se encuentra en la casilla $(x,y)$. El agente solamente puede llegar a esa casilla meta desde las adyacentes, pero si no se encuentra en una de estas, primero debe acercarse a alguna de las casillas adyacentes, por ejemplo $(x-1,y)$. Recursivamente, si no se encuentra en ninguna de estas casillas, debe encontrar un camino que lo lleve ah\'i. Este proceso se conoce como \textit{exploraci\'on}, pues es posible que el agente no reciba ninguna recompensa por sus acciones hasta que encuentre por primera vez la casilla (x,y) en el tiempo $t$ y asigne un valor de recompensa positivo (aunque descontado) a la casilla en la que se encontraba al tiempo $t-1$. As\'i, cuando el agente comienza su exploraci\'on, ir\'a aprendiendo que, lejos de que la recompensa sea inmediata, debe tomar una secuencia de acciones para llegar a ella. Una vez que el agente tiene mejor conocimiento acerca de cu\'ales casillas lo acercan al premio, pasa a una fase llamada \textit{explotaci\'on}, en la cual busca la recompensa m\'as grande entre todas las que conoce. Un agente debe comenzar su aprendizaje puramente en modo exploratorio, y transicionar al modo de explotaci\'on conforme conoce mejor su ambiente.\\
 
 Podemos entonces definir la \textit{funci\'on de valor} asociada a la pol\'itica como el valor esperado de la recompensa al tiempo $t$ dado que el agente se encuentra en el estado $s$. Adem\'as, cada periodo de tiempo se le aplica un factor de descuento $\gamma$ para obtener el valor presente de tal recompensa. De esta definici\'on deriva uno de los conceptos m\'as importantes en el aprendizaje reforzado, la \textit{Ecuaci\'on de Bellman}. A continuaci\'on se explica el desarrollo de esta, obtenido de \citet{Sutton}. \\
 
@@ -47,14 +47,14 @@ La idea b\'asica es que la recompensa total en el tiempo $t$ es que se compone d
 \vspace{-30pt}
 \begin{align*}
 R_{t} &= r_{t+1} + \gamma r_{t+2} + \gamma^{2} r_{t+3} + \gamma^{3} r_{t+4} + ... \\
-R_{t} &= r_{t+1} + \gamma \left( r_{t+2} + \gamma r_{t+3} + \gamma^{2}r_{t+4} + ...  \right)  \\
-R_{t} &= r_{t+1} + \gamma R_{t+1}
+    &= r_{t+1} + \gamma \left( r_{t+2} + \gamma r_{t+3} + \gamma^{2}r_{t+4} + ...  \right)  \\
+    &= r_{t+1} + \gamma R_{t+1}
 \end{align*}
 
 El valor de un estado $s$ se puede definir como la recompensa esperada dado que el agente empieza en ese estado, y depende de su pol\'itica:
 
 $$
-V^{\pi}(s) = E_{\pi}\left\{R_{t}|s_{t} = s\right\} = E_{\pi}\left\{\sum_{k=0}^{\infty}\gamma^{k}r_{t+k+1}|s_{t}=s\right\}
+V^{\pi}(s) = E_{\pi}\left\{R_{t}|s_{t} = s\right\} = E_{\pi}\left\{\sum_{k=0}^{\infty}\gamma^{k}r_{t+k+1}|s_{t}=s\right\}.
 $$
 
 \subsection{El m\'etodo $\epsilon$\textit{-greedy}}
@@ -67,13 +67,13 @@ Definamos $p_r{t}$ y $p_t{t}$ como las probabilidades al tiempo $t$ de exploraci
 
 \vspace{-30pt}
 \begin{align*}
-p_r{t} &= 1 - \epsilon(t) \\
-p_t{t} &= 1 - p_r{t} \quad \quad \forall t
+p_r{t} &= 1 - \epsilon(t) \\,
+p_t{t} &= 1 - p_r{t} \quad \quad \forall t.
 \end{align*}
 
-A esta estrategia de exploraci\'on se le llama $\epsilon-greedy$ porque el agente es codicioso (en ingl\'es, \textit{greedy}) al querer siempre buscar la m\'axima recompensa posible, pero solamente hasta un $\epsilon$. Tal funci\'on $\epsilon$ suele ser implementada como decreciente de forma lineal para el aprendizaje, de tal forma que mientras pasa el tiempo, el agente escoge las acciones conocidas que le reportan mayor utilidad m\'as seguido. De esta manera se asegura que siempre existe una probabilidad positiva de explorar.\\
+A esta estrategia de exploraci\'on se le llama $\epsilon-greedy$ porque el agente es codicioso (en ingl\'es, \textit{greedy}) al querer siempre buscar la m\'axima recompensa posible, pero limitado por la funci\'on $\epsilon$. Tal funci\'on suele ser implementada como decreciente de forma lineal para el aprendizaje, de tal forma que mientras pasa el tiempo, el agente escoge las acciones conocidas que le reportan mayor utilidad m\'as seguido. De esta manera se asegura que siempre existe una probabilidad positiva de explorar.\\
 
-\subsection{Los MDP (Procesos de Decisi\'on de Markov)}
+\subsection{Los MDP (procesos de decisi\'on de Markov)}
 
 Un algoritmo de aprendizaje reforzado que cumple con la propiedad de Markov se llama Proceso de Decisi\'on de Markov (MDP, por sus siglas en ingl\'es). La propiedad de Markov a grandes rasgos, dice que el futuro solamente depende del estado obtenido con las acciones inmediatamente anteriores, no del pasado que haya transcurrido previamente. En t\'erminos formales (\cite{Sutton}), si se supone que existen un n\'umero finito de estados y recompensas \footnote{Si el supuesto de finitez para los estados de recompensas es removido, el argumento debe ser extendido a integrales y densidades de probabilidades en lugar de sumas y probabilidades.}, entonces se puede considerar c\'omo un mundo responder\'ia en el tiempo $t+1$ a la acci\'on tomada en el tiempo $t$. Esto se describe con la distribuci\'on conjunta de probabilidad:\\
 
@@ -82,26 +82,26 @@ Un algoritmo de aprendizaje reforzado que cumple con la propiedad de Markov se l
 P\{S_{t+1} = s', R_{t+1} = r \quad | \quad S_{0}, A_{0}, R_{1}, ... , S_{t-1}, A_{t-1}, R_{t}, S_{t}, A_{t} \},
 \end{align*}
 
-para todos las recompensas $r$, estados $s'$ y todos los valores posibles de los eventos pasados: $_{0}, A_{0}, R_{1}, ... , S_{t-1}, A_{t-1}, R_{t}, S_{t}, A_{t}$. La propiedad de Markov indica que la respuesta del mundo en el tiempo $t+1$ depende solamente del estado y acciones en el tiempo $t$, es decir:
+\noindent para todos las recompensas $r$, estados $s'$ y todos los valores posibles de los eventos pasados: $_{0}, A_{0}, R_{1}, ... , S_{t-1}, A_{t-1}, R_{t}, S_{t}, A_{t}$. La propiedad de Markov indica que la respuesta del mundo en el tiempo $t+1$ depende solamente del estado y acciones en el tiempo $t$, es decir:
 
 \vspace{-30pt}
 \begin{align*}
 p\left(s', r \quad | \quad s,a \right) = P\{S_{t+1} = s', R_{t+1} = r \quad | \quad S_{t} = s, A_{t} =a\},
 \end{align*}
 
-para todos las recompensas $r$, estados $s'$ y acciones $a$. Si el mundo tiene la propiedad de Markov, entonces es posible calcular la recompensa esperada dado un estado actual y una acci\'on.\\
+\noindent para todos las recompensas $r$, estados $s'$ y acciones $a$. Si el mundo tiene la propiedad de Markov, entonces es posible calcular la recompensa esperada dado un estado actual y una acci\'on.\\
 
-Formalmente, un Proceso de Decisi\'on de Markov es una tupla $(X,U,f,\rho)$ en donde $X$ es el conjunto finito de estados, $U$ es el conjunto finito de acciones de un agente en un estado, $f:X*U*X\rightarrow[0,1]$ es la funci\'on de probabilidad de transici\'on de estado, y $\rho:X*U*X\rightarrow\mathbb{R}$ es la funci\'on de recompensa. Es evidente que las pol\'iticas anteriores no juegan un rol, solamente el estado en el que se encuentra el agente.\\
+Formalmente, un Proceso de Decisi\'on de Markov es una tupla $(X,U,f,\rho)$ en donde $X$ es el conjunto finito de estados, $U$ es el conjunto finito de acciones de un agente en un estado, $f:X \times U \times X\rightarrow[0,1]$ es la funci\'on de probabilidad de transici\'on de estado, y $\rho:X \times U \times X\rightarrow\mathbb{R}$ es la funci\'on de recompensa. Es evidente que las pol\'iticas anteriores no juegan un rol, solamente el estado en el que se encuentra el agente.\\
 
 Cuando el conjunto de acciones (o la pol\'itica) a tomar es dif\'icil de aprender porque no existen ejemplos, o el mundo/conjunto de acciones/conjunto de consecuencias es demasiado grande (e.g. infinito), es apropiado utilizar Aprendizaje de M\'aquina Reforzado en lugar de Aprendizaje de M\'aquina regular (i.e. modelos supervisados o no supervisados). Gracias a que el agente va descubriendo y acerc\'andose a una pol\'itica \'optima, no es estrictamente necesario que explore todas las acciones posibles. \\
 
 En este trabajo se aplicar\'an dos algoritmos sumamente conocidos y aplicados en un sinf\'in de \'ambitos: \textit{Policy Iteration} y \textit{Q-learning}, y compararemos su rendimiento al aplicarlos al problema de la distribuci\'on de cerveza.
 
-\section{Policy Iteration}
+\section{\textit{Policy Iteration}}
 
-En este algoritmo, se empieza con una pol\'itica aleatoria, se encuentra su valor y se realiza un paso que encuentra una pol\'itica nueva (mejor) basado en la anterior. Bajo el supuesto de que los agentes tienen una cantidad finita de acciones en cada estado, existen una cantidad finita de posibles pol\'iticas y es razonable esperar convergencia en un algoritmo de b\'usqueda. De cierta manera, dado un tiempo suficientemente grande y cardinalidad finita de las acciones a tomar en cada estado por cada agente, \textit{policy iteration} asegura convergencia a la pol\'itica \'optima. En general, el algoritmo parece terminar en tiempo exponencial o pseudopolinomial, pero el m\'aximo tiempo posible es todav\'ia un tema abierto de investigaci\'on.\\
+En este algoritmo, se empieza con una pol\'itica aleatoria, se encuentra su valor y se realiza un paso que encuentra una pol\'itica nueva (mejor) basado en la anterior. Bajo el supuesto de que los agentes tienen una cantidad finita de acciones en cada estado, existen una cantidad finita de posibles pol\'iticas y es razonable esperar convergencia en un algoritmo de b\'usqueda. De cierta manera, dado un tiempo suficientemente grande y cardinalidad finita de las acciones a tomar en cada estado por cada agente, \textit{policy iteration} encuentra una pol\'itica \'optima. En general, el algoritmo parece terminar en tiempo exponencial o pseudopolinomial, pero el m\'aximo tiempo posible es todav\'ia un tema abierto de investigaci\'on.\\
 
-Recordemos que en cada tiempo $t$, cada agente puede tomar una acci\'on $a$ y recibe una recompensa $r$. De manera general se puede suponer que debido a esto, el proceso de aprendizaje se comporta como un proceso de Markov (MDP). As\'i, de manera iterativa se puede asignar una pol\'itica $\pi$ a cada agente (es importante recordar que una pol\'itica es el conjunto de acciones $a_t$ a tomar en cada estado $e_t$), evaluar su desempe\~no por medio de la recompensa final que representa para el agente, y avanzar a la siguiente iteraci\'on en la cual se intentar\'a mejorar la mejor pol\'itica hist\'orica.\\
+Recordemos que en cada tiempo $t$, cada agente puede tomar una acci\'on $a$ y recibe una recompensa $r$. De manera general se puede suponer que debido a esto, el proceso de aprendizaje se comporta como un proceso de decisi\'on Markov (MDP). As\'i, de manera iterativa se puede asignar una pol\'itica $\pi$ a cada agente (es importante recordar que una pol\'itica es el conjunto de acciones $a_t$ a tomar en cada estado $e_t$), evaluar su desempe\~no por medio de la recompensa final que representa para el agente, y avanzar a la siguiente iteraci\'on en la cual se intentar\'a mejorar la mejor pol\'itica hist\'orica.\\
 
 Esto quiere decir que, tomando una pol\'itica base $\pi_0$, se puede encontrar una pol\'itica $\pi_1$ que otorga una recompensa igual o mayor (i.e. $V^{\pi_0}(s)<V^{\pi_1}(s) \forall s \in S$). En alg\'un momento, el algoritmo llega a una pol\'itica $\pi_{*}$ que no puede ser mejorada, la cual es declarada la pol\'itica \'optima.\\
 
@@ -130,9 +130,9 @@ $$
 \pi(s) \leftarrow \max_a \sum_{s' \in S}^{ }T(s,a,s')[R(s,a,s') + \gamma V(s')]
 $$
 
-iterando ambos pasos hasta que $\pi_*$ converja.\\
+iterando ambos pasos hasta que converja a una $\pi_*$.\\
 
-El modelo desarrollado en este trabajo ser\'a implementado como un algoritmo de \textit{policy iteration}. Algunas partes relevantes del c\'odigo se pueden consultar en la secci\'on de Resultados.\\
+El modelo desarrollado en este trabajo ser\'a implementado como un algoritmo de \textit{policy iteration}. Algunas partes relevantes del c\'odigo se pueden consultar en el cap\'itulo  \ref{ch:resultados}.\\
 
 Existe un algoritmo similar llamado \textit{value iteration}, el cual itera sobre la funci\'on de valor e infiere la pol\'itica relacionada al valor \'optimo obtenido al final, en lugar de iterar sobre la pol\'itica y evaluar el valor. Se suele preferir el algoritmo de \textit{policy iteration} sobre \textit{value iteration}, pues converge m\'as r\'apidamente (en t\'erminos de iteraciones necesarias), presumiblemente porque la funci\'on de valor cambia muy poco de una pol\'itica a otra. Adem\'as, dado que se itera sobre la pol\'itica anterior y se busca una mejor, el algoritmo converge r\'apidamente y cada paso asegura una mejora. Se puede consultar m\'as acerca del algoritmo \textit{value iteration} y de la programaci\'on y convergencia de ambos en \citet{Sutton}.
 
@@ -145,18 +145,19 @@ Uno de los algoritmos m\'as populares de aprendizaje es \textit{Q-learning}. Obt
 Recordemos la ecuaci\'on de valor de un estado, basada en la ecuaci\'on de Bellman, que fue desarrollada en la secci\'on introductoria:
 
 $$
-V^{\pi}(s) = E_{\pi}\left\{R_{t}|s_{t} = s\right\} = E_{\pi}\left\{\sum_{k=0}^{\infty}\gamma^{k}r_{t+k+1}|s_{t}=s\right\}
+V^{\pi}(s) = E_{\pi}\left\{R_{t}|s_{t} = s\right\} = E_{\pi}\left\{\sum_{k=0}^{\infty}\gamma^{k}r_{t+k+1} \big| s_{t}=s\right\}
 $$
 
 De aqu\'i sigue que el valor de tomar una acci\'on espec\'ifica $a$ en el estado $s$ usando la pol\'itica $\pi$ es:
 
 $$
-    Q_{\pi}(s,a) = E_{\pi}\left\{R_{t}|s_{t}=s,a_{t}=a\right\}=E_{\pi}\left \{\sum_{k = 0}^{\infty}\gamma^{k}r_{t+k+1}|s_{t} =s, a_{t} =a  \right \}
+    Q_{\pi}(s,a) = E_{\pi}\left\{R_{t}|s_{t}=s,a_{t}=a\right\}=E_{\pi}\left \{\sum_{k = 0}^{\infty}\gamma^{k}r_{t+k+1} \big| s_{t} =s, a_{t} =a  \right \}
 $$
 
-%aqui se pone la definicion de Q
+Se asigna el valor a la funci\'on $Q$ en el estado $s$ tomando la acci\'on $a$ como la suma del propio valor de la funci\'on $Q$ y el valor m\'aximo de la funci\'on $Q$ en el siguiente estado (es decir, se supone que se tomar\'ia la mejor acci\'on) descontado con el factor $\lambda$.
+
 $$
-V(s) = \max_{a}{Q(s,a)}
+R(s) = \max_{a}{Q_{\pi}(s,a)}
 $$
 $$
 Q(s, a) = R(s, a) + \gamma * \max_{a}{Q(s^{'}, a^{*})}
@@ -169,7 +170,7 @@ Al iniciar el periodo de aprendizaje del algoritmo, la funci\'on Q se establece 
 \subsection{Algoritmo}
 
 \begin{enumerate}
-    \item Asignar $Q(s,a) = 0$ para todos los estados y acciones.
+    \item Asignar $Q(s,a) = 0$ para todos los estados y acciones
     \item Posicionarse en un estado $s$
     \item Seleccionar acci\'on $a^{*}$ y ejecutar
     \item Recibir recompensa $r$
@@ -183,7 +184,7 @@ La principal diferencia entre \textit{Policy iteration} y \textit{Q-learning} es
 
 Hasta este momento, se han establecido las bases para dos t\'ecnicas de aprendizaje reforzado para un agente. Sin embargo, el Problema de la Distribución de Cerveza es multiagente por naturaleza: cada eslab\'on de la cadena de suministro juega un papel diferente o puede tener m\'argenes y costos diferentes. Esta generalizaci\'on se conoce como Aprendizaje Reforzado Multi-Agente, el cual presenta retos nuevos, al tiempo de abrir las puertas a sistemas din\'amicos m\'as complejos.
 
-\section{Aprendizaje Reforzado Multi-Agente (ARM)}
+\section{Aprendizaje reforzado multi-agente (ARM)}
 
 Existen muchos problemas que inherentemente parecen tener soluciones sencillas, pero es necesario que m\'as de un agente aprenda de manera simult\'anea, especialmente si la recompensa al final es compartida entre todos ellos. Por ejemplo, imaginemos que tenemos dos robots, ladrillos y un cuadro dibujado en el piso. Cada uno de los robots est\'a cerca de esquinas opuestas y tiene acceso a la mitad de los ladrillos. La recompensa final se les otorga cuando forman un cuadrado de ladrillos, y es mayor mientras menor sea el tiempo que les tome terminar. En este caso, la estrategia \'optima es que cada uno de los robots coloque, en cada tiempo, el ladrillo que m\'as cerca le quede. El probema se vuelve sumamente complejo, pues cambios en la estrategia de un agente puedem afectar la estrategia de otros agentes. Por ejemplo, si uno de los robots tiene un comportamiento err\'atico porque recibe un castigo si le sobra energ\'ia al terminar la tarea, el otro deber\'a adaptarse a esta nueva forma de actuar.\\
 
