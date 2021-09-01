@@ -24,8 +24,8 @@ progress_time_1 = datetime.datetime.now()
 #q_learning_df = [] # TODO return from sql database
 q_learning_df = pd.read_csv("../../aux_documents/q_learning_base.csv")
 q_learning_df = q_learning_df[['agent','day','inventory','purchase','r_s_a','q_s_a']] # csv format sometimes kills this
-# the vector of lambdas
-lambdas = [(lambda_q_learning**n) for n in range(365)]
+# the vector of gammas
+gammas = [(gamma_q_learning**n) for n in range(365)]
 elapsed_epochs_in_time = list()
 times_history = list()
 
@@ -115,8 +115,8 @@ for j in range(total_epochs):
             # being on the day "day" then the reward action is ...
             # we "cut" the vector starting on the pos "day" and append the rest to the end
             rewards = agent.q_function_reward_for_action[day-1:] + agent.q_function_reward_for_action[0:day-1]
-            # afterwards we multiply by the vector of lambdas
-            discounted_rewards = np.multiply(rewards, lambdas)
+            # afterwards we multiply by the vector of gammas
+            discounted_rewards = np.multiply(rewards, gammas)
             # finally we sum and get the value of R
             r_s_a = np.sum(discounted_rewards)
 
@@ -145,7 +145,7 @@ for j in range(total_epochs):
                 max_q_s_prime_a_all = 0
 
             # Finally get the value of Q!!
-            q_s_a = r_s_a + (lambda_q_learning * max_q_s_prime_a_all)
+            q_s_a = r_s_a + (gamma_q_learning * max_q_s_prime_a_all)
 
             # third part - update Q function for (s,a) ------------------------------
             # check if the current row exists already

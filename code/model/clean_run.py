@@ -34,7 +34,7 @@ total_epochs = 100000 # 10000 epochs is a good number to play, need to find a be
 warmstart_proportion = 0.005  # How much time will the agents spend observing what the downstream agent does, not exploring
 max_demand = 75  # The maximum quantity an agent can ask for during one day
 epsilon_greedy_converges_to = 0.005
-lambda_q_learning = 0.9
+gamma_q_learning = 0.9
 
 ## Necessary world information #########################################
 
